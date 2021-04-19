@@ -1,0 +1,78 @@
+<!-- pages/develop-broker/develop-broker.wxml -->
+<view class="develop-broker-page">
+  <view class="top-box">
+    <view class="hint-a">
+      <text class="num">{{totalAgent}}</text>
+    </view>
+    <view class="hint">累计邀请人数</view>
+  </view>
+  <view class="filter-box">
+    <view bindtap="handleFilter" class="filter-item{{index === currentFilter ? ' active' : ''}}" data-index="{{index}}" wx:for="{{filterList}}" wx:key="name">
+      <text>{{item.name}}（{{item.count}}）</text>
+      <view class="line" wx:if="{{index === currentFilter}}"></view>
+    </view>
+  </view>
+  <!-- 我邀请的下线 -->
+  <view class="data-list-box b-data-box" wx:if="{{currentFilter === 0}}">
+    <view class="b-list-item" wx:for="{{aList}}" wx:key="username">
+      <image class="head" src="{{item.avatar}}"></image>
+      <view class="detail-box">
+        <view class="name">{{item.displayName}}</view>
+        <view class="phone">{{item.mobile}}</view>
+        <view class="detail">
+          <view class="detail-item">
+            <image class="icon-img" src="../../image/Agent_icon_rec@2x.png"></image>
+            推荐客户数
+            <text class="num">{{item.customerCount}}</text>
+            人
+          </view>
+          <view class="detail-item">
+            <image class="icon-img" src="../../image/Agent_icon_Invitation@2x.png"></image>
+            邀请好友
+            <text class="num">{{item.agentCount}}</text>
+            人
+          </view>
+        </view>
+        <view class="bottom">
+          <text>{{item.createdTime}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 我的下线邀请 -->
+  <view class="data-list-box b-data-box" wx:else>
+    <view class="b-list-item" wx:for="{{aList}}" wx:key="username">
+      <image class="head" src="{{item.avatar}}"></image>
+      <view class="detail-box">
+        <view class="name">{{item.displayName}}</view>
+        <view class="phone">{{item.mobile}}</view>
+        <view class="detail">
+          <view class="detail-item">
+            <image class="icon-img" src="../../image/Agent_icon_rec@2x.png"></image>
+            推荐客户数
+            <text class="num">{{item.customerCount}}</text>
+            人
+          </view>
+          <view class="detail-item">
+            <image class="icon-img" src="../../image/Agent_icon_Invitation@2x.png"></image>
+            邀请好友
+            <text class="num">{{item.agentCount}}</text>
+            人
+          </view>
+        </view>
+        <view class="bottom">
+          <text>{{item.createdTime}}</text>
+          <text>由{{item.superiorName}}{{item.superiorMobile || ''}}推荐</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="no-data-box" wx:if="{{totalCount === 0}}">
+    <image class="image" src="../../image/no-data@2x.png"></image>
+    <text class="text">暂时没有内容～</text>
+  </view>
+  <view class="company-intr-box mt20" wx:if="{{aList.length > 0 && aList.length === totalCount}}">
+    <view class="title">安选好房</view>
+    <view class="detail">安心选好房，就上安选好房</view>
+  </view>
+</view>

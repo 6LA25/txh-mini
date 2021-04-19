@@ -1,0 +1,125 @@
+<!-- houses.wxml -->
+<view class="container houses-page">
+  <toast id='toast'></toast>
+  <view class="search-box">
+    <view class="inner-box" bindtap="handleJumpSearch">
+      <!-- <icon color="#B8BFC3" class="search-icon" type="search" size="18" /> -->
+      <image class="search-icon" src="../../image/home_icon_search_default@2x.png"></image>
+      <text>{{keyword || '搜索楼盘名称'}}</text>
+    </view>
+  </view>
+  <view class="tab-box">
+    <view class="tab-item-box{{selectedAreas ? ' active' : ''}}" data-index="0" bindtap="handleFilter">
+      <text class="txt1">区域</text>
+      <image class="triangle" wx:if="{{!selectedAreas && currentFilter !== 0}}" src="../../image/budding_icon_down_default@2x.png"></image>
+      <image class="triangle" wx:if="{{!selectedAreas && currentFilter === 0}}" src="../../image/budding_icon_up_default@2x.png"></image>
+      <image class="triangle" wx:if="{{selectedAreas && currentFilter !== 0}}" src="../../image/budding_icon_down_click@2x.png"></image>
+      <image class="triangle" wx:if="{{selectedAreas && currentFilter === 0}}" src="../../image/budding_icon_up_click@2x.png"></image>
+    </view>
+    <!-- 房型 -->
+    <view class="tab-item-box{{selectedFloorType.length > 0 ? ' active' : ''}}" data-index="2" bindtap="handleFilter">
+      <text class="txt1">类型</text>
+      <image class="triangle" wx:if="{{selectedFloorType.length === 0 && currentFilter !== 2}}" src="../../image/budding_icon_down_default@2x.png"></image>
+      <image class="triangle" wx:if="{{selectedFloorType.length === 0 && currentFilter === 2}}" src="../../image/budding_icon_up_default@2x.png"></image>
+      <image class="triangle" wx:if="{{selectedFloorType.length > 0 && currentFilter !== 2}}" src="../../image/budding_icon_down_click@2x.png"></image>
+      <image class="triangle" wx:if="{{selectedFloorType.length > 0 && currentFilter === 2}}" src="../../image/budding_icon_up_click@2x.png"></image>
+    </view>
+    <!-- 单价 -->
+    <view class="tab-item-box" data-index="1" bindtap="handleFilter">
+      <text class="txt1">单价</text>
+      <!-- 默认排序 -->
+      <view class="price-triangle-box" wx:if="{{priceSort === -1}}">
+        <image class="triangle top" src="../../image/budding_icon_up_default@2x.png"></image>
+        <image class="triangle bottom" src="../../image/budding_icon_down_default@2x.png"></image>
+      </view>
+      <!-- 升序 -->
+      <view class="price-triangle-box" wx:if="{{priceSort === 0}}">
+        <image class="triangle top" src="../../image/budding_icon_up_click@2x.png"></image>
+        <image class="triangle bottom" src="../../image/budding_icon_down_default@2x.png"></image>
+      </view>
+      <!-- 降序 -->
+      <view class="price-triangle-box" wx:if="{{priceSort === 1}}">
+        <image class="triangle top" src="../../image/budding_icon_up_default@2x.png"></image>
+        <image class="triangle bottom" src="../../image/budding_icon_down_click@2x.png"></image>
+      </view>
+    </view>
+    <view class="tab-item-box{{selectedFitment > 0 || selectedStatus > 0 || selectedApartments.length > 0 ? ' active' : ''}}" data-index="3" bindtap="handleFilter">
+      <text class="txt1">更多</text>
+      <image class="triangle" wx:if="{{!(selectedFitment > 0 || selectedStatus > 0 || selectedApartments.length > 0) && currentFilter !== 3}}" src="../../image/budding_icon_down_default@2x.png"></image>
+      <image class="triangle" wx:if="{{!(selectedFitment > 0 || selectedStatus > 0 || selectedApartments.length > 0) && currentFilter === 3}}" src="../../image/budding_icon_up_default@2x.png"></image>
+      <image class="triangle" wx:if="{{(selectedFitment > 0 || selectedStatus > 0 || selectedApartments.length > 0) && currentFilter !== 3}}" src="../../image/budding_icon_down_click@2x.png"></image>
+      <image class="triangle" wx:if="{{(selectedFitment > 0 || selectedStatus > 0 || selectedApartments.length > 0) && currentFilter === 3}}" src="../../image/budding_icon_up_click@2x.png"></image>
+    </view>
+  </view>
+  <view class="content-box" wx:if="{{totalHouses > 0}}">
+    <view class="house-index-inner-box" wx:for="{{housesList}}">
+      <house-item house="{{item}}" wx:key="houseId" has-auth="{{hasAuth}}" user-info="{{userInfo}}" bindmyevent="onMyEvent"></house-item>
+    </view>
+  </view>
+  <view class="no-data-box no-house-box" wx:if="{{totalHouses === 0}}">
+    <image class="image" src="../../image/no-data@2x.png"></image>
+    <text class="text">暂时没有内容～</text>
+  </view>
+  <!-- <view class="no-more-box" wx:if="{{housesList.length > 0 && housesList.length === totalHouses}}">
+    安心选好房，就上安选好房
+  </view> -->
+  <view class="company-intr-box mt20" wx:if="{{housesList.length > 0 && housesList.length === totalHouses}}">
+    <view class="title">安选好房</view>
+    <view class="detail">安心选好房，就上安选好房</view>
+  </view>
+  <view id="pop-content" class="pop-filter-box" wx:if="{{currentFilter !== '' && currentFilter !== 1}}">
+    <view class="mask-box" bindtap="handleClosePop"></view>
+    <!-- 区 -->
+    <view class="area-parent-filters-box" wx:if="{{currentFilter === 0}}">
+      <view class="area-filters-box">
+        <view class="area-item" bindtap="handleSelectArea" class="area-item{{item.checked ? ' active' : ''}}" data-id="{{item.id}}" wx:for="{{areas}}" wx:key="id">
+          {{item.name}}
+        </view>
+        <view class="area-item" bindtap="handleToggleAllArea" class="area-item{{selectedArea ? ' active' : ''}}">
+          不限
+        </view>
+      </view>
+      <view class="btns-box">
+        <view class="btn-item reset" bindtap="handleResetArea">重置</view>
+        <view class="btn-item confirm" bindtap="handleConfirmArea">确定</view>
+      </view>
+    </view>
+    <!-- 类型 -->
+    <view class="more-filter-box" wx:if="{{currentFilter === 2}}">
+      <view class="tag-box">
+        <view class="tag-item{{item.checked ? ' active' : ''}}" catchtap="handleSelectHouseType" data-value="{{item.value}}" wx:key="value" wx:for="{{houseTypes}}">
+          {{item.name}}
+        </view>
+      </view>
+      <view class="btns-box">
+        <view class="btn-item reset" catchtap="handleResetHouseType">重置</view>
+        <view class="btn-item confirm" catchtap="handleConfirmHouseType">确定</view>
+      </view>
+    </view>
+    <!-- 更多 -->
+    <view class="more-filter-box" wx:if="{{currentFilter === 3}}">
+      <view class="title">装修状态</view>
+      <view class="tag-box">
+        <view class="tag-item{{item.checked ? ' active' : ''}}" catchtap="handleSelectFitment" data-value="{{item.value}}" wx:key="value" wx:for="{{fitments}}">
+          {{item.name}}
+        </view>
+      </view>
+      <view class="title">户型</view>
+      <view class="tag-box">
+        <view class="tag-item{{item.checked ? ' active' : ''}}" catchtap="handleSelectHuxing" data-value="{{item.value}}" wx:key="value" wx:for="{{types}}">
+          {{item.name}}
+        </view>
+      </view>
+      <view class="title">销售状态</view>
+      <view class="tag-box">
+        <view class="tag-item{{item.checked ? ' active' : ''}}" catchtap="handleSelectSaleType" data-value="{{item.value}}" wx:key="value" wx:for="{{saleTypes}}">
+          {{item.name}}
+        </view>
+      </view>
+      <view class="btns-box">
+        <view class="btn-item reset" bindtap="handleResetMore">重置</view>
+        <view class="btn-item confirm" bindtap="handleConfirmMore">确定</view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,132 @@
+<!--pages/house-survey/house-survey.wxml-->
+<wxs module="fn" src="../../filter/priceShow.wxs"></wxs>
+<view class="house-survey-page">
+  <view class="top-box">
+    <view class="name">{{houseDetail.name}}</view>
+    <view class="tags-box">
+      <view wx:for="{{houseDetail.tagList}}" wx:key="*this" class="tag-item">{{item}}</view>
+    </view>
+    <view class="intro">
+      {{houseDetail.intro}}
+    </view>
+  </view>
+  <view class="divide-box"></view>
+  <view class="detail-box"> 
+    <view class="detail-item">
+      <view class="label-box">推广名</view>
+      <view class="text-box">{{houseDetail.name}}</view>
+    </view>
+    <view class="detail-item">
+      <view class="label-box">注册名</view>
+      <view class="text-box">{{houseDetail.zhuceming || '暂无数据'}}</view>
+    </view>
+    <view class="detail-item">
+      <view class="label-box">开发商</view>
+      <view class="text-box">{{houseDetail.developer || '暂无数据'}}</view>
+    </view>
+    <view class="detail-item">
+      <view class="label-box">楼盘特色</view>
+      <view class="text-box">{{houseDetail.feature || '暂无数据'}}</view>
+    </view>
+    <view class="detail-item">
+      <view class="label-box">参考均价</view>
+      <view class="text-box">
+        <text>{{houseDetail.price || '待定'}}</text>
+        <text wx:if="{{fn.hasNum(houseDetail.price)}}">元/平</text>
+      </view>
+    </view>
+    <view class="detail-item">
+      <view class="label-box">建筑类型</view>
+      <view class="text-box">{{houseDetail.buildingType}}</view>
+    </view>
+    <view class="detail-item">
+      <view class="label-box">装修标准</view>
+      <view class="text-box">{{houseDetail.standard ? houseDetail.standard : '暂无数据'}}</view>
+    </view>
+    <view class="detail-item">
+      <view class="label-box">产权年限</view>
+      <view class="text-box">{{houseDetail.propertyYears || '--'}}年</view>
+    </view>
+    <view class="detail-item">
+      <view class="label-box">所在区域</view>
+      <view class="text-box">{{houseDetail.regionName}}</view>
+    </view>
+    <view class="detail-item">
+      <view class="label-box">楼盘地址</view>
+      <view class="text-box">{{houseDetail.address}}</view>
+    </view>
+    <view class="devide-line"></view>
+    <view class="detail-item">
+      <view class="label-box">销售状态</view>
+      <view class="text-box">{{houseDetail.statusName}}</view>
+    </view>
+    <view class="detail-item" bindtap="handleJumpLocationDetail">
+      <view class="label-box">销售地址</view>
+      <view class="text-box address-text">{{houseDetail.address}}</view>
+      <image class="address-icon" src="../../image/address.png"></image>
+    </view>
+    <view class="detail-item">
+      <view class="label-box">主力户型</view>
+      <view class="text-box">{{houseApartments || '暂无数据'}}</view>
+    </view>
+    <view class="detail-item">
+      <view class="label-box">建筑面积</view>
+      <view class="text-box">{{houseDetail._acreage}}m²</view>
+    </view>
+    <view class="detail-item">
+      <view class="label-box">开盘时间</view>
+      <view class="text-box">{{houseDetail.openTime || '待定'}}</view>
+    </view>
+    <view class="detail-item">
+      <view class="label-box">交房时间</view>
+      <view class="text-box">{{houseDetail.finishTime || '待定'}}</view>
+    </view>
+    <view class="devide-line"></view>
+    <view class="detail-item">
+      <view class="label-box">土拍时间</view>
+      <view class="text-box">{{houseDetail.tupaishijian || '暂无数据'}}</view>
+    </view>
+    <view class="detail-item">
+      <view class="label-box">土拍价格</view>
+      <view class="text-box">{{houseDetail.tupaijiage ? houseDetail.tupaijiage + '亿' : '暂无数据'}}</view>
+    </view>
+    <view class="detail-item">
+      <view class="label-box">楼面地价</view>
+      <view class="text-box">{{houseDetail.loumiandijia ? houseDetail.loumiandijia + '元/m²' : '暂无数据'}}</view>
+    </view>
+    <view class="devide-line"></view>
+    <view class="detail-item">
+      <view class="label-box">占地面积</view>
+      <view class="text-box">{{houseDetail.floorSpace || '--'}}m²</view>
+    </view>
+    <view class="detail-item">
+      <view class="label-box">总建面积</view>
+      <view class="text-box">{{houseDetail.zongjianmianji || '--'}}m²</view>
+    </view>
+    <view class="detail-item">
+      <view class="label-box">规划户数</view>
+      <view class="text-box">{{houseDetail.planNum || '--'}}户</view>
+    </view>
+    <view class="detail-item">
+      <view class="label-box">容积率</view>
+      <view class="text-box">{{houseDetail.plotRatio || '暂无数据'}}</view>
+    </view>
+    <view class="detail-item">
+      <view class="label-box">绿化率</view>
+      <view class="text-box">{{houseDetail.greetingRate || '--'}}%</view>
+    </view>
+    <view class="detail-item">
+      <view class="label-box">车位占比</view>
+      <view class="text-box">{{houseDetail.carport || '暂无数据'}}</view>
+    </view>
+    <view class="detail-item">
+      <view class="label-box">物业公司</view>
+      <view class="text-box">{{houseDetail.managementCompany || '暂无数据'}}</view>
+    </view>
+    <view class="detail-item">
+      <view class="label-box">物业费用</view>
+      <view class="text-box">{{houseDetail.managementPrice || '--'}}元/m²/月</view>
+    </view>
+  </view>
+  <operate-box sysinfo="{{sysUserInfo}}" user-info="{{userInfo}}" house="{{houseDetail}}"></operate-box>
+</view>

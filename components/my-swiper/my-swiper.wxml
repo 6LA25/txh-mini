@@ -1,0 +1,20 @@
+<!-- 这是自定义组件的内部WXML结构 -->
+<view class="inner">
+  <view class="page-section page-section-spacing swiper">
+    <swiper style="height:{{height}}rpx;" bindchange="swiperChange" indicator-color="{{indicatorColor}}" indicator-active-color="{{indicatorActiveColor}}" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" circular="{{circular}}" vertical="{{vertical}}" interval="{{interval}}" duration="{{duration}}" previous-margin="{{previousMargin}}px" next-margin="{{nextMargin}}px">
+      <block wx:for="{{imgList}}" wx:key="imageLink">
+        <swiper-item>
+          <view class="swiper-item">
+            <image bindtap="handleTap" data-type="{{item.linkType}}" data-link="{{item.link}}" data-url="{{item.imageLink}}" style="width: 100%;height: 100%;border-radius: {{radius}}rpx" src="{{item.imageLink}}"></image>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+    <!-- 重置小圆点的样式 -->
+    <view wx:if="{{imgList.length > 1}}" class="dots" style="bottom: {{dotsBottom}}rpx">
+      <block wx:for="{{imgList}}" wx:key="imageLink">
+        <view class="dot{{index == currentSwiper ? ' active' : ''}}"></view>
+      </block>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,73 @@
+/* components/my-swiper.wxss */
+
+.page-section {
+  position: relative;
+  width: 100%;
+  margin-bottom: 60rpx;
+}
+
+.page-section_center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.page-section:last-child {
+  margin-bottom: 0;
+}
+
+.page-section-gap {
+  box-sizing: border-box;
+  padding: 0 30rpx;
+}
+
+.page-section-spacing {
+  box-sizing: border-box;
+  /* padding: 0 80rpx; */
+}
+
+.page-section-title {
+  font-size: 28rpx;
+  color: #999;
+  margin-bottom: 10rpx;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+}
+
+.page-section-gap .page-section-title {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.swiper-item {
+  display: block;
+  height: 100%;
+}
+
+/*用来包裹所有的小圆点 */
+
+.dots {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  text-align: center;
+}
+
+/*未选中时的小圆点样式 */
+
+.dot {
+  width: 12rpx;
+  height: 12rpx;
+  border-radius: 6rpx;
+  margin-right: 8rpx;
+  background-color: white;
+  /* transition: width 0.2s linear; */
+}
+
+/*选中以后的小圆点样式 */
+
+.active {
+  width: 26rpx;
+}

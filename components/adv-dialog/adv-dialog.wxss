@@ -1,0 +1,41 @@
+/* components/adv-dialog/adv-dialog.wxss */
+.adv-dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+} 
+.inner-box {
+  position: relative;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 540rpx;
+  height: 780rpx;
+}
+.adv {
+  width: 100%;
+  height: 100%;
+  border-radius: 12rpx;
+}
+.close-box {
+  position: absolute;
+  bottom: -110rpx;
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transform: translate(-50%, 0);
+}
+/* .icon-close {
+  transform: translateY(4rpx);
+} */
+/* .close-box .line {
+  width: 2rpx;
+  flex: 1;
+  border-left: 2rpx solid #fff;
+} */

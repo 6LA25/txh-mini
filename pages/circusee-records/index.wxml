@@ -1,0 +1,18 @@
+<!-- pages/circusee-records/index.wxml -->
+<view class="circusee-records-page">
+  <view class="record-item" wx:for="{{userList}}" wx:key="*this">
+    <view class="record-detail">
+      <image src="{{item.avatar}}"></image>
+      <text class="name">{{item.username}}</text>
+    </view>
+    <view class="time-box">{{item.detailTime}}</view>
+  </view>
+  <view class="company-intr-box mt20" wx:if="{{userList.length > 0 && userList.length === totalCount}}">
+    <view class="title">安选好房</view>
+    <view class="detail">安心选好房，就上安选好房</view>
+  </view>
+  <view class="no-data-box" wx:if="{{totalCount === 0}}">
+    <image class="image" src="../../image/no-data@2x.png"></image>
+    <text class="text">暂时没有内容～</text>
+  </view>
+</view>

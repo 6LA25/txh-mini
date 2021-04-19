@@ -1,0 +1,495 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"enhance": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"coverView": true,
+		"nodeModules": true,
+		"autoAudits": false,
+		"showShadowRootInWxmlPanel": true,
+		"scopeDataCheck": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"compileHotReLoad": false,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		},
+		"useIsolateContext": true,
+		"useCompilerModule": true,
+		"userConfirmedUseCompilerModuleSwitch": false
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.13.0",
+	"appid": "wx82bfdf6494507ed9",
+	"projectname": "miniprogram-txy",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": -1,
+					"name": "pages/develop-broker/develop-broker",
+					"pathName": "pages/develop-broker/develop-broker",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/personal-info/personal-info",
+					"pathName": "pages/personal-info/personal-info",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/center/center",
+					"pathName": "pages/center/center",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 3,
+					"name": "pages/apply-broker/apply-broker",
+					"pathName": "pages/apply-broker/apply-broker",
+					"query": "c=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/recommend-guide/recommend-guide",
+					"pathName": "pages/recommend-guide/recommend-guide",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/recommend-desc/recommend-desc",
+					"pathName": "pages/recommend-desc/recommend-desc",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/share-page/share-page",
+					"pathName": "pages/share-page/share-page",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 7,
+					"name": "pages/houses/houses",
+					"pathName": "pages/houses/houses",
+					"query": "id=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/houses/houses",
+					"pathName": "pages/houses/houses",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 9,
+					"name": "pages/house-detail/index",
+					"pathName": "pages/house-detail/index",
+					"query": "id=15",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/house-photos/house-photos",
+					"pathName": "pages/house-photos/house-photos",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/house-photos/house-photos",
+					"pathName": "pages/house-photos/house-photos",
+					"query": "id=1",
+					"scene": null
+				},
+				{
+					"id": 12,
+					"name": "pages/house-detail/index",
+					"pathName": "pages/house-detail/index",
+					"query": "id=20",
+					"scene": null
+				},
+				{
+					"id": 13,
+					"name": "pages/house-survey/house-survey",
+					"pathName": "pages/house-survey/house-survey",
+					"query": "id=15",
+					"scene": null
+				},
+				{
+					"id": 17,
+					"name": "pages/circusee-records/index",
+					"pathName": "pages/circusee-records/index",
+					"query": "id=2",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/recommend/index",
+					"pathName": "pages/recommend/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/apply-broker/apply-broker",
+					"pathName": "pages/apply-broker/apply-broker",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/location-detail/location-detail",
+					"pathName": "pages/location-detail/location-detail",
+					"query": "id=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/map-houses/index",
+					"pathName": "pages/map-houses/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/search-house/search-house",
+					"pathName": "pages/search-house/search-house",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/recommend/index",
+					"pathName": "pages/recommend/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/select-house/select-house",
+					"pathName": "pages/select-house/select-house",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/apply-broker/apply-broker",
+					"pathName": "pages/apply-broker/apply-broker",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/personal-info/personal-info",
+					"pathName": "pages/personal-info/personal-info",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/map-houses/index",
+					"pathName": "pages/map-houses/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/customer-schedule/customer-schedule",
+					"pathName": "pages/customer-schedule/customer-schedule",
+					"query": "id=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my-customer/my-customer",
+					"pathName": "pages/my-customer/my-customer",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/develop-broker/develop-broker",
+					"pathName": "pages/develop-broker/develop-broker",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/notices/notices",
+					"pathName": "pages/notices/notices",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 29,
+					"name": "pages/house-detail/index",
+					"pathName": "pages/house-detail/index",
+					"query": "id=15",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/houses/houses",
+					"pathName": "pages/houses/houses",
+					"query": "id=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/notices/notices",
+					"pathName": "pages/notices/notices",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/house-detail/index",
+					"pathName": "pages/house-detail/index",
+					"query": "id=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/develop-broker/develop-broker",
+					"pathName": "pages/develop-broker/develop-broker",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 37,
+					"name": "pages/house-detail/index",
+					"pathName": "pages/house-detail/index",
+					"query": "id=23",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/house-detail/index",
+					"pathName": "pages/house-detail/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/center/center",
+					"pathName": "pages/center/center",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/bind-alipay/bind-alipay",
+					"pathName": "pages/bind-alipay/bind-alipay",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/bind-alipay/bind-alipay",
+					"pathName": "pages/bind-alipay/bind-alipay",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/share-page/share-page",
+					"pathName": "pages/share-page/share-page",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/recommend-guide/recommend-guide",
+					"pathName": "pages/recommend-guide/recommend-guide",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 41,
+					"name": "pages/commission/commission",
+					"pathName": "pages/commission/commission",
+					"query": "status=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/house-detail/index",
+					"pathName": "pages/house-detail/index",
+					"query": "id=2",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/house-detail/index",
+					"pathName": "pages/house-detail/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 44,
+					"name": "pages/house-detail/index",
+					"pathName": "pages/house-detail/index",
+					"query": "id=2",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/house-states/house-states",
+					"pathName": "pages/house-states/house-states",
+					"query": "id=2&name=%E5%90%89%E5%AE%9D%C2%B7%E5%AD%A3%E6%99%AF%E9%93%AD%E9%82%B8",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/pre-registration/pre-registration",
+					"pathName": "pages/pre-registration/pre-registration",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/Secondary/pages/account-balance/index",
+					"pathName": "pages/Secondary/pages/account-balance/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/Secondary/pages/withdraw-deposit/index",
+					"pathName": "pages/Secondary/pages/withdraw-deposit/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/house-type/index",
+					"pathName": "pages/house-type/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/location-detail/location-detail",
+					"pathName": "pages/location-detail/location-detail",
+					"query": "id=1",
+					"scene": null
+				},
+				{
+					"id": 51,
+					"name": "pages/house-detail/index",
+					"pathName": "pages/house-detail/index",
+					"query": "id=15",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/house-type/index",
+					"pathName": "pages/house-type/index",
+					"query": "id=38",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/Secondary/pages/bind-alipay/bind-alipay",
+					"pathName": "pages/Secondary/pages/bind-alipay/bind-alipay",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/recommend-guide/recommend-guide",
+					"pathName": "pages/recommend-guide/recommend-guide",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/Secondary/pages/map-houses/index",
+					"pathName": "pages/Secondary/pages/map-houses/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 56,
+					"name": "pages/Secondary/pages/housetype-list/index",
+					"pathName": "pages/Secondary/pages/housetype-list/index",
+					"query": "houseId=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/Secondary/pages/commission-rule/commission-rule",
+					"pathName": "pages/Secondary/pages/commission-rule/commission-rule",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/settings/settings",
+					"pathName": "pages/settings/settings",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 59,
+					"name": "pages/Secondary/pages/clause/clause",
+					"pathName": "pages/Secondary/pages/clause/clause",
+					"query": "tag=2",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/customer-schedule/customer-schedule",
+					"pathName": "pages/customer-schedule/customer-schedule",
+					"query": "id=42",
+					"scene": null
+				}
+			]
+		}
+	}
+}

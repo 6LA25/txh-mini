@@ -1,0 +1,16 @@
+<!--components/share-box/index.wxml-->
+<view class="share-box">
+  <button class="share-item" id="share-1" open-type="getUserInfo" bindgetuserinfo="getUserInfo" wx:if="{{!inviteCode && (!userInfo && !updateUserInfo)}}">
+    <image class="icon-img share" src="../../image/share-icon-img.jpg"></image>
+    <text>微信转发</text>
+  </button>
+  <button class="share-item" data-id="{{house.houseId}}" data-name="{{house.name}}" data-cover="{{house.coverImageLink}}" open-type="share" wx:if="{{!inviteCode && (userInfo || updateUserInfo)}}">
+    <image class="icon-img share" src="../../image/share-icon-img.jpg"></image>
+    <text>微信转发</text>
+  </button>
+
+  <view class="share-item" bindtap="handleShowDialog" wx:if="{{sysinfo.agentUser && !inviteCode}}">
+    <image class="icon-img pic" src="../../image/new_Housing_details_icon_pic_default@2x.png"></image>
+    <text>海报分享</text>
+  </view>
+</view>

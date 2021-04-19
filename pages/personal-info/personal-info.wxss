@@ -1,0 +1,49 @@
+/* pages/personal-info/personal-info.wxss */
+.personal-info-page {
+  width: 100vw;
+  height: 100vh;
+  background: #F7F8F8;
+}
+.info-box {
+  background: #fff;
+  padding: 0 30rpx;
+}
+.info-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 108rpx;
+  border-bottom: 2rpx solid #F6F6F6;
+}
+.info-item .hint {
+  color: #727483;
+}
+.head {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+}
+.info-item .text {
+  color: #333;
+}
+
+.info-item .user-btn-box {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  border: none;
+  color: #333;
+  justify-content: flex-end;
+}
+
+.info-item .user-btn-box .text {
+  color: #333;
+  font-weight: normal;
+}
+
+.arrow-box {
+  width: 14rpx;
+  height: 24rpx;
+  margin-left: 20rpx;
+}

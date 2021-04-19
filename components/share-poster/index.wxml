@@ -1,0 +1,16 @@
+<!-- components/share-poster/index.wxml -->
+<view class="share-box-fix">
+  <view class="inner-box">
+    <image src="../../image/share_icon_fault_default@2x.png" class="close-img" bindtap="handleClose"></image>
+    <view class="title">
+      <image class="icon" src="../../image/share_icon_lingxing_default@2x.png"></image>
+      <text class="txt">保存图片至相册，并分享给好友参加活动</text>
+    </view>
+    <view class="save-img-box">
+      <canvas class="canvas-poster" id="myCanvas" style="width: 260px;height: 350px;" canvas-id="myCanvas"></canvas>
+    </view>
+    <view class="btn-box">
+      <view class="btn" bindtap="handleSaveImg">保存图片分享</view>
+    </view>
+  </view>
+</view>

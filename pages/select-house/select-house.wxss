@@ -1,0 +1,92 @@
+/* pages/select-house/select-house.wxss */
+.search-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: #e32835;
+  padding: 0 32rpx;
+  height: 110rpx;
+  z-index: 1;
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  left: 56rpx;
+  transform: translate(0, -50%);
+  width: 28rpx;
+  height: 28rpx;
+}
+  
+
+.search-box .ipt {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  font-size: 26rpx;
+  background: #F7F8F8;
+  border-radius: 8rpx;
+  height: 70rpx;
+  padding: 0 10rpx 0 70rpx;
+}
+
+.input-placeholder {
+  color: #B8BFC3;
+}
+
+.houses-box {
+  padding: 110rpx 0 30rpx 0;
+}
+.house-item {
+  padding: 40rpx 32rpx 20rpx 32rpx;
+  border-bottom: 2rpx solid #f6f6f6;
+}
+.houses-box .name {
+  color: #333;
+  font-size: 36rpx;
+  margin-bottom: 10rpx;
+  font-weight: 500;
+}
+
+.houses-box .price {
+  color: #727483;
+  font-size: 28rpx;
+  margin-bottom: 8rpx;
+}
+
+.houses-box .house-item .detail {
+  display: flex;
+  align-items: center;
+  color: #727483;
+  font-size: 28rpx;
+  margin-bottom: 12rpx;
+}
+.status {
+}
+.acreage {
+  flex: 2;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.houses-box .house-item .detail .line {
+  height: 20rpx;
+  width: 2rpx;
+  background: #eee;
+  margin: 0 20rpx;
+}
+.house-item .point {
+  display: flex;
+  align-items: center;
+  color: #E32835;
+  font-size: 28rpx;
+  font-weight: 500;
+}
+.house-item .point .icon-img {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 10rpx;
+}

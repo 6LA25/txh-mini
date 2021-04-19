@@ -1,0 +1,9 @@
+/* pages/Secondary/pages/commission-rule/commission-rule.wxss */
+.commission-rule-page {
+  font-size: 28rpx;
+  color: #727483;
+  padding: 36rpx;
+}
+.item {
+  margin-bottom: 20rpx;
+}

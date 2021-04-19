@@ -1,0 +1,31 @@
+<!-- pages/select-house/select-house.wxml -->
+<view class="select-house-page">
+  <view class="search-box">
+    <!-- <icon color="#B8BFC3" class="search-icon" type="search" size="18" /> -->
+    <image class="search-icon" src="../../image/home_icon_search_default@2x.png"></image>
+    <input class="ipt" bindconfirm="handleConfirm" confirm-type="search" value="{{search}}" type="text" placeholder-class="input-placeholder" placeholder="搜索楼盘名称"></input>
+  </view>
+  <view class="houses-box">
+    <view class="house-item" data-id="{{item.houseId}}" bindtap="handleJumpRecommend" wx:for="{{housesList}}" wx:key="houseId">
+      <view class="name">{{item.name}}</view>
+      <view class="price">均价{{item.price}}元/㎡</view>
+      <view class="detail">
+        <view class="status">{{item.regionName}} {{item.statusName}}</view>
+        <view class="line"></view>
+        <view class="acreage">建面{{item.acreage || '--'}}m²</view>
+      </view>
+      <view class="point">
+        <image class="icon-img" src="../../image/choose_bud_icon_com_default@2x.png"></image>
+        <text class="basic-point-text">基础点数{{item.commissionInfo}}</text>
+      </view>
+    </view>
+    <view class="no-data-box" wx:if="{{totalHouses === 0}}">
+      <image class="image" src="../../image/no-data@2x.png"></image>
+      <text class="text">暂时没有内容～</text>
+    </view>
+    <view class="company-intr-box mt20" wx:if="{{housesList.length > 0 && housesList.length === totalHouses}}">
+      <view class="title">安选好房</view>
+      <view class="detail">安心选好房，就上安选好房</view>
+    </view>
+  </view>
+</view>

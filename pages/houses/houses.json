@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "楼盘",
+  "usingComponents": {
+    "house-item": "../../components/house-item/house-item",
+    "toast": "../../components/toast/toast"
+  }
+}

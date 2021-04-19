@@ -1,0 +1,140 @@
+<!-- logs.wxml -->
+<view class="center-page">
+  <toast id='toast'></toast>
+  <view class="toggle-phone-num-box" wx:if="{{callShow}}">
+    <view class="toggle-phone-inner-box">
+      <view class="phone-box">
+        <!-- <view class="phone-item" data-phone="{{sysUserInfo.customerServiceMobiles[0]}}" bindtap="handleMakeCall"> -->
+        <view class="phone-item" data-phone="18861867778" bindtap="handleMakeCall">
+          <image class="icon-img" src="../../image/my_icon_iphone_default@3x.png"></image>
+          <!-- <view class="text">呼叫 {{sysUserInfo.customerServiceMobiles[0]}}</view> -->
+          <view class="text">呼叫 18861867778</view>
+        </view>
+        <view class="phone-item" data-phone="{{sysUserInfo.customerServiceMobiles[1]}}" bindtap="handleMakeCall">
+          <image class="icon-img" src="../../image/my_icon_iphone_default@3x.png"></image>
+          <view class="text">呼叫 {{sysUserInfo.customerServiceMobiles[1]}}</view>
+        </view>
+      </view>
+      <view class="cancel-btn-box" bindtap="handleConnect">
+        取消
+      </view>
+    </view>
+  </view>
+  <view class="user-detail">
+    <image class="bg-img" src="../../image/center-top-bg.jpg"></image>
+    <view class="user-container">
+      <view class="user-msg-box" bindtap="handleJumpCenter">
+        <image class="head" src="{{sysUserInfo.avatar}}"></image>
+        <view class="msg-box">
+          <text class="name">{{sysUserInfo.displayName}}</text>
+          <view class="text">
+            查看个人资料
+            <image class="arrow-img" src="../../image/my_icon_READMORE_default@2x.png"></image>
+          </view>
+          <!-- <text>登陆/注册</text> -->
+        </view>
+      </view>
+      <view class="status-btn-box" wx:if="{{sysUserInfo.agentUser}}">
+        <image class="icon-img" src="../../image/my_icon_aut_default@2x.png"></image>
+        <text class="text">推荐经纪人·坐享分佣</text>
+        <view class="btn" bindtap="handleRecommend">立即推荐</view>
+      </view>
+    </view>
+  </view>
+  <view class="content-container">
+    <view class="my-client-box" wx:if="{{sysUserInfo.agentUser}}">
+      <view class="title">我的财富</view>
+      <view class="client-box">
+        <view class="client-item" bindtap="handleJumpCustomer">
+          <text class="num">{{sysUserInfo.customerCount}}</text>
+          <text class="text">我的客户</text>
+        </view>
+        <view class="line-box"></view>
+        <view class="client-item" bindtap="handleJumpBroker">
+          <text class="num">{{sysUserInfo.agentCount}}</text>
+          <text class="text">我发展的经纪人</text>
+        </view>
+      </view>
+    </view>
+    <view class="operate-box jjr-box" wx:if="{{sysUserInfo.agentUser}}">
+      <view class="title">经纪人专区</view>
+      <view class="operate-inner-box">
+        <view class="operate-item-box" bindtap="handleJumpAccountBalance">
+          <image class="icon-img" src="../../image/my_icon_yue_default@2x.png"></image>
+          <text class="text">我的佣金</text>
+        </view>
+        <view class="operate-item-box" data-status="-1" bindtap="handleJumpCommission">
+          <image class="icon-img" src="../../image/my_icon_Detailed_default@2x.png"></image>
+          <text class="text">账户明细</text>
+        </view>
+        <view class="operate-item-box" bindtap="handleJumpAlipay">
+          <text class="not-bind-text" wx:if="{{!sysUserInfo.bankAccount}}">未绑定</text>
+          <image class="icon-img" src="../../image/my_icon_card_default@2x.png"></image>
+          <text class="text">银行卡</text>
+        </view>
+        <view class="operate-item-box" bindtap="handleLicai">
+          <image class="icon-img" src="../../image/my_icon_gift_default@2x.png"></image>
+          <text class="text">我的理财</text>
+        </view>
+        <view class="operate-item-box" bindtap="handleJumpGuide">
+          <image class="icon-img" src="../../image/my_icon_rec_default@2x.png"></image>
+          <text class="text">推荐指南</text>
+        </view>
+        <view class="operate-item-box" bindtap="handleJumpCommissionRule">
+          <image class="icon-img" src="../../image/my_icon_guize_default@3x.png"></image>
+          <text class="text">佣金规则</text>
+        </view>
+      </view>
+    </view>
+    <view class="operate-box jjr-box">
+      <view class="title">房产服务</view>
+      <view class="operate-inner-box">
+        <view class="operate-item-box" bindtap="handleConnect">
+          <image class="icon-img" src="../../image/my_icon_zixun_default@3x.png"></image>
+          <text class="text">政策咨询</text>
+        </view>
+        <view class="operate-item-box" bindtap="handleConnect">
+          <image class="icon-img" src="../../image/my_icon_daikuan_default@3x.png"></image>
+          <text class="text">贷款过户</text>
+        </view>
+        <view class="operate-item-box" bindtap="handleConnect">
+          <image class="icon-img" src="../../image/my_icon_xuequ_default@3x.png"></image>
+          <text class="text">学区帮查</text>
+        </view>
+        <view class="operate-item-box" bindtap="handleLicai">
+          <image class="icon-img" src="../../image/my_icon_jiaoyi_default@3x.png"></image>
+          <text class="text">交易流程</text>
+        </view>
+        <view class="operate-item-box" bindtap="handleLicai">
+          <image class="icon-img" src="../../image/my_icon_shuifei_default@3x.png"></image>
+          <text class="text">税费相关</text>
+        </view>
+        <view class="operate-item-box" bindtap="handleLicai">
+          <image class="icon-img" src="../../image/my_icon_daikuanjisuanqi_default@3x.png"></image>
+          <text class="text">贷款计算器</text>
+        </view>
+      </view>
+    </view>
+    <view class="operate-box jjr-box">
+      <view class="title">更多</view>
+      <view class="operate-inner-box">
+        <view class="operate-item-box" bindtap="handleLicai">
+          <image class="icon-img" src="../../image/my_icon_liulanlishi_default@3x.png"></image>
+          <text class="text">浏览历史</text>
+        </view>
+        <view class="operate-item-box" bindtap="handleLicai">
+          <image class="icon-img" src="../../image/my_icon_fankui_default@3x.png"></image>
+          <text class="text">我要反馈</text>
+        </view>
+        <view class="operate-item-box" bindtap="handleJumpSettings">
+          <image class="icon-img" src="../../image/my_icon_setting_default@3x.png"></image>
+          <text class="text">设置</text>
+        </view>
+      </view>
+    </view>
+    <view class="company-intr-box">
+      <view class="title">安选好房</view>
+      <view class="detail">安心选好房，就上安选好房</view>
+    </view>
+  </view>
+</view>

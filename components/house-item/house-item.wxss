@@ -1,0 +1,185 @@
+/* components/house-item.wxss */
+
+.house-item-box {
+  padding: 20rpx 24rpx;
+  border-bottom: 2rpx solid#F6F6F6;
+}
+
+.tap-active {
+  transform: scale(0.95);
+}
+
+.house-item-box .house-detail-box {
+  position: relative;
+  /* display: flex; */
+  overflow: hidden;
+  padding-left: 276rpx;
+  min-height: 192rpx;
+}
+
+.house-item-box .house-detail-box image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 252rpx;
+  height: 192rpx;
+  border-radius: 8rpx;
+}
+
+.house-item-box .house-detail-box .detail-box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.detail-box .title {
+  word-break: break-all;
+  color: #333333;
+  font-size: 34rpx;
+  font-weight: 500;
+}
+
+.detail-box .price {
+  color: #E32835;
+  margin-bottom: 6rpx;
+}
+
+.detail-box .price .num {
+  font-size: 40rpx;
+  font-weight: 500;
+}
+.detail-box .price .txt {
+  font-size: 32rpx;
+  font-weight: 500;
+}
+.detail-box .price .hint {
+  font-size: 24rpx;
+}
+
+.desc-box {
+  width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  color: #727483;
+  font-size: 26rpx;
+}
+
+.desc-box text {
+  position: relative;
+  padding: 0 10rpx;
+}
+
+.desc-box text:first-child {
+  padding-left: 0;
+}
+
+.desc-box text:not(:last-child)::after {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  height: 22rpx;
+  transform: translate(0, -50%);
+  content: '';
+  display: block;
+  width: 2rpx;
+  background: #727483;
+}
+
+.tags-b-box {
+  display: flex;
+  width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  margin-bottom: 10rpx;
+}
+
+.tags-b-box text:not(:last-child) {
+  margin-right: 8rpx;
+}
+
+.tags-b-box text:first-child {
+  background-image: linear-gradient(135deg, #FF906D 0%, #FB453F 100%);
+  color: #fff;
+}
+
+.tags-b-box text:not(first-child) {
+  background: #EFF1F5;
+  color: #989DAB;
+}
+
+.tags-b-box text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 36rpx;
+  font-size: 20rpx;
+  padding: 0 10rpx;
+  border-radius: 6rpx;
+}
+
+.house-commission-per-box {
+  display: flex;
+  align-items: center;
+  color: #727483;
+  font-size: 26rpx;
+  padding: 12rpx 0;
+  border-bottom: 1px dashed #EFEFEF;
+}
+
+.house-commission-per-box .icon-img {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 8rpx;
+}
+
+.house-share-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 24rpx;
+  padding-top: 12rpx;
+}
+
+.house-share-box .share-num {
+  display: flex;
+  align-items: center;
+  width: 180rpx;
+  color: #727483;
+  font-size: 24rpx;
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+.house-share-box .share-num image {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 8rpx;
+}
+
+.house-share-box .share-users {
+  display: flex;
+  align-items: center;
+}
+
+.share-user-num {
+  color: #E32835;
+  margin-right: 16rpx;
+}
+
+.house-share-box .share-users .image {
+  width: 44rpx;
+  height: 44rpx;
+  border-radius: 50%;
+  margin-left: -10rpx;
+  border: 2rpx solid #fff;
+  box-shadow: 0rpx 0rpx 8rpx 2rpx #eee;
+}
+
+.user-head-box {
+  display: flex;
+  align-items: center;
+}

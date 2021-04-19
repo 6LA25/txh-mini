@@ -1,0 +1,27 @@
+<!--pages/search-house/search-house.wxml-->
+<view class="search-house-page">
+  <view class="search-box">
+    <icon color="#B8BFC3" class="search-icon" type="search" size="18" />
+    <input class="ipt" bindconfirm="handleConfirm" confirm-type="search" value="{{search}}" type="text" placeholder-class="input-placeholder" placeholder="请输入楼盘名"></input>
+    <text class="text" bindtap="handleCancel">取消</text>
+  </view>
+  <!-- 搜索历史 -->
+  <view class="history-title" wx:if="{{historyList.length > 0}}">
+    <view class="title">
+      <view class="label"></view>
+      <text class="text">搜索历史</text>
+    </view>
+    <image bindtap="handleDeleteHistory" class="delete" src="../../image/el-icon-delete@2x.png"></image>
+  </view>
+  <view class="history-list" wx:if="{{historyList.length > 0}}">
+    <view class="history-item" bindtap="handleSelectHistory" data-text="{{item}}" wx:for="{{historyList}}" wx:key="*this">{{item}}</view>
+  </view>
+  <!-- 热门搜索 -->
+  <view class="hot-title">
+    <view class="label"></view>
+    <text class="text">热门搜索</text>
+  </view>
+  <view class="hot-list">
+    <view class="hot-item" bindtap="handleSelectHot" data-text="{{item}}" wx:for="{{hotWords}}" wx:key="*this">{{item}}</view>
+  </view>
+</view>

@@ -1,0 +1,9 @@
+/* pages/Secondary/pages/clause/clause.wxss */
+.clause-page {
+  padding: 20rpx;
+  color: #727483;
+}
+.clause-item>view{
+  margin-bottom: 10rpx;
+  font-size: 30rpx;
+}

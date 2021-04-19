@@ -1,0 +1,14 @@
+<!-- pages/houses-focus/houses-focus.wxml -->
+<view class="houses-focus-page">
+  <view class="house-index-inner-box" wx:if="{{totalHouses > 0}}">
+    <house-item wx:for="{{housesList}}" house="{{item}}" wx:key="houseId" has-auth="{{hasAuth}}" user-info="{{userInfo}}" bindmyevent="onMyEvent"></house-item>
+  </view>
+  <view class="no-data-box no-house-box" wx:if="{{totalHouses === 0}}">
+    <image class="image" src="../../image/no-data@2x.png"></image>
+    <text class="text">暂时没有内容～</text>
+  </view>
+  <view class="company-intr-box mt20" wx:if="{{housesList.length > 0 && housesList.length === totalHouses}}">
+    <view class="title">安选好房</view>
+    <view class="detail">安心选好房，就上安选好房</view>
+  </view>
+</view>

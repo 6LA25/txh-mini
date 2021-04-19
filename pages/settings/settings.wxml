@@ -1,0 +1,14 @@
+<!--pages/settings/settings.wxml-->
+<view class="settings-page">
+  <view class="top-box">
+    <view class="item" data-tag="1" bindtap="handleJumpClause">
+      <text class="txt">安选好房服务协议</text>
+      <image class="arrow-img" src="../../image/rec_icon_arrow_default@2x.png"></image>
+    </view>
+    <view class="item" data-tag="2" bindtap="handleJumpClause">
+      <text class="txt">安选好房隐私政策</text>
+      <image class="arrow-img" src="../../image/rec_icon_arrow_default@2x.png"></image>
+    </view>
+  </view>
+  <view class="submit-btn" wx:if="{{sysUserInfo && !sysUserInfo.agentUser}}" bindtap="handleApplyBroker">升级成为经纪人</view>
+</view>

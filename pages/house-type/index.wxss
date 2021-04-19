@@ -1,0 +1,121 @@
+/* pages/house-type/index.wxss */
+.house-detail-page {
+  height: 100vh;
+}
+.swiper-container {
+  position: relative;
+}
+
+.swiper-container .banner-num-box {
+  position: absolute;
+  right: 30rpx;
+  bottom: 50rpx;
+  display: flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.6);
+  height: 40rpx;
+  padding: 0 10rpx;
+  border-radius: 20rpx;
+  color: #fff;
+  font-size: 24rpx;
+}
+
+.house-detail-content-box {
+  border-top-left-radius: 30rpx;
+  border-top-right-radius: 30rpx;
+  margin-top: -28rpx;
+}
+
+.house-detail-content-box .swiper-mask-box {
+  position: relative;
+  height: 470rpx;
+  background: transparent;
+}
+
+.house-detail-content-box .content-box {
+  position: relative;
+  background: #fff;
+  border-top-left-radius: 30rpx;
+  border-top-right-radius: 30rpx;
+  padding: 48rpx 32rpx 160rpx 32rpx;
+}
+
+.house-detail-content-box .content-box .housetype-name {
+  font-size: 44rpx;
+  color: #333;
+  font-weight: 500;
+  margin-bottom: 24rpx;
+}
+
+.housetype-desc {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24rpx;
+}
+.housetype-desc .icon-img {
+  margin-right: 12rpx;
+  width: 34rpx;
+  height: 32rpx;
+}
+.housetype-desc .txt {
+  font-size: 32rpx;
+  color: #333;
+}
+.housetype-detail-box-a {
+  color: #E32835;
+  margin-bottom: 24rpx;
+  font-size: 28rpx;
+}
+.housetype-detail-box-a .num {
+  font-size: 44rpx;
+  font-weight: 500;
+}
+.housetype-detail-box-b {
+  margin-bottom: 24rpx;
+  font-size: 30rpx;
+}
+.housetype-detail-box .label {
+  width: 120rpx;
+  margin-right: 20rpx;
+  color: #999999;
+}
+.housetype-detail-box-c {
+  margin-bottom: 48rpx;
+  font-size: 30rpx;
+}
+.housetype-detail-box {
+  display: flex;
+  align-items: center;
+}
+.housetype-detail-item {
+  width: 50%;
+}
+.tags-box {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24rpx;
+}
+.tags-box .tag-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 36rpx;
+  font-size: 20rpx;
+  padding: 0 10rpx;
+  border-radius: 6rpx;
+}
+.tags-box .tag-item:first-child {
+  background-image: linear-gradient(135deg, #FF906D 0%, #FB453F 100%);
+  color: #fff;
+}
+.tags-box .tag-item:not(:last-child) {
+  margin-right: 8rpx;
+}
+.tags-box .tag-item:not(:first-child) {
+  background: #EFF1F5;
+  color: #989DAB;
+}
+.housetype-hint {
+  font-size: 28rpx;
+  color: #333;
+}

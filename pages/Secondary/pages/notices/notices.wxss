@@ -1,0 +1,40 @@
+/* pages/notices/notices.wxss */
+.notices-page {
+  padding: 40rpx 32rpx;
+  background: #faf7fa;
+  min-height: 100vh;
+}
+.notice-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 48rpx;
+}
+.notice-item .time {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 20rpx;
+  width: 256rpx;
+  height: 44rpx;
+  border-radius: 22rpx;
+  margin-bottom: 32rpx;
+  background: #e6e3e6;
+}
+.notice-item .detail {
+  padding: 28rpx;
+  background: #fff;
+  border-radius: 16rpx;
+  width: 100%;
+}
+.notice-item .detail .title {
+  color: #333;
+  font-size: 32rpx;
+  margin-bottom: 16rpx;
+}
+.notice-item .detail .content {
+  color: #6C6C70;
+  font-size: 28rpx;
+  word-break: break-all;
+}

@@ -1,0 +1,13 @@
+<!--components/inform-dialog.wxml-->
+<view class="inform-dialog-box" wx:if="{{dialogShow}}">
+  <toast id='toast'></toast>
+  <view class="inform-inner-box">
+    <image class="close-img" bindtap="handleClose" src="../../image/Price_reduction_icon_del_default@2x.png"></image>
+    <view class="title">{{text1}}</view>
+    <view class="message">{{text2}}</view>
+    <view>
+      <input class="mobile-ipt" bindinput="bindKeyInput" type="text" placeholder-class="input-placeholder" placeholder="请输入手机号" />
+    </view>
+    <view class="confirm-btn" bindtap="handleConfirm">确定</view>
+  </view>
+</view>

@@ -1,0 +1,34 @@
+/* pages/circusee-records/index.wxss */
+.circusee-records-page {
+  padding: 0 32rpx 32rpx 32rpx;
+}
+.record-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 28rpx;
+  padding: 20rpx 0;
+  border-bottom: 2rpx solid #F6F6F6
+}
+.record-detail {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+.record-detail image {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+.record-detail .name {
+  flex: 1;
+  word-break: break-all;
+}
+
+.time-box {
+  color: #727483;
+  min-width: 180rpx;
+  padding-left: 6rpx;
+  text-align: right;
+}

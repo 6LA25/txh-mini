@@ -1,0 +1,58 @@
+<!-- pages/house-type/index.wxml -->
+<view class="house-detail-page" wx:if="{{houseType}}">
+  <scroll-view scroll-y="true" style="height: 100%;">
+    <share-box sysinfo="{{sysUserInfo}}" user-info="{{userInfo}}" bindmyevent="onMyEvent" bindmydialog="onMyDialog"></share-box>
+    <view class="swiper-container" catchtap="handlePreviewImg">
+      <my-swiper dots-bottom="{{60}}" height="{{500}}" is-click-jump="{{false}}" img-list="{{bannerList}}"></my-swiper>
+      <view class="banner-num-box">共{{bannerCounts}}张</view>
+    </view>
+    <view class="house-detail-content-box">
+      <view class="content-box">
+        <view class="housetype-name">{{houseType.name}}</view>
+        <view class="housetype-desc">
+          <image class="icon-img" src="../../image/huxing_icon_huxing_default@2x.png"></image>
+          <text class="txt">{{houseType.stw}}</text>
+        </view>
+        <view class="housetype-detail-box housetype-detail-box-a">
+          <view class="housetype-detail-item">
+            均价
+            <text class="num">{{houseType.price}}</text>
+            元/m²
+          </view>
+          <view class="housetype-detail-item">
+            参考总价
+            <text class="num">{{houseType.cankaozongjia || '--'}}</text>
+            万
+          </view>
+        </view>
+        <view class="housetype-detail-box housetype-detail-box-b">
+          <view class="housetype-detail-item">
+            <text class="label">建筑面积</text>
+            <text class="txt">{{houseType.floorage}}m²</text>
+          </view>
+          <view class="housetype-detail-item">
+            <text class="label">层面结构</text>
+            <text class="txt">{{houseType.cengmianjiegou || '--'}}</text>
+          </view>
+        </view>
+        <view class="housetype-detail-box housetype-detail-box-c">
+          <view class="housetype-detail-item">
+            <text class="label">得房率</text>
+            <text class="txt">{{houseType.defanglv || '--'}}%</text>
+          </view>
+          <view class="housetype-detail-item">
+            <text class="label">户型位置</text>
+            <text class="txt">{{houseType.huxingweizhi || '--'}}</text>
+          </view>
+        </view>
+        <view class="housetype-name">户型介绍</view>
+        <view class="tags-box" wx:if="{{houseType.tags.length}}">
+          <text class="tag-item" wx:for="{{houseType.tags}}" wx:key="item">{{item}}</text>
+        </view>
+        <view class="housetype-hint" wx:if="{{houseType.huxingjieshao}}">{{houseType.huxingjieshao}}</view>
+      </view>
+    </view>
+  </scroll-view>
+  <share-poster wx:if="{{showShareDialog}}" house-detail="{{houseDetail}}" bindmyCloseShare="handleToggleShareDialog"></share-poster>
+  <operate-box wx:if="{{houseDetail}}" sysinfo="{{sysUserInfo}}" user-info="{{userInfo}}" house="{{houseDetail}}"></operate-box>
+</view>

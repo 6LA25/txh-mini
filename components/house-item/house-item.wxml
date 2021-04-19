@@ -1,0 +1,45 @@
+<!-- components/house-item.wxml -->
+<wxs module="fn" src="../../filter/priceShow.wxs"></wxs>
+<view class="house-item-box">
+  <view class="house-detail-box" hover-class="tap-active" bindtap="handleJumpHouseDetail">
+    <image lazy-load="{{true}}" src="{{house.coverImageLink}}"></image>
+    <view class="detail-box">
+      <view class="title">{{house.name}}</view>
+      <view class="price">
+        <text class="hint">均价</text>
+        <text class="{{fn.hasNum(house.price) ? 'num' : 'txt'}}">{{house.price}}</text>
+        <text class="hint" wx:if="{{fn.hasNum(house.price)}}">元/㎡</text>
+      </view>
+      <view class="tags-b-box">
+        <text wx:for="{{house.tagList}}" wx:key="*this">{{item}}</text>
+      </view>
+      <view class="desc-box">
+        <text wx:if="{{house.regionName}}">{{house.regionName}}</text>
+        <text wx:if="{{house.address}}">{{house.address}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="house-commission-per-box" wx:if="{{house.loginUserAgent && house.commissionInfo}}">
+    <image class="icon-img" src="../../image/home_icon_com_default@2x.png"></image>
+    <text>{{house.commissionInfo}}</text>
+  </view>
+  <view class="house-share-box">
+    <!-- 先获取用户授权信息 -->
+    <button class="share-num" plain="true" open-type="getUserInfo" bindgetuserinfo="getUserInfo" wx:if="{{!hasAuth}}">
+      <image src="../../image/home_icon_share_default@2x.png"></image>
+      <text class="share-text">{{house.shareCount || 0}}次分享</text>
+    </button>
+    <!-- 分享楼盘 -->
+    <button class="share-num" plain="true" data-id="{{house.houseId}}" data-name="{{house.name}}" data-cover="{{house.coverImageLink}}" open-type="share" wx:else>
+      <image src="../../image/home_icon_share_default@2x.png"></image>
+      <text class="share-text">{{house.shareCount}}次分享</text>
+    </button>
+    <view class="share-users">
+      <text class="share-user-num">{{house.viewCount}}人围观</text>
+      <view class="user-head-box" bindtap="handleJumpCircusee" wx:if="{{house.viewCount > 0}}">
+        <image class="image header-img" wx:for="{{house.viewPersonItems}}" src="{{item}}" wx:key="*this"></image>
+        <image class="image" src="../../image/home_icon_people_default@2x.png"></image>
+      </view>
+    </view>
+  </view>
+</view>

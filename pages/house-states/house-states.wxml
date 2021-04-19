@@ -1,0 +1,30 @@
+<!-- pages/house-states/house-states.wxml -->
+<wxs module="dateFormat" src="../../filter/dateFormat.wxs"></wxs>
+<view class="house-states-page">
+  <view class="filter-box">
+    <view wx:for="{{filterList}}" wx:key="value" class="filter-item{{type == item.value ? ' active' : ''}}" data-type="{{item.value}}" bindtap="handleFilteList">
+      {{item.name}}
+    </view>
+  </view>
+  <view class="step-box" wx:if="{{commissionList.length > 0}}">
+    <view class="step-item" wx:for="{{commissionList}}" wx:key="id">
+      <view class="step-lf">
+        <view class="circle-box"></view>
+        <view class="line-box"></view>
+      </view>
+      <view class="step-rg">
+        <view class="status">{{dateFormat.getDate(item.publishTime || item.created, ':')}}</view>
+        <view class="time">{{item.title}}</view>
+        <view class="remark" wx:if="{{item.content}}">{{item.content}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="no-data-box" wx:if="{{totalCount === 0}}">
+    <image class="image" src="../../image/no-data@2x.png"></image>
+    <text class="text">暂时没有内容～</text>
+  </view>
+  <view class="company-intr-box mt20" wx:if="{{commissionList.length > 0 && commissionList.length === totalCount}}">
+    <view class="title">安选好房</view>
+    <view class="detail">安心选好房，就上安选好房</view>
+  </view>
+</view>

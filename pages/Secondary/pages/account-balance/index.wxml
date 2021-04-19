@@ -1,0 +1,45 @@
+<!-- pages/Secondary/pages/account-balance/index.js.wxml -->
+<view class="account-balance-page">
+  <view class="top-box">
+    <image class="account-balance-bg" src="../../images/account-balance-top-bg.jpg"></image>
+    <view class="account-item">
+      <view class="title">账户余额（元）</view>
+      <view class="text">{{amountDetail.balanceAmount || 0}}</view>
+    </view>
+    <view class="account-item">
+      <view class="title">已提现（元）</view>
+      <view class="text">{{amountDetail.completionAmount || 0}}</view>
+    </view>
+  </view>
+  <view class="detail-operate-box">
+    <view class="tixian-btn-box" bindtap="handleWithdraw">提现</view>
+    <view class="commission-item" data-status="1" bindtap="handleJumpCommission">
+      <view class="lf">
+        <image class="icon-img" src="../../../../image/my_icon_To_be_issued_default@2x.png"></image>
+        <text class="text">待发放</text>
+      </view>
+      <image class="arrow-img" src="../../../../image/rec_icon_arrow_default@2x.png"></image>
+    </view>
+    <view class="commission-item" data-status="2" bindtap="handleJumpCommission">
+      <view class="lf">
+        <image class="icon-img" src="../../../../image/my_icon_Have_issued_default@2x.png"></image>
+        <text class="text">已发放</text>
+      </view>
+      <image class="arrow-img" src="../../../../image/rec_icon_arrow_default@2x.png"></image>
+    </view>
+    <view class="commission-item" data-status="-1" bindtap="handleJumpCommission">
+      <view class="lf">
+        <image class="icon-img" src="../../../../image/my_icon_Detailed_default@2x.png"></image>
+        <text class="text">账户明细</text>
+      </view>
+      <image class="arrow-img" src="../../../../image/rec_icon_arrow_default@2x.png"></image>
+    </view>
+    <!-- <view class="commission-item">
+      <view class="lf">
+        <image class="icon-img" src="../../../../image/yue_icon_guize_default@2x.png"></image>
+        <text class="text">佣金规则</text>
+      </view>
+      <image class="arrow-img" src="../../../../image/rec_icon_arrow_default@2x.png"></image>
+    </view> -->
+  </view>
+</view>

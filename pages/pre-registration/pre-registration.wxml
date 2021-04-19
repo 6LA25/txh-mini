@@ -1,0 +1,62 @@
+<!-- pages/pre-registration/pre-registration.wxml -->
+<view class="pre-registration-page">
+  <image class="top-bg-img" src="../../image/appointment_bg@2x.png"></image>
+  <view class="inner-box">
+    <view class="title">预约看房</view>
+    <!-- TODO 删除 -->
+    <view class="desc">Make an appointment</view>
+    <view class="hint-box">
+      <view class="border-top-box"></view>
+      <view class="hint-text-box">
+        <view class="hint-title">预约须知：</view>
+        <view class="hint-text">
+          尊敬的客户，感谢您对安选好房的关注，为了更好的为您提供看房服务，请您填写预约看房信息，预约成功后，可能会有高素质房产咨询师工作时间联系您，请您保持手机畅通。
+        </view>
+      </view>
+    </view>
+    <view class="houses-detail-box">
+      <view class="form-item">
+        <text class="form-label">推荐楼盘</text>
+        <view class="form-input" bindtap="handleSelect">
+          <view class="select-box">
+            <text style="color: #333;" wx:if="{{houseId}}">{{houseName}}</text>
+            <text wx:else>请选择</text>
+            <image wx:if="{{!houseId}}" class="right-arrow" src="../../image/rec_icon_arrow_default@2x.png"></image>
+          </view>
+        </view>
+      </view>
+
+      <view class="form-item">
+        <text class="form-label">客户姓名</text>
+        <view class="form-input">
+          <input class="input" bindinput="bindKeyInputRealname" value="{{realname}}" maxlength="5" placeholder-class="name-placeholder" placeholder="请输入" />
+        </view>
+      </view>
+      <view class="form-item">
+        <text class="form-label">看房日期</text>
+        <view class="form-input">
+          <picker class="picker" mode="date" value="{{reserveDate}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+            <view style="color: #A8ABB7;" wx:if="{{!reserveDate}}">请选择</view>
+            <view style="color: #333;" wx:else class="picker">{{reserveDate}}</view>
+          </picker>
+        </view>
+      </view>
+      <view class="form-item">
+        <text class="form-label">看房时间</text>
+        <view class="form-input">
+          <picker class="picker" mode="time" value="{{reserveSection}}" bindchange="bindTimeChange">
+            <view style="color: #A8ABB7;" wx:if="{{!reserveSection}}">请选择</view>
+            <view style="color: #333;" wx:else class="picker">{{reserveSection}}</view>
+          </picker>
+        </view>
+      </view>
+      <view class="form-item">
+        <text class="form-label">手机号码</text>
+        <view class="form-input">
+          <input class="input" type="number" maxlength="11" value="{{mobile}}" bindinput="bindKeyInputPhone" placeholder-class="name-placeholder" placeholder="请输入" />
+        </view>
+      </view>
+      <view class="submit-btn" bindtap="handleSubmit">马上预约</view>
+    </view>
+  </view>
+</view>

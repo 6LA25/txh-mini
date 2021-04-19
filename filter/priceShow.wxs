@@ -1,0 +1,6 @@
+module.exports = {
+  hasNum: function(price){
+    var reg = getRegExp('\d', 'g')
+    return reg.test(price)
+  }
+}

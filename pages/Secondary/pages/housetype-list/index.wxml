@@ -1,0 +1,39 @@
+<!-- pages/Secondary/pages/housetype-list/index.wxml -->
+<wxs module="fn">
+module.exports = {
+  formateState: function(state){
+    var stateTypes = [ '在售', '待售', '售罄']
+    return stateTypes[state]
+  }
+}
+</wxs>
+<view class="housetype-list-page">
+  <scroll-view class="scroll-box" scroll-x="true" style="width: 100%">
+    <view class="filter-box">
+      <view class="filter-item-box{{item.type === currentType ? ' active' : ''}}" bindtap="handleFilter" data-type="{{item.type}}" wx:for="{{filterList}}" wx:key="type">
+        {{item._type}}({{item.count}})
+        <view class="line" wx:if="{{item.type === currentType}}"></view>
+      </view>
+    </view>
+  </scroll-view>
+  <view class="housetype-list-box">
+    <view class="house-type-box" wx:for="{{houseTypes}}" wx:key="id" data-id="{{item.id}}" bindtap="handlePreviewType">
+      <view class="name">{{item.stw}}</view>
+      <view class="floorage">建面约{{item.floorage}}m²</view>
+      <view class="detail-box">
+        <view class="img-box">
+          <view class="tag-box">{{fn.formateState(item.state)}}</view>
+          <image class="img" src="{{item.imageList[0]}}" alt=""></image>
+        </view>
+        <view class="text-box">
+          <view class="price">约{{item.cankaozongjia || '--'}}万</view>
+          <view class="hint">总价/套</view>
+          <view class="hint">{{item.name}}</view>
+          <view class="tags">
+            <text class="tag-item" wx:for="{{item.tags}}" wx:key="*">{{item}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

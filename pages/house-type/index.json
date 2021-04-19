@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "户型介绍",
+  "usingComponents": {
+    "share-box": "../../components/share-box/index",
+    "my-swiper": "../../components//my-swiper/my-swiper",
+    "operate-box": "../../components/operate-box/index",
+    "share-poster": "../../components/share-poster/index"
+  }
+}

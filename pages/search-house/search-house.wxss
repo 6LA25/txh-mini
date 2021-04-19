@@ -1,0 +1,102 @@
+/* pages/search-house/search-house.wxss */
+.search-house-page {
+  padding: 32rpx;
+  background: #fff;
+}
+
+.search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 48rpx;
+}
+.search-icon {
+  position: absolute;
+  top: 50%;
+  left: 20rpx;
+  transform: translate(0, -50%);
+}
+
+.search-box .ipt {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  font-size: 26rpx;
+  background: #F7F8F8;
+  border-radius: 8rpx;
+  height: 68rpx;
+  padding: 0 10rpx 0 70rpx;
+}
+
+.search-box .text {
+  padding: 0 0 0 32rpx;
+  color: #333;
+  font-size: 28rpx;
+}
+
+.input-placeholder {
+  color: #B8BFC3;
+}
+
+.history-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.history-title .title,
+.hot-title {
+  display: flex;
+  align-items: center;
+}
+
+.history-title .title .label,
+.hot-title .label {
+  width: 6rpx;
+  height: 36rpx;
+  background: #E32835;
+  margin-right: 10rpx;
+}
+
+.history-title .title .text,
+.hot-title .text {
+  color: #333;
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.delete {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.history-list, .hot-list {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 32rpx 0;
+}
+
+.history-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 56rpx;
+  padding: 30rpx;
+  border-radius: 28rpx;
+  background: #F7F8F8;
+  color: #727483;
+  margin: 0 32rpx 20rpx 0;
+  font-size: 26rpx;
+}
+.hot-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 56rpx;
+  padding: 30rpx;
+  border-radius: 28rpx;
+  background: #Fbe7e6;
+  color: #E32835;
+  margin: 0 32rpx 20rpx 0;
+  font-size: 26rpx;
+}

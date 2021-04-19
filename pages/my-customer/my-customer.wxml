@@ -1,0 +1,76 @@
+<!-- pages/my-customer/my-customer.wxml -->
+<view class="my-customer-page">
+  <view class="search-box">
+    <!-- <icon color="#B8BFC3" class="search-icon" type="search" size="16" /> -->
+    <image class="search-icon" src="../../image/home_icon_search_default@2x.png"></image>
+    <input class="input" bindconfirm="handleConfirm" confirm-type="search" placeholder-class="input-placeholder" type="text" placeholder="搜索客户姓名/手机号码" />
+    <image class="filter-btn" bindtap="handleToggleDialog" src="../../image/My_client_icon_screen_default@2x.png"></image>
+  </view>
+  <view class="customer-list-box">
+    <view class="customer-item" bindtap="handleJumpSchdule" data-id="{{item.customerId}}" wx:for="{{customerList}}" wx:key="id">
+      <view class="top-box">
+        <image class="head" src="{{item.avatar}}"></image>
+        <text class="name">{{item.realname}}</text>
+        <text class="status">{{item.followStatusName}}</text>
+      </view>
+      <view class="bottom-box">
+        <view class="middle-box">
+          <view class="detail">
+            <view class="detail-item">
+              <image class="icon" src="../../image/My_client_icon_iphone_default@2x.png"></image>
+              <text>{{item.mobile}}</text>
+            </view>
+            <view class="detail-item">
+              <image class="icon" src="../../image/My_client_icon_budding_default@2x.png"></image>
+              <text>{{item.houseName}}</text>
+            </view>
+          </view>
+          <image class="mobile-box" data-phone="{{item.mobile}}" catchtap="handleCall" src="../../image/kehu_icon_iphone_default@3x.png"></image>
+        </view>
+        <view class="time-box">推荐时间：{{item.recommendTime}}</view>
+      </view>
+    </view>
+    <view class="no-data-box" wx:if="{{totalCount === 0}}">
+      <image class="image" src="../../image/no-data@2x.png"></image>
+      <text class="text">暂时没有内容～</text>
+    </view>
+    <view class="company-intr-box" wx:if="{{customerList.length > 0 && customerList.length === totalCount}}">
+      <view class="title">安选好房</view>
+      <view class="detail">安心选好房，就上安选好房</view>
+    </view>
+  </view>
+  <view class="fix-filter-box" id="fix-filter-box" wx:if="{{filterShow}}">
+    <view class="filter-box">
+      <view class="filter-title">客户状态</view>
+      <view class="tag-box">
+        <view class="tag-item{{item.status === selected ? ' active' : ''}}" data-status="{{item.status}}" bindtap="handleToggleStatus" wx:for="{{customerStatus}}" wx:key="status">
+          {{item.text}}
+        </view>
+      </view>
+      <view class="filter-title">推荐时间</view>
+      <view class="tag-box">
+        <view class="tag-item{{currentSelectedDay == item.status ? ' active' : ''}}" data-status="{{item.status}}" bindtap="handleToggleTime" wx:for="{{timeStatus}}" wx:key="status">
+          {{item.text}}
+        </view>
+      </view>
+      <view class="tag-box">
+        <view class="tag-item">
+          <picker mode="date" value="{{startTime}}" end="{{endTime}}" bindchange="bindStartDateChange">
+            <view class="picker">{{startTime || '选择开始时间'}}</view>
+          </picker>
+        </view>
+        <view class="tag-item">
+          <picker mode="date" value="{{endTime}}" start="{{startTime}}" bindchange="bindEndDateChange">
+            <view class="picker">{{endTime || '选择结束时间'}}</view>
+          </picker>
+        </view>
+        <view class="mid-line"></view>
+      </view>
+      <view class="bottom-btns">
+        <view class="btn-item reset-btn" bindtap="resetSearch">重置</view>
+        <view class="btn-item confirm-btn" bindtap="handleConfirmFilter">确定</view>
+      </view>
+    </view>
+    <view class="mask" bindtap="handleToggleDialog"></view>
+  </view>
+</view>

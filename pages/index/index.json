@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "adv-dialog": "../../components/adv-dialog/adv-dialog",
+    "my-swiper": "../../components/my-swiper/my-swiper",
+    "house-item": "../../components/house-item/house-item"
+  }
+}

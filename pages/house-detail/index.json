@@ -1,0 +1,13 @@
+{
+  "navigationBarTitleText": "楼盘详情",
+  "disableScroll": true,
+  "usingComponents": {
+    "my-swiper": "../../components//my-swiper/my-swiper",
+    "house-item": "../../components/house-item/house-item",
+    "operate-box": "../../components/operate-box/index",
+    "inform-dialog": "../../components/inform-dialog/inform-dialog",
+    "share-box": "../../components/share-box/index",
+    "share-poster": "../../components/share-poster/index",
+    "toast": "../../components/toast/toast"
+  }
+}

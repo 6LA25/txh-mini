@@ -1,0 +1,47 @@
+<!--recommend.wxml-->
+<view class="recommend-page">
+  <toast id='toast'></toast>
+  <view class="form-item">
+    <text class="form-label">客户姓名</text>
+    <view class="form-input">
+      <input class="input" bindinput="bindKeyInput" value="{{name}}" maxlength="5" placeholder-class="name-placeholder" placeholder="请输入" />
+    </view>
+  </view>
+  <view class="form-item">
+    <text class="form-label">客户性别</text>
+    <view class="form-input">
+      <view class="radio-group">
+        <view class="radios-box{{item.value == gender ? ' active' : ''}}" bindtap="radioChange" data-value="{{item.value}}" wx:for-items="{{genders}}" wx:key="name">
+          <image class="gender-img" wx:if="{{item.value === '1' && (gender === '' || gender === '0')}}" src="../../image/rec_icon_boy_default@2x.png"></image>
+          <image class="gender-img" wx:if="{{item.value === '1' && gender === '1'}}" src="../../image/rec_icon_boy_click@2x.png"></image>
+          <image class="gender-img" wx:if="{{item.value === '0' && (gender === '' || gender === '1')}}" src="../../image/rec_icon_girl_default@2x.png"></image>
+          <image class="gender-img" wx:if="{{item.value === '0' && gender === '0'}}" src="../../image/rec_icon_girl_click@2x.png"></image>
+          <text class="text">{{item.name}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="form-item">
+    <text class="form-label">电话号码</text>
+    <view class="form-input">
+      <input class="input" type="number" maxlength="11" value="{{phone}}" bindinput="bindKeyInputPhone" placeholder-class="name-placeholder" placeholder="请输入" />
+    </view>
+  </view>
+  <view class="form-item">
+    <text class="form-label">推荐楼盘</text>
+    <view class="form-input" bindtap="handleSelect">
+      <view class="select-box">
+        <text style="color: #333;" wx:if="{{recommendHouse}}">{{recommendHouse.name}}</text>
+        <text wx:else>请选择</text>
+        <image wx:if="{{!recommendHouse}}" class="right-arrow" src="../../image/rec_icon_arrow_default@2x.png"></image>
+      </view>
+    </view>
+  </view>
+  <view class="remark-box">
+    <view class="label">备注（选填）</view>
+    <textarea class="textarea" value="{{remark}}" bindinput="bindKeyInputRemark" placeholder-class="name-placeholder" placeholder="请填写备注内容" />
+  </view>
+  <view class="confirm-box{{name && gender !== '' && phone ? ' active' : ''}}" bindtap="handleSubmit">
+    确认推荐
+  </view>
+</view>

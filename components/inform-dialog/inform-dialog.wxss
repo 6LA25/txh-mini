@@ -1,0 +1,61 @@
+/* components/inform-dialog.wxss */
+.inform-dialog-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+}
+
+.inform-dialog-box .inform-inner-box {
+  position: relative;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 640rpx;
+  background: #fff;
+  padding: 36rpx;
+  border-radius: 16rpx;
+}
+.title {
+  font-size: 32rpx;
+  text-align: center;
+  color: #333;
+  margin-bottom: 12rpx;
+  font-weight: bold;
+}
+.message {
+  font-size: 24rpx;
+  color: #727483;
+  text-align: center;
+  margin-bottom: 36rpx;
+}
+
+.mobile-ipt {
+  color: #333333;
+  font-size: 32rpx;
+  padding: 22rpx 28rpx;
+  border: 2rpx solid #F7F8F8;
+  border-radius: 8rpx;
+  margin-bottom: 40rpx;
+}
+
+.confirm-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #E32835;
+  color: #fff;
+  font-size: 32rpx;
+  height: 88rpx;
+  border-radius: 8rpx;
+}
+.close-img {
+  position: absolute;
+  top: 24rpx;
+  right: 24rpx;
+  width: 40rpx;
+  height: 40rpx;
+}

@@ -1,0 +1,10 @@
+<!--components/adv-dialog/adv-dialog.wxml-->
+<view class="adv-dialog" wx:if="{{dialogShow && !hasShow}}">
+  <view class="inner-box">
+    <view class="close-box">
+      <icon class="icon-close" type="cancel" size="34" color="rgba(255,255,255,.8)" bindtap="handleCloseDialog"/>
+      <!-- <view class="line"></view> -->
+    </view>
+    <image class="adv" bindtap="handleJump" src="{{adv.imageLink}}"></image>
+  </view>
+</view>

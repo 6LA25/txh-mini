@@ -1,0 +1,22 @@
+/* pages/Secondary/pages/housetype-photos/index.wxss */
+.house-photos-page {
+  padding: 32rpx;
+  background: #fff;
+}
+.real-img-list-box {
+  margin-bottom: 40rpx;
+}
+.real-img-list-box .title {
+  font-size: 30rpx;
+  margin-bottom: 10rpx;
+}
+.real-img-list-box .imgs-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -10rpx;
+}
+.real-img-list-box .imgs-list image {
+  width: 222rpx;
+  height: 132rpx;
+  margin: 0 10rpx 10rpx 0;
+}

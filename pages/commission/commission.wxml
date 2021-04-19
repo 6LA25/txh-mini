@@ -1,0 +1,39 @@
+<!-- pages/commission/commission.wxml -->
+<view class="commission-page">
+  <!-- <view class="commission-collect-box">
+    <view class="collect-item">
+      <text class="text">全部佣金（元）</text>
+      <text class="num">{{totalInfo.totalAmount}}</text>
+    </view>
+    <view class="collect-item">
+      <text class="text">待发放佣金（元）</text>
+      <text class="num">{{totalInfo.stayAmount}}</text>
+    </view>
+  </view> -->
+  <view class="filter-box">
+    <view bindtap="handleFilter" class="filter-item{{item.value === currentFilter ? ' active' : ''}}" data-value="{{item.value}}" data-index="{{index}}" wx:for="{{filterList}}" wx:key="name">
+      <text>{{item.name}}</text>
+      <view class="line" wx:if="{{item.value === currentFilter}}"></view>
+    </view>
+  </view>
+  <view class="data-list-box">
+    <view class="data-item" wx:for="{{commissionList}}" wx:key="id">
+      <view class="data-detail">
+        <view class="name">{{item.customerName}}-{{item.houseName}}</view>
+        <view class="time" wx:if="{{item.intro}}">备注：{{item.intro}}</view>
+        <view class="time">{{item.created}}</view>
+      </view>
+      <view class="num{{item.status === 1 ? ' active' : ''}}">
+        {{item.status === 1 ? '-' : '+'}}{{item.commission}}
+      </view>
+    </view>
+  </view>
+  <view class="no-data-box" wx:if="{{totalCount === 0}}">
+    <image class="image" src="../../image/no-data@2x.png"></image>
+    <text class="text">暂时没有内容～</text>
+  </view>
+  <view class="company-intr-box mt20" wx:if="{{commissionList.length > 0 && commissionList.length === totalCount}}">
+    <view class="title">安选好房</view>
+    <view class="detail">安心选好房，就上安选好房</view>
+  </view>
+</view>

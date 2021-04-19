@@ -1,0 +1,117 @@
+/* pages/pre-registration/pre-registration.wxss */
+.pre-registration-page  {
+  background-color: rgb(247,248,248);
+  min-height: 100vh;
+}
+.pre-registration-page .top-bg-img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 324rpx;
+}
+
+.pre-registration-page .inner-box {
+  position: relative;
+  z-index: 1;
+  padding: 24rpx 32rpx;
+}
+
+.pre-registration-page .inner-box .title {
+  font-size: 36rpx;
+  color: #ffffff;
+  font-weight: 500;
+  margin-bottom: 8rpx;
+}
+
+.pre-registration-page .inner-box .desc {
+  font-size: 26rpx;
+  color: #ffffff;
+  margin-bottom: 24rpx;
+}
+
+.pre-registration-page .inner-box .hint-box {
+  position: relative;
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 24rpx;
+}
+
+.pre-registration-page .inner-box .hint-text-box {
+  width: 686rpx;
+  margin: 0 auto;
+  padding: 32rpx;
+  background-image: linear-gradient(to bottom, #FFC3C7, #FFFFFF, #FFFFFF,#FFFFFF,#FFFFFF,#FFFFFF,#FFFFFF,#FFFFFF);
+  border-radius: 0 0 8rpx 8rpx;
+}
+
+.pre-registration-page .inner-box .hint-box .hint-title {
+  margin-bottom: 18rpx;
+}
+
+.pre-registration-page .inner-box .hint-box .border-top-box {
+  position: absolute;
+  left: 50%;
+  top: -8rpx;
+  background: #E32835;
+  height: 16rpx;
+  border-radius: 8rpx;
+  width: 710rpx;
+  z-index: -1;
+  transform: translate(-50%, 0);
+}
+
+.houses-detail-box {
+  padding: 0 32rpx 36rpx 32rpx;
+  border-radius: 8rpx;
+  background: #fff;
+}
+
+.form-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 104rpx;
+  font-size: 28rpx;
+  border-bottom: 2rpx solid #F6F6F6;
+}
+.form-item .form-label {
+  width: 150rpx;
+  color: #333;
+}
+.form-item .form-input {
+  flex: 1;
+  padding-left: 20rpx;
+  text-align: right;
+  color: #A8ABB7;
+}
+
+.input, .picker {
+  padding: 20rpx 0;
+  color: #333;
+}
+
+.submit-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #E32835;
+  color: #fff;
+  font-size: 32rpx;
+  margin: 36rpx 0;
+  height: 88rpx;
+  border-radius: 8rpx;
+}
+.name-placeholder {
+  color: #A8ABB7;
+}
+.select-box {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.select-box .right-arrow {
+  margin-left: 8rpx;
+  width: 14rpx;
+  height: 24rpx;
+}

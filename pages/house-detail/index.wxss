@@ -1,0 +1,767 @@
+.house-detail-page {
+  height: 100vh;
+}
+.swiper-container {
+  position: relative;
+}
+
+.swiper-container .banner-num-box {
+  position: absolute;
+  right: 30rpx;
+  bottom: 50rpx;
+  display: flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.6);
+  height: 40rpx;
+  padding: 0 10rpx;
+  border-radius: 20rpx;
+  color: #fff;
+  font-size: 24rpx;
+}
+
+.house-detail-content-box {
+  border-top-left-radius: 30rpx;
+  border-top-right-radius: 30rpx;
+  margin-top: -28rpx;
+}
+
+.house-detail-content-box .swiper-mask-box {
+  position: relative;
+  height: 470rpx;
+  background: transparent;
+}
+
+.house-detail-content-box .content-box {
+  position: relative;
+  background: #fff;
+  border-top-left-radius: 30rpx;
+  border-top-right-radius: 30rpx;
+  padding: 48rpx 0 160rpx 0;
+}
+
+.house-detail-content-box .content-box .top-house-detail-box {
+  padding: 0 32rpx;
+  border-bottom: 2rpx solid #F6F6F6;
+}
+
+.content-box .collect-box {
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+}
+
+.content-box .collect-box image {
+  margin-right: 8rpx;
+  width: 36rpx;
+  height: 32rpx;
+}
+
+.house-detail-content-box .content-box .house-name {
+  display: flex;
+  align-items: center;
+}
+
+.house-detail-content-box .content-box .house-name .name {
+  flex: 1;
+  color: #333;
+  font-size: 40rpx;
+  font-weight: bold;
+}
+
+.content-box .top-house-detail-box .tags-box {
+  display: flex;
+  padding: 10rpx 0 18rpx 0;
+  /* border-bottom: 2rpx solid #f6f6f6; */
+}
+
+.content-box .top-house-detail-box .tag-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 36rpx;
+  font-size: 20rpx;
+  padding: 0 10rpx;
+  border-radius: 6rpx;
+}
+
+.content-box .top-house-detail-box .tag-item:first-child {
+  background-image: linear-gradient(135deg, #FF906D 0%, #FB453F 100%);
+  color: #fff;
+}
+.content-box .top-house-detail-box .tag-item:not(:last-child) {
+  margin-right: 8rpx;
+}
+.content-box .top-house-detail-box .tag-item:not(:first-child) {
+  background: #EFF1F5;
+  color: #989DAB;
+}
+
+.house-price {
+  display: flex;
+  margin-bottom: 20rpx;
+  color: #e32835;
+}
+.house-price .house-price-item {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.house-price .num {
+  font-size: 32rpx;
+  font-weight: bold;
+}
+.house-price .num .big {
+  font-size: 40rpx;
+}
+
+.house-price .hint {
+  font-size: 24rpx;
+}
+.broker-box-new {
+  display: flex;
+  margin-bottom: 24rpx;
+}
+.broker-box-new .broker-box-new-item {
+  flex: 1;
+  color: rgba(51,51,51,1);
+}
+.broker-box-new .broker-box-new-item .label {
+  color: rgba(153,153,153,1);
+  font-size: 30rpx;
+  margin-right: 20rpx;
+}
+.broker-box-new .broker-box-new-item .wei {
+  font-size: 24rpx;
+}
+.house-address {
+  display: flex;
+  align-items: center;
+  padding: 0 0 24rpx 0;
+}
+
+.house-address .address-text {
+  flex: 1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  margin-right: 10rpx;
+  font-size: 30rpx;
+}
+
+.house-address .address-text .hint {
+  color: #999;
+  margin-right: 20rpx;
+}
+
+.house-address .address-text .detail {
+  color: #333;
+}
+
+.house-address image {
+  width: 28rpx;
+  height: 36rpx;
+}
+
+.main-house-type-box {
+  display: flex;
+  margin-bottom: 24rpx;
+}
+.main-house-type-box .hint {
+  font-size: 30rpx;
+  color: #999;
+  margin-right: 20rpx;
+}
+.main-house-type-box .detail {
+  color: #333;
+  flex: 1;
+}
+
+
+.check-more-btn-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 72rpx;
+  border-radius: 8rpx;
+  color: #747D8D;
+  background: #FAFAFB;
+  font-size: 28rpx;
+  margin: 30rpx 0;
+}
+
+.inform-box {
+  display: flex;
+  padding: 32rpx;
+}
+.inform-box .inform-item {
+  flex: 1;
+  height: 190rpx;
+  border-radius: 8rpx;
+  color: #E32835;
+}
+.inform-box .inform-item.inform-lf {
+  position: relative;
+  background: rgb(254, 247, 246);
+  padding: 28rpx;
+}
+.inform-box .inform-item.inform-lf .title {
+  display: flex;
+  align-items: center;
+  font-size: 32rpx;
+  margin-bottom: 8rpx;
+  font-weight: 600;
+}
+.inform-box .inform-item.inform-lf .detail {
+  font-size: 24rpx;
+}
+.inform-box .inform-item.inform-lf .title .more-img {
+  width: 12rpx;
+  height: 20rpx;
+  margin-left: 12rpx;
+}
+.inform-box .inform-item.inform-lf .bg-img {
+  position: absolute;
+  width: 160rpx;
+  height: 148rpx;
+  top: 26rpx;
+  right: 8rpx;
+}
+.inform-box .inform-item.inform-rg {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+}
+.inform-box .inform-item .inform-rg-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(254, 247, 246);
+  flex: 1;
+  border-radius: 8rpx;
+  font-size: 28rpx;
+}
+.inform-box .inform-item .inform-rg-item .icon-img {
+  width: 36rpx;
+  height: 32rpx;
+  margin-right: 12rpx;
+}
+.inform-box .inform-item .inform-rg-item:first-child {
+  margin-bottom: 14rpx;
+}
+.inform-box .inform-item:first-child {
+  margin-right: 14rpx;
+}
+.user-circusee-box {
+  position: relative;
+  display: flex; 
+  align-items: center;
+  background: #fff;
+  padding: 24rpx 32rpx;
+}
+.user-circusee-box .line-box {
+  position: absolute;
+  left: 180rpx;
+  top: 50%;
+  width: 2rpx;
+  height: 68rpx;
+  border-left: 2rpx solid #E3E3E3;
+  transform: translate(0, -50%);
+}
+
+.user-circusee-box .title-box {
+  display: flex;
+  flex-direction: column;
+  color: #333;
+  justify-content: center;
+  width: 160rpx;
+}
+
+.user-circusee-box .title-box .hint {
+  font-size: 24rpx;
+}
+
+.user-circusee-box .title-box .num {
+  font-size: 44rpx;
+  font-weight: 900;
+}
+
+.user-circusee-box .user-head-box {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  margin-left: 40rpx;
+}
+
+.user-circusee-box .user-head-box image {
+  width: 52rpx;
+  height: 52rpx;
+  border-radius: 50%;
+  margin-left: -10rpx;
+  border: 4rpx solid #fff;
+  box-shadow: 0rpx 0rpx 8rpx 2rpx #eee;
+}
+
+.divide-box {
+  width: 100%;
+  height: 16rpx;
+  background: #f7f8f8;
+}
+
+.commission-rule-box {
+  background: #fff;
+  padding: 32rpx;
+}
+.commission-rule-box .rule-title-box {
+  display: flex;
+  align-items: baseline;
+}
+.commission-rule-box .rule-title-box .txt1 {
+  margin-left: 32rpx;
+}
+.house-type-desc-box {
+  padding: 32rpx;
+}
+
+.house-type-desc-box .title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+}
+.house-type-desc-box .title .lf {
+  font-size: 40rpx;
+  color: #333;
+  font-weight: bold;
+}
+
+.house-type-desc-box .scroll-box {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+  padding: 8rpx;
+}
+
+.house-type-desc-box .scroll-box .house-type-item-box {
+  width: 400rpx;
+  margin-right: 50rpx;
+  box-shadow: 0 0 16rpx 0 rgba(184,191,195,0.25);
+  border-radius: 8rpx;
+}
+.house-type-item-box .house-type-detail-text {
+  padding: 0 32rpx;
+}
+
+.house-type-item-box .house-images-box {
+  position: relative;
+  width: 400rpx;
+  height: 340rpx;
+}
+
+.house-type-item-box .house-images-box image {
+  width: 100%;
+  height: 100%;
+  border-top-left-radius: 8rpx;
+  border-top-right-radius: 8rpx;
+}
+
+.house-type-item-box .house-images-box .house-type-img-num-box {
+  position: absolute;
+  right: 10rpx;
+  bottom: 6rpx;
+  display: flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.6);
+  height: 40rpx;
+  padding: 0 10rpx;
+  border-radius: 20rpx;
+  color: #fff;
+  font-size: 24rpx;
+}
+
+.house-type-item-box .tags-box {
+  display: flex;
+}
+
+.house-type-item-box .tag-item {
+  font-size: 24rpx;
+  margin-right: 8rpx;
+  padding: 2rpx 6rpx;
+  border-radius: 4rpx;
+  background: #f3f3f3;
+  color: #727483;
+}
+/* 楼盘动态 */
+.houses-states {
+  padding: 32rpx;
+  background: #fff;
+}
+.houses-states .title-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+.houses-states .title-box .title {
+  font-size: 40rpx;
+  color: #333;
+  font-weight: bold;
+}
+.houses-states .title-box .more, .house-type-desc-box .more {
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+  color: #747D8D;
+}
+.houses-states .title-box .more .more-icon, .house-type-desc-box .more-icon {
+  width: 12rpx;
+  height: 20rpx;
+  margin-left: 8rpx;
+}
+
+.step-box .step-item {
+  display: flex;
+  color: #333;
+}
+
+.step-box .step-item .step-lf {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 32rpx;
+  padding-top: 8rpx;
+}
+
+.step-lf .circle-box {
+  width: 18rpx;
+  height: 18rpx;
+  border-radius: 50%;
+}
+
+.step-lf .line-box {
+  flex: 1;
+  width: 2rpx;
+  background: #EFF1F5;
+}
+
+.step-box .step-item .step-rg {
+  flex: 1;
+  padding-bottom: 40rpx;
+  color: #333;
+  padding-left: 16rpx;
+  /* overflow: hidden; */
+}
+
+.step-box .step-item .step-rg .status {
+  display: flex;
+  align-items: center;
+  color: #747D8D;
+  font-size: 24rpx;
+}
+.step-box .step-item .step-rg .status .img-box {
+  position: relative;
+  z-index: 1;
+  width: 58rpx;
+  height: 32rpx;
+  margin-right: 16rpx;
+}
+.step-box .step-item .step-rg .status .txt {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 20rpx;
+}
+.step-box .step-item .step-rg .status .img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+}
+.step-box .step-item .step-rg .remark {
+  margin: 12rpx 0;
+  /* padding: 10rpx 0; */
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #333;
+  width: 620rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.step-box .step-item .step-rg .time {
+  font-size: 28rpx;
+}
+
+.houses-states .btn-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(254,138,123,0.07);
+  color: #E32835;
+  font-size: 28rpx;
+  border-radius: 8rpx;
+  height: 88rpx;
+  margin-top: 20rpx;
+}
+.houses-states .btn-box .img {
+  width: 30rpx;
+  height: 36rpx;
+  margin-right: 16rpx;
+}
+/* 亮点及周边 */
+.zhoubian-liangdian-box {
+  padding: 32rpx;
+  background: #fff;
+}
+
+.zhoubian-liangdian-box .title {
+  font-size: 40rpx;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+}
+
+.zhoubian-liangdian-box .zhoubian {
+  color: #727483;
+  font-size: 28rpx;
+  margin: 28rpx 0 20rpx 0;
+}
+
+.liangdian-list-box .liangdian-item {
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 16rpx;
+}
+
+.liangdian-list-box .liangdian-item .point {
+  color: #e32835;
+  font-weight: bold;
+  margin-right: 8rpx;
+}
+
+.map-box {
+  margin: 32rpx 0;
+  border-radius: 8rpx;
+  overflow: hidden;
+}
+
+.map-detail-box {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 48rpx;
+  padding: 10px 20rpx;
+  box-shadow: 0rpx 0rpx 8rpx 2rpx #eee;
+  border-radius: 8rpx;
+}
+
+.map-detail-box .map-detail-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.map-detail-box .map-detail-item image {
+  width: 64rpx;
+  height: 64rpx;
+  margin-bottom: 12rpx;
+}
+
+.map-detail-box .map-detail-item text {
+  font-size: 24rpx;
+  color: #727483;
+}
+
+.nearby-house-box {
+  padding: 32rpx;
+  background: #fff;
+}
+
+.nearby-house-box .title {
+  font-size: 40rpx;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+}
+
+.rule-box {
+  padding: 0 32rpx 32rpx 32rpx;
+}
+
+.rule-box .inner {
+  padding: 32rpx;
+  background: #F7F8F8;
+  color: #BEBEBE;
+  font-size: 24rpx;
+}
+
+.share-box-fix {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 2;
+}
+.share-box-fix .inner-box {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 980rpx;
+  width: 100%;
+  background: #fff;
+  border-top-left-radius: 32rpx;
+  border-top-right-radius: 32rpx;
+  padding: 32rpx;
+}
+.share-box-fix .inner-box .title {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40rpx;
+}
+.share-box-fix .inner-box .title .icon {
+  width: 26rpx;
+  height: 26rpx;
+  margin-right: 10rpx;
+}
+.share-box-fix .inner-box .title .txt {
+  color: #333;
+  font-size: 28rpx;
+}
+.share-box-fix .save-img-box {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.share-box-fix .btn-box {
+  margin-top: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.share-box-fix .btn-box .btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 610rpx;
+  height: 100rpx;
+  background: #F6515D;
+  color: #fff;
+  font-size: 32rpx;
+  border-radius: 12rpx;
+}
+.canvas-mask-box {
+  position: relative;
+  width: 520rpx;
+  height: 700rpx;
+}
+.canvas-mask-box .bg-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.canvas-mask-box .qrcode-img {
+  position: absolute;
+  width: 160rpx;
+  height: 160rpx;
+  left: 340rpx;
+  top: 460rpx;
+}
+.canvas-mask-box .head-img {
+  position: absolute;
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: 50%;
+  top: 516rpx;
+  left: 36rpx;
+}
+.canvas-mask-box .nick-name {
+  position: absolute;
+  color: #fff;
+  font-size: 32rpx;
+  left: 140rpx;
+  top: 544rpx;
+}
+.canvas-mask-box .hint {
+  position: absolute;
+  top: 640rpx;
+  left: 346rpx;
+  color: #fff;
+  font-size: 24rpx;
+}
+.share-box-fix .close-img {
+  position: absolute;
+  top: 32rpx;
+  right: 32rpx;
+  width: 40rpx;
+  height: 40rpx;
+  z-index: 1;
+}
+
+.commission-rule-detail-box .commission-rule-detail-box_title {
+  display: flex;
+  align-items: center;
+  padding: 16rpx;
+  color: #BB893B;
+  font-size: 36rpx;
+  font-weight: 500;
+  background: rgba(255, 230, 179);
+  border-radius: 8px 8px 0 0;
+}
+
+.commission-rule-detail-box .commission-rule-detail-box_title .jiangbei {
+  margin-right: 10rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.commission-rule-detail-box .commission-rule-detail-box_content {
+  background: rgba(254,179,24,0.1);
+  color: #A06C1C;
+  font-size: 28rpx;
+  padding: 16rpx;
+  border-radius: 8px;
+}
+
+.rule-description-box .operate-box {
+  display: flex;
+  justify-content: space-between;
+  padding: 20rpx 4rpx 0 4rpx;
+  font-size: 26rpx;
+  color: #333;
+}
+
+.rule-description-box .operate-box .rg-box {
+  display: flex;
+  align-items: center;
+}
+
+.rule-description-box .operate-box .rg-box .arrow-icon {
+  width: 20rpx;
+  height: 12rpx;
+  margin-left: 10rpx;
+}
+
+.rule-description-box .description-box {
+  font-size: 30rpx;
+  margin-top: 10rpx;
+  color: #727483;
+  font-size: 24rpx;
+}

@@ -1,0 +1,31 @@
+<!-- pages/house-photos.wxml -->
+<view class="house-photos-page">
+  <!-- 户型图 -->
+  <view class="real-img-list-box" wx:if="{{houseTypeImgs.length > 0}}">
+    <view class="title">户型图（{{houseTypeImgs.length}}）</view>
+    <view class="imgs-list">
+      <image data-url="{{item}}" data-errorimg="{{index}}" binderror="errorImg" data-preview="houseTypeImgs" bindtap="handlePreviewImages" wx:for="{{houseTypeImgs}}" wx:key="*this" src="{{item}}"></image>
+    </view>
+  </view>
+  <!-- 效果图 -->
+  <view class="real-img-list-box" wx:if="{{effectImgs.length > 0}}">
+    <view class="title">效果图（{{effectImgs.length}}）</view>
+    <view class="imgs-list">
+      <image data-url="{{item}}" data-errorimg="{{index}}" data-preview="effectImgs" binderror="errorImg" bindtap="handlePreviewImages" wx:for="{{effectImgs}}" wx:key="*this" src="{{item}}"></image>
+    </view>
+  </view>
+  <!-- 实景图 -->
+  <view class="real-img-list-box" wx:if="{{realImgs.length > 0}}">
+    <view class="title">实景图（{{realImgs.length}}）</view>
+    <view class="imgs-list">
+      <image data-url="{{item}}" data-errorimg="{{index}}" data-preview="realImgs" binderror="errorImg" bindtap="handlePreviewImages" wx:for="{{realImgs}}" wx:key="*this" src="{{item}}"></image>
+    </view>
+  </view>
+  <!-- 周边配套图 -->
+  <view class="real-img-list-box" wx:if="{{circumImgs.length > 0}}">
+    <view class="title">周边配套图（{{circumImgs.length}}）</view>
+    <view class="imgs-list">
+      <image data-url="{{item}}" data-errorimg="{{index}}" data-preview="circumImgs" binderror="errorImg" bindtap="handlePreviewImages" wx:for="{{circumImgs}}" wx:key="*this" src="{{item}}"></image>
+    </view>
+  </view>
+</view>

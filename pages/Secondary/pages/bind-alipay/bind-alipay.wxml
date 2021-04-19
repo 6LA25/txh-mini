@@ -1,0 +1,28 @@
+<!-- pages/bind-alipay/bind-alipay.wxml -->
+<!-- 改为绑定银行卡 -->
+<view class="bind-alipay-page">
+  <toast id='toast'></toast>
+  <view class="top-box">
+    <image class="icon-img" src="../../images/card_icon_ideal_default@2x.png"></image>
+    请准确填写银行卡信息，以防止您的资金损失
+  </view>
+  <view class="ipt-item">
+    <view class="title">银行卡号</view>
+    <input type="text" class="input" value="{{bankAccount}}" bindinput="bindKeyAlipayName" placeholder-class="name-placeholder" placeholder="请输入您的银行卡号" />
+  </view>
+  <view class="ipt-item">
+    <view class="title">开户行信息</view>
+    <input type="text" class="input" value="{{bankTitle}}" bindinput="bindKeyAlipayNo" placeholder-class="name-placeholder" placeholder="请输入开户行信息" />
+  </view>
+  <view class="ipt-item">
+    <view class="title">持卡人姓名</view>
+    <input type="text" class="input" value="{{bankPayee}}" bindinput="bindKeyBankPayee" placeholder-class="name-placeholder" placeholder="请输入持卡人姓名备份" />
+  </view>
+  <view class="ipt-item">
+    <view class="title">持卡人手机号</view>
+    <input type="text" class="input" value="{{bankMobile}}" bindinput="bindKeyBankMobile" placeholder-class="name-placeholder" placeholder="请输入持卡人手机号" />
+  </view>
+  <view class="confirm-box{{bankTitle && bankAccount && bankPayee && bankMobile ? ' active' : ''}}" bindtap="handleSubmit">
+    提交
+  </view>
+</view>

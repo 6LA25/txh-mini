@@ -1,0 +1,30 @@
+<!-- pages/Secondary/pages/withdraw-deposit/index.wxml -->
+<view class="withdraw-deposit-page">
+  <view class="no-data-box" wx:if="{{totalCount === 0}}">
+    <image class="image" src="../../../../image/no-data@2x.png"></image>
+    <text class="text">暂时没有内容～</text>
+  </view>
+  <checkbox-group bindchange="checkboxChange">
+    <label class="withdraw-item" wx:for="{{withdrawList}}" wx:key="id">
+      <view class="checks-box">
+        <checkbox value="{{item.commissionId}}" checked="{{item.checked}}"/>
+      </view>
+      <view class="detail-box">
+        <view class="name">{{item.customerName}}-{{item.houseName}}</view>
+        <view class="time">{{item.created}}</view>
+      </view>
+      <view class="num-box">+{{item.commission}}</view>
+    </label>
+  </checkbox-group>
+  <view class="fixed-btn-box" wx:if="{{totalCount > 0}}">
+    <view class="checks-box">
+      <checkbox-group bindchange="handleToggleAllSelected">
+        <checkbox value="{{true}}" checked="{{selectedIds.length === withdrawList.length && withdrawList.length > 0}}"/>
+      </checkbox-group>
+      
+      <text class="txt">全选</text>
+    </view>
+    <view class="money-box">合计：{{selectedAmount}}</view>
+    <view class="btn" bindtap="handleWithdraw">立即提现</view>
+  </view>
+</view>

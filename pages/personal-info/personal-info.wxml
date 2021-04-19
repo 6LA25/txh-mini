@@ -1,0 +1,18 @@
+<!--pages/personal-info/personal-info.wxml-->
+<view class="personal-info-page">
+  <view class="info-box">
+    <view class="info-item"><text class="hint">头像</text><image class="head" src="{{userInfo.avatar}}"></image></view>
+    <view class="info-item">
+      <text class="hint">用户名</text>
+      <!-- <view class="user-btn-box">
+        <text class="text">{{userInfo.displayName || '暂无数据'}}</text>
+        <image class="arrow-box" src="../../image/rec_icon_arrow_default@2x.png"></image>
+      </view> -->
+      <button class="user-btn-box" plain="true" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
+        <text class="text">{{userInfo.displayName || '暂无数据'}}</text>
+        <image class="arrow-box" src="../../image/rec_icon_arrow_default@2x.png"></image>
+      </button>
+    </view>
+    <view class="info-item"><text class="hint">电话号码</text><text class="text">{{userInfo.phoneNumber || '暂无数据'}}</text></view>
+  </view>
+</view>

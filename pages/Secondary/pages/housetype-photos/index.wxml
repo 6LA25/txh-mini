@@ -1,0 +1,18 @@
+<!--pages/Secondary/pages/housetype-photos/index.wxml-->
+<!-- pages/house-photos.wxml -->
+<view class="house-photos-page">
+  <!-- 户型图 -->
+  <view class="real-img-list-box" wx:if="{{huxingtu.length > 0}}">
+    <view class="title">户型图（{{huxingtu.length}}）</view>
+    <view class="imgs-list">
+      <image data-url="{{item}}" data-errorimg="{{index}}" binderror="errorImg" data-preview="huxingtu" bindtap="handlePreviewImages" wx:for="{{huxingtu}}" wx:key="*this" src="{{item}}"></image>
+    </view>
+  </view>
+  <!-- 样板图 -->
+  <view class="real-img-list-box" wx:if="{{yangbantu.length > 0}}">
+    <view class="title">样板房（{{yangbantu.length}}）</view>
+    <view class="imgs-list">
+      <image data-url="{{item}}" data-errorimg="{{index}}" data-preview="yangbantu" binderror="errorImg" bindtap="handlePreviewImages" wx:for="{{yangbantu}}" wx:key="*this" src="{{item}}"></image>
+    </view>
+  </view>
+</view>

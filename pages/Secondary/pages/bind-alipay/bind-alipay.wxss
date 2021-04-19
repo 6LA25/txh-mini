@@ -1,0 +1,64 @@
+/* pages/bind-alipay/bind-alipay.wxss */
+.bind-alipay-page {
+  width: 100vw;
+  height: 100vh;
+  background: #fff;
+}
+.bind-alipay-page .title {
+  font-size: 30rpx;
+  color: #333;
+}
+.ipt-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32rpx;
+  height: 108rpx;
+  border-bottom: 2rpx solid #F6F6F6;
+}
+.bind-alipay-page .input {
+  display: flex;
+  align-items: center;
+  height: 80rpx;
+  font-size: 28rpx;
+  padding: 0 10rpx;
+  color: #333;
+  width: 360rpx;
+  text-align: right;
+}
+
+.confirm-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 686rpx;
+  height: 96rpx;
+  background: #ec9da1;
+  color: #fff;
+  border-radius: 48rpx;
+  margin: 0 auto;
+  margin-top: 60rpx;
+}
+.confirm-box.active {
+  background: #F6515D;
+}
+
+.name-placeholder {
+  color: #A8ABB7;
+}
+
+.top-box {
+  display: flex;
+  align-items: center;
+  height: 68rpx;
+  background: #D3EAFF;
+  color: #3CA2FF;
+  font-size: 24rpx;
+  padding: 0 32rpx;
+}
+
+.top-box .icon-img {
+  width: 34rpx;
+  height: 36rpx;
+  margin-right: 12rpx;
+}

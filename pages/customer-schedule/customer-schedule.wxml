@@ -1,0 +1,59 @@
+<!-- pages/customer-schedule/customer-schedule.wxml -->
+<view class="customer-schedule-page">
+  <view class="top-box">
+    <view class="container">
+      <view class="inner-box">
+        <image class="head" src="{{customerDetail.avatar}}" alt=""></image>
+        <view class="mid-box">
+          <view class="name">{{customerDetail.realname}}</view>
+          <view class="num">{{customerDetail.mobile}}</view>
+          <view class="house">{{customerDetail.houseName}}</view>
+        </view>
+        <image data-mobile="{{customerDetail.mobile}}" bindtap="handleCall" class="rg-box" src="../../image/kehu_icon_iphone_default@3x.png"></image>
+      </view>
+    </view>
+  </view>
+  <view class="step-box">
+    <view class="step-item" wx:for="{{timeLine}}">
+      <view class="step-lf">
+        <view class="circle-box active">
+          <view class="inner"></view>
+        </view>
+        <view class="line-box"></view>
+      </view>
+      <view class="step-rg">
+        <view class="status">{{item.followStatusName}}</view>
+        <view class="remark" wx:if="{{item.followIntro}}">{{item.followIntro}}</view>
+        <view class="time">{{item.followTime}}</view>
+      </view>
+    </view>
+    <view class="step-item">
+      <view class="step-lf">
+        <view class="circle-box">
+          <view class="inner"></view>
+        </view>
+      </view>
+      <view class="step-rg">
+        <view class="status">推荐客户</view>
+        <view class="remark">推荐方式：经纪人推荐</view>
+        <view class="time">{{customerDetail.recommendTime}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="devide-box"></view>
+  <view class="remark-box">
+    <view class="title" bindtap="handleConfirm">备注：</view>
+    <input class="input" value='{{remark}}' bindconfirm="handleConfirm" placeholder-class="input-placeholder" type="text" placeholder="请输入内容" />
+    <view class="remark-item" wx:for="{{remarkList}}">
+      <view class="item-a">{{item.followTime}}</view>
+      <view class="item-b">跟进备注：{{item.followIntro}}</view>
+    </view>
+    <view class="no-data-box" wx:if="{{totalCount === 0}}">
+      <text class="text">暂时没有内容～</text>
+    </view>
+    <view class="company-intr-box mt20" wx:if="{{remarkList.length > 0 && remarkList.length === totalCount}}">
+      <view class="title">安选好房</view>
+      <view class="detail">安心选好房，就上安选好房</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,107 @@
+.recommend-page {
+  padding: 0 32rpx 32rpx 32rpx;
+  background: #fff;
+}
+.form-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32rpx 0;
+  border-bottom: 2rpx solid #F6F6F6;
+}
+.form-item .form-label {
+  width: 150rpx;
+  color: #333;
+}
+.form-item .form-input {
+  flex: 1;
+  padding-left: 20rpx;
+  text-align: right;
+  color: #A8ABB7;
+}
+.radio-group {
+  display: flex;
+  justify-content: flex-end;
+}
+.form-input .radios-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 140rpx;
+  height: 64rpx;
+  border: 1px solid #F6F6F6;
+  border-radius: 4rpx;
+  border-radius: 4rpx;
+  color: #333;
+}
+
+.form-input .radios-box .gender-img {
+  width: 28rpx;
+  height: 28rpx;
+  margin-right: 10rpx;
+}
+
+.form-input .radios-box.active {
+  color: #fff;
+  background: #E32835;
+  border: none;
+}
+
+.radio-group .radio {
+  display: flex;
+  align-items: center;
+}
+
+.radios-box radio .wx-radio-input{
+  width: 32rpx;
+  height: 32rpx;
+  border-radius: 50%;
+}
+.radios-box radio .wx-radio-input.wx-radio-input-checked {
+  border-color: #F6515D;
+}
+.name-placeholder {
+  color: #A8ABB7;
+}
+.remark-box {
+  padding: 32rpx 0;
+  margin-bottom: 40rpx;
+}
+.remark-box .label {
+  margin-bottom: 28rpx;
+}
+.remark-box .textarea {
+  height: 312rpx;
+  background: #F7F8F8;
+  padding: 24rpx;
+  border-radius: 8rpx;
+  color: #333;
+  box-sizing: border-box;
+  width: 100%;
+}
+.confirm-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80rpx;
+  background: #ec9da1;
+  color: #fff;
+  border-radius: 8rpx;
+}
+.confirm-box.active {
+  background: #F6515D;
+}
+.select-box {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.select-box .right-arrow {
+  margin-left: 8rpx;
+  width: 14rpx;
+  height: 24rpx;
+}
+
+.input {
+  color: #333;
+}

@@ -1,0 +1,62 @@
+/* pages/map-houses/index.wxss */
+.map-houses-page {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+}
+.map-box {
+  width: 100%;
+  flex: 1;
+}
+.house-detail-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 440rpx;
+  border-top-left-radius: 32rpx;
+  border-top-right-radius: 32rpx;
+  transform: translateY(-10rpx);
+  background: #fff;
+}
+.toggle-tag {
+  background: #eee;
+  width: 140rpx;
+  height: 6rpx;
+  border-radius: 2rpx;
+  position: absolute;
+  top: 10rpx;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+.nearby-btn-box {
+  position: absolute;
+  width: 150rpx;
+  height: 150rpx;
+  right: 40rpx;
+  top: -70rpx;
+}
+.map-cover-view {
+  position: absolute;
+  bottom: 60rpx;
+  left: 40rpx;
+}
+.map-cover-view .btn-box {
+  width: 92rpx;
+  height: 92rpx;
+}
+.share-img-btn .img {
+  width: 92rpx;
+  height: 92rpx;
+}
+
+.map-cover-view button.share-img-btn {
+  width: 92rpx;
+  height: 92rpx;
+  padding: 0;
+  background: transparent;
+}
+.map-cover-view button.share-img-btn::after {
+  border: none;
+}

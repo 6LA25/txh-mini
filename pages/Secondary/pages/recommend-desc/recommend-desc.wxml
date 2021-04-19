@@ -1,0 +1,9 @@
+<!--pages/recommend-desc/recommend-desc.wxml-->
+<view class="recommend-desc-page">
+  <!-- <image class="bg-img" src="../../images/Development_broker_bg@2x.png"></image> -->
+  <image class="bg-img" src="../../images/new_bg_share.jpg"></image>
+  <view class="btn-box">
+    <button class="btn" bindtap="handleJumpShareImg">分享图片</button>
+    <button class="btn" open-type="share">邀请好友</button>
+  </view>
+</view>

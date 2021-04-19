@@ -1,0 +1,92 @@
+<!-- index.wxml -->
+<view class="container home-page">
+  <!-- 隐私弹窗 -->
+  <view class="privacy-pop-box" wx:if="{{sysUserInfo && sysUserInfo.agreement !== 1}}">
+    <view class="inform-inner-box">
+      <view class="close-img">
+        <navigator class="navgitor" style="width: 100%;height: 100%;" open-type="exit" target="miniProgram" hover-class="navigator-hover"></navigator>
+        <image class="img" src="../../image/Price_reduction_icon_del_default@2x.png"></image>
+      </view>
+      <view class="title">安选好房温馨提示</view>
+      <view class="desc-box">
+        <view class="desc-item">
+          感谢您使用我们的产品及服务，为了更好地保障您的合法权益，请您务必认真阅读
+          <text data-tag="1" class="info" bindtap="handleJumpClause">《安选好房服务协议》</text>
+          <text data-tag="2" class="info" bindtap="handleJumpClause">《安选好房隐私政策》</text>。
+        </view>
+        <view class="desc-item">
+          您点击同意即表示对上述文件的充分阅读和理解，明确同意我们收集所说明的必要个人信息。若您不理解或者不同意任何内容，可随时联系我们予以解释或立即退出表示拒绝。
+        </view>
+      </view>
+      <view class="btn-container">
+        <view class="btn quit-btn-box">
+          <navigator class="exit-btn" style="width: 100%;height: 100%;" open-type="exit" target="miniProgram" hover-class="navigator-hover">放弃并退出</navigator>
+        </view>
+        <view class="btn confirm-btn" bindtap="handleComfirmPolicy">同意并继续使用</view>
+      </view>
+    </view>
+  </view>
+  <!-- 搜索框 -->
+  <view class="search-box" wx:if="{{sysUserInfo.agreement === 1}}" bindtap="handleJumpSearch">
+    <view class="search-ipt-box">
+      <view class="search-address">
+        <!-- <text>{{locationInfo.address_component.city}}</text> -->
+        <text>无锡</text>
+        <!-- <image class="icon-img" src="../../image/home_icon_down_default@2x.png"></image> -->
+      </view>
+      <view class="search-input" catchtap="handleJumpSearch">
+        <image class="search-icon" src="../../image/home_icon_search_default@2x.png"></image>
+        <text>专业、靠谱、安心、省心—安选好房</text>
+      </view>
+    </view>
+  </view>
+  <view class="home-content" wx:if="{{sysUserInfo.agreement === 1}}">
+    <adv-dialog></adv-dialog>
+    <view class="home-swiper-box">
+      <my-swiper img-list="{{bannerList}}" height="{{400}}" radius="0"></my-swiper>
+    </view>
+    <!-- 公告 -->
+    <view class="notice-box" bindtap="handleJumpNotices">
+      <view class="img-box">
+        <image src="../../image/home_icon_title_default_new@3x.png"></image>
+        <text></text>
+      </view>
+      <!-- <text>{{notice.title}}</text> -->
+      <swiper class='swiper-nav' vertical='true' autoplay='true' circular='true' interval='4000'>
+        <block wx:for='{{noticeList}}' wx:key='id'>
+          <swiper-item catchtouchmove="stopTouchMove" class="notice-text-box">
+            <view class='swiper-context'>{{item.title}}</view>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+    <!-- 间隔 -->
+    <view class="devide-box"></view>
+    <!-- 房源筛选 -->
+    <view class="house-filter-list">
+      <view class="hot-houses">热销楼盘</view>
+      <view class="focus-houses" bindtap="handleJumpFocusHouses">关注楼盘</view>
+    </view>
+    <!-- 楼盘数据 -->
+    <view class="house-index-box">
+      <view class="house-index-inner-box">
+        <house-item wx:for="{{housesList}}" has-auth="{{hasAuth}}" house="{{item}}" wx:key="houseId" user-info="{{userInfo}}" bindmyevent="onMyEvent"></house-item>
+        <view class="jump-more-houses-btn-parent">
+          <view class="jump-more-houses-btn" bindtap="handleJumpMoreHouse">查看更多热门房源</view>
+        </view>
+      </view>
+    </view>
+    <view class="no-data-box" wx:if="{{totalHouses === 0}}">
+      <image class="image" src="../../image/no-data@2x.png"></image>
+      <text class="text">暂时没有内容～</text>
+    </view>
+    <!-- <view wx:if="{{locationInfo}}">当前地址：{{locationInfo.address}}</view> -->
+  </view>
+  <view class="company-intr-box" wx:if="{{sysUserInfo.agreement === 1}}">
+    <view class="title">安选好房</view>
+    <view class="detail">安心选好房，就上安选好房</view>
+  </view>
+  <view class="fix-jump-map-box" bindtap="handleJumpMapHouses" wx:if="{{sysUserInfo.agreement === 1}}">
+    <image src="../../image/home_icon_map_default@2x.png"></image>
+  </view>
+</view>

@@ -1,0 +1,14 @@
+<!-- pages/recommend-guide/recommend-guide.wxml -->
+<view class="recommend-guide-page">
+  <view class="title-box">通过以下两种方式推荐客户赚取佣金</view>
+  <view class="detail">
+    <view class="text-1">方法一</view>
+    <view class="text-2">将楼盘信息微信分享给用户</view>
+    <image class="img" src="../../image/guidelines_pic_top@2x.png"></image>
+    <view class="btn-box btn1" bindtap="handleJumpIndex">去推荐楼盘赚佣金</view>
+    <view class="text-1">方法二</view>
+    <view class="text-2">录入客户手机号码</view>
+    <image class="img" src="../../image/guidelines_pic_down@2x.png"></image>
+    <view class="btn-box" bindtap="handleJumpRecommend">去推荐客户赚佣金</view>
+  </view>
+</view>

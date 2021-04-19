@@ -1,0 +1,60 @@
+<view class="container location-detail-page">
+  <view class="location-map-box">
+    <map id="myMap" style="width: 100%; height: 100%;" latitude="{{latitude}}" longitude="{{longitude}}" markers="{{markers}}" bindmarkertap="handleTapTagLocation" show-location>
+      <view class="map-cover-view">
+        <image class="btn-box" bindtap="handleBackIndex" src="../../image/mini_surrounding_cion_home_default@2x.png"></image>
+        <button class="share-img-btn" open-type="share">
+          <image class="img" src="../../image/mini_surrounding_cion_forward__default@2x.png"></image>
+        </button>
+      </view>
+    </map>
+  </view>
+  <view class="location-detail-box">
+    <view class="top-box">
+      <image bindtap="handleNavigate" class="back-home-img" src="../../image/new_surrounding_cion_navigation_default@2x.png"></image>
+      <view class="title">{{houseDetail.name}}</view>
+      <view class="select-bar-box">
+        <view data-index="1" class="{{selected === '1' ? 'active' : ''}}" bindtap="handleSelectDetail">
+          交通({{traffic.data ? traffic.data.length : 0}})
+        </view>
+        <view data-index="2" class="{{selected === '2' ? 'active' : ''}}" bindtap="handleSelectDetail">
+          教育({{edu.data ? edu.data.length : 0}})
+        </view>
+        <view data-index="3" class="{{selected === '3' ? 'active' : ''}}" bindtap="handleSelectDetail">
+          医疗({{hospital.data ? hospital.data.length : 0}})
+        </view>
+        <view data-index="4" class="{{selected === '4' ? 'active' : ''}}" bindtap="handleSelectDetail">
+          商业({{shop.data ? shop.data.length : 0}})
+        </view>
+      </view>
+    </view>
+    <view class="list-box">
+      <scroll-view scroll-y="true" style="height: 100%">
+        <view class="list-item{{currentSelectedId == item.id ? ' active' : ''}}" bindtap="handleSelectItem" data-id="{{item.id}}" wx:if="{{selected === '1' && traffic.data && traffic.data.length > 0}}" wx:for="{{traffic.data}}" wx:key="id">
+          <view class="inner-box">
+            <text class="num">{{index + 1}}</text>
+            <text class="distance">{{item.title}}，距离{{item._distance}}米</text>
+          </view>
+        </view>
+        <view class="list-item{{currentSelectedId == item.id ? ' active' : ''}}" bindtap="handleSelectItem" data-id="{{item.id}}" wx:if="{{selected === '2' && edu.data && edu.data.length > 0}}" wx:for="{{edu.data}}" wx:key="id">
+          <view class="inner-box">
+            <text class="num">{{index + 1}}</text>
+            <text class="distance">{{item.title}}，距离{{item._distance}}米</text>
+          </view>
+        </view>
+        <view class="list-item{{currentSelectedId == item.id ? ' active' : ''}}" bindtap="handleSelectItem" data-id="{{item.id}}" wx:if="{{selected === '3' && hospital.data && hospital.data.length > 0}}" wx:for="{{hospital.data}}" wx:key="id">
+          <view class="inner-box">
+            <text class="num">{{index + 1}}</text>
+            <text class="distance">{{item.title}}，距离{{item._distance}}米</text>
+          </view>
+        </view>
+        <view class="list-item{{currentSelectedId == item.id ? ' active' : ''}}" bindtap="handleSelectItem" data-id="{{item.id}}" wx:if="{{selected === '4' && shop.data && shop.data.length > 0}}" wx:for="{{shop.data}}" wx:key="id">
+          <view class="inner-box">
+            <text class="num">{{index + 1}}</text>
+            <text class="distance">{{item.title}}，距离{{item._distance}}米</text>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+</view>
