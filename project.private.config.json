@@ -1,4 +1,5 @@
 {
+  "setting": {},
   "condition": {
     "plugin": {
       "list": []
@@ -441,6 +442,13 @@
         {
           "name": "pages/consult-online/consult",
           "pathName": "pages/consult-online/consult",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/chatting/chatting",
+          "pathName": "packageB/pages/chatting/chatting",
+          "query": "",
           "scene": null
         }
       ]

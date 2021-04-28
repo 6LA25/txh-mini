@@ -61,6 +61,12 @@
   },
   "subPackages": [
     {
+      "root": "packageB/",
+      "pages": [
+        "pages/chatting/chatting"
+      ]
+    },
+    {
       "root": "pages/Secondary/",
       "pages": [
         "pages/notices/notices",
@@ -72,8 +78,7 @@
         "pages/housetype-photos/index",
         "pages/housetype-list/index",
         "pages/commission-rule/commission-rule",
-        "pages/clause/clause",
-        "pages/chatting/chatting"
+        "pages/clause/clause"
       ]
     }
   ],
