@@ -1,6 +1,7 @@
 let domain = 'https://1002.app.anxuanhouse.com'
 export default {
   test: 'http://58.214.13.42:8859/zuul/login/login',
+  tim: 'http://47.103.39.72:8888/api/im/genUserSig',
   login: `${domain}/api/app/auth/wechat`,
   banner: `${domain}/api/app/query/banner/items`,
   notice: `${domain}/api/app/query/notice/items`,
