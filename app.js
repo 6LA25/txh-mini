@@ -3,6 +3,9 @@
 import { getUserLocation, fetchCode } from './utils/util'
 import { Fetch } from './utils/http'
 import URL from './utils/url'
+// import TIMUploadPlugin from 'tim-upload-plugin';
+const TIM = require('./common/sdk/tim-wx.js')
+const TIMUploadPlugin = require('./common/sdk/tim-upload-plugin.js')
 App({
   globalData: {
     hasAdvShow: false,

@@ -24,7 +24,8 @@
     "pages/houses-focus/houses-focus",
     "pages/pre-registration/pre-registration",
     "pages/house-type/index",
-    "pages/settings/settings"
+    "pages/settings/settings",
+    "pages/consult-online/consult"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -43,6 +44,10 @@
       {
         "pagePath": "pages/houses/houses",
         "text": "楼盘"
+      },
+      {
+        "pagePath": "pages/consult-online/consult",
+        "text": "发现"
       },
       {
         "pagePath": "pages/recommend/index",
@@ -67,7 +72,8 @@
         "pages/housetype-photos/index",
         "pages/housetype-list/index",
         "pages/commission-rule/commission-rule",
-        "pages/clause/clause"
+        "pages/clause/clause",
+        "pages/chatting/chatting"
       ]
     }
   ],
