@@ -9,7 +9,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    inputValue: '',
+    height: '',
+    messages: [
+      // {text: 1},
+      // {text: 1},
+      // {text: 1},
+      // {text: 1},
+      // {text: 1},
+      // {text: 1},
+    ]
   },
 
   /**
@@ -34,6 +43,9 @@ Page({
       this.listenTim()
     }).catch(function (imError) {
       console.warn('login error:', imError) // 登录失败的相关信息
+    })
+    this.setData({
+      height: wx.getSystemInfoSync().windowHeight
     })
   },
 
@@ -95,6 +107,7 @@ Page({
       // event.name - TIM.EVENT.SDK_READY
     })
     tim.on(TIM.EVENT.MESSAGE_RECEIVED, function (event) {
+      console.log('MESSAGE_RECEIVED=>', event.data)
       // 收到推送的单聊、群聊、群提示、群系统通知的新消息，可通过遍历 event.data 获取消息列表数据并渲染到页面
       // event.name - TIM.EVENT.MESSAGE_RECEIVED
       // event.data - 存储 Message 对象的数组 - [Message]
@@ -110,6 +123,7 @@ Page({
       // event.data - event.data - 存储 Message 对象的数组 - [Message] - 每个 Message 对象的 isPeerRead 属性值为 true
     })
     tim.on(TIM.EVENT.CONVERSATION_LIST_UPDATED, function (event) {
+      console.log('CONVERSATION_LIST_UPDATED=>', event.data)
       // 收到会话列表更新通知，可通过遍历 event.data 获取会话列表数据并渲染到页面
       // event.name - TIM.EVENT.CONVERSATION_LIST_UPDATED
       // event.data - 存储 Conversation 对象的数组 - [Conversation]
@@ -156,5 +170,35 @@ Page({
       //     \- TIM.TYPES.NET_STATE_CONNECTING - 连接中。很可能遇到网络抖动，SDK 在重试。接入侧可根据此状态提示“当前网络不稳定”或“连接中”
       //    \- TIM.TYPES.NET_STATE_DISCONNECTED - 未接入网络。接入侧可根据此状态提示“当前网络不可用”。SDK 仍会继续重试，若用户网络恢复，SDK 会自动同步消息
     })
+  },
+  //获取普通文本消息
+  bindKeyInput: function (e) {
+    this.setData({
+      inputValue: e.detail.value
+    })
+  },
+  // 发送普通文本消息
+  bindConfirm(e) {
+    const {$tim} = app.globalData
+    const {$$TIM} = app.globalData
+    var content = this.data.inputValue
+    console.log('send message=>', content)
+    // 发送文本消息
+    let message = $tim.createTextMessage({
+      to: 'TXH1582522953117',
+      conversationType: $$TIM.TYPES.CONV_C2C,
+      payload: {
+        text: content
+      }
+    });
+    // 2. 发送消息
+    let promise = $tim.sendMessage(message);
+    promise.then(function (imResponse) {
+      // 发送成功
+      console.log(imResponse);
+    }).catch(function (imError) {
+      // 发送失败
+      console.warn('sendMessage error:', imError);
+    });
   },
 })

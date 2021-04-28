@@ -1,2 +1,15 @@
-<!--pages/Secondary/pages/chatting/chatting.wxml-->
-<text>pages/Secondary/pages/chatting/chatting.wxml</text>
+<!-- pages/Secondary/pages/chatting/chatting.wxml -->
+<scroll-view class='chat' id="chat" style="height:{{height}}px;padding-bottom:49px;" scroll-y>
+  <view class="chat-list-box" wx:for="{{messages}}">
+    {{item.text}}
+  </view>
+</scroll-view>
+<view class='chat-footer'>
+  <view class='send-voice-btn' bindtap='send1'>
+    <text class="yuyin">语音</text>
+  </view>
+  <view class='send-text-box'>
+    <input class='input' bindinput="bindKeyInput" value="{{inputValue}}" placeholder="对ta发送消息" />
+  </view>
+  <view class='send-btn' bindtap='bindConfirm'>发送</view>
+</view>

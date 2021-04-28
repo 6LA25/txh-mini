@@ -1,1 +1,25 @@
 /* pages/Secondary/pages/chatting/chatting.wxss */
+/* 底部输入框 */
+.chat-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  display: flex;
+  width: 100%;
+}
+.send-voice-btn {
+  width: 40px;
+}
+.send-text-box {
+  flex: 1;
+  min-width: 0;
+}
+.send-btn {
+  width: 60px;
+}
+/* 聊天信息展示 */
+.chat-list-box {
+  border: 1px solid #eee;
+  height: 100px;
+}
