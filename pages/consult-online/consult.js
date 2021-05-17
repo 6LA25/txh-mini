@@ -17,7 +17,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.event.on('listenContactList1', (conversationList) => {
+      console.log('conversationList=>', conversationList)
+      this.setData({
+        contactList: conversationList
+      })
+    })
   },
 
   /**
@@ -42,13 +47,7 @@ Page({
     this.setData({
       sysUserInfo: app.globalData.sysUserInfo
     })
-    let tim = app.globalData.$tim
-    tim.on(app.globalData.$$TIM.EVENT.SDK_READY, (event) => {
-      console.log('eve', event)
-      this.initRecentContactList()
-      // 收到离线消息和会话列表同步完毕通知，接入侧可以调用 sendMessage 等需要鉴权的接口
-      // event.name - TIM.EVENT.SDK_READY
-    })
+    
     wx.hideLoading()
   },
 

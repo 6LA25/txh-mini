@@ -44,7 +44,7 @@
     </view>
     <view class="msg-icon" bindtap="handleJumpConsult">
       <image class="bell-img" src="../../image/bell-icon.jpg"></image>
-      <view class="point"></view>
+      <view class="point" wx:if="{{unReadNum > 0}}"></view>
     </view>
   </view>
   <view class="home-content" wx:if="{{sysUserInfo.agreement === 1}}">

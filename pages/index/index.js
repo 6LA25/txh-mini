@@ -26,14 +26,18 @@ Page({
       module: 'index'
     },
     loadingHouses: false,
-    hasAuth: false
+    hasAuth: false,
+    unReadNum: 0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function () {
-    // this.initAllData()
+    wx.event.on('listenUnreadMsg', (conversationList) => {
+      console.log('conversationList=>', conversationList)
+      this.sumUnReadNum(conversationList)
+    })
   },
 
   /**
@@ -167,6 +171,15 @@ Page({
     // 获取公告
     this.fetchNotice()
     this.fetchHouses()
+  },
+  sumUnReadNum(conversationList) {
+    let unReadNum = 0
+    conversationList.forEach(item => {
+      unReadNum = unReadNum + item.unreadCount
+    })
+    this.setData({
+      unReadNum
+    })
   },
   fetchHouses() {
     wx.showLoading({

@@ -3,9 +3,11 @@
 import { getUserLocation, fetchCode } from './utils/util'
 import { Fetch } from './utils/http'
 import URL from './utils/url'
+import Event from './utils/event.js'
 // import TIMUploadPlugin from 'tim-upload-plugin';
 const TIM = require('./common/sdk/tim-wx.js')
 const TIMUploadPlugin = require('./common/sdk/tim-upload-plugin.js')
+wx.event=new Event()
 App({
   globalData: {
     hasAdvShow: false,
@@ -25,7 +27,8 @@ App({
     scene: '',
     sharePostUrlCode: '',
     $tim: null,
-    $$TIM: TIM
+    $$TIM: TIM,
+    isImLogin: false
   },
   onLaunch: function () {
     console.log('app onlaunch')

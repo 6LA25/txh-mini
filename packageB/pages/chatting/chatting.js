@@ -104,11 +104,11 @@ Page({
     const TIM = app.globalData.$$TIM
     console.log('TIM.EVENT.SDK_READY', TIM.EVENT.SDK_READY)
     // 监听事件，例如：
-    tim.on(TIM.EVENT.SDK_READY, function (event) {
-      console.log('eve', event)
-      // 收到离线消息和会话列表同步完毕通知，接入侧可以调用 sendMessage 等需要鉴权的接口
-      // event.name - TIM.EVENT.SDK_READY
-    })
+    console.log('TIM.EVENT.SDK_READY', TIM.EVENT.SDK_READY)
+    // tim.on(TIM.EVENT.SDK_READY, function (event) {
+    //   // 收到离线消息和会话列表同步完毕通知，接入侧可以调用 sendMessage 等需要鉴权的接口
+    //   // event.name - TIM.EVENT.SDK_READY
+    // })
     tim.on(TIM.EVENT.MESSAGE_RECEIVED, function (event) {
       console.log('MESSAGE_RECEIVED=>', event.data)
       // 收到推送的单聊、群聊、群提示、群系统通知的新消息，可通过遍历 event.data 获取消息列表数据并渲染到页面

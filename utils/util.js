@@ -126,9 +126,9 @@ const getUserLocation = (app) => {
 
 // 登录im
 const initTim = async (app) => {
-  let userId = 'TXH1591352906175'
-  let { data } = await Fetch({ userid: 'TXH1591352906175' }, URL.tim, app)
-  let { $tim } = app.globalData
+  let userId = 'TXH1582522953117'
+  let { data } = await Fetch({ userid: userId }, URL.tim, app)
+  let { $tim, $$TIM } = app.globalData
   let timLogin = $tim.login({
     userID: userId,
     userSig: data.userSig,
@@ -139,9 +139,34 @@ const initTim = async (app) => {
       console.log('imResponse.data.errorInfo', imResponse.data.errorInfo)
     }
     console.log('imResponse==>', imResponse)
-    this.listenTim()
+    listenTim(app)
   }).catch(function (imError) {
     console.warn('login error:', imError) // 登录失败的相关信息
+  })
+}
+const initRecentContactList = (app) => {
+  let { $tim, $$TIM } = app.globalData
+  let promise = $tim.getConversationList()
+    promise.then((imResponse) => {
+      console.log('会话列表', imResponse, wx.event)
+      const conversationList = imResponse.data.conversationList
+      wx.event.emit('listenUnreadMsg', conversationList)
+      wx.event.emit('listenContactList1', conversationList)
+    })
+}
+const listenTim = async (app) => {
+  let { $tim, $$TIM } = app.globalData
+  // 监听事件，例如：
+  console.log('$$TIM.EVENT.SDK_READY', $$TIM.EVENT.SDK_READY)
+  if (app.globalData.isImLogin) {
+    initRecentContactList(app)
+  }
+  $tim.on($$TIM.EVENT.SDK_READY, (event) => {
+    console.log('eve', event)
+    app.globalData.isImLogin = true
+    // 收到离线消息和会话列表同步完毕通知，接入侧可以调用 sendMessage 等需要鉴权的接口
+    // event.name - TIM.EVENT.SDK_READY
+    initRecentContactList(app)
   })
 }
 
