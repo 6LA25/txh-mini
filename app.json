@@ -46,10 +46,6 @@
         "text": "楼盘"
       },
       {
-        "pagePath": "pages/consult-online/consult",
-        "text": "发现"
-      },
-      {
         "pagePath": "pages/recommend/index",
         "text": "推荐"
       },

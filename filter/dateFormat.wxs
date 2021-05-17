@@ -1,11 +1,11 @@
-var formatNumber = function(n) {
+var formatNumber = function (n) {
   n = n.toString()
   return n[1] ? n : '0' + n
 }
 
 var DateFr = {
   getDate: function (time) {
-    var date =getDate(time);
+    var date = getDate(time);
     var year = date.getFullYear()
     var month = date.getMonth() + 1
     var day = date.getDate()
@@ -17,7 +17,29 @@ var DateFr = {
     return [year, month, day].map(formatNumber).join('/')
   }
 }
+var getChatDate = function (time) {
+  var val = time * 1000
+  var chatDate = val
+  var currentDate = getDate().getTime()
+  var currentYear = getDate().getFullYear()
+  var currentDay = getDate().getDate()
+  var currentMonth = getDate().getMonth() + 1
+  var chatYear = getDate(val).getFullYear()
+  var chatMonth = getDate(val).getMonth() + 1
+  var chatDay = getDate(val).getDate()
+  var chatHour = getDate(val).getHours() >= 10 ? getDate(val).getHours() : '0' + getDate(val).getHours()
+  var chatMin = getDate(val).getMinutes() >= 10 ? getDate(val).getMinutes() : '0' + getDate(val).getMinutes()
+  console.log('current==>', currentYear, currentDay, currentMonth)
+  console.log('chat==>', chatYear, chatMonth, chatDay, chatHour, chatMin)
+  // 和当前时间在同一天内
+  if (currentYear === chatYear && currentDay === chatDay && currentMonth === chatMonth && currentDate >= chatDate) {
+    return chatHour + ':' + chatMin
+  } else {
+    return chatYear + '/' + chatMonth + '/' + chatDay
+  }
+}
 
 module.exports = {
-  getDate: DateFr.getDate
+  getDate: DateFr.getDate,
+  getChatDate: getChatDate
 }

@@ -1,1 +1,86 @@
 /* pages/Secondary/pages/consult-online/consult.wxss */
+.consult-online-page {
+  padding: 20rpx;
+}
+
+.chat-user-list {
+  padding: 12rpx 0;
+}
+
+.chat-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16rpx;
+  padding: 0 12rpx;
+  border-bottom: 2rpx solid #eee;
+}
+
+.head-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 88rpx;
+  margin-right: 12rpx;
+}
+
+.unread-box {
+  position: absolute;
+  top: -12rpx;
+  right: -8rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32rpx;
+  padding: 0 4rpx;
+  height: 32rpx;
+  border-radius: 16rpx;
+  color: #fff;
+  font-size: 24rpx;
+  background: #F56C6C;
+}
+
+.head-img {
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: 44rpx;
+}
+
+.content-box {
+  flex: 1;
+  min-width: 0;
+  padding: 8rpx 0 8rpx 0;
+}
+
+.title-box {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4rpx;
+}
+
+.user-name {
+  flex: 1;
+  min-width: 0;
+  font-size: 28rpx;
+  margin-right: 8rpx;
+  font-weight: 500;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: break-all;
+}
+
+.time {
+  display: flex;
+  align-items: center;
+  max-width: 132rpx;
+  font-size: 24rpx;
+}
+
+.recent-msg-box {
+  font-size: 26rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: break-all;
+  margin-bottom: 4rpx;
+}

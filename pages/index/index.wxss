@@ -7,6 +7,7 @@
 /* 搜索框 */
 
 .search-box {
+  display: flex;
   position: fixed;
   top: 0;
   left: 0;
@@ -21,6 +22,7 @@
 }
 
 .search-ipt-box {
+  flex: 1;
   display: flex;
   align-items: center;
   background: #fff;
@@ -28,6 +30,30 @@
   border-radius: 8rpx;
   padding: 0 20rpx;
   width: 100%;
+}
+
+.msg-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* width: 50rpx; */
+  margin-left: 10rpx;
+}
+
+.msg-icon .bell-img {
+  width: 56rpx;
+  height: 56rpx;
+}
+
+.search-box .msg-icon .point {
+  position: absolute;
+  top: 0;
+  right: 8rpx;
+  width: 8rpx;
+  height: 8rpx;
+  background: green;
+  border-radius: 50%;
 }
 
 .search-ipt-box .search-address {
@@ -286,14 +312,17 @@
   align-items: center;
   justify-content: center;
 }
+
 .exit-btn {
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .btn-container .quit-btn-box {
   border: 2rpx solid #eee;
 }
+
 .btn-container .confirm-btn {
   background: #E32835;
   color: #fff;

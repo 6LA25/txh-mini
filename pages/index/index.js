@@ -234,6 +234,11 @@ Page({
       url: '../Secondary/pages/map-houses/index'
     })
   },
+  handleJumpConsult() {
+    wx.navigateTo({
+      url: '../consult-online/consult'
+    })
+  },
   handleJumpSearch() {
     wx.navigateTo({
       url: '../search-house/search-house'

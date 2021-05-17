@@ -11,6 +11,8 @@ Page({
   data: {
     inputValue: '',
     height: '',
+    userId: 'TXH1591352906175',
+    // userId: 'TXH1591352795921',
     messages: [
       // {text: 1},
       // {text: 1},
@@ -27,23 +29,24 @@ Page({
   onLoad: async function (options) {
     await getUserDetail(app)
     await fetchTicket(app)
-    let { data } = await Fetch({ userid: 'TXH1591352795921' }, URL.tim, app)
-    // 开始登录
-    let { $tim } = app.globalData
-    let timLogin = $tim.login({
-      userID: 'TXH1591352795921',
-      userSig: data.userSig,
-    })
-    timLogin.then((imResponse) => {
-      if (imResponse.data.repeatLogin === true) {
-        // 标识账号已登录，本次登录操作为重复登录。v2.5.1 起支持
-        console.log('imResponse.data.errorInfo', imResponse.data.errorInfo)
-      }
-      console.log('imResponse==>', imResponse)
-      this.listenTim()
-    }).catch(function (imError) {
-      console.warn('login error:', imError) // 登录失败的相关信息
-    })
+    this.listenTim()
+    // let { data } = await Fetch({ userid: 'TXH1591352795921' }, URL.tim, app)
+    // // 开始登录
+    // let { $tim } = app.globalData
+    // let timLogin = $tim.login({
+    //   userID: 'TXH1591352795921',
+    //   userSig: data.userSig,
+    // })
+    // timLogin.then((imResponse) => {
+    //   if (imResponse.data.repeatLogin === true) {
+    //     // 标识账号已登录，本次登录操作为重复登录。v2.5.1 起支持
+    //     console.log('imResponse.data.errorInfo', imResponse.data.errorInfo)
+    //   }
+    //   console.log('imResponse==>', imResponse)
+    //   this.listenTim()
+    // }).catch(function (imError) {
+    //   console.warn('login error:', imError) // 登录失败的相关信息
+    // })
     this.setData({
       height: wx.getSystemInfoSync().windowHeight
     })

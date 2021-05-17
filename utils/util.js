@@ -38,6 +38,7 @@ const fetchCode = () => {
 // 登录 -> 获取用户信息
 const fetchTicket = async (app) => {
   if (app.globalData.ticket) {
+    initTim(app)
     return
   }
   wx.showLoading({
@@ -60,6 +61,7 @@ const fetchTicket = async (app) => {
       app.globalData.sysUserInfo = userInfo.data
       // 测试
       // app.globalData.sysUserInfo.agreement = 0
+      initTim(app)
       wx.hideLoading()
       resolve({
         loginInfo: {
@@ -119,6 +121,27 @@ const getUserLocation = (app) => {
     fail: function (error) {
       console.error(error);
     }
+  })
+}
+
+// 登录im
+const initTim = async (app) => {
+  let userId = 'TXH1591352906175'
+  let { data } = await Fetch({ userid: 'TXH1591352906175' }, URL.tim, app)
+  let { $tim } = app.globalData
+  let timLogin = $tim.login({
+    userID: userId,
+    userSig: data.userSig,
+  })
+  timLogin.then((imResponse) => {
+    if (imResponse.data.repeatLogin === true) {
+      // 标识账号已登录，本次登录操作为重复登录。v2.5.1 起支持
+      console.log('imResponse.data.errorInfo', imResponse.data.errorInfo)
+    }
+    console.log('imResponse==>', imResponse)
+    this.listenTim()
+  }).catch(function (imError) {
+    console.warn('login error:', imError) // 登录失败的相关信息
   })
 }
 

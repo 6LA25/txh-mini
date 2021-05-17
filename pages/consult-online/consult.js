@@ -9,7 +9,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    sysUserInfo: null
+    sysUserInfo: null,
+    contactList: []
   },
 
   /**
@@ -30,12 +31,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
    async onShow() {
-    if (typeof this.getTabBar === 'function' &&
-      this.getTabBar()) {
-      this.getTabBar().setData({
-        selected: 4
-      })
-    }
     wx.showLoading({
       title: '加载中',
       mask: true
@@ -47,9 +42,12 @@ Page({
     this.setData({
       sysUserInfo: app.globalData.sysUserInfo
     })
-    // 更新tabbar是否为经纪人
-    this.getTabBar().setData({
-      agentUser: app.globalData.sysUserInfo.agentUser
+    let tim = app.globalData.$tim
+    tim.on(app.globalData.$$TIM.EVENT.SDK_READY, (event) => {
+      console.log('eve', event)
+      this.initRecentContactList()
+      // 收到离线消息和会话列表同步完毕通知，接入侧可以调用 sendMessage 等需要鉴权的接口
+      // event.name - TIM.EVENT.SDK_READY
     })
     wx.hideLoading()
   },
@@ -87,5 +85,14 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+  initRecentContactList() {
+    let promise = app.globalData.$tim.getConversationList()
+    promise.then((imResponse) => {
+      console.log('会话列表=>', imResponse)
+      this.setData({
+        contactList: imResponse.data.conversationList
+      })
+    })
+  },
 })

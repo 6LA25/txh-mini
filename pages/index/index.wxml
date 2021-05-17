@@ -12,7 +12,8 @@
         <view class="desc-item">
           感谢您使用我们的产品及服务，为了更好地保障您的合法权益，请您务必认真阅读
           <text data-tag="1" class="info" bindtap="handleJumpClause">《安选好房服务协议》</text>
-          <text data-tag="2" class="info" bindtap="handleJumpClause">《安选好房隐私政策》</text>。
+          <text data-tag="2" class="info" bindtap="handleJumpClause">《安选好房隐私政策》</text>
+          。
         </view>
         <view class="desc-item">
           您点击同意即表示对上述文件的充分阅读和理解，明确同意我们收集所说明的必要个人信息。若您不理解或者不同意任何内容，可随时联系我们予以解释或立即退出表示拒绝。
@@ -20,15 +21,17 @@
       </view>
       <view class="btn-container">
         <view class="btn quit-btn-box">
-          <navigator class="exit-btn" style="width: 100%;height: 100%;" open-type="exit" target="miniProgram" hover-class="navigator-hover">放弃并退出</navigator>
+          <navigator class="exit-btn" style="width: 100%;height: 100%;" open-type="exit" target="miniProgram" hover-class="navigator-hover">
+            放弃并退出
+          </navigator>
         </view>
         <view class="btn confirm-btn" bindtap="handleComfirmPolicy">同意并继续使用</view>
       </view>
     </view>
   </view>
   <!-- 搜索框 -->
-  <view class="search-box" wx:if="{{sysUserInfo.agreement === 1}}" bindtap="handleJumpSearch">
-    <view class="search-ipt-box">
+  <view class="search-box" wx:if="{{sysUserInfo.agreement === 1}}">
+    <view bindtap="handleJumpSearch" class="search-ipt-box">
       <view class="search-address">
         <!-- <text>{{locationInfo.address_component.city}}</text> -->
         <text>无锡</text>
@@ -38,6 +41,10 @@
         <image class="search-icon" src="../../image/home_icon_search_default@2x.png"></image>
         <text>专业、靠谱、安心、省心—安选好房</text>
       </view>
+    </view>
+    <view class="msg-icon" bindtap="handleJumpConsult">
+      <image class="bell-img" src="../../image/bell-icon.jpg"></image>
+      <view class="point"></view>
     </view>
   </view>
   <view class="home-content" wx:if="{{sysUserInfo.agreement === 1}}">

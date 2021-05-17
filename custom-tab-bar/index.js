@@ -16,11 +16,6 @@ Component({
       iconPath: "/image/home_icon_building_default@2x.png",
       selectedIconPath: "/image/home_icon_building_click@2x.png",
       text: "楼盘"
-    },{
-      pagePath: "../consult-online/consult",
-      iconPath: "/image/home_icon_building_default@2x.png",
-      selectedIconPath: "/image/home_icon_building_click@2x.png",
-      text: "发现"
     }, {
       pagePath: "../recommend/index",
       iconPath: "/image/home_icon_rec_default@2x.png",
