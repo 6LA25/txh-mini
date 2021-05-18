@@ -18,7 +18,9 @@ Page({
     messagesLoading: false,
     count: 15,
     toLast: '',
-    triggered: false
+    triggered: false,
+    selectFileVisible: false,
+    isInputAudio: false
   },
 
   /**
@@ -204,14 +206,29 @@ Page({
       wx.hideLoading()
     });
   },
-  pageScrollToBottom() {
-    wx.createSelectorQuery().select('#chat').boundingClientRect(function (rect) {
-      // 使页面滚动到底部
-      wx.pageScrollTo({
-        selector: '#chat',
-        scrollTop: rect ? rect.height : 0,
-        duration: 0
-      })
-    }).exec()
+  handleSelectFile() {
+    if (!this.data.selectFileVisible) {
+      wx.hideKeyboard()
+    }
+    this.setData({
+      selectFileVisible: !this.data.selectFileVisible
+    })
+  },
+  bindBlurInput() {
+    this.setData({
+      isInputText: false
+    })
+  },
+  bindFocusInput() {
+    this.setData({
+      isInputText: true,
+      selectFileVisible: false
+    })
+  },
+  handleToggleAudio() {
+    this.setData({
+      isInputAudio: !this.data.isInputAudio,
+      selectFileVisible: false
+    })
   }
 })

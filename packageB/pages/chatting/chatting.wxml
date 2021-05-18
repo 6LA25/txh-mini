@@ -13,11 +13,22 @@
   </view>
 </scroll-view>
 <view class='chat-footer'>
-  <view class='send-voice-btn' bindtap='send1'>
-    <text class="yuyin">语音</text>
+  <view class="send-type-box">
+    <view class='send-voice-btn' bindtap='handleToggleAudio'>
+      <view wx:if="{{isInputAudio}}">键盘</view>
+      <view wx:if="{{!isInputAudio}}">语音</view>
+    </view>
+    <view class='send-text-box'>
+      <input wx:if="{{!isInputAudio}}" class='input' bindfocus="bindFocusInput" bindblur="bindBlurInput" bindinput="bindKeyInput" value="{{inputValue}}" />
+      <view wx:if="{{isInputAudio}}" class="audio-ipt">按住说话</view>
+    </view>
+    <view class='send-btn' wx:if="{{!isInputText}}" bindtap="handleSelectFile">+</view>
+    <view class='send-btn' wx:if="{{isInputText}}" bindtap='bindConfirm'>发送</view>
   </view>
-  <view class='send-text-box'>
-    <input class='input' bindinput="bindKeyInput" value="{{inputValue}}" placeholder="对ta发送消息" />
+  <view class="select-file-box" wx:if="{{selectFileVisible}}">
+    <view>相册</view>
+    <view>拍摄</view>
+    <view>录视频</view>
   </view>
-  <view class='send-btn' bindtap='bindConfirm'>发送</view>
+  <view class="bottom-box"></view>
 </view>

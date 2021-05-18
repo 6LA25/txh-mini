@@ -1,25 +1,72 @@
 /* pages/Secondary/pages/chatting/chatting.wxss */
 /* 底部输入框 */
+page {
+  background: rgb(250, 249, 249);
+}
+
 .chat-footer {
   position: fixed;
   bottom: 0;
   left: 0;
   z-index: 999;
-  display: flex;
   width: 100%;
+  background: #fff;
+}
+
+.send-type-box {
+  display: flex;
+  align-items: center;
+  padding: 0 30rpx;
+  height: 80rpx;
+}
+
+.chat-footer .bottom-box {
+  height: 50rpx;
+  background: rgb(250, 249, 249);
 }
 
 .send-voice-btn {
-  width: 40px;
+  width: 80rpx;
 }
 
 .send-text-box {
   flex: 1;
   min-width: 0;
+  padding: 10rpx 0;
+  height: 100%;
+}
+
+.send-text-box .input {
+  background: rgb(243, 240, 247);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  border-radius: 8rpx;
+  padding: 0 8rpx;
+}
+
+.send-text-box .audio-ipt {
+  background: rgb(243, 240, 247);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8rpx;
+  padding: 0 8rpx;
 }
 
 .send-btn {
-  width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80rpx;
+}
+
+.select-file-box {
+  display: flex;
+  justify-content: space-between;
+  padding: 30rpx 100rpx;
+  background: #fff;
 }
 
 /* 聊天信息展示 */
@@ -32,21 +79,25 @@
 .chat-content {
   padding: 20rpx 20rpx 60rpx 20rpx;
 }
+
 .load-more {
   font-size: 20rpx;
   color: #aaa;
   text-align: center;
   margin-bottom: 4rpx;
 }
+
 .message-item-box {
   margin-bottom: 30rpx;
 }
+
 .message-item-box .msg-time {
   color: #aaa;
   font-size: 22rpx;
   text-align: center;
   margin-bottom: 8rpx;
 }
+
 .message-item-inner {
   display: flex;
   align-items: center;
