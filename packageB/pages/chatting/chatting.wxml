@@ -1,7 +1,15 @@
 <!-- pages/Secondary/pages/chatting/chatting.wxml -->
-<scroll-view class='chat' id="chat" style="height:{{height}}px;padding-bottom:49px;" scroll-y>
-  <view class="chat-list-box" wx:for="{{messages}}">
-    {{item.text}}
+<wxs module="dateFormat" src="../../../filter/dateFormat.wxs"></wxs>
+<scroll-view class='chat' id="chat" style="height:{{height}}px;" refresher-triggered="{{triggered}}" bindrefresherpulling="onPulling" bindrefresherrefresh="onRefresh" bindrefresherrestore="onRestore" bindrefresherabort="onAbort" refresher-enabled="{{true}}" refresher-threshold="{{20}}" scroll-y="{{true}}" scroll-into-view="{{toLast}}" scroll-with-animation>
+  <view class="chat-content">
+    <view class="load-more">下拉加载更多</view>
+    <view class="message-item-box" id="msg-item-{{index}}" wx:for="{{contactMessages.messageList}}" wx:key="ID">
+      <view class="msg-time">{{dateFormat.getChatDate(item.time)}}</view>
+      <view class="message-item-inner msg-{{item.flow}}">
+        <image class="chat-head" src="https://wx.qlogo.cn/mmhead/Q3auHgzwzM6RjnYYXVNIU7LYGZ637YaJt3g31xWZUiaEZNI0wYTEVibw/0"></image>
+        <view class="message-detail">{{item.payload.text}}</view>
+      </view>
+    </view>
   </view>
 </scroll-view>
 <view class='chat-footer'>

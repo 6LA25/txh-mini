@@ -448,7 +448,7 @@
         {
           "name": "pages/chatting/chatting",
           "pathName": "packageB/pages/chatting/chatting",
-          "query": "",
+          "query": "conversationID=C2CTXH1591352795921&userID=TXH1591352795921&conversationType=C2C",
           "scene": null
         }
       ]

@@ -17,7 +17,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.event.on('listenContactList1', (conversationList) => {
+    wx.event.on('listenContactList', (conversationList) => {
       console.log('conversationList=>', conversationList)
       this.setData({
         contactList: conversationList
@@ -35,7 +35,7 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-   async onShow() {
+  async onShow() {
     wx.showLoading({
       title: '加载中',
       mask: true
@@ -47,7 +47,7 @@ Page({
     this.setData({
       sysUserInfo: app.globalData.sysUserInfo
     })
-    
+
     wx.hideLoading()
   },
 
@@ -85,13 +85,14 @@ Page({
   onShareAppMessage: function () {
 
   },
-  initRecentContactList() {
-    let promise = app.globalData.$tim.getConversationList()
-    promise.then((imResponse) => {
-      console.log('会话列表=>', imResponse)
-      this.setData({
-        contactList: imResponse.data.conversationList
-      })
+  async handleJumpChatting (e) {
+    console.log(e.currentTarget.dataset.chat)
+    let { chat } = e.currentTarget.dataset
+    if (chat.unreadCount > 0) {
+      await app.globalData.$tim.setMessageRead({ conversationID: chat.conversationID })
+    }
+    wx.navigateTo({
+      url: `/packageB/pages/chatting/chatting?conversationID=${chat.conversationID}&userID=${chat.userProfile.userID}&conversationType=${chat.type}`
     })
-  },
+  }
 })

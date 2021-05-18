@@ -139,7 +139,11 @@ const initTim = async (app) => {
       console.log('imResponse.data.errorInfo', imResponse.data.errorInfo)
     }
     console.log('imResponse==>', imResponse)
-    listenTim(app)
+    if (!app.globalData.isImLogin) {
+      listenTim(app)
+    } else {
+      initRecentContactList(app)
+    }
   }).catch(function (imError) {
     console.warn('login error:', imError) // 登录失败的相关信息
   })
@@ -147,26 +151,42 @@ const initTim = async (app) => {
 const initRecentContactList = (app) => {
   let { $tim, $$TIM } = app.globalData
   let promise = $tim.getConversationList()
-    promise.then((imResponse) => {
-      console.log('会话列表', imResponse, wx.event)
-      const conversationList = imResponse.data.conversationList
-      wx.event.emit('listenUnreadMsg', conversationList)
-      wx.event.emit('listenContactList1', conversationList)
-    })
+  promise.then((imResponse) => {
+    console.log('会话列表', imResponse, wx.event)
+    const conversationList = imResponse.data.conversationList
+    wx.event.emit('listenUnreadMsg', conversationList)
+    wx.event.emit('listenContactList', conversationList)
+  })
 }
 const listenTim = async (app) => {
   let { $tim, $$TIM } = app.globalData
   // 监听事件，例如：
-  console.log('$$TIM.EVENT.SDK_READY', $$TIM.EVENT.SDK_READY)
-  if (app.globalData.isImLogin) {
-    initRecentContactList(app)
-  }
+  // if (app.globalData.isImLogin) {
+  //   initRecentContactList(app)
+  // }
   $tim.on($$TIM.EVENT.SDK_READY, (event) => {
     console.log('eve', event)
     app.globalData.isImLogin = true
     // 收到离线消息和会话列表同步完毕通知，接入侧可以调用 sendMessage 等需要鉴权的接口
     // event.name - TIM.EVENT.SDK_READY
     initRecentContactList(app)
+  })
+  $tim.on($$TIM.EVENT.CONVERSATION_LIST_UPDATED, function (event) {
+    console.log('CONVERSATION_LIST_UPDATED', event.data)
+    wx.event.emit('listenUnreadMsg', event.data)
+    wx.event.emit('listenContactList', event.data)
+    // 收到会话列表更新通知，可通过遍历 event.data 获取会话列表数据并渲染到页面
+    // event.name - TIM.EVENT.CONVERSATION_LIST_UPDATED
+    // event.data - 存储 Conversation 对象的数组 - [Conversation]
+  })
+  $tim.on($$TIM.EVENT.MESSAGE_RECEIVED, (event) => {
+    console.log('TIM.EVENT.MESSAGE_RECEIVED==>', event.data)
+    var pages = getCurrentPages() //获取加载的页面
+    var currentPage = pages[pages.length - 1]
+    let receivedMsgs = event.data
+    if (currentPage.route === 'packageB/pages/chatting/chatting') {
+      wx.event.emit('listenReceivedMsg', event.data)
+    }
   })
 }
 

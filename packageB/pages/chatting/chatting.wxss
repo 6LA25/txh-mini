@@ -8,18 +8,88 @@
   display: flex;
   width: 100%;
 }
+
 .send-voice-btn {
   width: 40px;
 }
+
 .send-text-box {
   flex: 1;
   min-width: 0;
 }
+
 .send-btn {
   width: 60px;
 }
+
 /* 聊天信息展示 */
 .chat-list-box {
   border: 1px solid #eee;
   height: 100px;
+}
+
+/* 聊天记录展示区 */
+.chat-content {
+  padding: 20rpx 20rpx 60rpx 20rpx;
+}
+.load-more {
+  font-size: 20rpx;
+  color: #aaa;
+  text-align: center;
+  margin-bottom: 4rpx;
+}
+.message-item-box {
+  margin-bottom: 30rpx;
+}
+.message-item-box .msg-time {
+  color: #aaa;
+  font-size: 22rpx;
+  text-align: center;
+  margin-bottom: 8rpx;
+}
+.message-item-inner {
+  display: flex;
+  align-items: center;
+}
+
+.chat-head {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 12rpx;
+}
+
+.message-detail {
+  padding: 16rpx;
+  max-width: 70%;
+  word-break: break-all;
+  border-radius: 8rpx;
+}
+
+.message-item-inner {
+  display: flex;
+  align-items: center;
+}
+
+.message-item-inner.msg-in .chat-head {
+  margin-right: 8rpx;
+  order: 1;
+}
+
+.message-item-inner.msg-in .message-detail {
+  order: 2;
+  background: #f2f5f7;
+}
+
+.message-item-inner.msg-out {
+  justify-content: flex-end;
+}
+
+.message-item-inner.msg-out .chat-head {
+  margin-left: 8rpx;
+  order: 2;
+}
+
+.message-item-inner.msg-out .message-detail {
+  order: 1;
+  background: #cce2ff;
 }

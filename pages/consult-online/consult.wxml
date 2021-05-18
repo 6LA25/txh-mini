@@ -2,7 +2,7 @@
 <wxs module="dateFormat" src="../../filter/dateFormat.wxs"></wxs>
 <view class="consult-online-page">
   <view class="chat-user-list">
-    <view class="chat-item" wx:for="{{contactList}}" wx:key="conversationID">
+    <view class="chat-item" bindtap="handleJumpChatting"  data-chat="{{item}}" wx:for="{{contactList}}" wx:key="conversationID">
       <view class="head-box">
         <view class="unread-box" wx:if="{{item.unreadCount > 0}}">{{ item.unreadCount }}</view>
         <image class="head-img" src="https://wx.qlogo.cn/mmhead/Q3auHgzwzM6RjnYYXVNIU7LYGZ637YaJt3g31xWZUiaEZNI0wYTEVibw/0"></image>
