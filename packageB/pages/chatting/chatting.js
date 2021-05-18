@@ -169,7 +169,9 @@ Page({
       this.setData({
         contactMessages,
         toLast: `msg-item-${contactMessages.messageList.length - 1}`,
-        inputValue: ''
+        inputValue: '',
+        isInputAudio: false,
+        isInputText: false
       })
     }).catch(function (imError) {
       // 发送失败
@@ -216,7 +218,7 @@ Page({
   },
   bindBlurInput() {
     this.setData({
-      isInputText: false
+      isInputText: !!this.data.inputValue
     })
   },
   bindFocusInput() {

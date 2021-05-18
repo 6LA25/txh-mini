@@ -1,6 +1,6 @@
 <!-- pages/Secondary/pages/chatting/chatting.wxml -->
 <wxs module="dateFormat" src="../../../filter/dateFormat.wxs"></wxs>
-<scroll-view class='chat' id="chat" style="height:{{height}}px;" refresher-triggered="{{triggered}}" bindrefresherpulling="onPulling" bindrefresherrefresh="onRefresh" bindrefresherrestore="onRestore" bindrefresherabort="onAbort" refresher-enabled="{{true}}" refresher-threshold="{{20}}" scroll-y="{{true}}" scroll-into-view="{{toLast}}" scroll-with-animation>
+<scroll-view class='chat' id="chat" refresher-triggered="{{triggered}}" bindrefresherpulling="onPulling" bindrefresherrefresh="onRefresh" bindrefresherrestore="onRestore" bindrefresherabort="onAbort" refresher-enabled="{{true}}" refresher-threshold="{{20}}" scroll-y="{{true}}" scroll-into-view="{{toLast}}" scroll-with-animation>
   <view class="chat-content">
     <view class="load-more">下拉加载更多</view>
     <view class="message-item-box" id="msg-item-{{index}}" wx:for="{{contactMessages.messageList}}" wx:key="ID">
@@ -15,15 +15,17 @@
 <view class='chat-footer'>
   <view class="send-type-box">
     <view class='send-voice-btn' bindtap='handleToggleAudio'>
-      <view wx:if="{{isInputAudio}}">键盘</view>
-      <view wx:if="{{!isInputAudio}}">语音</view>
+      <image wx:if="{{isInputAudio}}" src="../../images/keyboard.jpg"></image>
+      <image wx:if="{{!isInputAudio}}" src="../../images/voice.jpg"></image>
     </view>
     <view class='send-text-box'>
-      <input wx:if="{{!isInputAudio}}" class='input' bindfocus="bindFocusInput" bindblur="bindBlurInput" bindinput="bindKeyInput" value="{{inputValue}}" />
+      <input cursor-spacing="{{50}}" wx:if="{{!isInputAudio}}" class='input' bindfocus="bindFocusInput" bindblur="bindBlurInput" bindinput="bindKeyInput" value="{{inputValue}}" />
       <view wx:if="{{isInputAudio}}" class="audio-ipt">按住说话</view>
     </view>
-    <view class='send-btn' wx:if="{{!isInputText}}" bindtap="handleSelectFile">+</view>
-    <view class='send-btn' wx:if="{{isInputText}}" bindtap='bindConfirm'>发送</view>
+    <view class='send-btn'>
+      <image wx:if="{{!isInputText}}" bindtap="handleSelectFile" src="../../images/add.jpg"></image>
+      <view class="btn-box" wx:if="{{isInputText}}" bindtap='bindConfirm'>发送</view>
+    </view>
   </view>
   <view class="select-file-box" wx:if="{{selectFileVisible}}">
     <view>相册</view>
