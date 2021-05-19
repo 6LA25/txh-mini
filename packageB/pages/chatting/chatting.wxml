@@ -1,6 +1,6 @@
 <!-- pages/Secondary/pages/chatting/chatting.wxml -->
 <wxs module="dateFormat" src="../../../filter/dateFormat.wxs"></wxs>
-<scroll-view class='chat' id="chat" refresher-triggered="{{triggered}}" bindrefresherpulling="onPulling" bindrefresherrefresh="onRefresh" bindrefresherrestore="onRestore" bindrefresherabort="onAbort" refresher-enabled="{{true}}" refresher-threshold="{{20}}" scroll-y="{{true}}" scroll-into-view="{{toLast}}" scroll-with-animation>
+<scroll-view class='chat' id="chat" refresher-triggered="{{triggered}}" bindrefresherpulling="onPulling" bindrefresherrefresh="onRefresh" bindrefresherrestore="onRestore" bindrefresherabort="onAbort" refresher-enabled="{{true}}" refresher-threshold="{{20}}" scroll-y="{{true}}" scroll-into-view="{{toLast}}">
   <view class="chat-content">
     <view class="load-more">下拉加载更多</view>
     <view class="message-item-box" id="msg-item-{{index}}" wx:for="{{contactMessages.messageList}}" wx:key="ID">
@@ -10,6 +10,10 @@
         <view class="message-detail">
           <view class="msg-type-text" wx:if="{{item.type === 'TIMTextElem'}}">{{item.payload.text}}</view>
           <image class="msg-type-image" style="width:{{item.payload.imageInfoArray[1].width * 2}}rpx;" mode="widthFix" wx:if="{{item.type === 'TIMImageElem'}}" src="{{item.payload.imageInfoArray[1].imageUrl}}"></image>
+          <view class="msg-type-voice" wx:if="{{item.type === 'TIMSoundElem'}}">
+            <image mode="widthFix" class="sound-img" src="../../images/sound-{{item.flow}}.jpg"></image>
+            <view class="voice-duration-text">{{item.payload.second}}"</view>
+          </view>
         </view>
       </view>
     </view>
@@ -23,7 +27,7 @@
     </view>
     <view class='send-text-box'>
       <input cursor-spacing="{{50}}" wx:if="{{!isInputAudio}}" class='input' bindfocus="bindFocusInput" bindblur="bindBlurInput" bindinput="bindKeyInput" value="{{inputValue}}" />
-      <view wx:if="{{isInputAudio}}" class="audio-ipt">按住说话</view>
+      <view wx:if="{{isInputAudio}}" catch:touchmove="handleTouchMove" catch:longpress="handleStartRecordVoice" bind:touchend="handleEndRecordVoice" class="audio-ipt">{{voiceStatusStr}}</view>
     </view>
     <view class='send-btn'>
       <image wx:if="{{!isInputText}}" bindtap="handleSelectFile" src="../../images/add.jpg"></image>
@@ -31,9 +35,14 @@
     </view>
   </view>
   <view class="select-file-box" wx:if="{{selectFileVisible}}">
-    <view bindtap="handleSendImg">相册</view>
-    <view>拍摄</view>
-    <view>录视频</view>
+    <view class="file-type-box n1">
+      <image class="file-icon-img" bindtap="handleSendImg" mode="widthFix" src="../../images/img-icon.jpg"></image>
+      <view>照片</view>
+    </view>
+    <view class="file-type-box">
+      <image class="file-icon-img" bindtap="handleSendVideo" mode="widthFix" src="../../images/video-icon.jpg"></image>
+      <view>视频</view>
+    </view>
   </view>
   <view class="bottom-box"></view>
 </view>

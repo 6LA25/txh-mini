@@ -85,9 +85,21 @@ page {
 
 .select-file-box {
   display: flex;
-  justify-content: space-between;
-  padding: 30rpx 100rpx;
+  justify-content: center;
   background: #fff;
+  padding: 20rpx 80rpx;
+}
+.file-type-box {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.file-type-box .file-icon-img {
+  width: 160rpx;
+  margin-bottom: 20rpx;
 }
 
 /* 聊天信息展示 */
@@ -132,6 +144,7 @@ page {
 
 .message-detail {
   max-width: 70%;
+  color: #fff;
 }
 
 .message-item-inner {
@@ -153,12 +166,15 @@ page {
   word-break: break-all;
   border-radius: 8rpx;
 }
+
 .msg-type-image {
   max-width: 400rpx;
   border-radius: 8rpx;
 }
-.message-item-inner.msg-in .msg-type-text {
-  background: #f2f5f7;
+
+.message-item-inner.msg-in .msg-type-text,
+.message-item-inner.msg-in .msg-type-voice {
+  background: #767C8E;
 }
 
 .message-item-inner.msg-out {
@@ -174,7 +190,38 @@ page {
   order: 1;
 }
 
-.message-item-inner.msg-out .msg-type-text {
-  background: #cce2ff;
+.message-item-inner.msg-out .msg-type-text,
+.message-item-inner.msg-out .msg-type-voice {
+  background: #E32835;
+}
 
+.msg-type-voice {
+  display: flex;
+  align-items: center;
+  width: 200rpx;
+  height: 76rpx;
+  border-radius: 8rpx;
+  color: #fff;
+  padding: 0 20rpx;
+}
+.msg-type-voice {
+  display: flex;
+  align-items: center;
+}
+.msg-type-voice .sound-img {
+  width: 30rpx;
+}
+.message-item-inner.msg-out .sound-img {
+  order: 2;
+  margin-left: 8rpx;
+}
+.message-item-inner.msg-out .voice-duration-text {
+  order: 1;
+}
+.message-item-inner.msg-in .sound-img {
+  order: 1;
+  margin-right: 8rpx;
+}
+.message-item-inner.msg-in .voice-duration-text {
+  order: 2;
 }

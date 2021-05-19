@@ -3,6 +3,7 @@ const app = getApp()
 import { Fetch } from '../../../utils/http'
 import { getUserDetail, fetchTicket } from '../../../utils/util'
 import URL from '../../../utils/url'
+const recorderManager = wx.getRecorderManager()
 Page({
 
   /**
@@ -20,7 +21,10 @@ Page({
     toLast: '',
     triggered: false,
     selectFileVisible: false,
-    isInputAudio: false
+    isInputAudio: false,
+    voiceStatusStr: '按住 说话',
+    canSend: false,
+    startPoint: null
   },
 
   /**
@@ -145,6 +149,14 @@ Page({
       inputValue: e.detail.value
     })
   },
+  updateSendMsgToList(imResponse) {
+    let contactMessages = this.data.contactMessages
+    contactMessages.messageList.push(imResponse.data.message)
+    this.setData({
+      contactMessages,
+      toLast: `msg-item-${contactMessages.messageList.length - 1}`
+    })
+  },
   // 发送普通文本消息
   handleSendText(e) {
     const { $tim } = app.globalData
@@ -164,11 +176,8 @@ Page({
     promise.then((imResponse) => {
       // 发送成功
       console.log(imResponse);
-      let contactMessages = this.data.contactMessages
-      contactMessages.messageList.push(imResponse.data.message)
+      this.updateSendMsgToList(imResponse)
       this.setData({
-        contactMessages,
-        toLast: `msg-item-${contactMessages.messageList.length - 1}`,
         inputValue: '',
         isInputAudio: false,
         isInputText: false
@@ -183,7 +192,7 @@ Page({
     const { $tim } = app.globalData
     const { $$TIM } = app.globalData
     wx.chooseImage({
-      sourceType: ['album'], // 从相册选择
+      sourceType: ['album', 'camera'], // 从相册选择
       count: 1, // 只选一张，目前 SDK 不支持一次发送多张图片
       success: (res) => {
         // 2. 创建消息实例，接口返回的实例可以上屏
@@ -198,11 +207,107 @@ Page({
         promise.then((imResponse) => {
           // 发送成功
           console.log(imResponse);
+          this.updateSendMsgToList(imResponse)
+          this.setData({
+            inputValue: '',
+            isInputAudio: false,
+            isInputText: false,
+            selectFileVisible: false
+          })
         }).catch(function (imError) {
           // 发送失败
           console.warn('sendMessage error:', imError);
         });
       }
+    })
+  },
+  // 发送视频
+  handleSendVideo() {
+    wx.chooseVideo({
+      sourceType: ['album','camera'],
+      maxDuration: 60,
+      camera: 'back',
+      success(res) {
+        console.log(res.tempFilePath)
+      }
+    })
+  },
+  handleTouchMove(e) {
+    //计算距离，当滑动的垂直距离大于25时，则取消发送语音
+    if (Math.abs(e.touches[e.touches.length - 1].clientY - this.data.startPoint.clientY) > 25) {
+      this.setData({
+        voiceStatusStr: '按住 说话',
+        canSend: false//设置为不发送语音
+      })
+    }
+  },
+  handleStartRecordVoice(e) {
+    console.log('e.touches[0]', e.touches[0])
+    this.setData({
+      canSend: true,
+      startPoint: e.touches[0],//记录触摸点的坐标信息
+    })
+    const options = {
+      duration: 60 * 1000,
+      sampleRate: 44100,
+      numberOfChannels: 1,
+      encodeBitRate: 192000,
+      format: 'aac',
+      frameSize: 50
+    }
+    recorderManager.start(options)
+    this.setData({
+      voiceStatusStr: '松开 结束'
+    })
+  },
+  handleEndRecordVoice() {
+    recorderManager.stop();
+    const { canSend } = this.data
+    recorderManager.onStop((res) => {
+      console.log('recorder stop', res)
+      const { tempFilePath, duration } = res
+      if (canSend && duration > 2000) {
+        const { $tim, $$TIM } = app.globalData
+        const message = $tim.createAudioMessage({
+          to: this.data.conversionOptions.userID,
+          conversationType: $$TIM.TYPES.CONV_C2C,
+          payload: {
+            file: res
+          }
+        });
+        // 5. 发送消息
+        let promise = $tim.sendMessage(message);
+        promise.then((imResponse) => {
+          // 发送成功
+          console.log('voice=>', imResponse);
+          this.updateSendMsgToList(imResponse)
+          this.setData({
+            voiceStatusStr: '按住 说话'
+          })
+        }).catch(function (imError) {
+          // 发送失败
+          console.warn('sendMessage error:', imError);
+        });
+      } else if (!canSend) {
+        this.setData({
+          voiceStatusStr: '按住 说话'
+        })
+        wx.showToast({
+          title: '取消发送',
+          icon: 'none',
+          duration: 1000
+        })
+      } else if (duration < 2000) {
+        this.setData({
+          voiceStatusStr: '按住 说话'
+        })
+        wx.showToast({
+          title: '录音时间太短，请长按录音',
+          icon: 'none',
+          duration: 1000
+        })
+      }
+      // console.log('tempFilePath=>', tempFilePath)
     })
   },
   // 打开某个会话时，第一次拉取消息列表
