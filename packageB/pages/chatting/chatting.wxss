@@ -74,6 +74,7 @@ page {
   justify-content: center;
   width: 80rpx;
 }
+
 .send-btn .btn-box {
   background: #E32835;
   color: #fff;
@@ -130,10 +131,7 @@ page {
 }
 
 .message-detail {
-  padding: 16rpx;
   max-width: 70%;
-  word-break: break-all;
-  border-radius: 8rpx;
 }
 
 .message-item-inner {
@@ -148,6 +146,18 @@ page {
 
 .message-item-inner.msg-in .message-detail {
   order: 2;
+}
+
+.msg-type-text {
+  padding: 16rpx;
+  word-break: break-all;
+  border-radius: 8rpx;
+}
+.msg-type-image {
+  max-width: 400rpx;
+  border-radius: 8rpx;
+}
+.message-item-inner.msg-in .msg-type-text {
   background: #f2f5f7;
 }
 
@@ -162,5 +172,9 @@ page {
 
 .message-item-inner.msg-out .message-detail {
   order: 1;
+}
+
+.message-item-inner.msg-out .msg-type-text {
   background: #cce2ff;
+
 }

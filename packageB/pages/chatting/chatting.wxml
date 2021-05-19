@@ -7,7 +7,10 @@
       <view class="msg-time">{{dateFormat.getChatDate(item.time)}}</view>
       <view class="message-item-inner msg-{{item.flow}}">
         <image class="chat-head" src="https://wx.qlogo.cn/mmhead/Q3auHgzwzM6RjnYYXVNIU7LYGZ637YaJt3g31xWZUiaEZNI0wYTEVibw/0"></image>
-        <view class="message-detail">{{item.payload.text}}</view>
+        <view class="message-detail">
+          <view class="msg-type-text" wx:if="{{item.type === 'TIMTextElem'}}">{{item.payload.text}}</view>
+          <image class="msg-type-image" style="width:{{item.payload.imageInfoArray[1].width * 2}}rpx;" mode="widthFix" wx:if="{{item.type === 'TIMImageElem'}}" src="{{item.payload.imageInfoArray[1].imageUrl}}"></image>
+        </view>
       </view>
     </view>
   </view>
@@ -24,11 +27,11 @@
     </view>
     <view class='send-btn'>
       <image wx:if="{{!isInputText}}" bindtap="handleSelectFile" src="../../images/add.jpg"></image>
-      <view class="btn-box" wx:if="{{isInputText}}" bindtap='bindConfirm'>发送</view>
+      <view class="btn-box" wx:if="{{isInputText}}" bindtap='handleSendText'>发送</view>
     </view>
   </view>
   <view class="select-file-box" wx:if="{{selectFileVisible}}">
-    <view>相册</view>
+    <view bindtap="handleSendImg">相册</view>
     <view>拍摄</view>
     <view>录视频</view>
   </view>

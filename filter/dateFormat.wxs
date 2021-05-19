@@ -29,8 +29,8 @@ var getChatDate = function (time) {
   var chatDay = getDate(val).getDate()
   var chatHour = getDate(val).getHours() >= 10 ? getDate(val).getHours() : '0' + getDate(val).getHours()
   var chatMin = getDate(val).getMinutes() >= 10 ? getDate(val).getMinutes() : '0' + getDate(val).getMinutes()
-  console.log('current==>', currentYear, currentDay, currentMonth)
-  console.log('chat==>', chatYear, chatMonth, chatDay, chatHour, chatMin)
+  // console.log('current==>', currentYear, currentDay, currentMonth)
+  // console.log('chat==>', chatYear, chatMonth, chatDay, chatHour, chatMin)
   // 和当前时间在同一天内
   if (currentYear === chatYear && currentDay === chatDay && currentMonth === chatMonth && currentDate >= chatDate) {
     return chatHour + ':' + chatMin

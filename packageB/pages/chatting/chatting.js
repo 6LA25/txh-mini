@@ -118,7 +118,7 @@ Page({
     if (this.data.contactMessages.isCompleted) {
       wx.showToast({
         title: '没有更多历史记录了',
-        icon:'none'
+        icon: 'none'
       })
       this.setData({
         triggered: false
@@ -146,7 +146,7 @@ Page({
     })
   },
   // 发送普通文本消息
-  bindConfirm(e) {
+  handleSendText(e) {
     const { $tim } = app.globalData
     const { $$TIM } = app.globalData
     var content = this.data.inputValue
@@ -178,6 +178,33 @@ Page({
       console.warn('sendMessage error:', imError);
     });
   },
+  // 发送图片
+  handleSendImg() {
+    const { $tim } = app.globalData
+    const { $$TIM } = app.globalData
+    wx.chooseImage({
+      sourceType: ['album'], // 从相册选择
+      count: 1, // 只选一张，目前 SDK 不支持一次发送多张图片
+      success: (res) => {
+        // 2. 创建消息实例，接口返回的实例可以上屏
+        let message = $tim.createImageMessage({
+          to: this.data.conversionOptions.userID,
+          conversationType: this.data.conversionOptions.conversationType,
+          payload: { file: res },
+          onProgress: (event) => { console.log('file uploading:', event) }
+        });
+        // 3. 发送图片
+        let promise = $tim.sendMessage(message);
+        promise.then((imResponse) => {
+          // 发送成功
+          console.log(imResponse);
+        }).catch(function (imError) {
+          // 发送失败
+          console.warn('sendMessage error:', imError);
+        });
+      }
+    })
+  },
   // 打开某个会话时，第一次拉取消息列表
   loadMessages(options) {
     this.setData({
@@ -193,7 +220,7 @@ Page({
       count: this.data.count
     });
     promise.then((imResponse) => {
-      console.log('imResponse', imResponse.data)
+      console.log('loadMessages =>', imResponse.data)
       let contactMessages = {
         nextReqMessageID: imResponse.data.nextReqMessageID,
         isCompleted: imResponse.data.isCompleted,
