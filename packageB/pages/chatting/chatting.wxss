@@ -172,6 +172,13 @@ page {
   border-radius: 8rpx;
 }
 
+.msg-type-video {
+  width: 400rpx;
+}
+.msg-type-video  .msg-video{
+  width: 100%;
+}
+
 .message-item-inner.msg-in .msg-type-text,
 .message-item-inner.msg-in .msg-type-voice {
   background: #767C8E;

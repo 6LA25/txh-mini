@@ -10,9 +10,13 @@
         <view class="message-detail">
           <view class="msg-type-text" wx:if="{{item.type === 'TIMTextElem'}}">{{item.payload.text}}</view>
           <image class="msg-type-image" style="width:{{item.payload.imageInfoArray[1].width * 2}}rpx;" mode="widthFix" wx:if="{{item.type === 'TIMImageElem'}}" src="{{item.payload.imageInfoArray[1].imageUrl}}"></image>
-          <view class="msg-type-voice" wx:if="{{item.type === 'TIMSoundElem'}}">
+          <view class="msg-type-voice" data-voice="{{item}}" wx:if="{{item.type === 'TIMSoundElem'}}" bindtap="handlePlayVoice">
             <image mode="widthFix" class="sound-img" src="../../images/sound-{{item.flow}}.jpg"></image>
             <view class="voice-duration-text">{{item.payload.second}}"</view>
+            <!-- <view>{{item.playing}}</view> -->
+          </view>
+          <view class="msg-type-video" wx:if="{{item.type === 'TIMVideoFileElem'}}">
+            <video class="msg-video" src="{{item.payload.videoUrl}}"></video>
           </view>
         </view>
       </view>

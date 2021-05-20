@@ -4,6 +4,7 @@ import { Fetch } from '../../../utils/http'
 import { getUserDetail, fetchTicket } from '../../../utils/util'
 import URL from '../../../utils/url'
 const recorderManager = wx.getRecorderManager()
+const innerAudioContext = wx.createInnerAudioContext()
 Page({
 
   /**
@@ -92,6 +93,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
+    innerAudioContext.destroy()
     wx.event.off('listenReceivedMsg')
   },
 
@@ -223,14 +225,76 @@ Page({
   },
   // 发送视频
   handleSendVideo() {
+    const { $tim, $$TIM } = app.globalData
     wx.chooseVideo({
-      sourceType: ['album','camera'],
+      sourceType: ['album', 'camera'],
       maxDuration: 60,
       camera: 'back',
-      success(res) {
+      success: (res) => {
         console.log(res.tempFilePath)
+        // 2. 创建消息实例，接口返回的实例可以上屏
+        let message = $tim.createVideoMessage({
+          to: this.data.conversionOptions.userID,
+          conversationType: this.data.conversionOptions.conversationType,
+          payload: {
+            file: res
+          },
+          onProgress: function (event) { console.log('video uploading:', event) }
+        })
+        // 3. 发送消息
+        let promise = $tim.sendMessage(message);
+        promise.then((imResponse) => {
+          // 发送成功
+          this.updateSendMsgToList(imResponse)
+          this.setData({
+            inputValue: '',
+            isInputAudio: false,
+            isInputText: false,
+            selectFileVisible: false
+          })
+        }).catch(function (imError) {
+          // 发送失败
+          console.warn('sendMessage error:', imError);
+        });
       }
     })
+  },
+  handlePlayVoice(e) {
+    const { voice } = e.currentTarget.dataset
+    let { contactMessages } = this.data
+    if (!voice.playing) {
+      contactMessages.messageList.forEach(item => {
+        if (item.ID === voice.ID) {
+          item.playing = true
+        } else {
+          item.playing = false
+        }
+      })
+      innerAudioContext.src = voice.payload.remoteAudioUrl
+      innerAudioContext.play()
+      innerAudioContext.onEnded((res) => {
+        console.log('end=>', res)
+        contactMessages.messageList.forEach(item => {
+          if (item.ID === voice.ID) {
+            item.playing = false
+          }
+        })
+        this.setData({
+          contactMessages
+        })
+      })
+    } else {
+      contactMessages.messageList.forEach(item => {
+        if (item.ID === voice.ID) {
+          item.playing = false
+        }
+      })
+      innerAudioContext.stop()
+    }
+    this.setData({
+      contactMessages
+    })
+
   },
   handleTouchMove(e) {
     //计算距离，当滑动的垂直距离大于25时，则取消发送语音
