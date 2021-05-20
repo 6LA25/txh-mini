@@ -11,7 +11,8 @@
           <view class="msg-type-text" wx:if="{{item.type === 'TIMTextElem'}}">{{item.payload.text}}</view>
           <image class="msg-type-image" style="width:{{item.payload.imageInfoArray[1].width * 2}}rpx;" mode="widthFix" wx:if="{{item.type === 'TIMImageElem'}}" src="{{item.payload.imageInfoArray[1].imageUrl}}"></image>
           <view class="msg-type-voice" data-voice="{{item}}" wx:if="{{item.type === 'TIMSoundElem'}}" bindtap="handlePlayVoice">
-            <image mode="widthFix" class="sound-img" src="../../images/sound-{{item.flow}}.jpg"></image>
+            <image mode="widthFix" wx:if="{{!item.playing}}" class="sound-img" src="../../images/sound-{{item.flow}}.jpg"></image>
+            <image mode="widthFix" wx:if="{{item.playing}}" class="sound-img" src="../../images/sound-playing-{{item.flow}}.gif"></image>
             <view class="voice-duration-text">{{item.payload.second}}"</view>
             <!-- <view>{{item.playing}}</view> -->
           </view>

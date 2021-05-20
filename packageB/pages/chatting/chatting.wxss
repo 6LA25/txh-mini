@@ -217,6 +217,7 @@ page {
 }
 .msg-type-voice .sound-img {
   width: 30rpx;
+  height: 36rpx;
 }
 .message-item-inner.msg-out .sound-img {
   order: 2;
