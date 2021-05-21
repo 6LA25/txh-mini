@@ -233,3 +233,14 @@ page {
 .message-item-inner.msg-in .voice-duration-text {
   order: 2;
 }
+.message-item-inner .read-status {
+  align-self: flex-end;
+  margin-bottom: 4rpx;
+}
+.message-item-inner.msg-out .read-status {
+  margin-right: 8rpx;
+  font-size: 22rpx;
+}
+.unreaded {
+  color: #E32835;
+}

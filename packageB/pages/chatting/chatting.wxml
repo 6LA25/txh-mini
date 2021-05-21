@@ -6,6 +6,7 @@
     <view class="message-item-box" id="msg-item-{{index}}" wx:for="{{contactMessages.messageList}}" wx:key="ID">
       <view class="msg-time">{{dateFormat.getChatDate(item.time)}}</view>
       <view class="message-item-inner msg-{{item.flow}}">
+        <view class="read-status{{!item.isPeerRead ? ' unreaded' : ''}}" wx:if="{{item.flow === 'out'}}">{{item.isPeerRead ? '已读' : '未读'}}</view>
         <image class="chat-head" src="https://wx.qlogo.cn/mmhead/Q3auHgzwzM6RjnYYXVNIU7LYGZ637YaJt3g31xWZUiaEZNI0wYTEVibw/0"></image>
         <view class="message-detail">
           <view class="msg-type-text" wx:if="{{item.type === 'TIMTextElem'}}">{{item.payload.text}}</view>

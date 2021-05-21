@@ -158,12 +158,15 @@ const initRecentContactList = (app) => {
     wx.event.emit('listenContactList', conversationList)
   })
 }
+
 const listenTim = async (app) => {
   let { $tim, $$TIM } = app.globalData
   // 监听事件，例如：
   // if (app.globalData.isImLogin) {
   //   initRecentContactList(app)
   // }
+  var pages = getCurrentPages() //获取加载的页面
+  var currentPage = pages[pages.length - 1]
   $tim.on($$TIM.EVENT.SDK_READY, (event) => {
     console.log('eve', event)
     app.globalData.isImLogin = true
@@ -181,11 +184,17 @@ const listenTim = async (app) => {
   })
   $tim.on($$TIM.EVENT.MESSAGE_RECEIVED, (event) => {
     console.log('TIM.EVENT.MESSAGE_RECEIVED==>', event.data)
-    var pages = getCurrentPages() //获取加载的页面
-    var currentPage = pages[pages.length - 1]
-    let receivedMsgs = event.data
     if (currentPage.route === 'packageB/pages/chatting/chatting') {
       wx.event.emit('listenReceivedMsg', event.data)
+    }
+  })
+  $tim.on($$TIM.EVENT.MESSAGE_READ_BY_PEER, function (event) {
+    // SDK 收到对端已读消息的通知，即已读回执。使用前需要将 SDK 版本升级至 v2.7.0 或以上。仅支持单聊会话。
+    // event.name - TIM.EVENT.MESSAGE_READ_BY_PEER
+    // event.data - event.data - 存储 Message 对象的数组 - [Message] - 每个 Message 对象的 isPeerRead 属性值为 true
+    console.log('TIM.EVENT.MESSAGE_READ_BY_PEER==>', event.data)
+    if (currentPage.route === 'packageB/pages/chatting/chatting') {
+      wx.event.emit('listenMsgReaded', event.data)
     }
   })
 }

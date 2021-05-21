@@ -67,6 +67,20 @@ Page({
         contactMessages
       })
     })
+    // 监听聊天信息已读
+    wx.event.on('listenMsgReaded', (readedMsgs) => {
+      let { contactMessages } = this.data
+      readedMsgs.forEach(item => {
+        contactMessages.messageList.forEach(msg => {
+          if (item.ID === msg.ID) {
+            msg.isPeerRead = true
+          }
+        })
+      })
+      this.setData({
+        contactMessages
+      })
+    })
   },
 
   /**
@@ -95,6 +109,7 @@ Page({
   onUnload: function () {
     innerAudioContext.destroy()
     wx.event.off('listenReceivedMsg')
+    wx.event.off('listenMsgReaded')
   },
 
   /**
