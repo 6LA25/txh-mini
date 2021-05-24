@@ -5,17 +5,19 @@
     <view class="load-more">下拉加载更多</view>
     <view class="message-item-box" id="msg-item-{{index}}" wx:for="{{contactMessages.messageList}}" wx:key="ID">
       <view class="msg-time">{{dateFormat.getChatDate(item.time)}}</view>
-      <view class="message-item-inner msg-{{item.flow}}">
+      <view class="msg-revoke-box" wx:if="{{item.isRevoked}}">
+        - {{item.flow === 'out' ? '你' : (item.from)}}撤回了一条消息 -
+      </view>
+      <view wx:if="{{!item.isRevoked}}" class="message-item-inner msg-{{item.flow}}">
         <view class="read-status{{!item.isPeerRead ? ' unreaded' : ''}}" wx:if="{{item.flow === 'out'}}">{{item.isPeerRead ? '已读' : '未读'}}</view>
         <image class="chat-head" src="https://wx.qlogo.cn/mmhead/Q3auHgzwzM6RjnYYXVNIU7LYGZ637YaJt3g31xWZUiaEZNI0wYTEVibw/0"></image>
-        <view class="message-detail">
+        <view class="message-detail" data-message="{{item}}" catch:longpress="handleRevokeMsg">
           <view class="msg-type-text" wx:if="{{item.type === 'TIMTextElem'}}">{{item.payload.text}}</view>
           <image class="msg-type-image" style="width:{{item.payload.imageInfoArray[1].width * 2}}rpx;" mode="widthFix" wx:if="{{item.type === 'TIMImageElem'}}" src="{{item.payload.imageInfoArray[1].imageUrl}}"></image>
           <view class="msg-type-voice" data-voice="{{item}}" wx:if="{{item.type === 'TIMSoundElem'}}" bindtap="handlePlayVoice">
             <image mode="widthFix" wx:if="{{!item.playing}}" class="sound-img" src="../../images/sound-{{item.flow}}.jpg"></image>
             <image mode="widthFix" wx:if="{{item.playing}}" class="sound-img" src="../../images/sound-playing-{{item.flow}}.gif"></image>
             <view class="voice-duration-text">{{item.payload.second}}"</view>
-            <!-- <view>{{item.playing}}</view> -->
           </view>
           <view class="msg-type-video" wx:if="{{item.type === 'TIMVideoFileElem'}}">
             <video class="msg-video" src="{{item.payload.videoUrl}}"></video>

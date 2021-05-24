@@ -130,7 +130,12 @@ page {
   text-align: center;
   margin-bottom: 8rpx;
 }
-
+.msg-revoke-box {
+  margin-top: 10rpx;
+  color: #aaa;
+  font-size: 24rpx;
+  text-align: center;
+}
 .message-item-inner {
   display: flex;
   align-items: center;
@@ -211,10 +216,7 @@ page {
   color: #fff;
   padding: 0 20rpx;
 }
-.msg-type-voice {
-  display: flex;
-  align-items: center;
-}
+
 .msg-type-voice .sound-img {
   width: 30rpx;
   height: 36rpx;

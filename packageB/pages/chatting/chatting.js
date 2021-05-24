@@ -64,8 +64,10 @@ Page({
         contactMessages.messageList.push(currentChat)
       }
       this.setData({
-        contactMessages
+        contactMessages,
+        toLast: `msg-item-${contactMessages.messageList.length - 1}`
       })
+      this.makeMsgReaded(this.data.conversionOptions.conversationID)
     })
     // 监听聊天信息已读
     wx.event.on('listenMsgReaded', (readedMsgs) => {
@@ -74,6 +76,20 @@ Page({
         contactMessages.messageList.forEach(msg => {
           if (item.ID === msg.ID) {
             msg.isPeerRead = true
+          }
+        })
+      })
+      this.setData({
+        contactMessages
+      })
+    })
+    // 监听撤退后的信息
+    wx.event.on('listenMsgRevoked', (revokedMsg) => {
+      let { contactMessages } = this.data
+      revokedMsg.forEach(item => {
+        contactMessages.messageList.forEach(msg => {
+          if (item.ID === msg.ID) {
+            msg = item
           }
         })
       })
@@ -110,6 +126,7 @@ Page({
     innerAudioContext.destroy()
     wx.event.off('listenReceivedMsg')
     wx.event.off('listenMsgReaded')
+    wx.event.off('listenMsgRevoked')
   },
 
   /**
@@ -173,6 +190,16 @@ Page({
       contactMessages,
       toLast: `msg-item-${contactMessages.messageList.length - 1}`
     })
+  },
+  makeMsgReaded(conversationID) {
+    const { $tim } = app.globalData
+    let promise = $tim.setMessageRead({ conversationID });
+    promise.then(function (imResponse) {
+      // 已读上报成功，指定 ID 的会话的 unreadCount 属性值被置为0
+    }).catch(function (imError) {
+      // 已读上报失败
+      console.warn('setMessageRead error:', imError);
+    });
   },
   // 发送普通文本消息
   handleSendText(e) {
@@ -337,6 +364,51 @@ Page({
     recorderManager.start(options)
     this.setData({
       voiceStatusStr: '松开 结束'
+    })
+  },
+  handleRevokeMsg(e) {
+    let now = new Date()
+    const message = e.currentTarget.dataset.message
+    if (parseInt(now.getTime() / 1000) - message.time > 2 * 60 || message.flow === 'in') {
+      return
+    }
+    const { $tim, $$TIM } = app.globalData
+    console.log('message', message)
+    let _msg = this.data.contactMessages.messageList.find(item => {
+      return item.ID === message.ID
+    })
+    wx.showModal({
+      title: '提示',
+      content: '是否撤回该条消息？',
+      success:(res) => {
+        if (res.confirm) {
+          console.log('用户点击确定')
+          let promise = $tim.revokeMessage(_msg);
+          promise.then((imResponse) => {
+            // 消息撤回成功
+            wx.showToast({
+              title: '消息撤回成功',
+              icon: 'none',
+              duration: 1000
+            })
+            console.log('消息撤回成功 imResponse=>', imResponse.data)
+            let { contactMessages } = this.data
+            contactMessages.messageList.forEach(msg => {
+              if (imResponse.data.ID === msg.ID) {
+                msg = imResponse.data
+              }
+            })
+            this.setData({
+              contactMessages
+            })
+          }).catch(function (imError) {
+            // 消息撤回失败
+            console.warn('revokeMessage error:', imError);
+          });
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
     })
   },
   handleEndRecordVoice() {
