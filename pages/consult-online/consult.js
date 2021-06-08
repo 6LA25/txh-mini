@@ -94,5 +94,10 @@ Page({
     wx.navigateTo({
       url: `/packageB/pages/chatting/chatting?conversationID=${chat.conversationID}&userID=${chat.userProfile.userID}&conversationType=${chat.type}`
     })
+  },
+  handleJumpSysMsg() {
+    wx.navigateTo({
+      url: '../Secondary/pages/notices/notices'
+    })
   }
 })

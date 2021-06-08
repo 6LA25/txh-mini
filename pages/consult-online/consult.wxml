@@ -2,6 +2,32 @@
 <wxs module="dateFormat" src="../../filter/dateFormat.wxs"></wxs>
 <view class="consult-online-page">
   <view class="chat-user-list">
+    <view class="chat-item">
+      <view class="head-box">
+        <image class="head-img" src="../../image/zixun@2x.png"></image>
+      </view>
+      <view class="content-box">
+        <view class="title-box">
+          <view class="user-name">最新咨询</view>
+          <view class="time">12:00</view>
+        </view>
+        <view class="recent-msg-box">x x x</view>
+      </view>
+    </view>
+    <view class="chat-item" bindtap="handleJumpSysMsg">
+      <view class="head-box">
+        <image class="head-img" src="../../image/xiaoxi@2x.png"></image>
+      </view>
+      <view class="content-box">
+        <view class="title-box">
+          <view class="user-name">系统消息</view>
+          <view class="time">12:00</view>
+        </view>
+        <view class="recent-msg-box">x x x</view>
+      </view>
+    </view>
+  </view>
+  <view class="chat-user-list">
     <view class="chat-item" bindtap="handleJumpChatting"  data-chat="{{item}}" wx:for="{{contactList}}" wx:key="conversationID">
       <view class="head-box">
         <view class="unread-box" wx:if="{{item.unreadCount > 0}}">{{ item.unreadCount }}</view>

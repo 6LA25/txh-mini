@@ -42,7 +42,7 @@
 .head-img {
   width: 88rpx;
   height: 88rpx;
-  border-radius: 44rpx;
+  border-radius: 12rpx;
 }
 
 .content-box {
