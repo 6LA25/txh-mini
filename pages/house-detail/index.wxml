@@ -1,11 +1,19 @@
 <wxs module="dateFormat" src="../../filter/dateFormat.wxs"></wxs>
 <wxs module="fn" src="../../filter/priceShow.wxs"></wxs>
-<view class="house-detail-page" wx:if="{{houseDetail}}">
+<view class="house-detail-page{{fixTabVisible ?' hasfixTab' : ''}}" wx:if="{{pageVisible}}">
+  <view class="fix-tabs-box" wx:if="{{fixTabVisible}}">
+    <view wx:for="{{fixViews}}" bindtap="handleJumpPoint" data-id="{{item.viewId}}" wx:key="viewId" class="fix-tab-item">
+      {{item.text}}
+      <view wx:if="{{activeViewId === item.viewId}}" class="active"></view>
+    </view>
+  </view>
   <toast id='toast'></toast>
-  <scroll-view scroll-y="true" style="height: 100%;">
-    <share-box sysinfo="{{sysUserInfo}}" user-info="{{userInfo}}" house="{{houseDetail}}" bindmyevent="onMyEvent" bindmydialog="onMyDialog"></share-box>
-    <view class="swiper-container" id="swiper_container" catchtap="handlePreviewImg">
-      <my-swiper dots-bottom="{{60}}" height="{{500}}" is-click-jump="{{false}}" img-list="{{houseDetail.bannerList}}"></my-swiper>
+  <scroll-view enhanced="true" bindscroll="handleScrollView" enable-back-to-top="true" scroll-with-animation="true" scroll-y="true" style="height: 100%;" scroll-into-view="{{viewId}}">
+    <share-box sysinfo="{{sysUserInfo}}" user-info="{{userInfo}}" house="{{houseDetail}}" bindmyevent="onMyEvent"
+      bindmydialog="onMyDialog"></share-box>
+    <view class="swiper-container" id="detail" catchtap="handlePreviewImg">
+      <my-swiper dots-bottom="{{60}}" height="{{500}}" is-click-jump="{{false}}" img-list="{{houseDetail.bannerList}}">
+      </my-swiper>
       <view class="banner-num-box">共{{houseDetail.pictureNumber}}张</view>
     </view>
     <view class="house-detail-content-box">
@@ -98,8 +106,18 @@
           </view>
         </view>
         <view class="divide-box"></view>
+        <!-- 热门活动 -->
+        <view class="hot-activity-box" id="hot">
+          <view class="title-box">热门活动</view>
+          <view class="hot-activity-container">
+            <image class="act-item" src="https://f.anxuanhouse.com/2020/08/05/45/8PX0UZBlGJnukSC2eccc.jpg"></image>
+            <image class="act-item" src="https://f.anxuanhouse.com/2020/08/05/45/8PX0UZBlGJnukSC2eccc.jpg"></image>
+          </view>
+        </view>
+        <view class="divide-box"></view>
         <!-- 推荐佣金 -->
-        <view class="commission-rule-box" wx:if="{{sysUserInfo && sysUserInfo.agentUser && !inviteMobile && houseDetail.distribution}}">
+        <view class="commission-rule-box"
+          wx:if="{{sysUserInfo && sysUserInfo.agentUser && !inviteMobile && houseDetail.distribution}}">
           <view class="rule-title-box" style="margin-bottom: 20rpx;">
             <view style="font-size: 40rpx;color: #333;font-weight: bold;">推荐佣金</view>
             <view class="txt1" style="color: #727483;font-size: 28rpx;">结佣以推荐时的佣金方案为准</view>
@@ -111,13 +129,16 @@
             </view> -->
             <view class="commission-rule-detail-box_content">
               <view style="margin-bottom: 10rpx;">
-                自己推荐佣金 {{houseDetail.houseDistribution.type === 1 ? houseDetail.houseDistribution.level1 + '元/套' : '按百分比' + houseDetail.houseDistribution.level1 + '%'}}
+                自己推荐佣金 {{houseDetail.houseDistribution.type === 1 ? houseDetail.houseDistribution.level1 + '元/套' :
+                '按百分比' + houseDetail.houseDistribution.level1 + '%'}}
               </view>
               <view style="margin-bottom: 10rpx;">
-                二级经纪人推荐佣金 {{houseDetail.houseDistribution.type === 1 ? houseDetail.houseDistribution.level2 + '元/套' : '按百分比' + houseDetail.houseDistribution.level2 + '%'}}
+                二级经纪人推荐佣金 {{houseDetail.houseDistribution.type === 1 ? houseDetail.houseDistribution.level2 + '元/套' :
+                '按百分比' + houseDetail.houseDistribution.level2 + '%'}}
               </view>
               <view>
-                三级经纪人推荐佣金 {{houseDetail.houseDistribution.type === 1 ? houseDetail.houseDistribution.level3 + '元/套' : '按百分比' + houseDetail.houseDistribution.level3 + '%'}}
+                三级经纪人推荐佣金 {{houseDetail.houseDistribution.type === 1 ? houseDetail.houseDistribution.level3 + '元/套' :
+                '按百分比' + houseDetail.houseDistribution.level3 + '%'}}
               </view>
             </view>
           </view>
@@ -127,7 +148,8 @@
               <text>规则说明</text>
               <view class="rg-box" bindtap="handleToggleDesc">
                 <text>展开</text>
-                <image wx:if="{{!showDesc}}" class="arrow-icon" src="../../image/Housing_details_icon_arrow_down@3x.png"></image>
+                <image wx:if="{{!showDesc}}" class="arrow-icon"
+                  src="../../image/Housing_details_icon_arrow_down@3x.png"></image>
                 <image wx:else class="arrow-icon" src="../../image/Housing_details_icon_arrow_up@3x.png"></image>
               </view>
             </view>
@@ -144,7 +166,8 @@
               <view>10、本公司保留在法律规定的范围内对上述规则进行解释的权利，本公司有权根据实际情况对本公告内容进行修改；</view>
               <view>【温馨提示】</view>
               <view>1、推荐佣金或奖励经安选好房平台审核确认符合兑付条件后，推荐人须配合安选好房平台完成兑付工作，包括但不限于配合电话回访、上传个人资料（身份证/银行卡）等； </view>
-              <view>2、电话号码等联系方式信息变更须及时联系安选好房平台，若因电话号码等联系方式的问题（包括但不限于电话空号、关机、号码无效等原因）导致符合佣金或奖励兑付条件的，联系不上推荐人的，我司不承担任何责任；</view>
+              <view>2、电话号码等联系方式信息变更须及时联系安选好房平台，若因电话号码等联系方式的问题（包括但不限于电话空号、关机、号码无效等原因）导致符合佣金或奖励兑付条件的，联系不上推荐人的，我司不承担任何责任；
+              </view>
               <view>3、经纪人“推荐佣金奖励”应按国家税法的规定缴纳所得税，因而发放时我司拟以9%的比例，从应发放佣金或奖励中扣除；</view>
               <view>4、当您推荐的客户发生退房情况或当您的业绩匹配发生变化时，我司有权要求您无条件退还此前已支付给您的佣金或奖励，或者直接从应结算予您的佣金中予以扣除，请您理解和配合！</view>
             </view>
@@ -152,7 +175,7 @@
         </view>
         <view class="divide-box"></view>
         <!-- 户型介绍 -->
-        <view class="house-type-desc-box">
+        <view class="house-type-desc-box" id="huxing">
           <view class="title">
             <view class="lf">户型介绍({{houseApartments.length}})</view>
             <view class="more" bindtap="handleJumpHousetypes">
@@ -162,12 +185,14 @@
           </view>
           <scroll-view scroll-x="true" style="width: 100%">
             <view class="scroll-box">
-              <view class="house-type-item-box" data-index="{{index}}" data-id="{{item.id}}" bindtap="handlePreviewType" wx:for="{{houseApartments}}" wx:key="id">
+              <view class="house-type-item-box" data-index="{{index}}" data-id="{{item.id}}" bindtap="handlePreviewType"
+                wx:for="{{houseApartments}}" wx:key="id">
                 <view class="house-images-box">
                   <image src="{{item.imageList[0]}}"></image>
                   <!-- <view class="house-type-img-num-box">共{{item.imageList.length}}张</view> -->
                 </view>
-                <view class="house-type-detail-text" style="color: #333;font-size: 36rpx;font-weight: bold;margin: 14rpx 0 10rpx 0;">
+                <view class="house-type-detail-text"
+                  style="color: #333;font-size: 36rpx;font-weight: bold;margin: 14rpx 0 10rpx 0;">
                   {{item.name || '暂未提供'}}
                 </view>
                 <view class="house-type-detail-text" style="display: flex;font-size: 28rpx;margin-bottom: 4rpx;">
@@ -186,7 +211,7 @@
                   <text style="font-size: 36rpx;font-weight: bold;">{{item.cankaozongjia || '暂未提供'}}</text>
                   <text style="font-size: 24rpx;">万/套起</text>
                 </view>
-                
+
                 <!-- <view class="tags-box" style="height: 40rpx;">
                   <view class="tag-item" wx:for="{{item.tags}}">{{item}}</view>
                 </view> -->
@@ -195,7 +220,7 @@
           </scroll-view>
         </view>
         <!-- 楼盘动态 -->
-        <view class="houses-states" wx:if="{{totalDynamic > 0}}">
+        <view class="houses-states" wx:if="{{totalDynamic > 0}}" id="dongtai">
           <view class="title-box">
             <view class="title">楼盘动态({{totalDynamic}})</view>
             <view class="more" bindtap="handleJumpStates">
@@ -243,8 +268,51 @@
           </view>
         </view>
         <view class="divide-box"></view>
+        <!-- 咨询顾问 -->
+        <view class="consult-box" id="zixun">
+          <view class="title-box">
+            <view class="title">咨询顾问</view>
+            <view class="more" bindtap="handleJumpStates">
+              查看更多
+              <image class="more-icon" src="../../image/Housing_details_icon_moreblck_default@2x.png"></image>
+            </view>
+          </view>
+          <view class="consult-hint-box">
+            <view class="hint-item">
+              <image src="../../image/Housing_details_icon_zixun_default@2x.png"></image>
+              <text>免费咨询</text>
+            </view>
+            <view class="hint-item">
+              <image src="../../image/Housing_details_icon_yuyin_default@2x.png"></image>
+              <text>专业放心</text>
+            </view>
+          </view>
+          <view class="chat-user-item">
+            <image class="head" src="https://f.anxuanhouse.com/2020/08/05/45/8PX0UZBlGJnukSC2eccc.jpg"></image>
+            <view class="detail">
+              <text class="name">xxxx</text>
+              <text class="txt">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</text>
+            </view>
+            <view class="btns">
+              <image class="img" src="../../image/Housing_details_icon_wechat_default@2x.png"></image>
+              <image class="img" src="../../image/Housing_details_icon_iphone_default@2x.png"></image>
+            </view>
+          </view>
+          <view class="chat-user-item">
+            <image class="head" src="https://f.anxuanhouse.com/2020/08/05/45/8PX0UZBlGJnukSC2eccc.jpg"></image>
+            <view class="detail">
+              <text class="name">xxxx</text>
+              <text class="txt">xxxxx</text>
+            </view>
+            <view class="btns">
+              <image class="img" src="../../image/Housing_details_icon_wechat_default@2x.png"></image>
+              <image class="img" src="../../image/Housing_details_icon_iphone_default@2x.png"></image>
+            </view>
+          </view>
+        </view>
+        <view class="divide-box"></view>
         <!-- 亮点及周边 -->
-        <view class="zhoubian-liangdian-box">
+        <view id="zhoubian" class="zhoubian-liangdian-box">
           <view class="title">亮点及周边</view>
           <view class="zhoubian">{{houseDetail.lightspot || '暂无数据'}}</view>
           <view class="liangdian-list-box">
@@ -254,7 +322,9 @@
             </view>
           </view>
           <view class="map-box">
-            <map id="houseMap" bindtap="handleJumpLocationDetail" markers="{{markers}}" style="width: 100%; height: 348rpx;" latitude="{{latitude}}" longitude="{{longitude}}" show-location enable-zoom="{{false}}" enable-scroll="{{false}}"></map>
+            <map id="houseMap" bindtap="handleJumpLocationDetail" markers="{{markers}}"
+              style="width: 100%; height: 348rpx;" latitude="{{latitude}}" longitude="{{longitude}}" show-location
+              enable-zoom="{{false}}" enable-scroll="{{false}}"></map>
           </view>
           <view class="map-detail-box">
             <view class="map-detail-item">
@@ -280,11 +350,12 @@
         <!-- 附近楼盘 -->
         <view class="nearby-house-box">
           <view class="title">附近楼盘({{nearbyHouse.length}})</view>
-          <house-item has-auth="{{hasAuth}}" wx:for="{{nearbyHouse}}" house="{{item}}" wx:key="houseId" user-info="{{userInfo}}" bindmyevent="onMyEvent"></house-item>
+          <house-item has-auth="{{hasAuth}}" wx:for="{{nearbyHouse}}" house="{{item}}" wx:key="houseId"
+            user-info="{{userInfo}}" bindmyevent="onMyEvent"></house-item>
         </view>
         <view class="rule-box">
           <view class="inner">
-          免责条款：以上价格仅供参考，具体一房一价的信息以售楼处展示为准。本网显示房屋位置、交通、医疗、教育、商业等配套信息，来源于第三方网络数据，不作为要约，仅供参考，双方具体权利义务应以法律规定及买卖合同约定为准。
+            免责条款：以上价格仅供参考，具体一房一价的信息以售楼处展示为准。本网显示房屋位置、交通、医疗、教育、商业等配套信息，来源于第三方网络数据，不作为要约，仅供参考，双方具体权利义务应以法律规定及买卖合同约定为准。
             本平台对项目周边文化教育的介绍旨在提供相关信息，并不意味着信息发布方对就学安排作出承诺。相关教育资源就学信息存在调整的可能，应以政府教育主管部门及办学方颁布的政策规定为准。
           </view>
         </view>
@@ -295,6 +366,8 @@
     </view>
   </scroll-view>
   <operate-box sysinfo="{{sysUserInfo}}" user-info="{{userInfo}}" house="{{houseDetail}}"></operate-box>
-  <share-poster wx:if="{{showShareDialog}}" house-detail="{{houseDetail}}" bindmyCloseShare="handleToggleShareDialog"></share-poster>
-  <inform-dialog dialog-show="{{informDialogShow}}" inform-type="{{informType}}" house-id="{{houseId}}" bindmyCloseInformDialog="myCloseInformDialog" bindmyComfirmMobile="myComfirmMobile"></inform-dialog>
+  <share-poster wx:if="{{showShareDialog}}" house-detail="{{houseDetail}}" bindmyCloseShare="handleToggleShareDialog">
+  </share-poster>
+  <inform-dialog dialog-show="{{informDialogShow}}" inform-type="{{informType}}" house-id="{{houseId}}"
+    bindmyCloseInformDialog="myCloseInformDialog" bindmyComfirmMobile="myComfirmMobile"></inform-dialog>
 </view>

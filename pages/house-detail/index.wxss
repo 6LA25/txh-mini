@@ -1,6 +1,10 @@
 .house-detail-page {
   height: 100vh;
 }
+.house-detail-page.hasfixTab {
+  padding-top: 80rpx;
+}
+
 .swiper-container {
   position: relative;
 }
@@ -88,9 +92,11 @@
   background-image: linear-gradient(135deg, #FF906D 0%, #FB453F 100%);
   color: #fff;
 }
+
 .content-box .top-house-detail-box .tag-item:not(:last-child) {
   margin-right: 8rpx;
 }
+
 .content-box .top-house-detail-box .tag-item:not(:first-child) {
   background: #EFF1F5;
   color: #989DAB;
@@ -101,6 +107,7 @@
   margin-bottom: 20rpx;
   color: #e32835;
 }
+
 .house-price .house-price-item {
   display: flex;
   flex-direction: column;
@@ -111,6 +118,7 @@
   font-size: 32rpx;
   font-weight: bold;
 }
+
 .house-price .num .big {
   font-size: 40rpx;
 }
@@ -118,22 +126,27 @@
 .house-price .hint {
   font-size: 24rpx;
 }
+
 .broker-box-new {
   display: flex;
   margin-bottom: 24rpx;
 }
+
 .broker-box-new .broker-box-new-item {
   flex: 1;
-  color: rgba(51,51,51,1);
+  color: rgba(51, 51, 51, 1);
 }
+
 .broker-box-new .broker-box-new-item .label {
-  color: rgba(153,153,153,1);
+  color: rgba(153, 153, 153, 1);
   font-size: 30rpx;
   margin-right: 20rpx;
 }
+
 .broker-box-new .broker-box-new-item .wei {
   font-size: 24rpx;
 }
+
 .house-address {
   display: flex;
   align-items: center;
@@ -167,11 +180,13 @@
   display: flex;
   margin-bottom: 24rpx;
 }
+
 .main-house-type-box .hint {
   font-size: 30rpx;
   color: #999;
   margin-right: 20rpx;
 }
+
 .main-house-type-box .detail {
   color: #333;
   flex: 1;
@@ -194,17 +209,20 @@
   display: flex;
   padding: 32rpx;
 }
+
 .inform-box .inform-item {
   flex: 1;
   height: 190rpx;
   border-radius: 8rpx;
   color: #E32835;
 }
+
 .inform-box .inform-item.inform-lf {
   position: relative;
   background: rgb(254, 247, 246);
   padding: 28rpx;
 }
+
 .inform-box .inform-item.inform-lf .title {
   display: flex;
   align-items: center;
@@ -212,14 +230,17 @@
   margin-bottom: 8rpx;
   font-weight: 600;
 }
+
 .inform-box .inform-item.inform-lf .detail {
   font-size: 24rpx;
 }
+
 .inform-box .inform-item.inform-lf .title .more-img {
   width: 12rpx;
   height: 20rpx;
   margin-left: 12rpx;
 }
+
 .inform-box .inform-item.inform-lf .bg-img {
   position: absolute;
   width: 160rpx;
@@ -227,12 +248,14 @@
   top: 26rpx;
   right: 8rpx;
 }
+
 .inform-box .inform-item.inform-rg {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   flex: 1;
 }
+
 .inform-box .inform-item .inform-rg-item {
   display: flex;
   align-items: center;
@@ -242,24 +265,29 @@
   border-radius: 8rpx;
   font-size: 28rpx;
 }
+
 .inform-box .inform-item .inform-rg-item .icon-img {
   width: 36rpx;
   height: 32rpx;
   margin-right: 12rpx;
 }
+
 .inform-box .inform-item .inform-rg-item:first-child {
   margin-bottom: 14rpx;
 }
+
 .inform-box .inform-item:first-child {
   margin-right: 14rpx;
 }
+
 .user-circusee-box {
   position: relative;
-  display: flex; 
+  display: flex;
   align-items: center;
   background: #fff;
   padding: 24rpx 32rpx;
 }
+
 .user-circusee-box .line-box {
   position: absolute;
   left: 180rpx;
@@ -309,17 +337,41 @@
   background: #f7f8f8;
 }
 
+.hot-activity-box {
+  background: #fff;
+  padding: 24rpx 32rpx;
+}
+
+.hot-activity-box .title-box {
+  font-size: 40rpx;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+}
+
+.hot-activity-box .hot-activity-container .act-item {
+  width: 100%;
+  height: 176rpx;
+}
+
+.hot-activity-box .hot-activity-container .act-item:not(:last-child) {
+  margin-bottom: 10rpx;
+}
+
 .commission-rule-box {
   background: #fff;
   padding: 32rpx;
 }
+
 .commission-rule-box .rule-title-box {
   display: flex;
   align-items: baseline;
 }
+
 .commission-rule-box .rule-title-box .txt1 {
   margin-left: 32rpx;
 }
+
 .house-type-desc-box {
   padding: 32rpx;
 }
@@ -330,6 +382,7 @@
   justify-content: space-between;
   margin-bottom: 20rpx;
 }
+
 .house-type-desc-box .title .lf {
   font-size: 40rpx;
   color: #333;
@@ -346,9 +399,10 @@
 .house-type-desc-box .scroll-box .house-type-item-box {
   width: 400rpx;
   margin-right: 50rpx;
-  box-shadow: 0 0 16rpx 0 rgba(184,191,195,0.25);
+  box-shadow: 0 0 16rpx 0 rgba(184, 191, 195, 0.25);
   border-radius: 8rpx;
 }
+
 .house-type-item-box .house-type-detail-text {
   padding: 0 32rpx;
 }
@@ -392,29 +446,41 @@
   background: #f3f3f3;
   color: #727483;
 }
+
 /* 楼盘动态 */
-.houses-states {
+.houses-states,
+.consult-box {
   padding: 32rpx;
   background: #fff;
 }
-.houses-states .title-box {
+
+.houses-states .title-box,
+.consult-box .title-box {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20rpx;
 }
-.houses-states .title-box .title {
+
+.houses-states .title-box .title,
+.consult-box .title-box .title {
   font-size: 40rpx;
   color: #333;
   font-weight: bold;
 }
-.houses-states .title-box .more, .house-type-desc-box .more {
+
+.houses-states .title-box .more,
+.house-type-desc-box .more,
+.consult-box .title-box .more {
   display: flex;
   align-items: center;
   font-size: 24rpx;
   color: #747D8D;
 }
-.houses-states .title-box .more .more-icon, .house-type-desc-box .more-icon {
+
+.houses-states .title-box .more .more-icon,
+.house-type-desc-box .more-icon,
+.consult-box .title-box .more .more-icon {
   width: 12rpx;
   height: 20rpx;
   margin-left: 8rpx;
@@ -459,6 +525,7 @@
   color: #747D8D;
   font-size: 24rpx;
 }
+
 .step-box .step-item .step-rg .status .img-box {
   position: relative;
   z-index: 1;
@@ -466,6 +533,7 @@
   height: 32rpx;
   margin-right: 16rpx;
 }
+
 .step-box .step-item .step-rg .status .txt {
   position: absolute;
   top: 50%;
@@ -480,6 +548,7 @@
   color: #fff;
   font-size: 20rpx;
 }
+
 .step-box .step-item .step-rg .status .img {
   position: absolute;
   top: 0;
@@ -488,6 +557,7 @@
   width: 100%;
   height: 100%;
 }
+
 .step-box .step-item .step-rg .remark {
   margin: 12rpx 0;
   /* padding: 10rpx 0; */
@@ -508,18 +578,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(254,138,123,0.07);
+  background: rgba(254, 138, 123, 0.07);
   color: #E32835;
   font-size: 28rpx;
   border-radius: 8rpx;
   height: 88rpx;
   margin-top: 20rpx;
 }
+
 .houses-states .btn-box .img {
   width: 30rpx;
   height: 36rpx;
   margin-right: 16rpx;
 }
+
 /* 亮点及周边 */
 .zhoubian-liangdian-box {
   padding: 32rpx;
@@ -618,6 +690,7 @@
   background: rgba(0, 0, 0, 0.6);
   z-index: 2;
 }
+
 .share-box-fix .inner-box {
   position: absolute;
   bottom: 0;
@@ -629,31 +702,37 @@
   border-top-right-radius: 32rpx;
   padding: 32rpx;
 }
+
 .share-box-fix .inner-box .title {
   display: flex;
   align-items: center;
   margin-bottom: 40rpx;
 }
+
 .share-box-fix .inner-box .title .icon {
   width: 26rpx;
   height: 26rpx;
   margin-right: 10rpx;
 }
+
 .share-box-fix .inner-box .title .txt {
   color: #333;
   font-size: 28rpx;
 }
+
 .share-box-fix .save-img-box {
   display: flex;
   justify-content: center;
   width: 100%;
 }
+
 .share-box-fix .btn-box {
   margin-top: 40rpx;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .share-box-fix .btn-box .btn {
   display: flex;
   align-items: center;
@@ -665,11 +744,13 @@
   font-size: 32rpx;
   border-radius: 12rpx;
 }
+
 .canvas-mask-box {
   position: relative;
   width: 520rpx;
   height: 700rpx;
 }
+
 .canvas-mask-box .bg-img {
   position: absolute;
   top: 0;
@@ -677,6 +758,7 @@
   width: 100%;
   height: 100%;
 }
+
 .canvas-mask-box .qrcode-img {
   position: absolute;
   width: 160rpx;
@@ -684,6 +766,7 @@
   left: 340rpx;
   top: 460rpx;
 }
+
 .canvas-mask-box .head-img {
   position: absolute;
   width: 88rpx;
@@ -692,6 +775,7 @@
   top: 516rpx;
   left: 36rpx;
 }
+
 .canvas-mask-box .nick-name {
   position: absolute;
   color: #fff;
@@ -699,6 +783,7 @@
   left: 140rpx;
   top: 544rpx;
 }
+
 .canvas-mask-box .hint {
   position: absolute;
   top: 640rpx;
@@ -706,6 +791,7 @@
   color: #fff;
   font-size: 24rpx;
 }
+
 .share-box-fix .close-img {
   position: absolute;
   top: 32rpx;
@@ -733,7 +819,7 @@
 }
 
 .commission-rule-detail-box .commission-rule-detail-box_content {
-  background: rgba(254,179,24,0.1);
+  background: rgba(254, 179, 24, 0.1);
   color: #A06C1C;
   font-size: 28rpx;
   padding: 16rpx;
@@ -764,4 +850,105 @@
   margin-top: 10rpx;
   color: #727483;
   font-size: 24rpx;
+}
+
+/* 咨询顾问 */
+.consult-box .consult-hint-box {
+  display: flex;
+  align-items: center;
+  margin-bottom: 32rpx;
+}
+
+.consult-box .consult-hint-box .hint-item {
+  display: flex;
+  align-items: center;
+  color: #999999;
+  font-size: 28rpx;
+  margin-right: 40rpx;
+}
+
+.consult-box .consult-hint-box .hint-item image {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 16rpx;
+}
+
+.consult-box .chat-user-item {
+  display: flex;
+  align-items: center;
+}
+
+.consult-box .chat-user-item:not(:last-child) {
+  margin-bottom: 40rpx;
+}
+
+.consult-box .chat-user-item .head {
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 50%;
+}
+
+.consult-box .chat-user-item .detail {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 16rpx;
+}
+
+.consult-box .chat-user-item .detail .name {
+  font-size: 32rpx;
+  color: #333333;
+  margin-bottom: 8rpx;
+}
+
+.consult-box .chat-user-item .detail .txt {
+  font-size: 28rpx;
+  color: #999;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.consult-box .chat-user-item .btns {
+  display: flex;
+  justify-content: space-between;
+  width: 168rpx;
+}
+
+.consult-box .chat-user-item .btns .img {
+  width: 72rpx;
+  height: 72rpx;
+}
+
+.fix-tabs-box {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 80rpx;
+  background: #fff;
+  padding: 12rpx 40rpx;
+}
+.fix-tabs-box .fix-tab-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  color: #333;
+  font-size: 28rpx;
+  height: 100%;
+}
+.fix-tabs-box .fix-tab-item .active {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 40rpx;
+  height: 4rpx;
+  background: #E32835;
 }

@@ -11,10 +11,14 @@
       </block>
     </swiper>
     <!-- 重置小圆点的样式 -->
-    <view wx:if="{{imgList.length > 1}}" class="dots" style="bottom: {{dotsBottom}}rpx">
+    <view wx:if="{{imgList.length > 1 && dotsVisible}}" class="dots" style="bottom: {{dotsBottom}}rpx">
       <block wx:for="{{imgList}}" wx:key="imageLink">
         <view class="dot{{index == currentSwiper ? ' active' : ''}}"></view>
       </block>
+    </view>
+    <!-- 当前坐标记录 -->
+    <view class="current-tag-box" wx:if="{{recordVisible && imgList.length > 0}}">
+      {{currentSwiper + 1}}/{{imgList.length}}
     </view>
   </view>
 </view>

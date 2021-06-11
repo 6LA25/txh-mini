@@ -71,3 +71,17 @@
 .active {
   width: 26rpx;
 }
+.current-tag-box {
+  position: absolute;
+  right: 12rpx;
+  bottom: 12rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,.5);
+  color: #fff;
+  font-size: 24rpx;
+  height: 36rpx;
+  min-width: 60rpx;
+  border-radius: 20rpx;
+}

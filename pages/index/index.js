@@ -15,6 +15,7 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     locationInfo: null,
     bannerList: [],
+    activityList: [],
     houseFilter: 0,
     housesList: [],
     noticeList: [],
@@ -51,7 +52,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log('index show')
+    console.log('index show=>')
     if (typeof this.getTabBar === 'function' &&
       this.getTabBar()) {
       this.getTabBar().setData({
@@ -168,6 +169,7 @@ Page({
     }
     // 获取banner数据
     this.fetchBanner()
+    this.fetchActivity()
     // 获取公告
     this.fetchNotice()
     this.fetchHouses()
@@ -196,11 +198,26 @@ Page({
   },
   fetchBanner() {
     Fetch({
-      num: 5
+      num: 5,
+      postion: 1
     }, URL.banner, app).then(({ data }) => {
       if (data.items.length > 0) {
         this.setData({
           bannerList: data.items
+        })
+      }
+    }).catch(error => {
+      console.log(error)
+    })
+  },
+  fetchActivity() {
+    Fetch({
+      num: 5,
+      postion: 3
+    }, URL.banner, app).then(({ data }) => {
+      if (data.items.length > 0) {
+        this.setData({
+          activityList: data.items
         })
       }
     }).catch(error => {
@@ -288,5 +305,7 @@ Page({
       this.initAllData()
     }).catch(error => {
     })
-  }
+  },
+  bindload(e) {console.log('bindload==============================>', e)},
+  binderror(e) {console.log('binderror==============================>', e)},
 })

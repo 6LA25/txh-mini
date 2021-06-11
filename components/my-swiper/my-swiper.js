@@ -21,10 +21,18 @@ Component({
       type: Number,
       value: 16
     },
+    dotsVisible: {
+      type: Boolean,
+      value: true
+    },
     isClickJump: {
       type: Boolean,
       value: true
-    }
+    },
+    recordVisible: {
+      type: Boolean,
+      value: false
+    },
   },
   data: {
     // 这里是一些组件内部数据

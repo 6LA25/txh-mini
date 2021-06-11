@@ -53,7 +53,7 @@
       <my-swiper img-list="{{bannerList}}" height="{{400}}" radius="0"></my-swiper>
     </view>
     <!-- 公告 -->
-    <view class="notice-box" bindtap="handleJumpNotices">
+    <view class="notice-box" bindtap="handleJumpConsult">
       <view class="img-box">
         <image src="../../image/home_icon_title_default_new@3x.png"></image>
         <text></text>
@@ -68,6 +68,15 @@
       </swiper>
     </view>
     <!-- 间隔 -->
+    <view class="devide-box"></view>
+    <!-- 第二个广告位 -->
+    <view class="home-adv-box" wx:if="{{activityList.length > 0}}">
+      <my-swiper img-list="{{activityList}}" height="{{160}}" radius="12" record-visible="{{true}}" dots-visible="{{false}}"></my-swiper>
+    </view>
+    <view class="devide-box"></view>
+    <view class="official-account-box">
+      <official-account bindload="bindload" binderror="binderror"></official-account>
+    </view>
     <view class="devide-box"></view>
     <!-- 房源筛选 -->
     <view class="house-filter-list">

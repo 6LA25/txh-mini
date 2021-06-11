@@ -5,6 +5,8 @@ import { Fetch } from '../../utils/http'
 import URL from '../../utils/url'
 Page({
   data: {
+    viewId: '',
+    activeViewId: '',
     hasAuth: false,
     userInfo: null, // 微信授权用户信息
     houseId: '',
@@ -16,6 +18,15 @@ Page({
     longitude: '', // 经度
     inviteMobile: '',
     informType: '', // 弹窗状态 变价/开盘
+    fixTabVisible: false,
+    fixViews: [
+      {text: '详情', viewId: 'detail', top: ''},
+      {text: '热门', viewId: 'hot', top: ''},
+      {text: '户型', viewId: 'huxing', top: ''},
+      {text: '动态', viewId: 'dongtai', top: ''},
+      {text: '咨询', viewId: 'zixun', top: ''},
+      {text: '周边', viewId: 'zhoubian', top: ''},
+    ],
     markers: [
       {
         id: '',
@@ -47,7 +58,8 @@ Page({
     showDesc: false,
     informDialogShow: false,
     houseDynamic: [],
-    totalDynamic: 0
+    totalDynamic: 0,
+    pageVisible: false
   },
   onShareAppMessage: function (e) {
     let id = ''
@@ -89,12 +101,42 @@ Page({
       hasAuth: app.globalData.hasClickAuth
     })
     wx.createMapContext('houseMap')
-    this.getHouseDetail()
     this.addHouseAccess()
-    this.getHouseApartments()
-    this.getHouseDynamic()
+    this.getHouseDetail()
   },
   onShow: function () {
+  },
+  getAllViewTop() {
+    this.setData({
+      pageVisible: true
+    })
+    setTimeout(() => {
+      new Promise(resolve => {
+        let query = wx.createSelectorQuery();
+        query.select('#detail').boundingClientRect();
+        query.select('#hot').boundingClientRect();
+        query.select('#huxing').boundingClientRect();
+        query.select('#dongtai').boundingClientRect();
+        query.select('#zixun').boundingClientRect();
+        query.select('#zhoubian').boundingClientRect();
+        query.exec(function(res) {
+          resolve(res);
+        });
+      }).then(res => {
+        console.log('res', res)
+        const {fixViews} = this.data
+        res.forEach(item => {
+          fixViews.forEach((v, i) => {
+            if (v.viewId === item.id) {
+              v.top = item.top
+            }
+          })
+        })
+        this.setData({
+          fixViews
+        })
+      });
+    }, 400)
   },
   getHouseDynamic() {
     Fetch({
@@ -107,6 +149,7 @@ Page({
         totalDynamic: data.totalCount,
         houseDynamic: data.items
       })
+      this.getAllViewTop()
     })
   },
   async fetchMapDetail() {
@@ -212,6 +255,7 @@ Page({
         wx.hideLoading()
         this.fetchMapDetail()
         this.getNearbyHouses()
+        this.getHouseApartments()
       })
     })
   },
@@ -230,6 +274,7 @@ Page({
         houseApartments: data.items,
         houseApartmentsStr: apartments.join('｜')
       })
+      this.getHouseDynamic()
     })
   },
   handleJumpLocationDetail() {
@@ -325,5 +370,43 @@ Page({
     wx.navigateTo({
       url: `/pages/Secondary/pages/housetype-list/index?houseId=${this.data.houseId}`
     })
-  }
+  },
+  handleJumpPoint(e) {
+    console.log(e.currentTarget.dataset)
+    this.setData({
+      viewId: e.currentTarget.dataset.id,
+    })
+  },
+  handleScrollView(e) {
+    console.log('scroll', e)
+    const {fixViews} = this.data
+    let {scrollTop} = e.detail
+    const devide = fixViews[1].top
+    if (scrollTop > devide && !this.data.fixTabVisible) {
+      this.setData({
+        fixTabVisible: true
+      })
+    } else if (scrollTop < devide && this.data.fixTabVisible) {
+      this.setData({
+        fixTabVisible: false,
+        viewId: ''
+      })
+    }
+    if (this.data.fixTabVisible) {
+      let activeViewId = ''
+      fixViews.forEach((item, idx) => {
+        if (idx >= 1 && scrollTop >= fixViews[idx-1].top && scrollTop < item.top) {
+          activeViewId = fixViews[idx-1].viewId
+        } else if (scrollTop >= fixViews[fixViews.length-1].top) {
+          activeViewId = fixViews[fixViews.length-1].viewId
+        }
+      })
+      console.log('activeViewId=>', activeViewId)
+      if (this.data.activeViewId !== activeViewId) {
+        this.setData({
+          activeViewId: activeViewId
+        })
+      }
+    }
+  },
 })

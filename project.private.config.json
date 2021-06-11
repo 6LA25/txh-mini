@@ -321,10 +321,9 @@
           "scene": null
         },
         {
-          "id": 44,
           "name": "pages/house-detail/index",
           "pathName": "pages/house-detail/index",
-          "query": "id=2",
+          "query": "id=19",
           "scene": null
         },
         {
