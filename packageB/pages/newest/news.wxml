@@ -1,0 +1,29 @@
+<!--packageB/pages/newest/news.wxml-->
+<!-- pages/select-house/select-house.wxml -->
+<wxs module="dateFormat" src="../../../filter/dateFormat.wxs"></wxs>
+<view class="select-house-page">
+  <view class="search-box">
+    <!-- <icon color="#B8BFC3" class="search-icon" type="search" size="18" /> -->
+    <image class="search-icon" src="../../../image/home_icon_search_default@2x.png"></image>
+    <input class="ipt" bindconfirm="handleConfirm" confirm-type="search" value="{{search}}" type="text" placeholder-class="input-placeholder" placeholder="搜索名称"></input>
+  </view>
+  <view class="houses-box">
+    <view class="house-item" data-id="{{item.id}}" bindtap="handleJumpRecommend" wx:for="{{housesList}}" wx:key="id">
+      <view class="cover">
+        <image class="img" src="{{item.image}}"></image>
+      </view>
+      <view class="detail">
+        <text class="title">{{item.title}}</text>
+        <text class="time">{{dateFormat.getDate(item.updatetime || '')}}</text>
+      </view>
+    </view>
+    <view class="no-data-box" wx:if="{{totalHouses === 0}}">
+      <image class="image" src="../../../image/no-data@2x.png"></image>
+      <text class="text">暂时没有内容～</text>
+    </view>
+    <view class="company-intr-box mt20" wx:if="{{housesList.length > 0 && housesList.length === totalHouses}}">
+      <view class="title">安选好房</view>
+      <view class="detail">安心选好房，就上安选好房</view>
+    </view>
+  </view>
+</view>

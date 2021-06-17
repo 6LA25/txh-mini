@@ -1,0 +1,14 @@
+/* packageB/pages/news-detail/detail.wxss */
+.news-detail-page {
+  padding: 20rpx;
+}
+.news-detail-page .title {
+  font-size: 28px;
+  font-weight: 500
+}
+
+.news-detail-page .hint {
+  font-size: 28rpx;
+  color: rgba(153, 153, 153, 1);
+  margin-bottom: 10rpx;
+}

@@ -1,0 +1,20 @@
+<!-- packageB/pages/apply-form/form.wxml -->
+<view class="apply-form-page" wx:if="detail">
+  <view class="form-item" wx:for="{{detail.contentMap.list}}">
+    <view class="form-label">
+      {{item.fieldname}}
+      <text class="required" wx:if="{{item.required === '1'}}">*</text>
+    </view>
+    <view class="form-input">
+      <input wx:if="{{item.fieldname !== '选购房源'}}" class="input" data-id="{{item.id}}" bindinput="bindKeyInput" value="{{form[item.id]}}" placeholder-class="name-placeholder" placeholder="请输入" />
+      <view wx:else class="select-box" bindtap="handleSelect">
+        <text style="color: #333;" wx:if="{{houseName}}">{{houseName}}</text>
+        <text wx:else>请选择</text>
+        <image wx:if="{{!houseName}}" class="right-arrow" src="../../../image/rec_icon_arrow_default@2x.png"></image>
+      </view>
+    </view>
+  </view>
+  <view class="confirm-box active" bindtap="handleSubmit">
+    <view class="inner{{validateResult.length === 0 ? ' active' : ''}}">确认推荐</view>
+  </view>
+</view>

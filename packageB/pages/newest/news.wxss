@@ -1,0 +1,78 @@
+/* packageB/pages/newest/news.wxss */
+/* pages/select-house/select-house.wxss */
+.search-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: #e32835;
+  padding: 0 32rpx;
+  height: 110rpx;
+  z-index: 1;
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  left: 56rpx;
+  transform: translate(0, -50%);
+  width: 28rpx;
+  height: 28rpx;
+}
+  
+
+.search-box .ipt {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  font-size: 26rpx;
+  background: #F7F8F8;
+  border-radius: 8rpx;
+  height: 70rpx;
+  padding: 0 10rpx 0 70rpx;
+}
+
+.input-placeholder {
+  color: #B8BFC3;
+}
+
+.houses-box {
+  padding: 110rpx 20rpx 30rpx 20rpx;
+}
+.house-item {
+  display: flex;
+  padding: 40rpx 0 20rpx 0;
+  border-bottom: 2rpx solid #f6f6f6;
+}
+.houses-box .house-item .title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #333;
+  font-size: 36rpx;
+  margin-bottom: 10rpx;
+  font-weight: 500;
+}
+
+
+.house-item .cover {
+  width: 240rpx;
+  height: 160rpx;
+}
+.house-item .cover .img {
+  width: 100%;
+  height: 100%;
+  border-radius: 4rpx;
+}
+.houses-box .house-item .detail {
+  flex: 1;
+  min-width: 0;
+  margin-left: 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #727483;
+  font-size: 28rpx;
+}

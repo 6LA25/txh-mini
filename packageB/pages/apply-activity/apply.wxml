@@ -1,0 +1,17 @@
+<!--packageB/pages/apply-activity/apply.wxml-->
+<view class="apply-activity-page" wx:if="{{detail}}">
+  <image class="bg-img" src="{{detail.template.background}}"></image>
+  <view class="btn-box">
+    <view wx:if="{{visible_0}}" class="btn-item">
+      <button class="inner" plain="true" open-type="share">
+        分享好友
+      </button>
+    </view>
+    <view wx:if="{{visible_2}}" class="btn-item" bindtap="handleJump">
+      <view class="inner">活动报名</view>
+    </view>
+    <view wx:if="{{visible_1}}" class="btn-item" bindtap="handleConnect">
+      <view class="inner">联系销售</view>
+    </view>
+  </view>
+</view>
