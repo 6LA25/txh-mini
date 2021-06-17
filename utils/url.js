@@ -1,4 +1,5 @@
-let domain = 'https://1002.app.anxuanhouse.com'
+// let domain = 'https://1002.app.anxuanhouse.com'
+let domain = 'http://47.103.39.72:8888'
 export default {
   test: 'http://58.214.13.42:8859/zuul/login/login',
   tim: 'http://47.103.39.72:8888/api/im/genUserSig',
@@ -42,5 +43,11 @@ export default {
   trends: `${domain}/api/app/query/house/trends`,
   apartmentsInfo: `${domain}/api/app/query/house/apartmentsInfo`,
   policyAgree: `${domain}/api/app/protected/user/consentAgreement`,
-  collectCustomer: `${domain}/api/app/protected/user/collect/customer`
+  collectCustomer: `${domain}/api/app/protected/user/collect/customer`,
+  applyActivityItem: `${domain}/api/app/protected/user/marketRegister/item`,
+  applyActivity: `${domain}/api/app/protected/user/marketRegister/register`,
+  applyHouseAct: `${domain}/api/app/protected/user/marketHouse/customer`,
+  newest: `${domain}/api/app/query/article/newest`, // 最新咨询
+  articles: `${domain}/api/app/query/article/items`,
+  article: `${domain}/api/app/query/article/item`
 }

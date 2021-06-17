@@ -59,7 +59,11 @@
     {
       "root": "packageB/",
       "pages": [
-        "pages/chatting/chatting"
+        "pages/chatting/chatting",
+        "pages/apply-activity/apply",
+        "pages/apply-form/form",
+        "pages/newest/news",
+        "pages/news-detail/detail"
       ]
     },
     {

@@ -12,6 +12,56 @@ Page({
     houseId: '',
     sysUserInfo: null, // 系统登录后用户信息
     houseDetail: null, // 楼盘详情
+    trendsList: [
+      {
+        title: '市政基建',
+        icon: '../../image/Housing_details_icon_shizheng_default@2x.png',
+        tag: 'municipalInfrastructure',
+        auto: false,
+        seeMore: false,
+        text: ''
+      },
+      {
+        title: '商圈消费',
+        icon: '../../image/Housing_details_icon_shangquan_default@2x.png',
+        tag: 'businessCircle',
+        auto: false,
+        seeMore: false,
+        text: ''
+      },
+      {
+        title: '交通配套',
+        icon: '../../image/Housing_details_icon_jiaotong_default@2x.png',
+        tag: 'transportFacilities',
+        auto: false,
+        seeMore: false,
+        text: ''
+      },
+      {
+        title: '周边学校',
+        icon: '../../image/Housing_details_icon_xuexiao_default@2x.png',
+        tag: 'aroundSchools',
+        auto: false,
+        seeMore: false,
+        text: ''
+      },
+      {
+        title: '医疗健康',
+        icon: '../../image/Housing_details_icon_yiyuan_default@2x.png',
+        tag: 'healthCare',
+        auto: false,
+        seeMore: false,
+        text: ''
+      },
+      {
+        title: '其他',
+        icon: '../../image/Housing_details_icon_other_default@2x.png',
+        tag: 'other',
+        auto: false,
+        seeMore: false,
+        text: ''
+      }
+    ], // 亮点及周边
     houseApartments: [], // 楼盘户型
     houseApartmentsStr: '',
     latitude: '', //纬度
@@ -20,12 +70,12 @@ Page({
     informType: '', // 弹窗状态 变价/开盘
     fixTabVisible: false,
     fixViews: [
-      {text: '详情', viewId: 'detail', top: ''},
-      {text: '热门', viewId: 'hot', top: ''},
-      {text: '户型', viewId: 'huxing', top: ''},
-      {text: '动态', viewId: 'dongtai', top: ''},
-      {text: '咨询', viewId: 'zixun', top: ''},
-      {text: '周边', viewId: 'zhoubian', top: ''},
+      { text: '详情', viewId: 'detail', top: '' },
+      { text: '热门', viewId: 'hot', top: '' },
+      { text: '户型', viewId: 'huxing', top: '' },
+      { text: '动态', viewId: 'dongtai', top: '' },
+      { text: '咨询', viewId: 'zixun', top: '' },
+      { text: '周边', viewId: 'zhoubian', top: '' },
     ],
     markers: [
       {
@@ -74,7 +124,7 @@ Page({
       name = e.target.dataset.name
       cover = e.target.dataset.cover
     }
-    
+
     Fetch({
       houseId: id
     }, URL.addShareCount, app).then(({ data }) => { })
@@ -111,6 +161,23 @@ Page({
       pageVisible: true
     })
     setTimeout(() => {
+      var that = this;
+      const query = wx.createSelectorQuery();
+      query.selectAll('.textFour_box').fields({
+        size: true,
+      }).exec(function (res) {
+        console.log(res[0], '所有节点信息');
+        let lineHeight = 26; //固定高度值 单位：PX
+        for (var i = 0; i < res[0].length; i++) {
+          if ((res[0][i].height / lineHeight) > 3) {
+            that.data.trendsList[i].auto = true;
+            that.data.trendsList[i].seeMore = true;
+          }
+        }
+        that.setData({
+          trendsList: that.data.trendsList
+        })
+      })
       new Promise(resolve => {
         let query = wx.createSelectorQuery();
         query.select('#detail').boundingClientRect();
@@ -119,12 +186,12 @@ Page({
         query.select('#dongtai').boundingClientRect();
         query.select('#zixun').boundingClientRect();
         query.select('#zhoubian').boundingClientRect();
-        query.exec(function(res) {
+        query.exec(function (res) {
           resolve(res);
         });
       }).then(res => {
         console.log('res', res)
-        const {fixViews} = this.data
+        const { fixViews } = this.data
         res.forEach(item => {
           fixViews.forEach((v, i) => {
             if (v.viewId === item.id) {
@@ -224,13 +291,13 @@ Page({
       })
       data.item.bannerList = bannerList
       // 定义建筑面积范围
-      let _acreage = data.item.acreage.split(/,|，/).sort(function(a, b){return a-b;})
+      let _acreage = (data.item.acreage || '').split(/,|，/).sort(function (a, b) { return a - b; })
       if (_acreage.length > 1) {
         data.item._acreage = `${_acreage[0]}-${_acreage[_acreage.length - 1]}`
       } else if (_acreage.length === 1) {
         data.item._acreage = _acreage[0]
       }
-      
+
       // 修改周边格式
       if (data.item.rim) {
         data.item.rim = data.item.rim.split('\n')
@@ -247,7 +314,12 @@ Page({
           })
         }
       })
+      let trendsList = this.data.trendsList
+      trendsList.forEach(val => {
+        val.text = data.item[val.tag] || '暂无数据'
+      })
       this.setData({
+        trendsList,
         houseDetail: data.item,
         latitude: data.item.lat,
         longitude: data.item.lng
@@ -379,8 +451,8 @@ Page({
   },
   handleScrollView(e) {
     console.log('scroll', e)
-    const {fixViews} = this.data
-    let {scrollTop} = e.detail
+    const { fixViews } = this.data
+    let { scrollTop } = e.detail
     const devide = fixViews[1].top
     if (scrollTop > devide && !this.data.fixTabVisible) {
       this.setData({
@@ -395,10 +467,10 @@ Page({
     if (this.data.fixTabVisible) {
       let activeViewId = ''
       fixViews.forEach((item, idx) => {
-        if (idx >= 1 && scrollTop >= fixViews[idx-1].top && scrollTop < item.top) {
-          activeViewId = fixViews[idx-1].viewId
-        } else if (scrollTop >= fixViews[fixViews.length-1].top) {
-          activeViewId = fixViews[fixViews.length-1].viewId
+        if (idx >= 1 && scrollTop >= fixViews[idx - 1].top && scrollTop < item.top) {
+          activeViewId = fixViews[idx - 1].viewId
+        } else if (scrollTop >= fixViews[fixViews.length - 1].top) {
+          activeViewId = fixViews[fixViews.length - 1].viewId
         }
       })
       console.log('activeViewId=>', activeViewId)
@@ -409,4 +481,58 @@ Page({
       }
     }
   },
+  handleCallStaff(e) {
+    wx.makePhoneCall({
+      phoneNumber: e.currentTarget.dataset.mobile
+    })
+  },
+  handleApplyHouseAct(e) {
+    let { id, name } = e.currentTarget.dataset
+    console.log(id, name)
+    Fetch({
+      mobile: this.data.sysUserInfo.phoneNumber,
+      houseId: this.data.houseId,
+      intro: id,
+    }, URL.applyHouseAct, app).then(({ data }) => {
+      wx.showToast({
+        title: '参与成功',
+        icon: 'success',
+        duration: 2000
+      })
+    }).catch((error) => {
+      wx.showToast({
+        title: `操作失败：${error.result_msg}`,
+        icon: 'none',
+        duration: 2000
+      })
+    })
+  },
+  //展开更多
+ toggleHandler: function (e) {
+  var that = this;
+  let index = e.currentTarget.dataset.index;
+  for (var i = 0; i < that.data.trendsList.length; i++) {
+   if (index == i) {
+    that.data.trendsList[index].auto = true;
+    that.data.trendsList[index].seeMore = false;
+   }
+  }
+  that.setData({
+   trendsList: that.data.trendsList
+  })
+ },
+ //收起更多
+ toggleContent: function (e) {
+  var that = this;
+  let index = e.currentTarget.dataset.index;
+  for (var i = 0; i < that.data.trendsList.length; i++) {
+   if (index == i) {
+    that.data.trendsList[index].auto = true;
+    that.data.trendsList[index].seeMore = true;
+   }
+  }
+  that.setData({
+   trendsList: that.data.trendsList
+  })
+ },
 })

@@ -352,6 +352,7 @@
 .hot-activity-box .hot-activity-container .act-item {
   width: 100%;
   height: 176rpx;
+  border-radius: 8rpx;
 }
 
 .hot-activity-box .hot-activity-container .act-item:not(:last-child) {
@@ -612,10 +613,6 @@
 }
 
 .liangdian-list-box .liangdian-item {
-  display: flex;
-  align-items: center;
-  font-size: 28rpx;
-  color: #333;
   margin-bottom: 16rpx;
 }
 
@@ -624,7 +621,70 @@
   font-weight: bold;
   margin-right: 8rpx;
 }
+.liangdian-list-box .liangdian-item .liangdian-title {
+  display: flex;
+  align-items: center;
+  color: #333;
+  font-size: 30rpx;
+  margin-bottom: 16rpx;
+}
+.liangdian-list-box .liangdian-item .liangdian-title .icon {
+  width: 48rpx;
+  height: 48rpx;
+  margin-right: 16rpx;
+}
+.liangdian-detail {
+  font-size: 28rpx;
+}
 
+.textFour_box{
+  width: 100%;
+  font-size: 30rpx;
+  font-weight: 400;
+  color: rgba(87,105,123,1);
+  line-height: 26px;
+  text-align: justify;
+ }
+ .text_toggle_box {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+ }
+ .toggle-icon {
+  width: 25rpx;
+  height: 25rpx;
+ }
+ .text_toggloe_box{
+  display: -webkit-box;
+  display: -webkit-flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 10rpx 0;
+ }
+ .text_toggle_text{
+  font-size: 24rpx;
+  color: #A8ABB7;
+  line-height: 32rpx;
+  margin-right: 10rpx;
+  margin-right: 8rpx;
+ }
+ .three{
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+ }
+
+.text_toggle_text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 8rpx;
+  font-size: 26rpx;
+}
 .map-box {
   margin: 32rpx 0;
   border-radius: 8rpx;

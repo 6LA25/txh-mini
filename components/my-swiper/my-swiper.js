@@ -61,6 +61,10 @@ Component({
         wx.navigateTo({
           url: `../house-detail/index?id=${dataset.link}`
         })
+      } else if (dataset.type === 2) {
+        wx.navigateTo({
+          url: `../../packageB/pages/apply-activity/apply?id=${dataset.link}`
+        })
       } else {
         wx.navigateTo({
           url: `../out/out?url=${dataset.link}`

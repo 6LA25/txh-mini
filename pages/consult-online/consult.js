@@ -10,7 +10,8 @@ Page({
    */
   data: {
     sysUserInfo: null,
-    contactList: []
+    contactList: [],
+    newest: null
   },
 
   /**
@@ -23,6 +24,7 @@ Page({
         contactList: conversationList
       })
     })
+    this.getNewest()
   },
 
   /**
@@ -98,6 +100,18 @@ Page({
   handleJumpSysMsg() {
     wx.navigateTo({
       url: '../Secondary/pages/notices/notices'
+    })
+  },
+  getNewest() {
+    Fetch({}, URL.newest, app).then(({data}) => {
+      this.setData({
+        newest: data || null
+      })
+    })
+  },
+  handleJumpNewst() {
+    wx.navigateTo({
+      url: '../../packageB/pages/newest/news'
     })
   }
 })

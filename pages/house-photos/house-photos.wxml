@@ -1,5 +1,12 @@
 <!-- pages/house-photos.wxml -->
 <view class="house-photos-page">
+<!-- 封面图 -->
+  <view class="real-img-list-box" wx:if="{{cover_img.length > 0}}">
+    <view class="title">封面图</view>
+    <view class="imgs-list">
+      <image data-url="{{item}}" data-errorimg="{{index}}" binderror="errorImg" data-preview="cover_img" bindtap="handlePreviewImages" wx:for="{{cover_img}}" wx:key="*this" src="{{item}}"></image>
+    </view>
+  </view>
   <!-- 户型图 -->
   <view class="real-img-list-box" wx:if="{{houseTypeImgs.length > 0}}">
     <view class="title">户型图（{{houseTypeImgs.length}}）</view>

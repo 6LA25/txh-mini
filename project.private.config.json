@@ -97,10 +97,9 @@
           "scene": null
         },
         {
-          "id": 12,
           "name": "pages/house-detail/index",
           "pathName": "pages/house-detail/index",
-          "query": "id=20",
+          "query": "id=135",
           "scene": null
         },
         {
@@ -448,6 +447,48 @@
           "name": "pages/chatting/chatting",
           "pathName": "packageB/pages/chatting/chatting",
           "query": "conversationID=C2CTXH1591352795921&userID=TXH1591352795921&conversationType=C2C",
+          "scene": null
+        },
+        {
+          "name": "packageB/pages/apply-activity/apply",
+          "pathName": "packageB/pages/apply-activity/apply",
+          "query": "id=c01df9feb530485ba1fa31ea26c23a30",
+          "scene": null
+        },
+        {
+          "name": "packageB/pages/apply-form/form",
+          "pathName": "packageB/pages/apply-form/form",
+          "query": "id=c01df9feb530485ba1fa31ea26c23a30",
+          "scene": null
+        },
+        {
+          "name": "packageB/pages/apply-form/form",
+          "pathName": "packageB/pages/apply-form/form",
+          "query": "id=c60d9cbe99274b8e909710913bfc0fa9",
+          "scene": null
+        },
+        {
+          "name": "pages/house-detail/index",
+          "pathName": "pages/house-detail/index",
+          "query": "id=135",
+          "scene": null
+        },
+        {
+          "name": "packageB/pages/newest/news",
+          "pathName": "packageB/pages/newest/news",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "packageB/pages/news-detail/detail",
+          "pathName": "packageB/pages/news-detail/detail",
+          "query": "id=3681b151a38b46458a54756a7c4e6050",
+          "scene": null
+        },
+        {
+          "name": "pages/house-detail/index",
+          "pathName": "pages/house-detail/index",
+          "query": "id=135",
           "scene": null
         }
       ]

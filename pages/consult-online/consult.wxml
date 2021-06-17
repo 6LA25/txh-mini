@@ -2,16 +2,16 @@
 <wxs module="dateFormat" src="../../filter/dateFormat.wxs"></wxs>
 <view class="consult-online-page">
   <view class="chat-user-list">
-    <view class="chat-item">
+    <view class="chat-item" wx:if="{{newest}}" bindtap="handleJumpNewst">
       <view class="head-box">
         <image class="head-img" src="../../image/zixun@2x.png"></image>
       </view>
       <view class="content-box">
         <view class="title-box">
           <view class="user-name">最新咨询</view>
-          <view class="time">12:00</view>
+          <view class="time">{{dateFormat.getChatDate(newest.updatetime / 1000)}}</view>
         </view>
-        <view class="recent-msg-box">x x x</view>
+        <view class="recent-msg-box">{{newest.title || '暂无咨询'}}</view>
       </view>
     </view>
     <view class="chat-item" bindtap="handleJumpSysMsg">

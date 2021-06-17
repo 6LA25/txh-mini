@@ -14,7 +14,8 @@ Page({
     pageSize: 10,
     loadingHouses: false,
     totalHouses: '',
-    from: ''
+    from: '',
+    prev: ''
   },
 
   /**
@@ -23,7 +24,8 @@ Page({
   onLoad: function (options) {
     console.log(options)
     this.setData({
-      from: options.tag
+      from: options.tag,
+      prev: options.prev || ''
     })
     this.searchHouses()
   },
@@ -147,6 +149,9 @@ Page({
         houseId: selected.houseId,
         houseName: selected.name
       })
+      if (this.data.prev === 'apply') {
+        prevPage.setHouseSelect()
+      }
       wx.navigateBack({
         delta: 1
       })

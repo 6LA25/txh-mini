@@ -16,7 +16,8 @@ Page({
     houseTypeImgs: [ // 户型图
     ],
     circumImgs: [ // 周边图
-    ]
+    ],
+    cover_img: []
   },
 
   /**
@@ -89,7 +90,8 @@ Page({
         realImgs: data.realImages,
         effectImgs: data.renderImages,
         houseTypeImgs: data.apartmentImages,
-        circumImgs: data.ambitusImages
+        circumImgs: data.ambitusImages,
+        cover_img: [data.cover_img]
       })
     })
   },

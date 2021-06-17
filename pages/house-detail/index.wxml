@@ -110,8 +110,7 @@
         <view class="hot-activity-box" id="hot">
           <view class="title-box">热门活动</view>
           <view class="hot-activity-container">
-            <image class="act-item" src="https://f.anxuanhouse.com/2020/08/05/45/8PX0UZBlGJnukSC2eccc.jpg"></image>
-            <image class="act-item" src="https://f.anxuanhouse.com/2020/08/05/45/8PX0UZBlGJnukSC2eccc.jpg"></image>
+            <image data-name="{{item.name}}" data-id="{{item.markethouseid}}" bindtap="handleApplyHouseAct" wx:key="markethouseid" wx:for="{{houseDetail.marketHouseList}}" class="act-item" src="{{item.image}}"></image>
           </view>
         </view>
         <view class="divide-box"></view>
@@ -272,10 +271,6 @@
         <view class="consult-box" id="zixun">
           <view class="title-box">
             <view class="title">咨询顾问</view>
-            <view class="more" bindtap="handleJumpStates">
-              查看更多
-              <image class="more-icon" src="../../image/Housing_details_icon_moreblck_default@2x.png"></image>
-            </view>
           </view>
           <view class="consult-hint-box">
             <view class="hint-item">
@@ -287,26 +282,15 @@
               <text>专业放心</text>
             </view>
           </view>
-          <view class="chat-user-item">
-            <image class="head" src="https://f.anxuanhouse.com/2020/08/05/45/8PX0UZBlGJnukSC2eccc.jpg"></image>
+          <view class="chat-user-item" wx:for="{{houseDetail.adviseridList}}">
+            <image class="head" :src="{{item.avatar}}"></image>
             <view class="detail">
-              <text class="name">xxxx</text>
-              <text class="txt">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</text>
+              <text class="name">{{item.account}}</text>
+              <text class="txt">{{item.desc}}</text>
             </view>
             <view class="btns">
               <image class="img" src="../../image/Housing_details_icon_wechat_default@2x.png"></image>
-              <image class="img" src="../../image/Housing_details_icon_iphone_default@2x.png"></image>
-            </view>
-          </view>
-          <view class="chat-user-item">
-            <image class="head" src="https://f.anxuanhouse.com/2020/08/05/45/8PX0UZBlGJnukSC2eccc.jpg"></image>
-            <view class="detail">
-              <text class="name">xxxx</text>
-              <text class="txt">xxxxx</text>
-            </view>
-            <view class="btns">
-              <image class="img" src="../../image/Housing_details_icon_wechat_default@2x.png"></image>
-              <image class="img" src="../../image/Housing_details_icon_iphone_default@2x.png"></image>
+              <image data-mobile="{{item.mobile}}" bindtap="handleCallStaff" class="img" src="../../image/Housing_details_icon_iphone_default@2x.png"></image>
             </view>
           </view>
         </view>
@@ -314,11 +298,23 @@
         <!-- 亮点及周边 -->
         <view id="zhoubian" class="zhoubian-liangdian-box">
           <view class="title">亮点及周边</view>
-          <view class="zhoubian">{{houseDetail.lightspot || '暂无数据'}}</view>
+          <!-- <view class="zhoubian">{{houseDetail.lightspot || '暂无数据'}}</view> -->
           <view class="liangdian-list-box">
-            <view class="liangdian-item" wx:for="{{houseDetail.rim}}" wx:key="*this">
-              <text class="point">·</text>
-              {{item}}
+            <view class="liangdian-item" wx:for="{{trendsList}}" wx:key="*this">
+              <view class="liangdian-title">
+                <image class="icon" src="{{item.icon}}"></image>{{item.title}}
+              </view>
+              <view class="textFour_box liangdian-detail{{item.seeMore?' three':''}}">
+                {{item.text}}
+              </view>
+              <view class="text_toggle_box" wx:if='{{item.seeMore}}' data-index='{{index}}' catchtap='toggleHandler'>
+                <text class="text_toggle_text">查看更多</text>
+                <image style="width: 24rpx; height: 14rpx;transform: rotate(180deg);" src="../../image/Housing_details_icon_up_defaul@2x.png"></image>
+              </view>
+              <view class="text_toggle_box" wx:if='{{!item.seeMore && item.auto}}' data-index='{{index}}' catchtap='toggleContent'>
+                <text class="text_toggle_text">收起</text>
+                <image style="width: 24rpx; height: 14rpx;" src="../../image/Housing_details_icon_up_defaul@2x.png"></image>
+              </view>
             </view>
           </view>
           <view class="map-box">
