@@ -530,6 +530,12 @@
           "pathName": "packageB/pages/apply-form/form",
           "query": "id=c60d9cbe99274b8e909710913bfc0fa9",
           "scene": null
+        },
+        {
+          "name": "pages/house-detail/index",
+          "pathName": "pages/house-detail/index",
+          "query": "id=113",
+          "scene": null
         }
       ]
     }

@@ -287,7 +287,8 @@
               <text>专业放心</text>
             </view>
           </view>
-          <view class="chat-user-item" wx:for="{{houseDetail.adviseridList}}">
+          <view wx:if="{{houseDetail.adviseridList.length === 0}}">暂无数据</view>
+          <view class="chat-user-item" wx:if="{{houseDetail.adviseridList.length > 0}}" wx:for="{{houseDetail.adviseridList}}">
             <image class="head" src="{{item.avatar || '../../image/my_Head_portrait_default@2x.png'}}"></image>
             <view class="detail">
               <text class="name">{{item.account}}</text>
