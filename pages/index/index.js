@@ -177,7 +177,9 @@ Page({
   sumUnReadNum(conversationList) {
     let unReadNum = 0
     conversationList.forEach(item => {
-      unReadNum = unReadNum + item.unreadCount
+      if (item.conversationID !== 'C2Cadministrator') {
+        unReadNum = unReadNum + item.unreadCount
+      }
     })
     this.setData({
       unReadNum
@@ -212,7 +214,7 @@ Page({
   },
   fetchActivity() {
     Fetch({
-      num: 5,
+      num: 10,
       postion: 3
     }, URL.banner, app).then(({ data }) => {
       if (data.items.length > 0) {

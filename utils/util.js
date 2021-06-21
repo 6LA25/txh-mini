@@ -126,12 +126,13 @@ const getUserLocation = (app) => {
 
 // 登录im
 const initTim = async (app) => {
-  let userId = 'TXH1582522953117'
-  let { data } = await Fetch({ userid: userId }, URL.tim, app)
+  console.log('sysUserInfo', app.globalData.sysUserInfo)
+  // let userId = 'TXH1582522953117'
+  // let { data } = await Fetch({ userid: userId }, URL.tim, app)
   let { $tim, $$TIM } = app.globalData
   let timLogin = $tim.login({
-    userID: userId,
-    userSig: data.userSig,
+    userID: app.globalData.sysUserInfo.imconfig.userId,
+    userSig: app.globalData.sysUserInfo.imconfig.userSig,
   })
   timLogin.then((imResponse) => {
     if (imResponse.data.repeatLogin === true) {

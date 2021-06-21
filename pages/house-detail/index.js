@@ -1,6 +1,6 @@
 const app = getApp()
 const QQMapWX = require('../../common/sdk/qqmap-wx-jssdk.min.js')
-import { getTrafficData, getUserDetail, fetchTicket } from '../../utils/util'
+import { getTrafficData, getUserDetail, fetchTicket, _asyncUserInfo } from '../../utils/util'
 import { Fetch } from '../../utils/http'
 import URL from '../../utils/url'
 Page({
@@ -70,12 +70,12 @@ Page({
     informType: '', // 弹窗状态 变价/开盘
     fixTabVisible: false,
     fixViews: [
-      { text: '详情', viewId: 'detail', top: '' },
-      { text: '热门', viewId: 'hot', top: '' },
-      { text: '户型', viewId: 'huxing', top: '' },
-      { text: '动态', viewId: 'dongtai', top: '' },
-      { text: '咨询', viewId: 'zixun', top: '' },
-      { text: '周边', viewId: 'zhoubian', top: '' },
+      { text: '详情', viewId: 'detail', top: '',visible: true },
+      { text: '热门', viewId: 'hot', top: '', visible: false },
+      { text: '户型', viewId: 'huxing', top: '',visible: true },
+      { text: '动态', viewId: 'dongtai', top: '',visible: false },
+      { text: '咨询', viewId: 'zixun', top: '',visible: true },
+      { text: '周边', viewId: 'zhoubian', top: '',visible: true },
     ],
     markers: [
       {
@@ -135,7 +135,7 @@ Page({
     }
   },
   onLoad: async function (option) {
-    console.log(option)
+    console.log('option', option)
     // wx.hideShareMenu();
     app.globalData.inviteCode = option.inviteCode || ''
     app.globalData.inviteMobile = option.inviteMobile || ''
@@ -157,8 +157,24 @@ Page({
   onShow: function () {
   },
   getAllViewTop() {
+    let fixViews = this.data.fixViews
+    if (this.data.houseDetail.marketHouseList.length === 0) {
+      // fixViews[1].visible = true
+      let idx = fixViews.findIndex(item => {
+        return item.viewId === 'hot'
+      })
+      fixViews.splice(idx, 1)
+    }
+    if (this.data.totalDynamic === 0) {
+      // fixViews[3].visible = true
+      let idx = fixViews.findIndex(item => {
+        return item.viewId === 'dongtai'
+      })
+      fixViews.splice(idx, 1)
+    }
     this.setData({
-      pageVisible: true
+      pageVisible: true,
+      fixViews
     })
     setTimeout(() => {
       var that = this;
@@ -166,7 +182,6 @@ Page({
       query.selectAll('.textFour_box').fields({
         size: true,
       }).exec(function (res) {
-        console.log(res[0], '所有节点信息');
         let lineHeight = 26; //固定高度值 单位：PX
         for (var i = 0; i < res[0].length; i++) {
           if ((res[0][i].height / lineHeight) > 3) {
@@ -181,9 +196,13 @@ Page({
       new Promise(resolve => {
         let query = wx.createSelectorQuery();
         query.select('#detail').boundingClientRect();
-        query.select('#hot').boundingClientRect();
+        if (this.data.houseDetail.marketHouseList.length > 0) {
+          query.select('#hot').boundingClientRect();
+        }
         query.select('#huxing').boundingClientRect();
-        query.select('#dongtai').boundingClientRect();
+        if (this.data.totalDynamic > 0) {
+          query.select('#dongtai').boundingClientRect();
+        }
         query.select('#zixun').boundingClientRect();
         query.select('#zhoubian').boundingClientRect();
         query.exec(function (res) {
@@ -490,7 +509,7 @@ Page({
     let { id, name } = e.currentTarget.dataset
     console.log(id, name)
     Fetch({
-      mobile: this.data.sysUserInfo.phoneNumber,
+      mobile: app.globalData.sysUserInfo.phoneNumber,
       houseId: this.data.houseId,
       intro: id,
     }, URL.applyHouseAct, app).then(({ data }) => {
@@ -508,31 +527,125 @@ Page({
     })
   },
   //展开更多
- toggleHandler: function (e) {
-  var that = this;
-  let index = e.currentTarget.dataset.index;
-  for (var i = 0; i < that.data.trendsList.length; i++) {
-   if (index == i) {
-    that.data.trendsList[index].auto = true;
-    that.data.trendsList[index].seeMore = false;
-   }
-  }
-  that.setData({
-   trendsList: that.data.trendsList
-  })
- },
- //收起更多
- toggleContent: function (e) {
-  var that = this;
-  let index = e.currentTarget.dataset.index;
-  for (var i = 0; i < that.data.trendsList.length; i++) {
-   if (index == i) {
-    that.data.trendsList[index].auto = true;
-    that.data.trendsList[index].seeMore = true;
-   }
-  }
-  that.setData({
-   trendsList: that.data.trendsList
-  })
- },
+  toggleHandler: function (e) {
+    var that = this;
+    let index = e.currentTarget.dataset.index;
+    for (var i = 0; i < that.data.trendsList.length; i++) {
+      if (index == i) {
+        that.data.trendsList[index].auto = true;
+        that.data.trendsList[index].seeMore = false;
+      }
+    }
+    that.setData({
+      trendsList: that.data.trendsList
+    })
+  },
+  //收起更多
+  toggleContent: function (e) {
+    var that = this;
+    let index = e.currentTarget.dataset.index;
+    for (var i = 0; i < that.data.trendsList.length; i++) {
+      if (index == i) {
+        that.data.trendsList[index].auto = true;
+        that.data.trendsList[index].seeMore = true;
+      }
+    }
+    that.setData({
+      trendsList: that.data.trendsList
+    })
+  },
+  // 发起咨询
+  async handleSendHouse(e) {
+    let userId = e.currentTarget.dataset.im
+    let uid = e.currentTarget.dataset.uid
+    let _me = this
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    })
+    try {
+      let data = await Fetch({
+        mobile: app.globalData.sysUserInfo.phoneNumber,
+        houseId: this.data.houseId,
+        intro: '在线咨询',
+        uid
+      }, URL.applyHouseAct, app)
+    } catch (err) {}
+
+    const { $tim } = app.globalData
+    const { $$TIM } = app.globalData
+
+
+    let extensionStr = JSON.stringify({
+      houseId: this.data.houseId,
+      coverImg: this.data.houseDetail.coverImageLink,
+      houseName: this.data.houseDetail.name,
+      address: this.data.houseDetail.address,
+      price: this.data.houseDetail.price,
+      tag: this.data.houseDetail.tagList[0] || ''
+    })
+    let message = $tim.createCustomMessage({
+      to: userId,
+      conversationType: $$TIM.TYPES.CONV_C2C,
+      payload: {
+        data: 'house', // 用于标识该消息是骰子类型消息
+        description: extensionStr, // 获取骰子点数
+        extension: ''
+      }
+    });
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    })
+    // 2. 发送消息
+    let promise = $tim.sendMessage(message);
+    promise.then((imResponse) => {
+      console.log('imResponse=>', imResponse)
+
+      let message1 = $tim.createTextMessage({
+        to: userId,
+        conversationType: $$TIM.TYPES.CONV_C2C,
+        payload: {
+          text: `你好，我想咨询【${_me.data.houseDetail.name}】`
+        }
+      });
+      // 2. 发送消息
+      let promise1 = $tim.sendMessage(message1);
+      promise1.then((imResponse1) => {
+        console.log('===>', imResponse1)
+        wx.hideLoading()
+        let chat = imResponse1.data.message
+        wx.navigateTo({
+          url: `../../packageB/pages/chatting/chatting?conversationID=${chat.conversationID}&userID=${userId}&conversationType=${chat.conversationType}`
+        })
+
+      }).catch(function (imError) {
+        // 发送失败
+        console.warn('sendMessage error:', imError);
+        wx.hideLoading()
+      });
+    }).catch(function (imError) {
+      // 发送失败
+      console.warn('sendMessage error:', imError);
+      wx.hideLoading()
+    });
+  },
+  getUserInfo: async function (e) {
+    console.log('授权获取用户信息：', e)
+    // app.globalData.ticket = ''
+    let userInfo = null
+    // 点击确认后重新授权同步信息
+    if (e.detail.rawData) {
+      app.globalData.userInfo = e.detail.userInfo
+      app.globalData.encryptedData = e.detail.encryptedData
+      app.globalData.ivStr = e.detail.iv
+      await _asyncUserInfo(app)
+    }
+
+    console.log(userInfo)
+    app.globalData.hasClickAuth = true
+    this.setData({
+      hasAuth: true
+    })
+  },
 })

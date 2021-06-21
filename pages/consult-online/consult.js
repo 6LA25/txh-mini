@@ -11,7 +11,8 @@ Page({
   data: {
     sysUserInfo: null,
     contactList: [],
-    newest: null
+    newest: null,
+    sysMsg: null
   },
 
   /**
@@ -25,6 +26,7 @@ Page({
       })
     })
     this.getNewest()
+    this.getSys()
   },
 
   /**
@@ -106,6 +108,13 @@ Page({
     Fetch({}, URL.newest, app).then(({data}) => {
       this.setData({
         newest: data || null
+      })
+    })
+  },
+  getSys() {
+    Fetch({}, URL.sysItem, app).then(({data}) => {
+      this.setData({
+        sysMsg: data || null
       })
     })
   },

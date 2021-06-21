@@ -19,7 +19,7 @@ Page({
     this.setData({
       id: options.id
     })
-    this.getDetail()
+    this.updateViewCount()
   },
 
   /**
@@ -73,10 +73,19 @@ Page({
   getDetail() {
     Fetch({
       id: this.data.id
-    }, URL.article, app).then(({data}) => {
+    }, URL.article, app).then(({ data }) => {
       this.setData({
         detail: data || null
       })
+    })
+  },
+  updateViewCount() {
+    Fetch({
+      id: this.data.id
+    }, URL.articleView, app).then(({ data }) => {
+      this.getDetail()
+    }).catch(err => {
+      console.log('err', err)
     })
   }
 })

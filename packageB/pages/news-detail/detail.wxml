@@ -3,7 +3,13 @@
 
 <view class="news-detail-page" wx:if="{{detail}}">
   <view class="title">{{detail.title}}</view>
-  <view class="hint">{{dateFormat.getDate(detail.updatetime)}}</view>
+  <view class="hint">
+    <view>{{dateFormat.getDate(detail.updatetime)}}</view>
+    <view class="hot">
+      <image class="icon" src="../../images/yuedu-icon.jpg"></image>
+      <text class="txt">{{detail.initView}}</text>
+    </view>
+  </view>
   <view>
      <rich-text nodes="{{detail.content}}"></rich-text>
   </view>

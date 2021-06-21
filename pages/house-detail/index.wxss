@@ -355,10 +355,6 @@
   border-radius: 8rpx;
 }
 
-.hot-activity-box .hot-activity-container .act-item:not(:last-child) {
-  margin-bottom: 10rpx;
-}
-
 .commission-rule-box {
   background: #fff;
   padding: 32rpx;
@@ -1011,4 +1007,26 @@
   width: 40rpx;
   height: 4rpx;
   background: #E32835;
+}
+
+button.act-item-auth-btn {
+  padding: 0;
+  border: none;
+  width: 100%!important;
+  background: #fff;
+}
+button.send-house-auth-btn {
+  padding: 0;
+  border: none;
+  width: 72rpx!important;
+  height: 72rpx!important;
+  background: #fff;
+  margin: 0!important;
+}
+
+.hot-activity-box .hot-activity-container .act-item-auth-btn:not(:last-child) {
+  margin-bottom: 10rpx;
+}
+.hot-activity-box .hot-activity-container .act-item:not(:last-child) {
+  margin-bottom: 10rpx;
 }

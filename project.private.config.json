@@ -76,10 +76,9 @@
           "scene": null
         },
         {
-          "id": 9,
           "name": "pages/house-detail/index",
           "pathName": "pages/house-detail/index",
-          "query": "id=15",
+          "query": "id=135",
           "scene": null
         },
         {
@@ -250,10 +249,9 @@
           "scene": null
         },
         {
-          "id": 37,
           "name": "pages/house-detail/index",
           "pathName": "pages/house-detail/index",
-          "query": "id=23",
+          "query": "id=135",
           "scene": null
         },
         {
@@ -489,6 +487,48 @@
           "name": "pages/house-detail/index",
           "pathName": "pages/house-detail/index",
           "query": "id=135",
+          "scene": null
+        },
+        {
+          "name": "pages/consult-online/consult",
+          "pathName": "pages/consult-online/consult",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "packageB/pages/chatting/chatting",
+          "pathName": "packageB/pages/chatting/chatting",
+          "query": "conversationID=C2CTXH1591352906175&userID=TXH1591352906175&conversationType=C2C",
+          "scene": null
+        },
+        {
+          "name": "pages/house-detail/index",
+          "pathName": "pages/house-detail/index",
+          "query": "id=135",
+          "scene": null
+        },
+        {
+          "name": "packageB/pages/news-detail/detail",
+          "pathName": "packageB/pages/news-detail/detail",
+          "query": "id=9209fb3aa946479cbd3b8beb5e2dfc9f",
+          "scene": null
+        },
+        {
+          "name": "packageB/pages/news-detail/detail",
+          "pathName": "packageB/pages/news-detail/detail",
+          "query": "id=9209fb3aa946479cbd3b8beb5e2dfc9f",
+          "scene": null
+        },
+        {
+          "name": "packageB/pages/chatting/chatting",
+          "pathName": "packageB/pages/chatting/chatting",
+          "query": "conversationID=C2CTXH1623935668547&userID=TXH1623935668547&conversationType=C2C",
+          "scene": null
+        },
+        {
+          "name": "packageB/pages/apply-form/form",
+          "pathName": "packageB/pages/apply-form/form",
+          "query": "id=c60d9cbe99274b8e909710913bfc0fa9",
           "scene": null
         }
       ]

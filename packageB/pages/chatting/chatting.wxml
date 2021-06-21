@@ -1,6 +1,8 @@
 <!-- pages/Secondary/pages/chatting/chatting.wxml -->
 <wxs module="dateFormat" src="../../../filter/dateFormat.wxs"></wxs>
-<scroll-view class='chat' id="chat" refresher-triggered="{{triggered}}" bindrefresherpulling="onPulling" bindrefresherrefresh="onRefresh" bindrefresherrestore="onRestore" bindrefresherabort="onAbort" refresher-enabled="{{true}}" refresher-threshold="{{20}}" scroll-y="{{true}}" scroll-into-view="{{toLast}}">
+<scroll-view class='chat' id="chat" refresher-triggered="{{triggered}}" bindrefresherpulling="onPulling"
+  bindrefresherrefresh="onRefresh" bindrefresherrestore="onRestore" bindrefresherabort="onAbort"
+  refresher-enabled="{{true}}" refresher-threshold="{{20}}" scroll-y="{{true}}" scroll-into-view="{{toLast}}">
   <view class="chat-content">
     <view class="load-more">下拉加载更多</view>
     <view class="message-item-box" id="msg-item-{{index}}" wx:for="{{contactMessages.messageList}}" wx:key="ID">
@@ -9,18 +11,41 @@
         - {{item.flow === 'out' ? '你' : (item.from)}}撤回了一条消息 -
       </view>
       <view wx:if="{{!item.isRevoked}}" class="message-item-inner msg-{{item.flow}}">
-        <view class="read-status{{!item.isPeerRead ? ' unreaded' : ''}}" wx:if="{{item.flow === 'out'}}">{{item.isPeerRead ? '已读' : '未读'}}</view>
-        <image class="chat-head" src="https://wx.qlogo.cn/mmhead/Q3auHgzwzM6RjnYYXVNIU7LYGZ637YaJt3g31xWZUiaEZNI0wYTEVibw/0"></image>
+        <view class="read-status{{!item.isPeerRead ? ' unreaded' : ''}}" wx:if="{{item.flow === 'out'}}">
+          {{item.isPeerRead ? '已读' : '未读'}}</view>
+        <image class="chat-head"
+          src="{{item.avatar || '../../../image/chatting-head-default.jpg'}}"></image>
         <view class="message-detail" data-message="{{item}}" catch:longpress="handleRevokeMsg">
+          <!-- 文字信息 -->
           <view class="msg-type-text" wx:if="{{item.type === 'TIMTextElem'}}">{{item.payload.text}}</view>
-          <image class="msg-type-image" style="width:{{item.payload.imageInfoArray[1].width * 2}}rpx;" mode="widthFix" wx:if="{{item.type === 'TIMImageElem'}}" src="{{item.payload.imageInfoArray[1].imageUrl}}"></image>
-          <view class="msg-type-voice" data-voice="{{item}}" wx:if="{{item.type === 'TIMSoundElem'}}" bindtap="handlePlayVoice">
-            <image mode="widthFix" wx:if="{{!item.playing}}" class="sound-img" src="../../images/sound-{{item.flow}}.jpg"></image>
-            <image mode="widthFix" wx:if="{{item.playing}}" class="sound-img" src="../../images/sound-playing-{{item.flow}}.gif"></image>
+          <!-- 图片信息 -->
+          <image class="msg-type-image" style="width:{{item.payload.imageInfoArray[1].width * 2}}rpx;" mode="widthFix"
+            wx:if="{{item.type === 'TIMImageElem'}}" src="{{item.payload.imageInfoArray[1].imageUrl}}"></image>
+          <!-- 音频信息 -->
+          <view class="msg-type-voice" data-voice="{{item}}" wx:if="{{item.type === 'TIMSoundElem'}}"
+            bindtap="handlePlayVoice">
+            <image mode="widthFix" wx:if="{{!item.playing}}" class="sound-img"
+              src="../../images/sound-{{item.flow}}.jpg"></image>
+            <image mode="widthFix" wx:if="{{item.playing}}" class="sound-img"
+              src="../../images/sound-playing-{{item.flow}}.gif"></image>
             <view class="voice-duration-text">{{item.payload.second}}"</view>
           </view>
+          <!-- 视频信息 -->
           <view class="msg-type-video" wx:if="{{item.type === 'TIMVideoFileElem'}}">
             <video class="msg-video" src="{{item.payload.videoUrl}}"></video>
+          </view>
+          <!-- 自定义楼盘信息 -->
+          <view class="msg-type-custom" data-house="{{dateFormat.formatJSON(item.payload.description).houseId}}" wx:if="{{item.type === 'TIMCustomElem'}}" bindtap="handleJumpHouse">
+            <image class="house-cover" src="{{dateFormat.formatJSON(item.payload.description).coverImg}}"></image>
+            <view class="house-container">
+              <view class="house-name">{{dateFormat.formatJSON(item.payload.description).houseName}}</view>
+              <view class="house-address">{{dateFormat.formatJSON(item.payload.description).address}}</view>
+              <view class="house-detail">
+                <view class="house-price">均价{{dateFormat.formatJSON(item.payload.description).price}}元/m²</view>
+                <view class="house-tag" wx:if="{{dateFormat.formatJSON(item.payload.description).tag}}">
+                  {{dateFormat.formatJSON(item.payload.description).tag}}</view>
+              </view>
+            </view>
           </view>
         </view>
       </view>
@@ -34,8 +59,10 @@
       <image wx:if="{{!isInputAudio}}" src="../../images/voice.jpg"></image>
     </view>
     <view class='send-text-box'>
-      <input cursor-spacing="{{50}}" wx:if="{{!isInputAudio}}" class='input' bindfocus="bindFocusInput" bindblur="bindBlurInput" bindinput="bindKeyInput" value="{{inputValue}}" />
-      <view wx:if="{{isInputAudio}}" catch:touchmove="handleTouchMove" catch:longpress="handleStartRecordVoice" bind:touchend="handleEndRecordVoice" class="audio-ipt">{{voiceStatusStr}}</view>
+      <input cursor-spacing="{{50}}" wx:if="{{!isInputAudio}}" class='input' bindfocus="bindFocusInput"
+        bindblur="bindBlurInput" bindinput="bindKeyInput" value="{{inputValue}}" />
+      <view wx:if="{{isInputAudio}}" catch:touchmove="handleTouchMove" catch:longpress="handleStartRecordVoice"
+        bind:touchend="handleEndRecordVoice" class="audio-ipt">{{voiceStatusStr}}</view>
     </view>
     <view class='send-btn'>
       <image wx:if="{{!isInputText}}" bindtap="handleSelectFile" src="../../images/add.jpg"></image>

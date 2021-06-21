@@ -3,6 +3,10 @@ var formatNumber = function (n) {
   return n[1] ? n : '0' + n
 }
 
+var formatJSON = function (n) {
+  return JSON.parse(n)
+}
+
 var DateFr = {
   getDate: function (time) {
     var date = getDate(time);
@@ -41,5 +45,6 @@ var getChatDate = function (time) {
 
 module.exports = {
   getDate: DateFr.getDate,
-  getChatDate: getChatDate
+  getChatDate: getChatDate,
+  formatJSON: formatJSON
 }

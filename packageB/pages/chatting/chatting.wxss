@@ -89,6 +89,7 @@ page {
   background: #fff;
   padding: 20rpx 80rpx;
 }
+
 .file-type-box {
   flex: 1;
   display: flex;
@@ -130,12 +131,14 @@ page {
   text-align: center;
   margin-bottom: 8rpx;
 }
+
 .msg-revoke-box {
   margin-top: 10rpx;
   color: #aaa;
   font-size: 24rpx;
   text-align: center;
 }
+
 .message-item-inner {
   display: flex;
   align-items: center;
@@ -180,7 +183,8 @@ page {
 .msg-type-video {
   width: 400rpx;
 }
-.msg-type-video  .msg-video{
+
+.msg-type-video .msg-video {
   width: 100%;
 }
 
@@ -221,28 +225,84 @@ page {
   width: 30rpx;
   height: 36rpx;
 }
+
 .message-item-inner.msg-out .sound-img {
   order: 2;
   margin-left: 8rpx;
 }
+
 .message-item-inner.msg-out .voice-duration-text {
   order: 1;
 }
+
 .message-item-inner.msg-in .sound-img {
   order: 1;
   margin-right: 8rpx;
 }
+
 .message-item-inner.msg-in .voice-duration-text {
   order: 2;
 }
+
 .message-item-inner .read-status {
   align-self: flex-end;
   margin-bottom: 4rpx;
 }
+
 .message-item-inner.msg-out .read-status {
   margin-right: 8rpx;
   font-size: 22rpx;
 }
+
 .unreaded {
   color: #E32835;
+}
+
+.msg-type-custom {
+  width: 400rpx;
+  background: #fff;
+  border-radius: 8rpx;
+}
+
+.house-cover {
+  width: 100%;
+  height: 180rpx;
+  border-radius: 8rpx 8rpx 0 0;
+}
+.house-container {
+  padding: 16rpx;
+}
+.house-name {
+  font-size: 28rpx;
+  color: #333;
+  font-weight: 500;
+  margin-bottom: 8rpx;
+}
+
+.house-address {
+  font-size: 26rpx;
+  color: #aaa;
+  margin-bottom: 8rpx;
+}
+
+.house-detail {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.house-price {
+  font-size: 28rpx;
+  color: #E32835;
+  font-weight: 500;
+}
+.house-tag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 36rpx;
+  font-size: 20rpx;
+  padding: 0 10rpx;
+  border-radius: 6rpx;
+  background-image: linear-gradient(135deg, #FF906D 0%, #FB453F 100%);
+  color: #fff;
 }

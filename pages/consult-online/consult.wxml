@@ -8,30 +8,30 @@
       </view>
       <view class="content-box">
         <view class="title-box">
-          <view class="user-name">最新咨询</view>
+          <view class="user-name">最新资讯</view>
           <view class="time">{{dateFormat.getChatDate(newest.updatetime / 1000)}}</view>
         </view>
         <view class="recent-msg-box">{{newest.title || '暂无咨询'}}</view>
       </view>
     </view>
-    <view class="chat-item" bindtap="handleJumpSysMsg">
+    <view class="chat-item" bindtap="handleJumpSysMsg" wx:if="{{sysMsg}}">
       <view class="head-box">
         <image class="head-img" src="../../image/xiaoxi@2x.png"></image>
       </view>
       <view class="content-box">
         <view class="title-box">
           <view class="user-name">系统消息</view>
-          <view class="time">12:00</view>
+          <view class="time" wx:if="{{sysMsg.createdTime}}">{{dateFormat.getChatDate(sysMsg.createdTime / 1000)}}</view>
         </view>
-        <view class="recent-msg-box">x x x</view>
+        <view class="recent-msg-box">{{sysMsg.title}}</view>
       </view>
     </view>
   </view>
   <view class="chat-user-list">
-    <view class="chat-item" bindtap="handleJumpChatting"  data-chat="{{item}}" wx:for="{{contactList}}" wx:key="conversationID">
+    <view class="chat-item" wx:if="{{item.conversationID !== 'C2Cadministrator'}}" bindtap="handleJumpChatting"  data-chat="{{item}}" wx:for="{{contactList}}" wx:key="conversationID">
       <view class="head-box">
         <view class="unread-box" wx:if="{{item.unreadCount > 0}}">{{ item.unreadCount }}</view>
-        <image class="head-img" src="https://wx.qlogo.cn/mmhead/Q3auHgzwzM6RjnYYXVNIU7LYGZ637YaJt3g31xWZUiaEZNI0wYTEVibw/0"></image>
+        <image class="head-img" src="../../image/chat_touxiang@2x.png"></image>
       </view>
       <view class="content-box">
         <view class="title-box">

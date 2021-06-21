@@ -105,12 +105,17 @@
             <image src="../../image/home_icon_people_default@2x.png"></image>
           </view>
         </view>
-        <view class="divide-box"></view>
+        <view class="divide-box" wx:if="{{houseDetail.marketHouseList.length > 0}}"></view>
         <!-- 热门活动 -->
-        <view class="hot-activity-box" id="hot">
+        <view class="hot-activity-box" id="hot" wx:if="{{houseDetail.marketHouseList.length > 0}}">
           <view class="title-box">热门活动</view>
           <view class="hot-activity-container">
+            <button wx:if="{{!hasAuth}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="act-item-auth-btn" wx:key="markethouseid" wx:for="{{houseDetail.marketHouseList}}">
+            <image data-name="{{item.name}}" data-id="{{item.markethouseid}}" class="act-item" src="{{item.image}}"></image>
+            </button>
+            <view wx:if="{{hasAuth}}">
             <image data-name="{{item.name}}" data-id="{{item.markethouseid}}" bindtap="handleApplyHouseAct" wx:key="markethouseid" wx:for="{{houseDetail.marketHouseList}}" class="act-item" src="{{item.image}}"></image>
+            </view>
           </view>
         </view>
         <view class="divide-box"></view>
@@ -283,13 +288,16 @@
             </view>
           </view>
           <view class="chat-user-item" wx:for="{{houseDetail.adviseridList}}">
-            <image class="head" :src="{{item.avatar}}"></image>
+            <image class="head" src="{{item.avatar || '../../image/my_Head_portrait_default@2x.png'}}"></image>
             <view class="detail">
               <text class="name">{{item.account}}</text>
               <text class="txt">{{item.desc}}</text>
             </view>
             <view class="btns">
-              <image class="img" src="../../image/Housing_details_icon_wechat_default@2x.png"></image>
+              <button class="send-house-auth-btn" wx:if="{{!hasAuth}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
+              <image data-im="{{item.username}}" class="img" src="../../image/Housing_details_icon_wechat_default@2x.png"></image>
+              </button>
+              <image wx:if="{{hasAuth}}" data-uid="{{item.uid}}" data-im="{{item.username}}" bindtap="handleSendHouse" class="img" src="../../image/Housing_details_icon_wechat_default@2x.png"></image>
               <image data-mobile="{{item.mobile}}" bindtap="handleCallStaff" class="img" src="../../image/Housing_details_icon_iphone_default@2x.png"></image>
             </view>
           </view>

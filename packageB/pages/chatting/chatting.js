@@ -515,5 +515,13 @@ Page({
       isInputAudio: !this.data.isInputAudio,
       selectFileVisible: false
     })
+  },
+  getCustomMsg(obj) {
+    return JSON.parse(obj)
+  },
+  handleJumpHouse(e) {
+    wx.navigateTo({
+      url: `../../../pages/house-detail/index?id=${e.currentTarget.dataset.house}`
+    })
   }
 })

@@ -97,6 +97,9 @@ Page({
         form[item.id] = ''
       })
       console.log(form)
+      wx.setNavigationBarTitle({
+        title: data.name
+      })
       this.setData({
         detail: data,
         form
