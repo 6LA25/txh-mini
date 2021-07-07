@@ -70,6 +70,23 @@ Page({
   onShareAppMessage: function () {
 
   },
+  handleJump(e) {
+    let notice = e.currentTarget.dataset.notice
+    console.log('notice', notice)
+    if (notice.linkType === 3) {
+      // wx.navigateTo({
+      //   url: `../../../../packageB/pages/news-detail/detail?id=${notice.content}`
+      // })
+    } else if (notice.linkType === 1) {
+      wx.navigateTo({
+        url: `/pages/house-detail/index?id=${notice.content}`
+      })
+    } else if (notice.linkType === 2) {
+      wx.navigateTo({
+        url: `../../../../packageB/pages/apply-form/form?id=${notice.content}`
+      })
+    }
+  },
   fetchNotice() {
     if (this.data.loading) {
       return

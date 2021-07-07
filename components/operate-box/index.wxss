@@ -45,6 +45,9 @@
 .btns-box .share-btn:first-child {
   margin-right: 30rpx;
 }
+.btns-box .share-btn:last-child {
+  margin-right: 0;
+}
 .agent-user {
   border: 2rpx solid #E32835;
   color: #E32835;

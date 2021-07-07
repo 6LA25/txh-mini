@@ -55,7 +55,7 @@ Component({
     },
     handleCall() {
       wx.makePhoneCall({
-        phoneNumber: this.data.house.phoneNum,
+        phoneNumber: this.data.house.hotline,
         success: () => {
           this.makeCustomerRecord()
         }

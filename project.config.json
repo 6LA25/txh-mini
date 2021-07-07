@@ -39,7 +39,7 @@
     "useApiHostProcess": false
   },
   "compileType": "miniprogram",
-  "libVersion": "2.13.0",
+  "libVersion": "2.18.0",
   "appid": "wx82bfdf6494507ed9",
   "projectname": "miniprogram-txy",
   "debugOptions": {

@@ -26,6 +26,7 @@ Page({
       pageSize: 8,
       module: 'index'
     },
+    bar_Height: wx.getSystemInfoSync().statusBarHeight,
     loadingHouses: false,
     hasAuth: false,
     unReadNum: 0
@@ -76,6 +77,13 @@ Page({
       })
     }
     this.initAllData()
+    setTimeout(() => {
+      wx.showShareMenu({
+        withShareTicket: true,
+        //设置下方的Menus菜单，才能够让发送给朋友与分享到朋友圈两个按钮可以点击
+        menus: ["shareAppMessage"]
+      })
+    })
     // wx.hideTabBar()
   },
 
@@ -107,7 +115,6 @@ Page({
     console.log('end')
     // this.fetchHouses()
   },
-
   /**
    * 用户点击右上角分享
    */
@@ -308,6 +315,6 @@ Page({
     }).catch(error => {
     })
   },
-  bindload(e) {console.log('bindload==============================>', e)},
-  binderror(e) {console.log('binderror==============================>', e)},
+  bindload(e) { console.log('bindload==============================>', e) },
+  binderror(e) { console.log('binderror==============================>', e) },
 })

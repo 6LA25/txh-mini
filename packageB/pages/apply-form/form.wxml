@@ -15,6 +15,6 @@
     </view>
   </view>
   <view class="confirm-box active" bindtap="handleSubmit">
-    <view class="inner{{validateResult.length === 0 ? ' active' : ''}}">确认推荐</view>
+    <view class="inner{{validateResult.length === 0 ? ' active' : ''}}">立即报名</view>
   </view>
 </view>

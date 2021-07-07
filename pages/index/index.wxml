@@ -1,5 +1,8 @@
 <!-- index.wxml -->
-<view class="container home-page">
+<view class="container home-page" style="padding-top:{{bar_Height + 106}}px;">
+  <view class="ax-public-navigation-box" style="padding-top:{{bar_Height}}px;">
+    <view class="navi-text-box">安选好房</view>
+  </view>
   <!-- 隐私弹窗 -->
   <view class="privacy-pop-box" wx:if="{{sysUserInfo && sysUserInfo.agreement !== 1}}">
     <view class="inform-inner-box">
@@ -30,7 +33,7 @@
     </view>
   </view>
   <!-- 搜索框 -->
-  <view class="search-box" wx:if="{{sysUserInfo.agreement === 1}}">
+  <view class="search-box" wx:if="{{sysUserInfo.agreement === 1}}" style="top:{{bar_Height + 44}}px;">
     <view bindtap="handleJumpSearch" class="search-ipt-box">
       <view class="search-address">
         <!-- <text>{{locationInfo.address_component.city}}</text> -->
@@ -44,9 +47,10 @@
     </view>
     <view class="msg-icon" bindtap="handleJumpConsult">
       <image class="bell-img" src="../../image/home_icon_message_default@2x.png"></image>
-      <view class="point" wx:if="{{unReadNum > 0}}"></view>
+      <view class="point" wx:if="{{unReadNum >= 0}}"></view>
     </view>
   </view>
+  <image class="top-bg" src="../../image/home-top-bg-tiny.png"></image>
   <view class="home-content" wx:if="{{sysUserInfo.agreement === 1}}">
     <adv-dialog></adv-dialog>
     <view class="home-swiper-box">

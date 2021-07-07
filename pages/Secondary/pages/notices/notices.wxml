@@ -1,6 +1,6 @@
 <!-- pages/notices/notices.wxml -->
 <view class="notices-page">
-  <view class="notice-item" wx:for="{{noticeList}}" wx:key="id">
+  <view class="notice-item" wx:for="{{noticeList}}" wx:key="id" data-notice="{{item}}" bindtap="handleJump">
     <view class="time">{{item.created}}</view>
     <view class="detail">
       <view class="title">{{item.title}}</view>

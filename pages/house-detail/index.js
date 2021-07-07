@@ -5,6 +5,8 @@ import { Fetch } from '../../utils/http'
 import URL from '../../utils/url'
 Page({
   data: {
+    applyActVisible: false,
+    applySuccessHint: '',
     viewId: '',
     activeViewId: '',
     hasAuth: false,
@@ -512,11 +514,15 @@ Page({
       mobile: app.globalData.sysUserInfo.phoneNumber,
       houseId: this.data.houseId,
       intro: id,
-    }, URL.applyHouseAct, app).then(({ data }) => {
-      wx.showToast({
-        title: '参与成功',
-        icon: 'success',
-        duration: 2000
+    }, URL.applyHouseAct, app).then((data) => {
+      // wx.showToast({
+      //   title: '参与成功',
+      //   icon: 'success',
+      //   duration: 2000
+      // })
+      this.setData({
+        applyActVisible: true,
+        applySuccessHint: data.result_msg
       })
     }).catch((error) => {
       wx.showToast({
@@ -648,4 +654,10 @@ Page({
       hasAuth: true
     })
   },
+  tapDialogButton() {
+    this.setData({
+      applyActVisible: false,
+      applySuccessHint: ''
+    })
+  }
 })

@@ -1,21 +1,41 @@
 /**index.wxss**/
 
 .home-page {
-  padding: 70rpx 0 80px 0;
+  position: relative;
+  padding: 300rpx 0 80px 0;
 }
+/* 导航 */
+.ax-public-navigation-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99999;
+  width: 100%;
+}
+.navi-text-box {
+  height: 88rpx;
+  display: flex;
+  align-items: center;
+  font-size: 40rpx;
+  font-family: PingFangSC, PingFangSC-Semibold;
+  font-weight: 600;
+  color: #ffffff;
+  padding-left: 24rpx;
+}
+
 
 /* 搜索框 */
 
 .search-box {
   display: flex;
   position: fixed;
-  top: 0;
+  /* top: 0; */
   left: 0;
   width: 100%;
   display: flex;
   align-items: center;
   height: 110rpx;
-  background: #e32835;
+  /* background: #e32835; */
   padding: 0 24rpx;
   box-sizing: border-box;
   z-index: 999;
@@ -27,7 +47,7 @@
   align-items: center;
   background: #fff;
   height: 70rpx;
-  border-radius: 8rpx;
+  border-radius: 35rpx;
   padding: 0 20rpx;
   width: 100%;
 }
@@ -38,20 +58,20 @@
   align-items: center;
   justify-content: center;
   /* width: 50rpx; */
-  margin-left: 20rpx;
+  margin-left: 28rpx;
 }
 
 .msg-icon .bell-img {
-  width: 44rpx;
-  height: 40rpx;
+  width: 48rpx;
+  height: 42rpx;
 }
 
 .search-box .msg-icon .point {
   position: absolute;
-  top: -10rpx;
-  right: -10rpx;
-  width: 12rpx;
-  height: 12rpx;
+  top: -8rpx;
+  right: -8rpx;
+  width: 14rpx;
+  height: 14rpx;
   border: 2rpx solid #fff;
   background: #E32835;
   border-radius: 50%;
@@ -90,10 +110,19 @@
 }
 
 /* 首页 */
+.top-bg {
+  position: absolute;
+  top: -2rpx;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 364rpx;
+}
 
 .home-content {
   background: #fff;
-  padding: 32rpx 0;
+  padding: 24rpx;
+  border-radius: 32rpx 32rpx 0 0;
 }
 
 /* 通知公告 */

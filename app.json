@@ -83,6 +83,9 @@
     }
   ],
   "style": "v2",
+  "useExtendedLib": {
+    "weui": true
+  },
   "sitemapLocation": "sitemap.json",
   "permission": {
     "scope.userLocation": {

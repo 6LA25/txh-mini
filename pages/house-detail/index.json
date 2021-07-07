@@ -8,6 +8,7 @@
     "inform-dialog": "../../components/inform-dialog/inform-dialog",
     "share-box": "../../components/share-box/index",
     "share-poster": "../../components/share-poster/index",
-    "toast": "../../components/toast/toast"
+    "toast": "../../components/toast/toast",
+    "mp-dialog": "weui-miniprogram/dialog/dialog"
   }
 }

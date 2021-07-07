@@ -375,4 +375,7 @@
   </share-poster>
   <inform-dialog dialog-show="{{informDialogShow}}" inform-type="{{informType}}" house-id="{{houseId}}"
     bindmyCloseInformDialog="myCloseInformDialog" bindmyComfirmMobile="myComfirmMobile"></inform-dialog>
+    <mp-dialog title="温馨提示" show="{{applyActVisible}}" bindbuttontap="tapDialogButton" buttons="{{[{text: '知道了'}]}}">
+        <view>{{applySuccessHint}}</view>
+    </mp-dialog>
 </view>
