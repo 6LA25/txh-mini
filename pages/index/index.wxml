@@ -1,6 +1,7 @@
 <!-- index.wxml -->
+<scroll-view enhanced="true" bindscroll="handleScrollView" scroll-y="true" style="height: 100%;">
 <view class="container home-page" style="padding-top:{{bar_Height + 106}}px;">
-  <view class="ax-public-navigation-box" style="padding-top:{{bar_Height}}px;">
+  <view class="ax-public-navigation-box" style="padding-top:{{bar_Height}}px;background:{{scrollTop > 150 ? '#e32835' : 'transparent'}};">
     <view class="navi-text-box">安选好房</view>
   </view>
   <!-- 隐私弹窗 -->
@@ -33,7 +34,7 @@
     </view>
   </view>
   <!-- 搜索框 -->
-  <view class="search-box" wx:if="{{sysUserInfo.agreement === 1}}" style="top:{{bar_Height + 44}}px;">
+  <view class="search-box" wx:if="{{sysUserInfo.agreement === 1}}" style="top:{{bar_Height + 44}}px;background:{{scrollTop > 150 ? '#e32835' : 'transparent'}};">
     <view bindtap="handleJumpSearch" class="search-ipt-box">
       <view class="search-address">
         <!-- <text>{{locationInfo.address_component.city}}</text> -->
@@ -47,22 +48,21 @@
     </view>
     <view class="msg-icon" bindtap="handleJumpConsult">
       <image class="bell-img" src="../../image/home_icon_message_default@2x.png"></image>
-      <view class="point" wx:if="{{unReadNum >= 0}}"></view>
+      <view class="point" wx:if="{{unReadNum > 0}}"></view>
     </view>
   </view>
   <image class="top-bg" src="../../image/home-top-bg-tiny.png"></image>
   <view class="home-content" wx:if="{{sysUserInfo.agreement === 1}}">
     <adv-dialog></adv-dialog>
     <view class="home-swiper-box">
-      <my-swiper img-list="{{bannerList}}" height="{{400}}" radius="0"></my-swiper>
+      <my-swiper img-list="{{bannerList}}" height="{{400}}" radius="12"></my-swiper>
     </view>
     <!-- 公告 -->
     <view class="notice-box" bindtap="handleJumpConsult">
       <view class="img-box">
-        <image src="../../image/home_icon_title_default_new@3x.png"></image>
+        <image src="../../image/home_icon_title_default_new_1.png"></image>
         <text></text>
       </view>
-      <!-- <text>{{notice.title}}</text> -->
       <swiper class='swiper-nav' vertical='true' autoplay='true' circular='true' interval='4000'>
         <block wx:for='{{noticeList}}' wx:key='id'>
           <swiper-item catchtouchmove="stopTouchMove" class="notice-text-box">
@@ -71,20 +71,21 @@
         </block>
       </swiper>
     </view>
-    <!-- 间隔 -->
-    <view class="devide-box"></view>
     <!-- 第二个广告位 -->
     <view class="home-adv-box" wx:if="{{activityList.length > 0}}">
       <my-swiper img-list="{{activityList}}" height="{{160}}" radius="12" record-visible="{{true}}" dots-visible="{{false}}"></my-swiper>
     </view>
-    <view class="devide-box"></view>
-    <view class="official-account-box">
+
+    <view wx:if="{{focusGZH}}" class="official-account-box">
       <official-account bindload="bindload" binderror="binderror"></official-account>
     </view>
-    <view class="devide-box"></view>
+    <!-- <view class="devide-box"></view> -->
     <!-- 房源筛选 -->
     <view class="house-filter-list">
-      <view class="hot-houses">热销楼盘</view>
+      <view class="hot-houses">
+        <view class="bd-tag"></view>
+        热销楼盘
+      </view>
       <view class="focus-houses" bindtap="handleJumpFocusHouses">关注楼盘</view>
     </view>
     <!-- 楼盘数据 -->
@@ -110,3 +111,4 @@
     <image src="../../image/home_icon_map_default@2x.png"></image>
   </view>
 </view>
+</scroll-view>

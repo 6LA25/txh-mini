@@ -29,7 +29,9 @@ Page({
     bar_Height: wx.getSystemInfoSync().statusBarHeight,
     loadingHouses: false,
     hasAuth: false,
-    unReadNum: 0
+    unReadNum: 0,
+    scrollTop: 0,
+    focusGZH: true
   },
 
   /**
@@ -315,6 +317,17 @@ Page({
     }).catch(error => {
     })
   },
+  handleScrollView(e) {
+    let { scrollTop } = e.detail
+    this.setData({
+      scrollTop
+    })
+  },
   bindload(e) { console.log('bindload==============================>', e) },
-  binderror(e) { console.log('binderror==============================>', e) },
+  binderror(e) {
+    this.setData({
+      focusGZH: false
+    })
+    console.log('binderror==============================>', e)
+  },
 })
