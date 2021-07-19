@@ -81,7 +81,19 @@
             <view class="detail">期待您大驾光临</view>
             <image class="bg-img" src="../../image/Housing_details_pic_bg@2x.png"></image>
           </view>
-          <view class="inform-item inform-rg">
+          <!-- 未授权 -->
+          <button class="inform-btn inform-item inform-rg" wx:if="{{!hasAuth}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
+            <view class="inform-rg-item">
+              <image class="icon-img" src="../../image/Housing_details_icon_jiangjia_default@2x.png"></image>
+              变价通知
+            </view>
+            <view class="inform-rg-item">
+              <image class="icon-img" src="../../image/Housing_details_icon_tongzhi_default@2x.png"></image>
+              开盘通知
+            </view>
+          </button>
+          <!-- 已授权 -->
+          <view class="inform-item inform-rg" wx:else>
             <view class="inform-rg-item" data-tag="3" bindtap="handleShowInformDialog">
               <image class="icon-img" src="../../image/Housing_details_icon_jiangjia_default@2x.png"></image>
               变价通知
@@ -266,7 +278,12 @@
               </view>
             </view>
           </view>
-          <view class="btn-box" data-tag="5" bindtap="handleShowInformDialog">
+
+          <button class="inform-btn btn-box" style="width: 100%;" wx:if="{{!hasAuth}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
+            <image class="img" src="../../image/Housing_details_icon_dongtai_default@2x.png"></image>
+            获取实时动态
+          </button>
+          <view wx:else class="btn-box" data-tag="5" bindtap="handleShowInformDialog">
             <image class="img" src="../../image/Housing_details_icon_dongtai_default@2x.png"></image>
             获取实时动态
           </view>

@@ -123,6 +123,7 @@
 .house-commission-per-box {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   color: #727483;
   font-size: 26rpx;
   padding: 12rpx 0;
@@ -133,6 +134,14 @@
   width: 32rpx;
   height: 32rpx;
   margin-right: 8rpx;
+}
+.house-commission-per-box .commission-box {
+  display: flex;
+  align-items: center;
+}
+.house-commission-per-box .collect-img {
+  width: 36rpx;
+  height: 32rpx;
 }
 
 .house-share-box {

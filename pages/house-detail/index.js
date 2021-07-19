@@ -432,9 +432,17 @@ Page({
     })
   },
   handleShowInformDialog(e) {
-    this.setData({
-      informType: e.currentTarget.dataset.tag,
-      informDialogShow: true
+    Fetch({
+      realname: '',
+      mobile: this.data.sysUserInfo.phoneNumber,
+      houseId: this.data.houseId,
+      type: e.currentTarget.dataset.tag,
+      inviteCode: app.globalData.inviteCode
+    }, URL.recommend, app).then(({data}) => {
+      // this.handleClose()
+      this.selectComponent("#toast").showToast('操作成功');
+    }).catch((error) => {
+      this.selectComponent("#toast").showToast('操作失败：' + error.result_msg);
     })
   },
   myCloseInformDialog() {
@@ -471,7 +479,6 @@ Page({
     })
   },
   handleScrollView(e) {
-    console.log('scroll', e)
     const { fixViews } = this.data
     let { scrollTop } = e.detail
     const devide = fixViews[1].top

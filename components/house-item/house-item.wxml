@@ -20,10 +20,12 @@
     </view>
   </view>
   <view class="house-commission-per-box" wx:if="{{house.loginUserAgent && house.commissionInfo}}">
-    <image class="icon-img" src="../../image/home_icon_com_default@2x.png"></image>
-    <text>{{house.commissionInfo}}</text>
-    <image class="collect-icon" src="../../image/collect.png"></image>
-    <image class="collected-icon" src="../../image/Tourist_icon_focus_cick@2x.png"></image>
+    <view class="commission-box">
+      <image class="icon-img" src="../../image/home_icon_com_default@2x.png"></image>
+      <text>{{house.commissionInfo}}</text>
+    </view>
+    <image data-id="{{house.houseId}}" bindtap="handleCollectHouse" wx:if="{{!house.followStatus}}" class="collect-img collect-icon" src="../../image/collect.png"></image>
+    <image data-id="{{house.houseId}}" bindtap="handleCollectHouse" wx:else class="collect-img collected-icon" src="../../image/Tourist_icon_focus_cick@2x.png"></image>
   </view>
   <view class="house-share-box">
     <!-- 先获取用户授权信息 -->

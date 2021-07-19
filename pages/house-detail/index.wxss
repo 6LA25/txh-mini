@@ -22,7 +22,11 @@
   color: #fff;
   font-size: 24rpx;
 }
-
+.inform-btn {
+  padding: 0;
+  background: #fff;
+  font-weight: normal;
+}
 .house-detail-content-box {
   border-top-left-radius: 30rpx;
   border-top-right-radius: 30rpx;
