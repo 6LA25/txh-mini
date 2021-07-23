@@ -1,7 +1,7 @@
 <!-- index.wxml -->
 <scroll-view enhanced="true" bindscroll="handleScrollView" scroll-y="true" style="height: 100%;">
 <view class="container home-page" style="padding-top:{{bar_Height + 106}}px;">
-  <view class="ax-public-navigation-box" style="padding-top:{{bar_Height}}px;background:{{scrollTop > 150 ? '#e32835' : 'transparent'}};">
+  <view class="ax-public-navigation-box" style="padding-top:{{bar_Height}}px;background:{{scrollTop > 50 ? '#e32835' : 'transparent'}};">
     <view class="navi-text-box">安选好房</view>
   </view>
   <!-- 隐私弹窗 -->
@@ -34,7 +34,7 @@
     </view>
   </view>
   <!-- 搜索框 -->
-  <view class="search-box" wx:if="{{sysUserInfo.agreement === 1}}" style="top:{{bar_Height + 44}}px;background:{{scrollTop > 150 ? '#e32835' : 'transparent'}};">
+  <view class="search-box" wx:if="{{sysUserInfo.agreement === 1}}" style="top:{{bar_Height + 44}}px;background:{{scrollTop > 50 ? '#e32835' : 'transparent'}};">
     <view bindtap="handleJumpSearch" class="search-ipt-box">
       <view class="search-address">
         <!-- <text>{{locationInfo.address_component.city}}</text> -->

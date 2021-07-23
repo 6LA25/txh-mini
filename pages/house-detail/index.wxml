@@ -22,7 +22,7 @@
           <view class="house-name">
             <view class="name">{{houseDetail.name}}</view>
             <view class="collect-box" bindtap="handleFollowHouse">
-              <image wx:if="{{houseDetail.followStatus}}" src="../../image/Tourist_icon_focus_cick@2x.png"></image>
+              <image wx:if="{{houseDetail.followStatus}}" src="../../image/collected.png"></image>
               <image wx:else src="../../image/collect.png"></image>
               <text>{{ houseDetail.followStatus ? '已关注' : '关注' }}</text>
             </view>

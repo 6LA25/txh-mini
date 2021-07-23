@@ -355,7 +355,7 @@
 
 .hot-activity-box .hot-activity-container .act-item {
   width: 100%;
-  height: 176rpx;
+  height: 110rpx;
   border-radius: 8rpx;
 }
 

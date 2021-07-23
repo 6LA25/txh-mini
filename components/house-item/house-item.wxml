@@ -1,6 +1,8 @@
 <!-- components/house-item.wxml -->
 <wxs module="fn" src="../../filter/priceShow.wxs"></wxs>
 <view class="house-item-box">
+  <image data-id="{{house.houseId}}" catchtap="handleCollectHouse" wx:if="{{!house.followStatus}}" class="collect-img collect-icon" src="../../image/collect.png"></image>
+  <image data-id="{{house.houseId}}" catchtap="handleCollectHouse" wx:else class="collect-img collected-icon" src="../../image/collected.png"></image>
   <view class="house-detail-box" hover-class="tap-active" bindtap="handleJumpHouseDetail">
     <image lazy-load="{{true}}" src="{{house.coverImageLink}}"></image>
     <view class="detail-box">
@@ -24,8 +26,6 @@
       <image class="icon-img" src="../../image/home_icon_com_default@2x.png"></image>
       <text>{{house.commissionInfo}}</text>
     </view>
-    <image data-id="{{house.houseId}}" bindtap="handleCollectHouse" wx:if="{{!house.followStatus}}" class="collect-img collect-icon" src="../../image/collect.png"></image>
-    <image data-id="{{house.houseId}}" bindtap="handleCollectHouse" wx:else class="collect-img collected-icon" src="../../image/Tourist_icon_focus_cick@2x.png"></image>
   </view>
   <view class="house-share-box">
     <!-- 先获取用户授权信息 -->

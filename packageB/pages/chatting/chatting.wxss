@@ -72,7 +72,7 @@ page {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 80rpx;
+  width: 88rpx;
 }
 
 .send-btn .btn-box {

@@ -174,12 +174,11 @@ page {
 /* 房源筛选列表 */
 
 .house-filter-list {
-
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: #727483;
-  padding: 24rpx 24rpx 8rpx 24rpx;
+  padding: 24rpx 0 8rpx 0;
 }
 
 .house-filter-list .hot-houses {
@@ -230,13 +229,13 @@ page {
 .fix-jump-map-box {
   position: fixed;
   right: 32rpx;
-  bottom: 180rpx;
+  bottom: 110rpx;
   z-index: 999;
 }
 
 .fix-jump-map-box image {
-  width: 120rpx;
-  height: 120rpx;
+  width: 100rpx;
+  height: 100rpx;
   border-radius: 50%;
 }
 
@@ -266,7 +265,7 @@ page {
 }
 
 .house-index-box {
-  padding: 24rpx;
+  /* padding: 24rpx; */
 }
 
 .house-index-box .house-index-inner-box {
@@ -284,9 +283,9 @@ page {
   justify-content: center;
   background: rgba(239, 241, 245, 1);
   border-radius: 8rpx;
-  height: 88rpx;
+  height: 76rpx;
   color: rgba(116, 125, 141, 1);
-  font-size: 32rpx;
+  font-size: 30rpx;
 }
 
 .devide-box {

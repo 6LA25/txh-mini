@@ -1,7 +1,8 @@
 /* components/house-item.wxss */
 
 .house-item-box {
-  padding: 20rpx 24rpx;
+  position: relative;
+  padding: 20rpx 24rpx 8rpx 24rpx;
   border-bottom: 2rpx solid#F6F6F6;
 }
 
@@ -17,6 +18,17 @@
   min-height: 192rpx;
 }
 
+.house-item-box .collect-img {
+  position: absolute;
+  /* left: 200px; */
+  left: auto;
+  right: 20rpx;
+  top: 28rpx;
+  width: 36rpx;
+  height: 32rpx;
+  z-index: 111;
+}
+
 .house-item-box .house-detail-box image {
   position: absolute;
   top: 0;
@@ -27,6 +39,7 @@
 }
 
 .house-item-box .house-detail-box .detail-box {
+  position: relative;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -42,7 +55,7 @@
 
 .detail-box .price {
   color: #E32835;
-  margin-bottom: 6rpx;
+  margin-bottom: 4rpx;
 }
 
 .detail-box .price .num {
@@ -93,7 +106,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  margin-bottom: 10rpx;
+  margin-bottom: 6rpx;
 }
 
 .tags-b-box text:not(:last-child) {
@@ -138,10 +151,6 @@
 .house-commission-per-box .commission-box {
   display: flex;
   align-items: center;
-}
-.house-commission-per-box .collect-img {
-  width: 36rpx;
-  height: 32rpx;
 }
 
 .house-share-box {

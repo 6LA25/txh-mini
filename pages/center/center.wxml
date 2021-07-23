@@ -113,6 +113,10 @@
           <image class="icon-img" src="../../image/my_icon_daikuanjisuanqi_default@3x.png"></image>
           <text class="text">贷款计算器</text>
         </view>
+        <view class="operate-item-box" bindtap="handleJumpFocus">
+          <image class="icon-img" src="../../image/my_icon_daikuanjisuanqi_default@3x.png"></image>
+          <text class="text">关注楼盘</text>
+        </view>
       </view>
     </view>
     <view class="operate-box jjr-box">

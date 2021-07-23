@@ -110,5 +110,10 @@ Page({
     wx.navigateTo({
       url: '/pages/settings/settings'
     })
+  },
+  handleJumpFocus() {
+    wx.navigateTo({
+      url: '/pages/houses-focus/houses-focus'
+    })
   }
 })
