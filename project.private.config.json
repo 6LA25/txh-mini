@@ -572,6 +572,18 @@
           "pathName": "pages/house-detail/index",
           "query": "id=147",
           "scene": null
+        },
+        {
+          "name": "pages/house-detail/index",
+          "pathName": "pages/house-detail/index",
+          "query": "id=147",
+          "scene": null
+        },
+        {
+          "name": "pages/notice-detail/notice-detail",
+          "pathName": "pages/notice-detail/notice-detail",
+          "query": "id=33",
+          "scene": null
         }
       ]
     }

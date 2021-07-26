@@ -159,5 +159,10 @@ Page({
       totalCount: '',
       aList: []
     })
+  },
+  handleCall(e) {
+    wx.makePhoneCall({
+      phoneNumber: e.currentTarget.dataset.mobile //仅为示例，并非真实的电话号码
+    })
   }
 })

@@ -1,0 +1,4 @@
+/* pages/notice-detail/notice-detail.wxss */
+.notice-detail-page {
+  padding: 30rpx;
+}

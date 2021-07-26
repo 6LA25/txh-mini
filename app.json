@@ -25,7 +25,8 @@
     "pages/pre-registration/pre-registration",
     "pages/house-type/index",
     "pages/settings/settings",
-    "pages/consult-online/consult"
+    "pages/consult-online/consult",
+    "pages/notice-detail/notice-detail"
   ],
   "window": {
     "backgroundTextStyle": "light",

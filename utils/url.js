@@ -7,6 +7,7 @@ export default {
   login: `${domain}/api/app/auth/wechat`,
   banner: `${domain}/api/app/query/banner/items`,
   notice: `${domain}/api/app/query/notice/items`,
+  noticeDetail: `${domain}/api/app/query/notice/item`,
   hotHouses: `${domain}/api/app/query/house/items`,
   followHouses: `${domain}/api/app/protected/follow/items`,
   addShareCount: `${domain}/api/app/house/addShareCount`,

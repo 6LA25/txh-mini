@@ -71,11 +71,11 @@
   </view>
   <view class="select-file-box" wx:if="{{selectFileVisible}}">
     <view class="file-type-box n1">
-      <image class="file-icon-img" bindtap="handleSendImg" mode="widthFix" src="../../images/img-icon.jpg"></image>
+      <image class="file-icon-img" bindtap="handleSendImg" mode="widthFix" src="../../images/80_tupian@2x.png"></image>
       <view>照片</view>
     </view>
     <view class="file-type-box">
-      <image class="file-icon-img" bindtap="handleSendVideo" mode="widthFix" src="../../images/video-icon.jpg"></image>
+      <image class="file-icon-img" bindtap="handleSendVideo" mode="widthFix" src="../../images/80_xiangji@2x.png"></image>
       <view>视频</view>
     </view>
   </view>

@@ -18,7 +18,7 @@
       <image class="head" src="{{item.avatar}}"></image>
       <view class="detail-box">
         <view class="name">{{item.displayName}}</view>
-        <view class="phone">{{item.mobile}}</view>
+        <view class="phone" data-mobile="{{item.mobile}}" bindtap="handleCall">{{item.mobile}}</view>
         <view class="detail">
           <view class="detail-item">
             <image class="icon-img" src="../../image/Agent_icon_rec@2x.png"></image>

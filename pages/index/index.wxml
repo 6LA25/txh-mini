@@ -58,14 +58,14 @@
       <my-swiper img-list="{{bannerList}}" height="{{400}}" radius="12"></my-swiper>
     </view>
     <!-- 公告 -->
-    <view class="notice-box" bindtap="handleJumpConsult">
+    <view class="notice-box">
       <view class="img-box">
         <image src="../../image/home_icon_title_default_new_1.png"></image>
         <text></text>
       </view>
       <swiper class='swiper-nav' vertical='true' autoplay='true' circular='true' interval='4000'>
         <block wx:for='{{noticeList}}' wx:key='id'>
-          <swiper-item catchtouchmove="stopTouchMove" class="notice-text-box">
+          <swiper-item catchtouchmove="stopTouchMove" class="notice-text-box" bindtap="handleJumpNotice" data-notice="{{item}}">
             <view class='swiper-context'>{{item.title}}</view>
           </swiper-item>
         </block>

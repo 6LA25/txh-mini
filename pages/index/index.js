@@ -330,4 +330,24 @@ Page({
     })
     console.log('binderror==============================>', e)
   },
+  handleJumpNotice(e) {
+    let { linkType, id, content } = e.currentTarget.dataset.notice
+    if (linkType === 1) { // 跳转楼盘
+      wx.navigateTo({
+        url: `../house-detail/index?id=${id}`
+      })
+    } else if (linkType === 2) { // 报名活动
+      wx.navigateTo({
+        url: `../../packageB/pages/apply-activity/apply?id=${content}`
+      })
+    } else if (linkType === 3) { // 文章详情
+      wx.navigateTo({
+        url: `../../packageB/pages/news-detail/detail?id=${content}`
+      })
+    } else if (linkType === 0) { // 文章详情
+      wx.navigateTo({
+        url: `../notice-detail/notice-detail?id=${id}`
+      })
+    }
+  }
 })

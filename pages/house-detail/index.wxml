@@ -136,7 +136,7 @@
           wx:if="{{sysUserInfo && sysUserInfo.agentUser && !inviteMobile && houseDetail.distribution}}">
           <view class="rule-title-box" style="margin-bottom: 20rpx;">
             <view style="font-size: 40rpx;color: #333;font-weight: bold;">推荐佣金</view>
-            <view class="txt1" style="color: #727483;font-size: 28rpx;">结佣以推荐时的佣金方案为准</view>
+            <view class="txt1" style="color: #727483;font-size: 28rpx;">结佣以成交时的佣金方案为准</view>
           </view>
           <view class="commission-rule-detail-box">
             <!-- <view class="commission-rule-detail-box_title">
@@ -301,7 +301,7 @@
             </view>
             <view class="hint-item">
               <image src="../../image/Housing_details_icon_yuyin_default@2x.png"></image>
-              <text>专业放心</text>
+              <text>高效省钱买好房</text>
             </view>
           </view>
           <view wx:if="{{houseDetail.adviseridList.length === 0}}">暂无数据</view>

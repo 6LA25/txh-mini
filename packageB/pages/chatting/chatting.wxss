@@ -85,22 +85,21 @@ page {
 
 .select-file-box {
   display: flex;
-  justify-content: center;
-  background: #fff;
   padding: 20rpx 80rpx;
 }
 
 .file-type-box {
-  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-size: 28rpx;
+  margin-right: 30rpx;
 }
 
 .file-type-box .file-icon-img {
-  width: 160rpx;
-  margin-bottom: 20rpx;
+  width: 100rpx;
+  margin-bottom: 10rpx;
 }
 
 /* 聊天信息展示 */

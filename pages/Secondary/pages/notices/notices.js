@@ -85,6 +85,10 @@ Page({
       wx.navigateTo({
         url: `../../../../packageB/pages/apply-form/form?id=${notice.content}`
       })
+    } else if (notice.linkType === 0) {
+      wx.navigateTo({
+        url: `/pages/notice-detail/notice-detail?id=${notice.id}`
+      })
     }
   },
   fetchNotice() {
