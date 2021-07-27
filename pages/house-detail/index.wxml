@@ -387,7 +387,7 @@
     </scroll-view> -->
     </view>
   </scroll-view>
-  <operate-box sysinfo="{{sysUserInfo}}" user-info="{{userInfo}}" house="{{houseDetail}}"></operate-box>
+  <operate-box bindmychat="onMyChat" data-uid="{{houseDetail.hotlineObject.uid}}" data-im="{{houseDetail.hotlineObject.username}}" sysinfo="{{sysUserInfo}}" user-info="{{userInfo}}" house="{{houseDetail}}"></operate-box>
   <share-poster wx:if="{{showShareDialog}}" house-detail="{{houseDetail}}" bindmyCloseShare="handleToggleShareDialog">
   </share-poster>
   <inform-dialog dialog-show="{{informDialogShow}}" inform-type="{{informType}}" house-id="{{houseId}}"

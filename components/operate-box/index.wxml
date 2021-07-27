@@ -1,21 +1,13 @@
 <!-- components/operate-box/index.wxml -->
 <view class="btns-box">
-  <!-- <button plain="true" open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="share-box" wx:if="{{!inviteCode && (!userInfo && !updateUserInfo)}}">
-    <image src="../../image/share.png"></image>
-    <text>转发他人</text>
-  </button>
-  <button plain="true" plain="true" data-id="{{house.houseId}}" data-name="{{house.name}}" data-cover="{{house.coverImageLink}}" open-type="share" class="share-box" wx:if="{{!inviteCode && (userInfo || updateUserInfo)}}">
-    <image src="../../image/share.png"></image>
-    <text>转发他人</text>
-  </button> -->
-  <!-- <view bindtap="handleShowDialog" wx:if="{{sysinfo.agentUser && !inviteCode}}" class="share-btn agent-user fxhk-box">分享获客</view> -->
   <!-- 经纪人 -->
   <view wx:if="{{sysinfo.agentUser && !inviteCode}}" class="share-btn agent-user" bindtap="handleRecommend">报备客户</view>
   <!-- 联系当前楼盘置业顾问 -->
-  <view wx:if="{{sysinfo.agentUser && !inviteCode}}" class="share-btn common-user" bindtap="handleCall">免费咨询</view>
+  <view wx:if="{{sysinfo.agentUser && !inviteCode}}" class="share-btn common-user" bindtap="handleCall">电话咨询</view>
   <view wx:if="{{inviteCode}}" bindtap="handleYuYue" class="share-btn agent-user">预约看房</view>
-  <view wx:if="{{inviteCode}}" class="share-btn common-user" style="width: 100%;" bindtap="handleCall">免费咨询</view>
+  <view wx:if="{{inviteCode}}" class="share-btn common-user" style="width: 100%;" bindtap="handleCall">电话咨询</view>
 
   <!-- 纯游客进入 -->
-  <view wx:if="{{!sysinfo.agentUser && !inviteCode}}" class="share-btn common-user" bindtap="handleCallBoss">免费咨询</view>
+  <view wx:if="{{!sysinfo.agentUser && !inviteCode}}" class="share-btn common-user" bindtap="handleCallBoss">电话咨询</view>
+  <view class="share-btn im-btn" bindtap="handleChat">在线咨询</view>
 </view>

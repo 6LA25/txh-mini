@@ -401,6 +401,9 @@ Page({
       hasAuth: true
     })
   },
+  onMyChat(e, option) {
+    this.handleSendHouse(e)
+  },
   onMyDialog() {
     if (!this.data.houseDetail.shareImageLink) {
       this.selectComponent("#toast").showToast('该楼盘未设置分享图片');

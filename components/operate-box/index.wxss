@@ -39,12 +39,10 @@
   justify-content: center;
   border-radius: 4rpx;
   flex: 1;
-  min-width: 328rpx;
   height: 80rpx;
-}
-.btns-box .share-btn:first-child {
   margin-right: 30rpx;
 }
+
 .btns-box .share-btn:last-child {
   margin-right: 0;
 }

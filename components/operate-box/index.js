@@ -84,6 +84,11 @@ Component({
         url: `../pre-registration/pre-registration`
       })
     },
+    handleChat(e) {
+      this.triggerEvent('mychat', {
+        a: 1
+      }, e)
+    },
     makeCustomerRecord() {
       Fetch({
         agentMobile: this.data.inviteMobile || '',
