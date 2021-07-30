@@ -4,7 +4,7 @@ import { Fetch } from '../../../utils/http'
 import { getUserDetail, fetchTicket } from '../../../utils/util'
 import URL from '../../../utils/url'
 const recorderManager = wx.getRecorderManager()
-const innerAudioContext = wx.createInnerAudioContext()
+
 Page({
 
   /**
@@ -25,7 +25,8 @@ Page({
     isInputAudio: false,
     voiceStatusStr: '按住 说话',
     canSend: false,
-    startPoint: null
+    startPoint: null,
+    innerAudioContext: {}
   },
 
   /**
@@ -34,8 +35,15 @@ Page({
   onLoad: async function (options) {
     await getUserDetail(app)
     await fetchTicket(app)
+    wx.setNavigationBarTitle({
+      title: options.nick
+    })
+    wx.setInnerAudioOption({
+      obeyMuteSwitch: false
+    })
     this.setData({
       height: wx.getSystemInfoSync().windowHeight,
+      innerAudioContext: wx.createInnerAudioContext(),
       conversionOptions: {
         conversationID: options.conversationID,
         userID: options.userID,
@@ -123,7 +131,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    innerAudioContext.destroy()
+    this.data.innerAudioContext.destroy()
     wx.event.off('listenReceivedMsg')
     wx.event.off('listenMsgReaded')
     wx.event.off('listenMsgRevoked')
@@ -145,9 +153,6 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
-  },
   onPulling(e) {
     // console.log('onPulling:', e)
   },
@@ -303,7 +308,7 @@ Page({
   },
   handlePlayVoice(e) {
     const { voice } = e.currentTarget.dataset
-    let { contactMessages } = this.data
+    let { contactMessages, innerAudioContext } = this.data
     if (!voice.playing) {
       contactMessages.messageList.forEach(item => {
         if (item.ID === voice.ID) {
@@ -312,7 +317,7 @@ Page({
           item.playing = false
         }
       })
-      innerAudioContext.src = voice.payload.remoteAudioUrl
+      innerAudioContext.src = encodeURI(voice.payload.remoteAudioUrl + '?' + Date.now())
       innerAudioContext.play()
       innerAudioContext.onEnded((res) => {
         console.log('end=>', res)
@@ -380,7 +385,7 @@ Page({
     wx.showModal({
       title: '提示',
       content: '是否撤回该条消息？',
-      success:(res) => {
+      success: (res) => {
         if (res.confirm) {
           console.log('用户点击确定')
           let promise = $tim.revokeMessage(_msg);

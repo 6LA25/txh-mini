@@ -46,6 +46,11 @@
 .btns-box .share-btn:last-child {
   margin-right: 0;
 }
+.im-btn {
+  color: #fff;
+  background-image: linear-gradient(to right, #F2CE95, #D89640);
+}
+
 .agent-user {
   border: 2rpx solid #E32835;
   color: #E32835;

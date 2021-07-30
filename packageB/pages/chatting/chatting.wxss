@@ -189,7 +189,7 @@ page {
 
 .message-item-inner.msg-in .msg-type-text,
 .message-item-inner.msg-in .msg-type-voice {
-  background: #767C8E;
+  background: #aaa;
 }
 
 .message-item-inner.msg-out {
@@ -207,7 +207,7 @@ page {
 
 .message-item-inner.msg-out .msg-type-text,
 .message-item-inner.msg-out .msg-type-voice {
-  background: #E32835;
+  background: rgb(227, 40, 53, .7);
 }
 
 .msg-type-voice {
@@ -264,18 +264,19 @@ page {
 }
 
 .house-cover {
+  display: block;
   width: 100%;
-  height: 180rpx;
+  max-height: 200rpx;
   border-radius: 8rpx 8rpx 0 0;
 }
 .house-container {
-  padding: 16rpx;
+  padding: 12rpx;
 }
 .house-name {
   font-size: 28rpx;
   color: #333;
   font-weight: 500;
-  margin-bottom: 8rpx;
+  margin-bottom: 4rpx;
 }
 
 .house-address {

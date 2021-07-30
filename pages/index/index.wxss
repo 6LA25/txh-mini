@@ -141,7 +141,7 @@ page {
   padding: 12rpx 24rpx;
   border-radius: 8rpx;
   box-shadow: 0px 0px 16rpx 0px rgba(184,191,195,0.25);
-  margin-bottom: 16px;
+  margin-bottom: 10px;
 }
 
 .notice-box .img-box {
@@ -229,7 +229,7 @@ page {
 .fix-jump-map-box {
   position: fixed;
   right: 32rpx;
-  bottom: 110rpx;
+  bottom: 200rpx;
   z-index: 999;
 }
 

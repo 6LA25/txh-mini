@@ -9,5 +9,5 @@
 
   <!-- 纯游客进入 -->
   <view wx:if="{{!sysinfo.agentUser && !inviteCode}}" class="share-btn common-user" bindtap="handleCallBoss">电话咨询</view>
-  <view class="share-btn im-btn" bindtap="handleChat">在线咨询</view>
+  <view class="share-btn im-btn" wx:if="{{house.hotlineObject}}" bindtap="handleChat">在线咨询</view>
 </view>

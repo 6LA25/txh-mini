@@ -1,6 +1,6 @@
-// let domain = 'https://1002.app.anxuanhouse.com'
+let domain = 'https://1002.app.anxuanhouse.com'
 // let domain = 'http://47.103.39.72:8888'
-let domain = 'http://106.15.190.210:8888'
+// let domain = 'http://106.15.190.210:8888'
 export default {
   test: 'http://58.214.13.42:8859/zuul/login/login',
   tim: 'http://47.103.39.72:8888/api/im/genUserSig',

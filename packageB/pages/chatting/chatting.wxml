@@ -36,7 +36,7 @@
           </view>
           <!-- 自定义楼盘信息 -->
           <view class="msg-type-custom" data-house="{{dateFormat.formatJSON(item.payload.description).houseId}}" wx:if="{{item.type === 'TIMCustomElem'}}" bindtap="handleJumpHouse">
-            <image class="house-cover" src="{{dateFormat.formatJSON(item.payload.description).coverImg}}"></image>
+            <image class="house-cover" mode="widthFix" src="{{dateFormat.formatJSON(item.payload.description).coverImg}}"></image>
             <view class="house-container">
               <view class="house-name">{{dateFormat.formatJSON(item.payload.description).houseName}}</view>
               <view class="house-address">{{dateFormat.formatJSON(item.payload.description).address}}</view>

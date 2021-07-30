@@ -315,7 +315,7 @@
               <button class="send-house-auth-btn" wx:if="{{!hasAuth}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
               <image data-im="{{item.username}}" class="img" src="../../image/Housing_details_icon_wechat_default@2x.png"></image>
               </button>
-              <image wx:if="{{hasAuth}}" data-uid="{{item.uid}}" data-im="{{item.username}}" bindtap="handleSendHouse" class="img" src="../../image/Housing_details_icon_wechat_default@2x.png"></image>
+              <image wx:if="{{hasAuth}}" data-nick="{{item.account}}" data-uid="{{item.uid}}" data-im="{{item.username}}" bindtap="handleSendHouse" class="img" src="../../image/Housing_details_icon_wechat_default@2x.png"></image>
               <image data-mobile="{{item.mobile}}" bindtap="handleCallStaff" class="img" src="../../image/Housing_details_icon_iphone_default@2x.png"></image>
             </view>
           </view>
@@ -387,7 +387,7 @@
     </scroll-view> -->
     </view>
   </scroll-view>
-  <operate-box bindmychat="onMyChat" data-uid="{{houseDetail.hotlineObject.uid}}" data-im="{{houseDetail.hotlineObject.username}}" sysinfo="{{sysUserInfo}}" user-info="{{userInfo}}" house="{{houseDetail}}"></operate-box>
+  <operate-box bindmychat="onMyChat" data-nick="{{houseDetail.hotlineObject.account}}" data-uid="{{houseDetail.hotlineObject.uid}}" data-im="{{houseDetail.hotlineObject.username}}" sysinfo="{{sysUserInfo}}" user-info="{{userInfo}}" house="{{houseDetail}}"></operate-box>
   <share-poster wx:if="{{showShareDialog}}" house-detail="{{houseDetail}}" bindmyCloseShare="handleToggleShareDialog">
   </share-poster>
   <inform-dialog dialog-show="{{informDialogShow}}" inform-type="{{informType}}" house-id="{{houseId}}"

@@ -574,6 +574,7 @@ Page({
   async handleSendHouse(e) {
     let userId = e.currentTarget.dataset.im
     let uid = e.currentTarget.dataset.uid
+    let nick = e.currentTarget.dataset.nick
     let _me = this
     wx.showLoading({
       title: '加载中',
@@ -632,7 +633,7 @@ Page({
         wx.hideLoading()
         let chat = imResponse1.data.message
         wx.navigateTo({
-          url: `../../packageB/pages/chatting/chatting?conversationID=${chat.conversationID}&userID=${userId}&conversationType=${chat.conversationType}`
+          url: `../../packageB/pages/chatting/chatting?conversationID=${chat.conversationID}&userID=${userId}&conversationType=${chat.conversationType}&nick=${nick}`
         })
 
       }).catch(function (imError) {

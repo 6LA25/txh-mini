@@ -96,7 +96,7 @@ Page({
       await app.globalData.$tim.setMessageRead({ conversationID: chat.conversationID })
     }
     wx.navigateTo({
-      url: `/packageB/pages/chatting/chatting?conversationID=${chat.conversationID}&userID=${chat.userProfile.userID}&conversationType=${chat.type}`
+      url: `/packageB/pages/chatting/chatting?conversationID=${chat.conversationID}&userID=${chat.userProfile.userID}&conversationType=${chat.type}&nick=${chat.userProfile.nick || chat.userProfile.userID}`
     })
   },
   handleJumpSysMsg() {

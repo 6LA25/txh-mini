@@ -590,6 +590,30 @@
           "pathName": "pages/house-detail/index",
           "query": "id=147",
           "scene": null
+        },
+        {
+          "name": "pages/Secondary/pages/map-houses/index",
+          "pathName": "pages/Secondary/pages/map-houses/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/house-detail/index",
+          "pathName": "pages/house-detail/index",
+          "query": "id=19",
+          "scene": null
+        },
+        {
+          "name": "packageB/pages/chatting/chatting",
+          "pathName": "packageB/pages/chatting/chatting",
+          "query": "conversationID=C2CTXH1591352906175&userID=TXH1591352906175&conversationType=C2C&nick=%E6%88%88%E5%A6%82%E5%AD%90",
+          "scene": null
+        },
+        {
+          "name": "pages/consult-online/consult",
+          "pathName": "pages/consult-online/consult",
+          "query": "",
+          "scene": null
         }
       ]
     }

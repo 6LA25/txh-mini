@@ -28,7 +28,7 @@
     </view>
   </view>
   <view class="chat-user-list">
-    <view class="chat-item" wx:if="{{item.conversationID !== 'C2Cadministrator'}}" bindtap="handleJumpChatting"  data-chat="{{item}}" wx:for="{{contactList}}" wx:key="conversationID">
+    <view class="chat-item" wx:if="{{item.conversationID !== 'C2Cadministrator'}}" bindtap="handleJumpChatting" data-chat="{{item}}" wx:for="{{contactList}}" wx:key="conversationID">
       <view class="head-box">
         <view class="unread-box" wx:if="{{item.unreadCount > 0}}">{{ item.unreadCount }}</view>
         <image class="head-img" src="../../image/chat_touxiang@2x.png"></image>
