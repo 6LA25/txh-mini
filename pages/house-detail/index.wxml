@@ -274,7 +274,15 @@
                   {{dateFormat.getDate(item.publishTime, ':')}}
                 </view>
                 <view class="remark">{{item.title}}</view>
-                <view class="time" wx:if="{{item.content}}">{{item.content}}</view>
+                <view class="time house_textFour_box{{item.seeMore?' three':''}}" wx:if="{{item.content}}">{{item.content}}</view>
+                <view class="text_toggle_box" wx:if='{{item.seeMore}}' data-index='{{index}}' catchtap='toggleHandlerDongtai'>
+                  <text class="text_toggle_text">查看更多</text>
+                  <image style="width: 24rpx; height: 14rpx;transform: rotate(180deg);" src="../../image/Housing_details_icon_up_defaul@2x.png"></image>
+                </view>
+                <view class="text_toggle_box" wx:if='{{!item.seeMore && item.auto}}' data-index='{{index}}' catchtap='toggleContentDongtai'>
+                  <text class="text_toggle_text">收起</text>
+                  <image style="width: 24rpx; height: 14rpx;" src="../../image/Housing_details_icon_up_defaul@2x.png"></image>
+                </view>
               </view>
             </view>
           </view>

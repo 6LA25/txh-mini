@@ -6,7 +6,10 @@
   <view class="house-detail-box" hover-class="tap-active" bindtap="handleJumpHouseDetail">
     <image lazy-load="{{true}}" src="{{house.coverImageLink}}"></image>
     <view class="detail-box">
-      <view class="title">{{house.name}}</view>
+      <view class="title">
+        <view class="house-name">{{house.name}}</view>
+        <view class="house-sale-tag">{{house.statusName}}</view>
+      </view>
       <view class="price">
         <text class="hint">均价</text>
         <text class="{{fn.hasNum(house.price) ? 'num' : 'txt'}}">{{house.price}}</text>
@@ -30,12 +33,12 @@
   <view class="house-share-box">
     <!-- 先获取用户授权信息 -->
     <button class="share-num" plain="true" open-type="getUserInfo" bindgetuserinfo="getUserInfo" wx:if="{{!hasAuth}}">
-      <image src="../../image/home_icon_share_default@2x.png"></image>
+      <image src="../../image/home_icon_share_default_new@2x.png"></image>
       <text class="share-text">{{house.shareCount || 0}}次分享</text>
     </button>
     <!-- 分享楼盘 -->
     <button class="share-num" plain="true" data-id="{{house.houseId}}" data-name="{{house.name}}" data-cover="{{house.coverImageLink}}" open-type="share" wx:else>
-      <image src="../../image/home_icon_share_default@2x.png"></image>
+      <image src="../../image/home_icon_share_default_new@2x.png"></image>
       <text class="share-text">{{house.shareCount}}次分享</text>
     </button>
     <view class="share-users">

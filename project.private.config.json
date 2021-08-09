@@ -614,6 +614,24 @@
           "pathName": "pages/consult-online/consult",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/Secondary/pages/notices/notices",
+          "pathName": "pages/Secondary/pages/notices/notices",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/notice-detail/notice-detail",
+          "pathName": "pages/notice-detail/notice-detail",
+          "query": "id=22",
+          "scene": null
+        },
+        {
+          "name": "pages/house-detail/index",
+          "pathName": "pages/house-detail/index",
+          "query": "id=19",
+          "scene": null
         }
       ]
     }

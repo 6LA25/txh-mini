@@ -74,9 +74,6 @@ Page({
     Fetch({
       id: this.data.id
     }, URL.noticeDetail, app).then(({ data }) => {
-      wx.setNavigationBarTitle({
-        title: data.title
-      })
       this.setData({
         detail: data || null
       })

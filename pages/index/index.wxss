@@ -229,7 +229,7 @@ page {
 .fix-jump-map-box {
   position: fixed;
   right: 32rpx;
-  bottom: 200rpx;
+  bottom: 160rpx;
   z-index: 999;
 }
 

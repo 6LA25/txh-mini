@@ -181,10 +181,27 @@ Page({
     setTimeout(() => {
       var that = this;
       const query = wx.createSelectorQuery();
-      query.selectAll('.textFour_box').fields({
+      // 动态折叠
+      query.selectAll('.house_textFour_box').fields({
         size: true,
       }).exec(function (res) {
         let lineHeight = 26; //固定高度值 单位：PX
+        for (var i = 0; i < res[0].length; i++) {
+          console.log('res[0][i].height', res[0][i].height)
+          if ((res[0][i].height / lineHeight) > 3) {
+            that.data.houseDynamic[i].auto = true;
+            that.data.houseDynamic[i].seeMore = true;
+          }
+        }
+        that.setData({
+          houseDynamic: that.data.houseDynamic
+        })
+      })
+      // 周边折叠
+      query.selectAll('.textFour_box').fields({
+        size: true,
+      }).exec(function (res) {
+        let lineHeight = 22; //固定高度值 单位：PX
         for (var i = 0; i < res[0].length; i++) {
           if ((res[0][i].height / lineHeight) > 3) {
             that.data.trendsList[i].auto = true;
@@ -542,6 +559,19 @@ Page({
       })
     })
   },
+  toggleHandlerDongtai: function (e) {
+    var that = this;
+    let index = e.currentTarget.dataset.index;
+    for (var i = 0; i < that.data.houseDynamic.length; i++) {
+      if (index == i) {
+        that.data.houseDynamic[index].auto = true;
+        that.data.houseDynamic[index].seeMore = false;
+      }
+    }
+    that.setData({
+      houseDynamic: that.data.houseDynamic
+    })
+  },
   //展开更多
   toggleHandler: function (e) {
     var that = this;
@@ -554,6 +584,19 @@ Page({
     }
     that.setData({
       trendsList: that.data.trendsList
+    })
+  },
+  toggleContentDongtai: function (e) {
+    var that = this;
+    let index = e.currentTarget.dataset.index;
+    for (var i = 0; i < that.data.houseDynamic.length; i++) {
+      if (index == i) {
+        that.data.houseDynamic[index].auto = true;
+        that.data.houseDynamic[index].seeMore = true;
+      }
+    }
+    that.setData({
+      houseDynamic: that.data.houseDynamic
     })
   },
   //收起更多

@@ -1,4 +1,6 @@
-<!--pages/notice-detail/notice-detail.wxml-->
+<!-- pages/notice-detail/notice-detail.wxml -->
 <view class="notice-detail-page" wx:if="{{detail}}">
-{{detail.content}}
+  <view class="title">{{detail.title}}</view>
+  <view class="time">{{detail.created}}</view>
+  <view class="content">{{detail.content}}</view>
 </view>

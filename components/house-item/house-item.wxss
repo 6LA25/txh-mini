@@ -14,7 +14,7 @@
   position: relative;
   /* display: flex; */
   overflow: hidden;
-  padding-left: 276rpx;
+  padding-left: 268rpx;
   min-height: 192rpx;
 }
 
@@ -22,7 +22,7 @@
   position: absolute;
   /* left: 200px; */
   left: auto;
-  right: 20rpx;
+  right: 16rpx;
   top: 28rpx;
   width: 36rpx;
   height: 32rpx;
@@ -47,10 +47,30 @@
 }
 
 .detail-box .title {
-  word-break: break-all;
+  display: flex;
+  align-items: center;
+}
+.detail-box .title .house-name {
+  max-width: 282rpx;
+  /* word-break: break-all; */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   color: #333333;
   font-size: 34rpx;
   font-weight: 500;
+}
+
+.detail-box .title .house-sale-tag {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #e3e9fd;
+  color: #6b81f5;
+  font-size: 20rpx;
+  border-radius: 4rpx;
+  padding: 0 4rpx;
+  margin-left: 4rpx;
 }
 
 .detail-box .price {
@@ -62,10 +82,12 @@
   font-size: 40rpx;
   font-weight: 500;
 }
+
 .detail-box .price .txt {
   font-size: 32rpx;
   font-weight: 500;
 }
+
 .detail-box .price .hint {
   font-size: 24rpx;
 }
@@ -148,6 +170,7 @@
   height: 32rpx;
   margin-right: 8rpx;
 }
+
 .house-commission-per-box .commission-box {
   display: flex;
   align-items: center;

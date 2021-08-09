@@ -69,6 +69,11 @@ Page({
         checked: false
       },
       {
+        name: '住宅',
+        value: '11',
+        checked: false
+      },
+      {
         name: '写字楼',
         value: '5',
         checked: false
@@ -107,28 +112,18 @@ Page({
     // 销售状态
     saleTypes: [
       {
-        value: '1',
-        name: '热销中',
+        value: '7',
+        name: '待售',
+        checked: false
+      },
+      {
+        value: '8',
+        name: '认筹中',
         checked: false
       },
       {
         value: '4',
-        name: '即将加推',
-        checked: false
-      },
-      {
-        value: '5',
-        name: '即将首开',
-        checked: false
-      },
-      {
-        value: '2',
-        name: '即将开盘',
-        checked: false
-      },
-      {
-        value: '6',
-        name: '即将售罄',
+        name: '在售',
         checked: false
       },
       {
@@ -136,21 +131,6 @@ Page({
         name: '售罄',
         checked: false
       }
-      // {
-      //   name: '在售',
-      //   value: '1',
-      //   checked: false
-      // },
-      // {
-      //   name: '待售',
-      //   value: '2',
-      //   checked: false
-      // },
-      // {
-      //   name: '售罄',
-      //   value: '3',
-      //   checked: false
-      // }
     ],
     pageNo: 1,
     pageSize: 5,

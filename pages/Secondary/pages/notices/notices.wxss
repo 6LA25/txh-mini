@@ -20,7 +20,7 @@
   height: 44rpx;
   border-radius: 22rpx;
   margin-bottom: 32rpx;
-  background: #e6e3e6;
+  background: #aeaeae;
 }
 .notice-item .detail {
   padding: 28rpx;
@@ -44,4 +44,10 @@
   -webkit-line-clamp: 2;
   line-clamp: 2;
   -webkit-box-orient: vertical;
+}
+.btn {
+  margin-top: 8rpx;
+  text-align: center;
+  color: #6C6C70;
+  font-size: 26rpx;
 }

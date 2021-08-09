@@ -5,6 +5,7 @@
     <view class="detail">
       <view class="title">{{item.title}}</view>
       <view class="content">{{item.content}}</view>
+      <view class="btn">查看详情>></view>
     </view>
   </view>
   <view class="no-data-box" wx:if="{{totalCount === 0}}">
