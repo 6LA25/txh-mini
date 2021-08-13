@@ -121,16 +121,33 @@
   width: 2rpx;
   background: #727483;
 }
-
+.tags-box {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6rpx;
+}
 .tags-b-box {
   display: flex;
+  align-items: center;
   width: 100%;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  margin-bottom: 6rpx;
+  
 }
-
+.type-tag-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 36rpx;
+  font-size: 20rpx;
+  padding: 0 10rpx;
+  border-radius: 6rpx;
+  background-image: linear-gradient(135deg, #F1BE6E 0%, #E29925 100%);
+  color: #fff;
+  margin-right: 8rpx;
+  white-space: nowrap;
+}
 .tags-b-box text:not(:last-child) {
   margin-right: 8rpx;
 }

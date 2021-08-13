@@ -27,9 +27,13 @@
               <text>{{ houseDetail.followStatus ? '已关注' : '关注' }}</text>
             </view>
           </view>
-          <view class="tags-box" wx:if="{{houseDetail.tagList.length > 0}}">
-            <view wx:for="{{houseDetail.tagList}}" wx:key="item" class="tag-item">{{item}}</view>
+          <view class="tags-detail-box">
+            <text class="type-tag-box" wx:for="{{houseDetail.estateTypes}}" wx:key="*this">{{fn.getEstateText(item)}}</text>
+            <view class="tags-box" wx:if="{{houseDetail.tagList.length > 0}}">
+              <view wx:for="{{houseDetail.tagList}}" wx:key="item" class="tag-item">{{item}}</view>
+            </view>
           </view>
+          
           <view class="house-price">
             <view class="house-price-item">
               <view class="num">
@@ -274,9 +278,9 @@
                   {{dateFormat.getDate(item.publishTime, ':')}}
                 </view>
                 <view class="remark">{{item.title}}</view>
-                <view class="time house_textFour_box{{item.seeMore?' three':''}}" wx:if="{{item.content}}">{{item.content}}</view>
+                <view class="time house_textFour_box{{item.seeMore?' house_three':''}}" wx:if="{{item.content}}">{{item.content}}</view>
                 <view class="text_toggle_box" wx:if='{{item.seeMore}}' data-index='{{index}}' catchtap='toggleHandlerDongtai'>
-                  <text class="text_toggle_text">查看更多</text>
+                  <text class="text_toggle_text">展开</text>
                   <image style="width: 24rpx; height: 14rpx;transform: rotate(180deg);" src="../../image/Housing_details_icon_up_defaul@2x.png"></image>
                 </view>
                 <view class="text_toggle_box" wx:if='{{!item.seeMore && item.auto}}' data-index='{{index}}' catchtap='toggleContentDongtai'>
@@ -298,7 +302,7 @@
         </view>
         <view class="divide-box"></view>
         <!-- 咨询顾问 -->
-        <view class="consult-box" id="zixun">
+        <view class="consult-box" id="zixun" wx:if="{{houseDetail.adviseridList.length}}">
           <view class="title-box">
             <view class="title">咨询顾问</view>
           </view>
@@ -309,7 +313,7 @@
             </view>
             <view class="hint-item">
               <image src="../../image/Housing_details_icon_yuyin_default@2x.png"></image>
-              <text>高效省钱买好房</text>
+              <text>您的专属顾问</text>
             </view>
           </view>
           <view wx:if="{{houseDetail.adviseridList.length === 0}}">暂无数据</view>
@@ -323,7 +327,7 @@
               <button class="send-house-auth-btn" wx:if="{{!hasAuth}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
               <image data-im="{{item.username}}" class="img" src="../../image/Housing_details_icon_wechat_default@2x.png"></image>
               </button>
-              <image wx:if="{{hasAuth}}" data-nick="{{item.account}}" data-uid="{{item.uid}}" data-im="{{item.username}}" bindtap="handleSendHouse" class="img" src="../../image/Housing_details_icon_wechat_default@2x.png"></image>
+              <image wx:if="{{hasAuth}}" data-nick="{{item.account}}" data-uid="{{item.uid}}" data-mobile="{{item.mobile}}" data-im="{{item.username}}" bindtap="handleSendHouse" class="img" src="../../image/Housing_details_icon_wechat_default@2x.png"></image>
               <image data-mobile="{{item.mobile}}" bindtap="handleCallStaff" class="img" src="../../image/Housing_details_icon_iphone_default@2x.png"></image>
             </view>
           </view>
@@ -338,11 +342,11 @@
               <view class="liangdian-title">
                 <image class="icon" src="{{item.icon}}"></image>{{item.title}}
               </view>
-              <view class="textFour_box liangdian-detail{{item.seeMore?' three':''}}">
+              <view class="zhoubian_textFour_box liangdian-detail{{item.seeMore?' three':''}}">
                 {{item.text}}
               </view>
               <view class="text_toggle_box" wx:if='{{item.seeMore}}' data-index='{{index}}' catchtap='toggleHandler'>
-                <text class="text_toggle_text">查看更多</text>
+                <text class="text_toggle_text">展开</text>
                 <image style="width: 24rpx; height: 14rpx;transform: rotate(180deg);" src="../../image/Housing_details_icon_up_defaul@2x.png"></image>
               </view>
               <view class="text_toggle_box" wx:if='{{!item.seeMore && item.auto}}' data-index='{{index}}' catchtap='toggleContent'>

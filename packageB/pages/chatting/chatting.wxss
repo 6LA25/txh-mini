@@ -8,10 +8,28 @@ page {
 }
 
 .chat {
+  position: relative;
   flex: 1;
   min-height: 0;
 }
-
+.call-fix-box {
+  position: fixed;
+  bottom: 160rpx;
+  right: 0;
+  left: auto;
+  display: flex;
+  align-items: center;
+  height: 60rpx;
+  width: 90rpx;
+  border-radius: 30rpx 0 0 30rpx;
+  background: #fff;
+  z-index: 999;
+  padding-left: 12rpx;
+}
+.call-fix-box .img {
+  width: 48rpx;
+  height: 48rpx;
+}
 .chat-footer {
   width: 100%;
   background: #fff;
@@ -150,7 +168,7 @@ page {
 }
 
 .message-detail {
-  max-width: 70%;
+  /* max-width: 70%; */
   color: #fff;
 }
 
@@ -207,7 +225,7 @@ page {
 
 .message-item-inner.msg-out .msg-type-text,
 .message-item-inner.msg-out .msg-type-voice {
-  background: rgb(227, 40, 53, .7);
+  background: #F05862;
 }
 
 .msg-type-voice {
@@ -258,7 +276,7 @@ page {
 }
 
 .msg-type-custom {
-  width: 400rpx;
+  width: 500rpx;
   background: #fff;
   border-radius: 8rpx;
 }
@@ -266,7 +284,7 @@ page {
 .house-cover {
   display: block;
   width: 100%;
-  max-height: 200rpx;
+  max-height: 260rpx;
   border-radius: 8rpx 8rpx 0 0;
 }
 .house-container {

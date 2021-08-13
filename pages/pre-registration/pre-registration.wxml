@@ -35,7 +35,7 @@
       <view class="form-item">
         <text class="form-label">看房日期</text>
         <view class="form-input">
-          <picker class="picker" mode="date" value="{{reserveDate}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+          <picker class="picker" mode="date" value="{{reserveDate}}" start="2015-09-01" end="2027-09-01" bindchange="bindDateChange">
             <view style="color: #A8ABB7;" wx:if="{{!reserveDate}}">请选择</view>
             <view style="color: #333;" wx:else class="picker">{{reserveDate}}</view>
           </picker>

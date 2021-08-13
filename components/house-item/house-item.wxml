@@ -15,9 +15,13 @@
         <text class="{{fn.hasNum(house.price) ? 'num' : 'txt'}}">{{house.price}}</text>
         <text class="hint" wx:if="{{fn.hasNum(house.price)}}">元/㎡</text>
       </view>
-      <view class="tags-b-box">
-        <text wx:for="{{house.tagList}}" wx:key="*this">{{item}}</text>
+      <view class="tags-box">
+        <text class="type-tag-box" wx:for="{{house.estateTypes}}" wx:key="*this">{{fn.getEstateText(item)}}</text>
+        <view class="tags-b-box">
+          <text wx:for="{{house.tagList}}" wx:key="*this">{{item}}</text>
+        </view>
       </view>
+      
       <view class="desc-box">
         <text wx:if="{{house.regionName}}">{{house.regionName}}</text>
         <text wx:if="{{house.address}}">{{house.address}}</text>

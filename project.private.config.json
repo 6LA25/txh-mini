@@ -632,6 +632,54 @@
           "pathName": "pages/house-detail/index",
           "query": "id=19",
           "scene": null
+        },
+        {
+          "name": "pages/pre-registration/pre-registration",
+          "pathName": "pages/pre-registration/pre-registration",
+          "query": "houseId=19&houseName=A%E6%A5%BC%E7%9B%98",
+          "scene": null
+        },
+        {
+          "name": "pages/Secondary/pages/bind-alipay/bind-alipay",
+          "pathName": "pages/Secondary/pages/bind-alipay/bind-alipay",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/house-detail/index",
+          "pathName": "pages/house-detail/index",
+          "query": "id=90",
+          "scene": null
+        },
+        {
+          "name": "pages/house-detail/index",
+          "pathName": "pages/house-detail/index",
+          "query": "id=19",
+          "scene": null
+        },
+        {
+          "name": "packageB/pages/chatting/chatting",
+          "pathName": "packageB/pages/chatting/chatting",
+          "query": "conversationID=C2CTXH1628147504596&userID=TXH1628147504596&conversationType=C2C&nick=syc",
+          "scene": null
+        },
+        {
+          "name": "packageB/pages/chatting/chatting",
+          "pathName": "packageB/pages/chatting/chatting",
+          "query": "conversationID=C2CTXH1628147504596&userID=TXH1628147504596&conversationType=C2C&nick=syc&mobile=15190746108",
+          "scene": null
+        },
+        {
+          "name": "pages/house-detail/index",
+          "pathName": "pages/house-detail/index",
+          "query": "id=19",
+          "scene": null
+        },
+        {
+          "name": "pages/house-detail/index",
+          "pathName": "pages/house-detail/index",
+          "query": "id=119",
+          "scene": null
         }
       ]
     }

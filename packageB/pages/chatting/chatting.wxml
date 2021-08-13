@@ -81,3 +81,6 @@
   </view>
   <view class="bottom-box"></view>
 </view>
+<view class="call-fix-box" bindtap="handleCall" wx:if="{{mobile}}">
+  <image class="img" src="../../images/call.jpg"></image>
+</view>

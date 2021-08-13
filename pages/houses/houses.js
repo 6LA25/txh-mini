@@ -100,7 +100,7 @@ Page({
       },
       {
         value: '9',
-        name: '其他',
+        name: '商业',
         checked: false
       },
       {

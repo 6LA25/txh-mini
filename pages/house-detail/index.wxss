@@ -79,9 +79,26 @@
   font-weight: bold;
 }
 
+.tags-detail-box {
+  display: flex;
+  align-items: center;
+  padding: 10rpx 0 18rpx 0;
+}
+.type-tag-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 36rpx;
+  font-size: 20rpx;
+  padding: 0 10rpx;
+  border-radius: 6rpx;
+  background-image: linear-gradient(135deg, #F1BE6E 0%, #E29925 100%);
+  color: #fff;
+  margin-right: 8rpx;
+  white-space: nowrap;
+}
 .content-box .top-house-detail-box .tags-box {
   display: flex;
-  padding: 10rpx 0 18rpx 0;
   /* border-bottom: 2rpx solid #f6f6f6; */
 }
 
@@ -636,8 +653,8 @@
 }
 
 .liangdian-list-box .liangdian-item .liangdian-title .icon {
-  width: 48rpx;
-  height: 48rpx;
+  width: 36rpx;
+  height: 36rpx;
   margin-right: 16rpx;
 }
 
@@ -645,13 +662,15 @@
   font-size: 28rpx;
 }
 
-.textFour_box {
+/* .textFour_box { */
+.zhoubian_textFour_box {
   width: 100%;
   font-size: 30rpx;
   font-weight: 400;
   color: rgba(87, 105, 123, 1);
   line-height: 26px;
   text-align: justify;
+  word-break: break-all;
 }
 
 .text_toggle_box {
@@ -680,15 +699,19 @@
   margin-right: 10rpx;
   margin-right: 8rpx;
 }
-
-.three {
-  text-overflow: -o-ellipsis-lastline;
+.house_three {
   overflow: hidden;
-  text-overflow: ellipsis;
+  max-height: 66px;
+}
+.three {
+  overflow: hidden;
+  max-height: 78px;
+  /* text-overflow: ellipsis; 
+  overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   line-clamp: 3;
-  -webkit-box-orient: vertical;
+  -webkit-box-orient: vertical; */
 }
 
 .text_toggle_text {

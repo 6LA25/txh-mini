@@ -16,14 +16,6 @@ Page({
     houseDetail: null, // 楼盘详情
     trendsList: [
       {
-        title: '市政基建',
-        icon: '../../image/Housing_details_icon_shizheng_default@2x.png',
-        tag: 'municipalInfrastructure',
-        auto: false,
-        seeMore: false,
-        text: ''
-      },
-      {
         title: '商圈消费',
         icon: '../../image/Housing_details_icon_shangquan_default@2x.png',
         tag: 'businessCircle',
@@ -51,6 +43,14 @@ Page({
         title: '医疗健康',
         icon: '../../image/Housing_details_icon_yiyuan_default@2x.png',
         tag: 'healthCare',
+        auto: false,
+        seeMore: false,
+        text: ''
+      },
+      {
+        title: '市政基建',
+        icon: '../../image/Housing_details_icon_shizheng_default@2x.png',
+        tag: 'municipalInfrastructure',
         auto: false,
         seeMore: false,
         text: ''
@@ -174,6 +174,12 @@ Page({
       })
       fixViews.splice(idx, 1)
     }
+    if (this.data.houseDetail.adviseridList.length === 0) {
+      let idx = fixViews.findIndex(item => {
+        return item.viewId === 'zixun'
+      })
+      fixViews.splice(idx, 1)
+    }
     this.setData({
       pageVisible: true,
       fixViews
@@ -185,9 +191,10 @@ Page({
       query.selectAll('.house_textFour_box').fields({
         size: true,
       }).exec(function (res) {
+        console.log('res===>', res)
         let lineHeight = 26; //固定高度值 单位：PX
         for (var i = 0; i < res[0].length; i++) {
-          console.log('res[0][i].height', res[0][i].height)
+          console.log('xx res[0][i].height',res[0][i], res[0][i].height)
           if ((res[0][i].height / lineHeight) > 3) {
             that.data.houseDynamic[i].auto = true;
             that.data.houseDynamic[i].seeMore = true;
@@ -198,12 +205,14 @@ Page({
         })
       })
       // 周边折叠
-      query.selectAll('.textFour_box').fields({
+      query.selectAll('.zhoubian_textFour_box').fields({
         size: true,
       }).exec(function (res) {
+        console.log('res===>', res)
         let lineHeight = 22; //固定高度值 单位：PX
-        for (var i = 0; i < res[0].length; i++) {
-          if ((res[0][i].height / lineHeight) > 3) {
+        for (var i = 0; i < res[1].length; i++) {
+          console.log('res[0][i].height',res[1][i], res[1][i].height)
+          if ((res[1][i].height / lineHeight) > 3) {
             that.data.trendsList[i].auto = true;
             that.data.trendsList[i].seeMore = true;
           }
@@ -222,7 +231,10 @@ Page({
         if (this.data.totalDynamic > 0) {
           query.select('#dongtai').boundingClientRect();
         }
-        query.select('#zixun').boundingClientRect();
+        if (this.data.houseDetail.adviseridList.length > 0) {
+          query.select('#zixun').boundingClientRect();
+        }
+        
         query.select('#zhoubian').boundingClientRect();
         query.exec(function (res) {
           resolve(res);
@@ -618,6 +630,7 @@ Page({
     let userId = e.currentTarget.dataset.im
     let uid = e.currentTarget.dataset.uid
     let nick = e.currentTarget.dataset.nick
+    let mobile = e.currentTarget.dataset.mobile
     let _me = this
     wx.showLoading({
       title: '加载中',
@@ -676,7 +689,7 @@ Page({
         wx.hideLoading()
         let chat = imResponse1.data.message
         wx.navigateTo({
-          url: `../../packageB/pages/chatting/chatting?conversationID=${chat.conversationID}&userID=${userId}&conversationType=${chat.conversationType}&nick=${nick}`
+          url: `../../packageB/pages/chatting/chatting?conversationID=${chat.conversationID}&userID=${userId}&conversationType=${chat.conversationType}&nick=${nick}&mobile=${mobile}`
         })
 
       }).catch(function (imError) {

@@ -2,5 +2,26 @@ module.exports = {
   hasNum: function(price){
     var reg = getRegExp('\d', 'g')
     return reg.test(price)
+  },
+  getEstateText: function(val) {
+    var estateTypes = [
+      { value: 1, label: '住宅' },
+      { value: 2, label: '公寓' },
+      { value: 3, label: '商铺' },
+      { value: 4, label: '写字楼' },
+      { value: 5, label: '厂房' },
+      { value: 6, label: '车位' },
+    ]
+    var label = ''
+    estateTypes.forEach(function(item) {
+      if (item.value === val) {
+        label = item.label
+      }
+    })
+    return label
+    // let index = estateTypes.in
+    // return estateTypes.find(function(item) {
+    //   return item.value === val
+    // })
   }
 }

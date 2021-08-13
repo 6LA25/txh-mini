@@ -26,7 +26,8 @@ Page({
     voiceStatusStr: '按住 说话',
     canSend: false,
     startPoint: null,
-    innerAudioContext: {}
+    innerAudioContext: {},
+    mobile: ''
   },
 
   /**
@@ -43,6 +44,7 @@ Page({
     })
     this.setData({
       height: wx.getSystemInfoSync().windowHeight,
+      mobile: options.mobile,
       innerAudioContext: wx.createInnerAudioContext(),
       conversionOptions: {
         conversationID: options.conversationID,
@@ -527,6 +529,11 @@ Page({
   handleJumpHouse(e) {
     wx.navigateTo({
       url: `../../../pages/house-detail/index?id=${e.currentTarget.dataset.house}`
+    })
+  },
+  handleCall() {
+    wx.makePhoneCall({
+      phoneNumber: this.data.mobile
     })
   }
 })

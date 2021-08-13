@@ -105,9 +105,17 @@ Page({
     })
   },
   validateForm() {
-    if (this.data.houseId && this.data.realname && this.data.mobile && this.data.reserveDate && this.data.reserveSection) {
+    if (this.data.houseId && this.data.realname && this.data.mobile.length === 11 && this.data.reserveDate && this.data.reserveSection) {
       return true
     } else {
+      if (this.data.mobile.length < 11) {
+        wx.showToast({
+          title: '请输入正确的11位手机号',
+          icon: 'none',
+          duration: 2000
+        })
+        return false
+      }
       wx.showToast({
         title: '请填写所有信息',
         icon: 'none',
@@ -137,7 +145,7 @@ Page({
     }, URL.recommend, app).then(({ data }) => {
       wx.hideLoading()
       wx.showToast({
-        title: '推荐成功',
+        title: '成功预约',
         icon: 'success',
         duration: 2000
       })
