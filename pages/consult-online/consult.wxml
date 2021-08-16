@@ -16,6 +16,7 @@
     </view>
     <view class="chat-item" bindtap="handleJumpSysMsg" wx:if="{{sysMsg}}">
       <view class="head-box">
+        <view class="unread-num" wx:if="{{sysMsg.ggunread}}">{{sysMsg.ggunread}}</view>
         <image class="head-img" src="../../image/xiaoxi@2x.png"></image>
       </view>
       <view class="content-box">

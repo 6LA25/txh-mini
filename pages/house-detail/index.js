@@ -472,9 +472,10 @@ Page({
       inviteCode: app.globalData.inviteCode
     }, URL.recommend, app).then(({data}) => {
       // this.handleClose()
-      this.selectComponent("#toast").showToast('操作成功');
+      this.selectComponent("#toast").showToast('预约成功');
     }).catch((error) => {
-      this.selectComponent("#toast").showToast('操作失败：' + error.result_msg);
+      this.selectComponent("#toast").showToast('预约成功');
+      // this.selectComponent("#toast").showToast('操作失败：' + error.result_msg);
     })
   },
   myCloseInformDialog() {

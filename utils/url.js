@@ -53,5 +53,6 @@ export default {
   articles: `${domain}/api/app/query/article/items`,
   article: `${domain}/api/app/query/article/item`,
   sysItem: `${domain}/api/app/query/notice/newest`,
-  articleView :`${domain}/api/app/add/article/view`
+  articleView :`${domain}/api/app/add/article/view`,
+  readed: `${domain}/api/app/notice/read`
 }

@@ -680,6 +680,12 @@
           "pathName": "pages/house-detail/index",
           "query": "id=119",
           "scene": null
+        },
+        {
+          "name": "pages/consult-online/consult",
+          "pathName": "pages/consult-online/consult",
+          "query": "",
+          "scene": null
         }
       ]
     }

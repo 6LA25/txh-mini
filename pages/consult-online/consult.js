@@ -100,6 +100,8 @@ Page({
     })
   },
   handleJumpSysMsg() {
+    Fetch({}, URL.readed, app).then(({data}) => {
+    })
     wx.navigateTo({
       url: '../Secondary/pages/notices/notices'
     })

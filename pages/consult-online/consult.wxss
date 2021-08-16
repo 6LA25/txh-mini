@@ -22,7 +22,22 @@
   width: 88rpx;
   margin-right: 12rpx;
 }
-
+.unread-num {
+  position: absolute;
+  top: -12rpx;
+  right: -8rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32rpx;
+  padding: 0 4rpx;
+  height: 32rpx;
+  border-radius: 16rpx;
+  color: #fff;
+  font-size: 24rpx;
+  background: #E32934;
+  border: 1px solid #fff;
+}
 .unread-box {
   position: absolute;
   top: -12rpx;
