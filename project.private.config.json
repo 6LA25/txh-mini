@@ -686,6 +686,12 @@
           "pathName": "pages/consult-online/consult",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/house-detail/index",
+          "pathName": "pages/house-detail/index",
+          "query": "id=19",
+          "scene": null
         }
       ]
     }

@@ -1082,3 +1082,35 @@ button.send-house-auth-btn {
 .hot-activity-box .hot-activity-container .act-item:not(:last-child) {
   margin-bottom: 10rpx;
 }
+
+.apply-success-img-dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+}
+.apply-success-img-dialog .inner-box {
+  position: relative;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 540rpx;
+  height: 780rpx;
+}
+.apply-success-img-dialog .inner-box .hint-img {
+  width: 100%;
+  height: 100%;
+}
+.apply-success-img-dialog .inner-box .close-box {
+  position: absolute;
+  bottom: -110rpx;
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transform: translate(-50%, 0);
+}

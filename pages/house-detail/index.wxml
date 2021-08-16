@@ -407,4 +407,12 @@
     <mp-dialog title="温馨提示" show="{{applyActVisible}}" bindbuttontap="tapDialogButton" buttons="{{[{text: '知道了'}]}}">
         <view>{{applySuccessHint}}</view>
     </mp-dialog>
+  <view class="apply-success-img-dialog" wx:if="{{applyImgVisible}}">
+    <view class="inner-box">
+      <view class="close-box">
+        <icon class="icon-close" type="cancel" size="34" color="rgba(255,255,255,.8)" bindtap="handleCloseDialog"/>
+      </view>
+      <image src="{{houseDetail.recommendImgLink}}" class="hint-img"></image>
+    </view>
+  </view>
 </view>

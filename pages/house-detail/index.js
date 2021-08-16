@@ -5,6 +5,7 @@ import { Fetch } from '../../utils/http'
 import URL from '../../utils/url'
 Page({
   data: {
+    applyImgVisible: false,
     applyActVisible: false,
     applySuccessHint: '',
     viewId: '',
@@ -472,11 +473,25 @@ Page({
       inviteCode: app.globalData.inviteCode
     }, URL.recommend, app).then(({data}) => {
       // this.handleClose()
-      this.selectComponent("#toast").showToast('预约成功');
+      this.applySuccessAlert()
     }).catch((error) => {
-      this.selectComponent("#toast").showToast('预约成功');
+      this.applySuccessAlert()
       // this.selectComponent("#toast").showToast('操作失败：' + error.result_msg);
     })
+  },
+  handleCloseDialog() {
+    this.setData({
+      applyImgVisible: false
+    })
+  },
+  applySuccessAlert() {
+    if (this.data.houseDetail.recommendImgLink) {
+      this.setData({
+        applyImgVisible: true
+      })
+    } else {
+      this.selectComponent("#toast").showToast('预约成功');
+    }
   },
   myCloseInformDialog() {
     // this.selectComponent("#toast").showToast('操作成功');
