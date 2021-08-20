@@ -60,7 +60,7 @@
     <!-- 公告 -->
     <view class="notice-box">
       <view class="img-box">
-        <image src="../../image/home_icon_title_default_new.png"></image>
+        <image src="../../image/home_toutiao_icon.png"></image>
         <text></text>
       </view>
       <swiper class='swiper-nav' vertical='true' autoplay='true' circular='true' interval='4000'>

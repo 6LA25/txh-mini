@@ -650,11 +650,12 @@
   color: #333;
   font-size: 30rpx;
   margin-bottom: 16rpx;
+  font-weight: 500;
 }
 
 .liangdian-list-box .liangdian-item .liangdian-title .icon {
-  width: 36rpx;
-  height: 36rpx;
+  width: 40rpx;
+  height: 40rpx;
   margin-right: 16rpx;
 }
 

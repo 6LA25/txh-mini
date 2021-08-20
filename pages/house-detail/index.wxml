@@ -313,7 +313,7 @@
             </view>
             <view class="hint-item">
               <image src="../../image/Housing_details_icon_yuyin_default@2x.png"></image>
-              <text>您的专属顾问</text>
+              <text>专业高效为您服务</text>
             </view>
           </view>
           <view wx:if="{{houseDetail.adviseridList.length === 0}}">暂无数据</view>
@@ -338,7 +338,7 @@
           <view class="title">亮点及周边</view>
           <!-- <view class="zhoubian">{{houseDetail.lightspot || '暂无数据'}}</view> -->
           <view class="liangdian-list-box">
-            <view class="liangdian-item" wx:for="{{trendsList}}" wx:key="*this">
+            <view class="liangdian-item" wx:for="{{trendsList}}" wx:key="*this" wx:if="{{item.text}}">
               <view class="liangdian-title">
                 <image class="icon" src="{{item.icon}}"></image>{{item.title}}
               </view>
@@ -361,19 +361,19 @@
               enable-zoom="{{false}}" enable-scroll="{{false}}"></map>
           </view>
           <view class="map-detail-box">
-            <view class="map-detail-item">
+            <view bindtap="handleJumpLocationDetail" class="map-detail-item">
               <image src="../../image/bus.png"></image>
               <text>公交({{traffic.data ? traffic.data.length : 0}})</text>
             </view>
-            <view class="map-detail-item">
+            <view bindtap="handleJumpLocationDetail" class="map-detail-item">
               <image src="../../image/edu.png"></image>
               <text>教育({{edu.data ? edu.data.length : 0}})</text>
             </view>
-            <view class="map-detail-item">
+            <view bindtap="handleJumpLocationDetail" class="map-detail-item">
               <image src="../../image/hospital.png"></image>
               <text>医疗({{hospital.data ? hospital.data.length : 0}})</text>
             </view>
-            <view class="map-detail-item">
+            <view bindtap="handleJumpLocationDetail" class="map-detail-item">
               <image src="../../image/shop.png"></image>
               <text>商业({{shop.data ? shop.data.length : 0}})</text>
             </view>

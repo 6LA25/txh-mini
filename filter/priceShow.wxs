@@ -1,9 +1,9 @@
 module.exports = {
-  hasNum: function(price){
+  hasNum: function (price) {
     var reg = getRegExp('\d', 'g')
     return reg.test(price)
   },
-  getEstateText: function(val) {
+  getEstateText: function (val) {
     var estateTypes = [
       { value: 1, label: '住宅' },
       { value: 2, label: '公寓' },
@@ -11,9 +11,14 @@ module.exports = {
       { value: 4, label: '写字楼' },
       { value: 5, label: '厂房' },
       { value: 6, label: '车位' },
+      { value: 7, label: '洋房' },
+      { value: 8, label: '别墅' },
+      { value: 9, label: '高层' },
+      { value: 10, label: '小高层' },
+      { value: 11, label: '商业' },
     ]
     var label = ''
-    estateTypes.forEach(function(item) {
+    estateTypes.forEach(function (item) {
       if (item.value === val) {
         label = item.label
       }

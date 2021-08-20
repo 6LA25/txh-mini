@@ -29,35 +29,25 @@ Page({
       checked: false
     },
     {
-      name: '五居室以上',
+      name: '五居室及以上',
       value: '5',
       checked: false
     },
     ],
     // 装修
     fitments: [{
-      name: '毛坯房',
+      name: '毛坯',
       value: '1',
       checked: false
     },
     {
-      name: '精装修',
+      name: '带装修',
       value: '2',
       checked: false
     },
     ],
     // 楼型
     houseTypes: [
-      {
-        name: '高层',
-        value: '1',
-        checked: false
-      },
-      {
-        name: '小高层',
-        value: '2',
-        checked: false
-      },
       {
         name: '洋房',
         value: '3',
@@ -69,13 +59,23 @@ Page({
         checked: false
       },
       {
+        name: '高层',
+        value: '1',
+        checked: false
+      },
+      {
+        name: '小高层',
+        value: '2',
+        checked: false
+      },
+      {
         name: '住宅',
         value: '11',
         checked: false
       },
       {
-        name: '写字楼',
-        value: '5',
+        value: '7',
+        name: '公寓',
         checked: false
       },
       {
@@ -84,8 +84,8 @@ Page({
         checked: false
       },
       {
-        value: '7',
-        name: '公寓',
+        name: '写字楼',
+        value: '5',
         checked: false
       },
       {

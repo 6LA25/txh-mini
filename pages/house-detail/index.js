@@ -367,7 +367,7 @@ Page({
       })
       let trendsList = this.data.trendsList
       trendsList.forEach(val => {
-        val.text = data.item[val.tag] || '暂无数据'
+        val.text = data.item[val.tag] || ''
       })
       this.setData({
         trendsList,

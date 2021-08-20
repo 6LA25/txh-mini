@@ -140,7 +140,7 @@ Page({
       console.log(error)
       this.loading = false
       wx.hideLoading()
-      this.selectComponent("#toast").showToast('操作失败：' + error.result_msg);
+      this.selectComponent("#toast").showToast(error.result_msg);
       // wx.showToast({
       //   title: `操作失败：${error.result_msg}`,
       //   icon: 'none',
