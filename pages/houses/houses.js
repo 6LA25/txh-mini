@@ -146,7 +146,35 @@ Page({
     selectedFloorType: [], // 选择楼型
     isSelectedMore: false, // 更多是否被选中
     selectedAreas: '',
-    toast: null
+    toast: null,
+    unitPrice: [],
+    totalPrice: [],
+    selectedPriceTabIndex: 1,
+    selectedPriceList: [],
+    totalPriceList: [
+      { value: '1', name: '50万以下', checked: false },
+      { value: '2', name: '50-100万', checked: false },
+      { value: '3', name: '100-150万', checked: false },
+      { value: '4', name: '150-200万', checked: false },
+      { value: '5', name: '200-250万', checked: false },
+      { value: '6', name: '250-300万', checked: false },
+      { value: '7', name: '300-350万', checked: false },
+      { value: '8', name: '350-400万', checked: false },
+      { value: '9', name: '400-500万', checked: false },
+      { value: '10', name: '500-600万', checked: false },
+      { value: '11', name: '600-800万', checked: false },
+      { value: '12', name: '800万以上', checked: false },
+    ],
+    unitPriceList: [
+      { value: '1', name: '1万以下', checked: false },
+      { value: '2', name: '1-1.5万', checked: false },
+      { value: '3', name: '1.5-2万', checked: false },
+      { value: '4', name: '2-2.5万', checked: false },
+      { value: '5', name: '2.5-3万', checked: false },
+      { value: '6', name: '3-3.5万', checked: false },
+      { value: '7', name: '3.5-4万', checked: false },
+      { value: '8', name: '4万以上', checked: false },
+    ]
   },
   onReady() {
     this.setData({
@@ -204,11 +232,12 @@ Page({
     wx.hideShareMenu();
     this.setData({
       userInfo: app.globalData.userInfo,
-      hasAuth: app.globalData.hasAuth
+      hasAuth: app.globalData.hasAuth,
     })
     if (!app.globalData.hasSearch) {
       this.searchHouses()
     }
+    this.makePriceList()
   },
   // 获取无锡-> 区
   fetchWuXiAreas() {
@@ -239,6 +268,32 @@ Page({
       totalHouses: ''
     })
   },
+  makePriceList() {
+    let priceType = this.data.selectedPriceTabIndex / 1
+    let priceList = priceType === 1 ? this.data.totalPriceList : this.data.unitPriceList
+    this.setData({
+      selectedPriceList: JSON.parse(JSON.stringify(priceList))
+    })
+  },
+  handleSelectPriceType(e) {
+    console.log(e.currentTarget)
+    let priceType =  e.currentTarget.dataset.priceType / 1
+    this.setData({
+      selectedPriceTabIndex: priceType,
+    }, () => {
+      this.makePriceList()
+      let selectedPriceList = this.data.selectedPriceList
+      selectedPriceList.forEach(item => {
+        let selectedPrices = priceType === 1 ? this.data.totalPrice : this.data.unitPrice
+        if (selectedPrices.includes(item.value)) {
+          item.checked = true
+        }
+      })
+      this.setData({
+        selectedPriceList
+      })
+    })
+  },
   // 搜索楼盘
   searchHouses(reset) {
     console.log('====> 发起搜索')
@@ -265,6 +320,8 @@ Page({
       keyword: this.data.keyword, // 搜索关键词
       region: this.data.selectedAreas, // 区域
       apartments: this.data.selectedApartments, // 房型
+      unitPrice: this.data.unitPrice,
+      totalPrice: this.data.totalPrice,
       pageNo: this.data.pageNo,
       pageSize: this.data.pageSize
     }, URL.searchHouse, app).then(({ data }) => {
@@ -336,6 +393,18 @@ Page({
       })
     }
   },
+  handleSelectPrice(e) {
+    let {value} = e.currentTarget.dataset
+    let selectedPriceList = this.data.selectedPriceList
+    selectedPriceList.forEach(item => {
+      if (item.value === value) {
+        item.checked = !item.checked
+      }
+    })
+    this.setData({
+      selectedPriceList
+    })
+  },
   handleToggleAllArea() {
     this.setData({
       selectedArea: !this.data.selectedArea
@@ -361,7 +430,24 @@ Page({
       this.searchHouses(this.resetSearch)
       this.handleClosePop()
     })
-
+  },
+  handleResetPrices() {
+    this.setData({
+      selectedPriceTabIndex: 1
+    })
+    this.makePriceList()
+    let selectedPriceList = this.data.selectedPriceList
+    selectedPriceList.forEach(item => {
+      item.checked = false
+    })
+    this.setData({
+      selectedPriceList,
+      unitPrice: [],
+      totalPrice: []
+    }, () => {
+      this.searchHouses(this.resetSearch)
+      this.handleClosePop()
+    })
   },
   // 选择楼型
   handleSelectHouseType(e) {
@@ -415,6 +501,25 @@ Page({
       this.searchHouses(this.resetSearch)
       this.handleClosePop()
     })
+  },
+  handleConfirmPrices() {
+    let selectedPriceValues = []
+    this.data.selectedPriceList.forEach(item => {
+      if (item.checked) {
+        selectedPriceValues.push(item.value)
+      }
+    })
+    if (this.data.selectedPriceTabIndex === 1) {
+      this.setData({
+        totalPrice: selectedPriceValues
+      })
+    } else {
+      this.setData({
+        unitPrice: selectedPriceValues
+      })
+    }
+    this.searchHouses(this.resetSearch)
+    this.handleClosePop()
   },
   handleConfirmHouseType() {
     let selectedFloorType = []

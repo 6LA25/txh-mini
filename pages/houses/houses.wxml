@@ -9,12 +9,21 @@
     </view>
   </view>
   <view class="tab-box">
+    <!-- 区域 -->
     <view class="tab-item-box{{selectedAreas ? ' active' : ''}}" data-index="0" bindtap="handleFilter">
       <text class="txt1">区域</text>
       <image class="triangle" wx:if="{{!selectedAreas && currentFilter !== 0}}" src="../../image/budding_icon_down_default@2x.png"></image>
       <image class="triangle" wx:if="{{!selectedAreas && currentFilter === 0}}" src="../../image/budding_icon_up_default@2x.png"></image>
       <image class="triangle" wx:if="{{selectedAreas && currentFilter !== 0}}" src="../../image/budding_icon_down_click@2x.png"></image>
       <image class="triangle" wx:if="{{selectedAreas && currentFilter === 0}}" src="../../image/budding_icon_up_click@2x.png"></image>
+    </view>
+    <!-- 价格 -->
+    <view class="tab-item-box{{(unitPrice.length > 0 || totalPrice.length > 0) ? ' active' : ''}}" data-index="4" bindtap="handleFilter">
+      <text class="txt1">价格</text>
+      <image class="triangle" wx:if="{{(unitPrice.length === 0 && totalPrice.length === 0) && currentFilter !== 4}}" src="../../image/budding_icon_down_default@2x.png"></image>
+      <image class="triangle" wx:if="{{(unitPrice.length === 0 && totalPrice.length === 0) && currentFilter === 4}}" src="../../image/budding_icon_up_default@2x.png"></image>
+      <image class="triangle" wx:if="{{(unitPrice.length > 0 || totalPrice.length > 0) && currentFilter !== 4}}" src="../../image/budding_icon_down_click@2x.png"></image>
+      <image class="triangle" wx:if="{{(unitPrice.length > 0 || totalPrice.length > 0) && currentFilter === 4}}" src="../../image/budding_icon_up_click@2x.png"></image>
     </view>
     <!-- 房型 -->
     <view class="tab-item-box{{selectedFloorType.length > 0 ? ' active' : ''}}" data-index="2" bindtap="handleFilter">
@@ -82,6 +91,26 @@
       <view class="btns-box">
         <view class="btn-item reset" bindtap="handleResetArea">重置</view>
         <view class="btn-item confirm" bindtap="handleConfirmArea">确定</view>
+      </view>
+    </view>
+    <!-- 单价 -->
+    <view class="more-filter-box" wx:if="{{currentFilter === 4}}">
+      <view class="price-tab-box">
+        <view class="price-tab-item{{selectedPriceTabIndex === 1 ? ' active' : ''}}" data-price-type="1" bindtap="handleSelectPriceType">
+          总价（万/套）
+          <view class="border-bottom-box" wx:if="{{selectedPriceTabIndex === 1}}"></view>
+        </view>
+        <view class="price-tab-item{{selectedPriceTabIndex === 2 ? ' active' : ''}}" data-price-type="2" bindtap="handleSelectPriceType">
+          单价（万/㎡）
+          <view class="border-bottom-box" wx:if="{{selectedPriceTabIndex === 2}}"></view>
+        </view>
+      </view>
+      <view class="tag-box">
+        <view bindtap="handleSelectPrice" data-value="{{item.value}}" wx:for="{{selectedPriceList}}" class="tag-item{{item.checked ? ' active' : ''}}">{{item.name}}</view>
+      </view>
+      <view class="btns-box">
+        <view class="btn-item reset" catchtap="handleResetPrices">重置</view>
+        <view class="btn-item confirm" catchtap="handleConfirmPrices">确定</view>
       </view>
     </view>
     <!-- 类型 -->

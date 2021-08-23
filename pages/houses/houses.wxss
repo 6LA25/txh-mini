@@ -262,3 +262,30 @@
 .no-house-box {
   margin-top: 100rpx;
 }
+.price-tab-box {
+  display: flex;
+  justify-content: space-between;
+  color: #727483;
+  font-size: 28rpx;
+  margin-bottom: 30rpx;
+}
+.price-tab-box .price-tab-item {
+  position: relative;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60rpx;
+}
+.price-tab-box .price-tab-item.active {
+  color: #F6515D;
+}
+.price-tab-box .price-tab-item .border-bottom-box {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 60rpx;
+  height: 6rpx;
+  background: #F6515D;
+}
