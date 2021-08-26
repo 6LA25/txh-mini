@@ -65,12 +65,29 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #e3e9fd;
-  color: #6b81f5;
+  /* background: #e3e9fd; */
+  /* color: #6b81f5; */
   font-size: 20rpx;
   border-radius: 4rpx;
   padding: 0 4rpx;
   margin-left: 4rpx;
+}
+
+.detail-box .title .house-sale-tag.bg-1 {
+  background: rgba(255, 102, 0, 0.16);
+  color: rgb(255, 102, 0);
+}
+.detail-box .title .house-sale-tag.bg-2 {
+  background: rgba(47, 77, 255, 0.16);
+  color: #2F4DFF;
+}
+.detail-box .title .house-sale-tag.bg-3 {
+  background: rgba(21, 185, 122, 0.16);
+  color: #15B97A;
+}
+.detail-box .title .house-sale-tag.bg-4 {
+  background: rgba(153, 153, 153, 0.16);
+  color: #999999;
 }
 
 .detail-box .price {
@@ -147,6 +164,10 @@
   color: #fff;
   margin-right: 8rpx;
   white-space: nowrap;
+}
+.type-tag-box.type-features-box {
+  background: rgba(47, 77, 255, 0.16);
+  color: #2F4DFF;
 }
 .tags-b-box text:not(:last-child) {
   margin-right: 8rpx;

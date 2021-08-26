@@ -3,6 +3,17 @@ module.exports = {
     var reg = getRegExp('\d', 'g')
     return reg.test(price)
   },
+  getSaleTagClassName: function (val) {
+    if (val === '待售') {
+      return ' bg-3' // 绿色
+    } else if(val === '认筹中') {
+      return ' bg-1'
+    } else if(val === '售罄') {
+      return ' bg-4'
+    } else {
+      return ' bg-2'
+    }
+  },
   getEstateText: function (val) {
     var estateTypes = [
       { value: 1, label: '住宅' },

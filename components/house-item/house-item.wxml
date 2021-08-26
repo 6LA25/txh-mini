@@ -8,7 +8,7 @@
     <view class="detail-box">
       <view class="title">
         <view class="house-name">{{house.name}}</view>
-        <view class="house-sale-tag">{{house.statusName}}</view>
+        <view class="house-sale-tag{{fn.getSaleTagClassName(house.statusName)}}">{{house.statusName}}</view>
       </view>
       <view class="price">
         <text class="hint">均价</text>
@@ -17,6 +17,7 @@
       </view>
       <view class="tags-box">
         <text class="type-tag-box" wx:for="{{house.estateTypes}}" wx:key="*this">{{fn.getEstateText(item)}}</text>
+        <text class="type-tag-box type-features-box" wx:if="{{house.houseFeaturesName}}">{{house.houseFeaturesName}}</text>
         <view class="tags-b-box">
           <text wx:for="{{house.tagList}}" wx:key="*this">{{item}}</text>
         </view>

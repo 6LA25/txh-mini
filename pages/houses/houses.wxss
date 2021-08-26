@@ -163,8 +163,13 @@
 }
 
 .more-filter-box {
-  padding: 32rpx;
+  padding: 0 32rpx 32rpx;
   background: #fff;
+}
+.more-selections-box {
+  max-height: 600rpx;
+  overflow: hidden;
+  overflow-y: scroll;
 }
 
 .more-filter-box .title {
@@ -186,10 +191,10 @@
   font-size: 24rpx;
   color: #727483;
   background: #F7F8F8;
-  width: 140rpx;
+  width: 150rpx;
   height: 58rpx;
   border-radius: 8rpx;
-  margin: 0 42rpx 16rpx 0
+  margin: 0 28rpx 16rpx 0
 }
 
 .more-filter-box .tag-box .tag-item:nth-child(4n+0) {

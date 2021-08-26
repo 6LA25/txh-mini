@@ -1,136 +1,59 @@
 import { Fetch } from '../../utils/http'
 import URL from '../../utils/url'
 const app = getApp()
+const computedBehavior = require('miniprogram-computed')
+
 Page({
+  behaviors: [computedBehavior],
   data: {
     loadingHouses: false,
     currentFilter: '',
     userInfo: null,
     hasAuth: false,
-    // 房型
-    types: [{
-      name: '一居室',
-      value: '1',
-      checked: false
-    },
-    {
-      name: '二居室',
-      value: '2',
-      checked: false
-    },
-    {
-      name: '三居室',
-      value: '3',
-      checked: false
-    },
-    {
-      name: '四居室',
-      value: '4',
-      checked: false
-    },
-    {
-      name: '五居室及以上',
-      value: '5',
-      checked: false
-    },
+    huxingJushi: [
+      { name: '一居室', value: '1', checked: false },
+      { name: '二居室', value: '2', checked: false },
+      { name: '三居室', value: '3', checked: false },
+      { name: '四居室', value: '4', checked: false },
+      { name: '五居室及以上', value: '5', checked: false },
+    ],
+    huxingMianji: [
+      { name: '50㎡以下', value: '1', checked: false },
+      { name: '50-70㎡', value: '2', checked: false },
+      { name: '70-90㎡', value: '3', checked: false },
+      { name: '90-110㎡', value: '4', checked: false },
+      { name: '110-130㎡', value: '5', checked: false },
+      { name: '130-150㎡', value: '6', checked: false },
+      { name: '150-200㎡', value: '7', checked: false },
+      { name: '200㎡以上', value: '8', checked: false },
     ],
     // 装修
-    fitments: [{
-      name: '毛坯',
-      value: '1',
-      checked: false
-    },
-    {
-      name: '带装修',
-      value: '2',
-      checked: false
-    },
+    fitments: [
+      { name: '毛坯', value: '1', checked: false },
+      { name: '带装修', value: '2', checked: false },
+      { name: '不限', value: '-1', checked: false },
     ],
     // 楼型
     houseTypes: [
-      {
-        name: '洋房',
-        value: '3',
-        checked: false
-      },
-      {
-        name: '别墅',
-        value: '4',
-        checked: false
-      },
-      {
-        name: '高层',
-        value: '1',
-        checked: false
-      },
-      {
-        name: '小高层',
-        value: '2',
-        checked: false
-      },
-      {
-        name: '住宅',
-        value: '11',
-        checked: false
-      },
-      {
-        value: '7',
-        name: '公寓',
-        checked: false
-      },
-      {
-        name: '商铺',
-        value: '6',
-        checked: false
-      },
-      {
-        name: '写字楼',
-        value: '5',
-        checked: false
-      },
-      {
-        value: '8',
-        name: '厂房',
-        checked: false
-      },
-      {
-        value: '10',
-        name: '车位',
-        checked: false
-      },
-      {
-        value: '9',
-        name: '商业',
-        checked: false
-      },
-      {
-        value: '-1',
-        name: '不限',
-        checked: false
-      }
+      { name: '洋房', value: '3', checked: false },
+      { name: '别墅', value: '4', checked: false },
+      { name: '高层', value: '1', checked: false },
+      { name: '小高层', value: '2', checked: false },
+      { name: '住宅', value: '11', checked: false },
+      { value: '7', name: '公寓', checked: false },
+      { name: '商铺', value: '6', checked: false },
+      { name: '写字楼', value: '5', checked: false },
+      { value: '8', name: '厂房', checked: false },
+      { value: '10', name: '车位', checked: false },
+      { value: '9', name: '商业', checked: false },
+      { value: '-1', name: '不限', checked: false }
     ],
     // 销售状态
     saleTypes: [
-      {
-        value: '7',
-        name: '待售',
-        checked: false
-      },
-      {
-        value: '8',
-        name: '认筹中',
-        checked: false
-      },
-      {
-        value: '4',
-        name: '在售',
-        checked: false
-      },
-      {
-        value: '3',
-        name: '售罄',
-        checked: false
-      }
+      { value: '7', name: '待售', checked: false },
+      { value: '8', name: '认筹中', checked: false },
+      { value: '4', name: '在售', checked: false },
+      { value: '3', name: '售罄', checked: false }
     ],
     pageNo: 1,
     pageSize: 5,
@@ -140,11 +63,9 @@ Page({
     totalHouses: '',
     areas: [], // 无锡 区
     selectedArea: false, // 不限区域
-    selectedApartments: [], // 选择的房型
     selectedFitment: -1, // 选择装修
     selectedStatus: -1, // 选择销售状态
     selectedFloorType: [], // 选择楼型
-    isSelectedMore: false, // 更多是否被选中
     selectedAreas: '',
     toast: null,
     unitPrice: [],
@@ -174,13 +95,36 @@ Page({
       { value: '6', name: '3-3.5万', checked: false },
       { value: '7', name: '3.5-4万', checked: false },
       { value: '8', name: '4万以上', checked: false },
-    ]
+    ],
+    featuresList: [
+      { value: 1, name: '新盘', checked: false },
+      { value: 2, name: '近期开盘', checked: false },
+      { value: 3, name: '热销中', checked: false },
+      { value: 4, name: '房源紧俏', checked: false },
+      { value: 5, name: '限价盘', checked: false },
+      { value: 6, name: '低首付', checked: false },
+      { value: 7, name: '特价房', checked: false },
+      { value: 8, name: '清盘特价', checked: false },
+      { value: 9, name: '高回报', checked: false },
+      { value: 10, name: '不限购', checked: false },
+      { value: 11, name: '现房', checked: false },
+      { value: -1, name: '不限', checked: false }
+    ],
+    selectedHuxingTabIndex: 1,
+    selectedHouseFeatures: [],
+    floorage: [],
+    aptype: [],
+  },
+  computed: {
+    isSelectedMore(data) {
+      let { selectedFitment, selectedStatus, selectedFloorType } = data
+      return selectedFitment > 0 || selectedStatus > 0 || selectedFloorType.length > 0
+    }
   },
   onReady() {
     this.setData({
       toast: this.selectComponent("#toast")
     })
-    console.log(this.selectComponent("#toast"))
   },
   onShow() {
     if (typeof this.getTabBar === 'function' &&
@@ -204,14 +148,12 @@ Page({
     })
   },
   onHide() {
-    console.log('hide')
     app.globalData.hasSearch = false
   },
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    console.log('end')
     this.searchHouses()
   },
   onShareAppMessage: function (e) {
@@ -246,7 +188,6 @@ Page({
     })
     Fetch({}, URL.areas, app).then(({ data }) => {
       let selecteds = this.data.selectedAreas.split(',')
-      console.log(selecteds)
       data.items.forEach((item) => {
         if (selecteds.includes(String(item.id))) {
           item.checked = true
@@ -254,7 +195,6 @@ Page({
           item.checked = false
         }
       })
-      console.log(data.items)
       this.setData({
         areas: data.items
       })
@@ -277,7 +217,7 @@ Page({
   },
   handleSelectPriceType(e) {
     console.log(e.currentTarget)
-    let priceType =  e.currentTarget.dataset.priceType / 1
+    let priceType = e.currentTarget.dataset.priceType / 1
     this.setData({
       selectedPriceTabIndex: priceType,
     }, () => {
@@ -294,6 +234,47 @@ Page({
       })
     })
   },
+  handleSelectHuxingType(e) {
+    console.log(e.currentTarget)
+    let huxingType = e.currentTarget.dataset.huxingType / 1
+    this.setData({
+      selectedHuxingTabIndex: huxingType
+    }, () => {
+    })
+  },
+  handleSelectNewHuxing(e) {
+    let value = e.currentTarget.dataset.value
+    let str = this.data.selectedHuxingTabIndex === 1 ? 'huxingMianji' : 'huxingJushi'
+    let list = this.data[str]
+    list.forEach(item => {
+      if (item.value === value) {
+        item.checked = !item.checked
+      }
+    })
+    this.setData({
+      [str]: list
+    })
+  },
+  handleResetHuxing() {
+    let { huxingJushi, huxingMianji } = this.data
+    huxingJushi.forEach(item => {
+      item.checked = false
+    })
+    huxingMianji.forEach(item => {
+      item.checked = false
+    })
+    this.setData({
+      selectedHuxingTabIndex: 1,
+      huxingJushi,
+      huxingMianji,
+      floorage: [],
+      aptype: [],
+    }, () => {
+      this.searchHouses(this.resetSearch)
+      this.handleClosePop()
+    })
+  },
+  handleConfirmHuxing() { },
   // 搜索楼盘
   searchHouses(reset) {
     console.log('====> 发起搜索')
@@ -319,9 +300,11 @@ Page({
       priceSort: this.data.priceSort, // 价格排序
       keyword: this.data.keyword, // 搜索关键词
       region: this.data.selectedAreas, // 区域
-      apartments: this.data.selectedApartments, // 房型
+      houseFeatures: this.data.selectedHouseFeatures,
       unitPrice: this.data.unitPrice,
       totalPrice: this.data.totalPrice,
+      floorage: this.data.floorage,
+      aptype: this.data.aptype,
       pageNo: this.data.pageNo,
       pageSize: this.data.pageSize
     }, URL.searchHouse, app).then(({ data }) => {
@@ -394,7 +377,7 @@ Page({
     }
   },
   handleSelectPrice(e) {
-    let {value} = e.currentTarget.dataset
+    let { value } = e.currentTarget.dataset
     let selectedPriceList = this.data.selectedPriceList
     selectedPriceList.forEach(item => {
       if (item.value === value) {
@@ -475,19 +458,29 @@ Page({
       houseTypes: _houseTypes
     })
   },
-  handleResetHouseType() {
-    // 修改选中楼型样式
-    this.data.houseTypes.forEach((item, index) => {
-      let change = "houseTypes[" + index + "].checked"
-      this.setData({
-        [change]: false
+  handleSelectHouseFeatures(e) {
+    let value = e.currentTarget.dataset.value
+    let _houseTypes = JSON.parse(JSON.stringify(this.data.featuresList))
+    if (value !== -1) {
+      _houseTypes.forEach(item => {
+        if (item.value === value) {
+          item.checked = !item.checked
+        }
       })
-    })
+      if (_houseTypes.filter(item => { return item.checked }).length > 0) {
+        _houseTypes[_houseTypes.length - 1].checked = false
+      }
+    } else {
+      _houseTypes.forEach(item => {
+        if (item.value === value) {
+          item.checked = !item.checked
+        } else {
+          item.checked = false
+        }
+      })
+    }
     this.setData({
-      selectedFloorType: []
-    }, () => {
-      this.searchHouses(this.resetSearch)
-      this.handleClosePop()
+      featuresList: _houseTypes
     })
   },
   handleConfirmArea() {
@@ -501,6 +494,27 @@ Page({
       this.searchHouses(this.resetSearch)
       this.handleClosePop()
     })
+  },
+  handleConfirmHuxing() {
+    let { huxingMianji, huxingJushi } = this.data
+    let floorage = []
+    let aptype = []
+    huxingMianji.forEach(item => {
+      if (item.checked) {
+        floorage.push(item.value)
+      }
+    })
+    huxingJushi.forEach(item => {
+      if (item.checked) {
+        aptype.push(item.value)
+      }
+    })
+    this.setData({
+      floorage,
+      aptype
+    })
+    this.searchHouses(this.resetSearch)
+    this.handleClosePop()
   },
   handleConfirmPrices() {
     let selectedPriceValues = []
@@ -521,48 +535,22 @@ Page({
     this.searchHouses(this.resetSearch)
     this.handleClosePop()
   },
-  handleConfirmHouseType() {
-    let selectedFloorType = []
-    this.data.houseTypes.forEach(type => {
-      if (type.checked && type.value !== '-1') {
-        selectedFloorType.push(type.value)
-      }
-    })
-    this.setData({
-      selectedFloorType
-    }, () => {
-      this.searchHouses(this.resetSearch)
-      this.handleClosePop()
-    })
-  },
   // 选择装修
   handleSelectFitment(e) {
     console.log('===> 点击更多->装修')
     let selected = e.currentTarget.dataset.value
     let fitments = this.data.fitments
     fitments.forEach(fit => {
-      fit.checked = selected.includes(fit.value)
+      if (fit.value === selected) {
+        fit.checked = true
+      } else {
+        fit.checked = false
+      }
     })
     console.log('===> 装修', fitments)
     this.setData({
       fitments
     })
-  },
-  // 选择户型
-  handleSelectHuxing(e) {
-    console.log('===> 点击更多->户型')
-    let value = e.currentTarget.dataset.value
-    let types = this.data.types
-    types.forEach((item) => {
-      if (value == item.value) {
-        item.checked = !item.checked
-      }
-    })
-    this.setData({
-      types
-    })
-    console.log('===> 户型', this.data.types)
-
   },
   // 选择销售状态
   handleSelectSaleType(e) {
@@ -580,14 +568,13 @@ Page({
   // 只修改样式
   handleResetMore() {
     console.log('===> 点击更多->重置')
+    let { houseTypes, featuresList } = this.data
     // 修改选中装修样式
     let fitments = JSON.parse(JSON.stringify(this.data.fitments))
     fitments.forEach(item => {
       item.checked = false
     })
-    // 重置户型
-    let types = JSON.parse(JSON.stringify(this.data.types))
-    types.forEach(item => {
+    houseTypes.forEach(item => {
       item.checked = false
     })
     // 修改选中销售状态样式
@@ -595,11 +582,15 @@ Page({
     saleTypes.forEach(item => {
       item.checked = false
     })
+    featuresList.forEach(item => {
+      item.checked = false
+    })
     console.log('===> 重置数据', this.data.fitments, this.data.types, this.data.saleTypes)
     this.setData({
       fitments,
-      types,
-      saleTypes
+      saleTypes,
+      houseTypes,
+      featuresList
     }, () => {
       this.handleConfirmMore()
     })
@@ -609,22 +600,28 @@ Page({
     console.log('===> 点击更多->确定')
     let selectedFitment = this.data.fitments.find(fit => {
       return fit.checked
-    })
+    }) || {}
     let selectedStatus = this.data.saleTypes.find(status => {
       return status.checked
-    })
-
-    let selectedApartments = []
-    this.data.types.forEach(type => {
-      if (type.checked) {
-        selectedApartments.push(type.value)
+    }) || {}
+    let selectedFloorType = []
+    this.data.houseTypes.forEach(item => {
+      if (item.checked && item.value !== '-1') {
+        selectedFloorType.push(item.value)
       }
     })
-    console.log('===> 确定数据', selectedFitment, selectedStatus, selectedApartments)
+    let selectedHouseFeatures = []
+    this.data.featuresList.forEach(item => {
+      if (item.checked && item.value !== -1) {
+        selectedHouseFeatures.push(item.value)
+      }
+    })
+
     this.setData({
-      selectedFitment: selectedFitment ? selectedFitment.value : '-1',
-      selectedStatus: selectedStatus ? selectedStatus.value : '-1',
-      selectedApartments
+      selectedFitment: selectedFitment.value || '-1',
+      selectedStatus: selectedStatus.value || '-1',
+      selectedFloorType,
+      selectedHouseFeatures
     }, () => {
       console.log('点击更多->确定->搜索数据')
       this.searchHouses(this.resetSearch)

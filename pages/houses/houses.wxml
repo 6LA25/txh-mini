@@ -25,13 +25,21 @@
       <image class="triangle" wx:if="{{(unitPrice.length > 0 || totalPrice.length > 0) && currentFilter !== 4}}" src="../../image/budding_icon_down_click@2x.png"></image>
       <image class="triangle" wx:if="{{(unitPrice.length > 0 || totalPrice.length > 0) && currentFilter === 4}}" src="../../image/budding_icon_up_click@2x.png"></image>
     </view>
-    <!-- 房型 -->
-    <view class="tab-item-box{{selectedFloorType.length > 0 ? ' active' : ''}}" data-index="2" bindtap="handleFilter">
-      <text class="txt1">类型</text>
-      <image class="triangle" wx:if="{{selectedFloorType.length === 0 && currentFilter !== 2}}" src="../../image/budding_icon_down_default@2x.png"></image>
-      <image class="triangle" wx:if="{{selectedFloorType.length === 0 && currentFilter === 2}}" src="../../image/budding_icon_up_default@2x.png"></image>
-      <image class="triangle" wx:if="{{selectedFloorType.length > 0 && currentFilter !== 2}}" src="../../image/budding_icon_down_click@2x.png"></image>
-      <image class="triangle" wx:if="{{selectedFloorType.length > 0 && currentFilter === 2}}" src="../../image/budding_icon_up_click@2x.png"></image>
+    <!-- 户型 -->
+    <view class="tab-item-box{{(floorage.length > 0 || aptype.length > 0) ? ' active' : ''}}" data-index="2" bindtap="handleFilter">
+      <text class="txt1">户型</text>
+      <image class="triangle" wx:if="{{(floorage.length === 0 && aptype.length === 0) && currentFilter !== 2}}" src="../../image/budding_icon_down_default@2x.png"></image>
+      <image class="triangle" wx:if="{{(floorage.length === 0 && aptype.length === 0) && currentFilter === 2}}" src="../../image/budding_icon_up_default@2x.png"></image>
+      <image class="triangle" wx:if="{{(floorage.length > 0 || aptype.length > 0) && currentFilter !== 2}}" src="../../image/budding_icon_down_click@2x.png"></image>
+      <image class="triangle" wx:if="{{(floorage.length > 0 || aptype.length > 0) && currentFilter === 2}}" src="../../image/budding_icon_up_click@2x.png"></image>
+    </view>
+    <!-- 更多 -->
+    <view class="tab-item-box{{isSelectedMore ? ' active' : ''}}" data-index="3" bindtap="handleFilter">
+      <text class="txt1">更多</text>
+      <image class="triangle" wx:if="{{!isSelectedMore && currentFilter !== 3}}" src="../../image/budding_icon_down_default@2x.png"></image>
+      <image class="triangle" wx:if="{{!isSelectedMore && currentFilter === 3}}" src="../../image/budding_icon_up_default@2x.png"></image>
+      <image class="triangle" wx:if="{{isSelectedMore && currentFilter !== 3}}" src="../../image/budding_icon_down_click@2x.png"></image>
+      <image class="triangle" wx:if="{{isSelectedMore && currentFilter === 3}}" src="../../image/budding_icon_up_click@2x.png"></image>
     </view>
     <!-- 单价 -->
     <view class="tab-item-box" data-index="1" bindtap="handleFilter">
@@ -51,13 +59,6 @@
         <image class="triangle top" src="../../image/budding_icon_up_default@2x.png"></image>
         <image class="triangle bottom" src="../../image/budding_icon_down_click@2x.png"></image>
       </view>
-    </view>
-    <view class="tab-item-box{{selectedFitment > 0 || selectedStatus > 0 || selectedApartments.length > 0 ? ' active' : ''}}" data-index="3" bindtap="handleFilter">
-      <text class="txt1">更多</text>
-      <image class="triangle" wx:if="{{!(selectedFitment > 0 || selectedStatus > 0 || selectedApartments.length > 0) && currentFilter !== 3}}" src="../../image/budding_icon_down_default@2x.png"></image>
-      <image class="triangle" wx:if="{{!(selectedFitment > 0 || selectedStatus > 0 || selectedApartments.length > 0) && currentFilter === 3}}" src="../../image/budding_icon_up_default@2x.png"></image>
-      <image class="triangle" wx:if="{{(selectedFitment > 0 || selectedStatus > 0 || selectedApartments.length > 0) && currentFilter !== 3}}" src="../../image/budding_icon_down_click@2x.png"></image>
-      <image class="triangle" wx:if="{{(selectedFitment > 0 || selectedStatus > 0 || selectedApartments.length > 0) && currentFilter === 3}}" src="../../image/budding_icon_up_click@2x.png"></image>
     </view>
   </view>
   <view class="content-box" wx:if="{{totalHouses > 0}}">
@@ -106,43 +107,63 @@
         </view>
       </view>
       <view class="tag-box">
-        <view bindtap="handleSelectPrice" data-value="{{item.value}}" wx:for="{{selectedPriceList}}" class="tag-item{{item.checked ? ' active' : ''}}">{{item.name}}</view>
+        <view bindtap="handleSelectPrice" data-value="{{item.value}}" wx:for="{{selectedPriceList}}" class="tag-item{{item.checked ? ' active' : ''}}">
+          {{item.name}}
+        </view>
       </view>
       <view class="btns-box">
         <view class="btn-item reset" catchtap="handleResetPrices">重置</view>
         <view class="btn-item confirm" catchtap="handleConfirmPrices">确定</view>
       </view>
     </view>
-    <!-- 类型 -->
+    <!-- 户型 -->
     <view class="more-filter-box" wx:if="{{currentFilter === 2}}">
+      <view class="price-tab-box">
+        <view class="price-tab-item{{selectedHuxingTabIndex === 1 ? ' active' : ''}}" data-huxing-type="1" bindtap="handleSelectHuxingType">
+          面积
+          <view class="border-bottom-box" wx:if="{{selectedHuxingTabIndex === 1}}"></view>
+        </view>
+        <view class="price-tab-item{{selectedHuxingTabIndex === 2 ? ' active' : ''}}" data-huxing-type="2" bindtap="handleSelectHuxingType">
+          居室
+          <view class="border-bottom-box" wx:if="{{selectedHuxingTabIndex === 2}}"></view>
+        </view>
+      </view>
       <view class="tag-box">
-        <view class="tag-item{{item.checked ? ' active' : ''}}" catchtap="handleSelectHouseType" data-value="{{item.value}}" wx:key="value" wx:for="{{houseTypes}}">
+        <view bindtap="handleSelectNewHuxing" data-value="{{item.value}}" wx:for="{{selectedHuxingTabIndex === 1 ? huxingMianji : huxingJushi}}" class="tag-item{{item.checked ? ' active' : ''}}">
           {{item.name}}
         </view>
       </view>
       <view class="btns-box">
-        <view class="btn-item reset" catchtap="handleResetHouseType">重置</view>
-        <view class="btn-item confirm" catchtap="handleConfirmHouseType">确定</view>
+        <view class="btn-item reset" catchtap="handleResetHuxing">重置</view>
+        <view class="btn-item confirm" catchtap="handleConfirmHuxing">确定</view>
       </view>
     </view>
     <!-- 更多 -->
     <view class="more-filter-box" wx:if="{{currentFilter === 3}}">
-      <view class="title">装修状态</view>
-      <view class="tag-box">
-        <view class="tag-item{{item.checked ? ' active' : ''}}" catchtap="handleSelectFitment" data-value="{{item.value}}" wx:key="value" wx:for="{{fitments}}">
-          {{item.name}}
+      <view class="more-selections-box">
+        <view class="title">装修状态</view>
+        <view class="tag-box">
+          <view class="tag-item{{item.checked ? ' active' : ''}}" catchtap="handleSelectFitment" data-value="{{item.value}}" wx:key="value" wx:for="{{fitments}}">
+            {{item.name}}
+          </view>
         </view>
-      </view>
-      <view class="title">户型</view>
-      <view class="tag-box">
-        <view class="tag-item{{item.checked ? ' active' : ''}}" catchtap="handleSelectHuxing" data-value="{{item.value}}" wx:key="value" wx:for="{{types}}">
-          {{item.name}}
+        <view class="title">物业类型</view>
+        <view class="tag-box">
+          <view class="tag-item{{item.checked ? ' active' : ''}}" catchtap="handleSelectHouseType" data-value="{{item.value}}" wx:key="value" wx:for="{{houseTypes}}">
+            {{item.name}}
+          </view>
         </view>
-      </view>
-      <view class="title">销售状态</view>
-      <view class="tag-box">
-        <view class="tag-item{{item.checked ? ' active' : ''}}" catchtap="handleSelectSaleType" data-value="{{item.value}}" wx:key="value" wx:for="{{saleTypes}}">
-          {{item.name}}
+        <view class="title">楼盘特色</view>
+        <view class="tag-box">
+          <view class="tag-item{{item.checked ? ' active' : ''}}" catchtap="handleSelectHouseFeatures" data-value="{{item.value}}" wx:key="value" wx:for="{{featuresList}}">
+            {{item.name}}
+          </view>
+        </view>
+        <view class="title">销售状态</view>
+        <view class="tag-box">
+          <view class="tag-item{{item.checked ? ' active' : ''}}" catchtap="handleSelectSaleType" data-value="{{item.value}}" wx:key="value" wx:for="{{saleTypes}}">
+            {{item.name}}
+          </view>
         </view>
       </view>
       <view class="btns-box">
