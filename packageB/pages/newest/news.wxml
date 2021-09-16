@@ -10,7 +10,7 @@
   <view class="houses-box">
     <view class="house-item" data-id="{{item.id}}" bindtap="handleJumpRecommend" wx:for="{{housesList}}" wx:key="id">
       <view class="cover">
-        <image class="img" src="{{item.image}}"></image>
+        <image class="img" mode="aspectFit" src="{{item.image}}"></image>
       </view>
       <view class="detail">
         <text class="title">{{item.title}}</text>

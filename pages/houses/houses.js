@@ -31,21 +31,22 @@ Page({
     fitments: [
       { name: '毛坯', value: '1', checked: false },
       { name: '带装修', value: '2', checked: false },
+      { name: '毛坯&带装修', value: '3', checked: false },
       { name: '不限', value: '-1', checked: false },
     ],
     // 楼型
     houseTypes: [
-      { name: '洋房', value: '3', checked: false },
-      { name: '别墅', value: '4', checked: false },
-      { name: '高层', value: '1', checked: false },
-      { name: '小高层', value: '2', checked: false },
-      { name: '住宅', value: '11', checked: false },
-      { value: '7', name: '公寓', checked: false },
-      { name: '商铺', value: '6', checked: false },
-      { name: '写字楼', value: '5', checked: false },
-      { value: '8', name: '厂房', checked: false },
-      { value: '10', name: '车位', checked: false },
-      { value: '9', name: '商业', checked: false },
+      { name: '洋房', value: '7', checked: false },
+      { name: '别墅', value: '8', checked: false },
+      { name: '高层', value: '9', checked: false },
+      { name: '小高层', value: '10', checked: false },
+      { name: '住宅', value: '1', checked: false },
+      { value: '2', name: '公寓', checked: false },
+      { name: '商铺', value: '3', checked: false },
+      { name: '写字楼', value: '4', checked: false },
+      { value: '5', name: '厂房', checked: false },
+      { value: '6', name: '车位', checked: false },
+      { value: '11', name: '商业', checked: false },
       { value: '-1', name: '不限', checked: false }
     ],
     // 销售状态
@@ -102,10 +103,10 @@ Page({
       { value: 3, name: '热销中', checked: false },
       { value: 4, name: '房源紧俏', checked: false },
       { value: 5, name: '限价盘', checked: false },
-      { value: 6, name: '低首付', checked: false },
+      { value: 6, name: '低总价', checked: false },
       { value: 7, name: '特价房', checked: false },
       { value: 8, name: '清盘特价', checked: false },
-      { value: 9, name: '高回报', checked: false },
+      { value: 9, name: '热搜盘', checked: false },
       { value: 10, name: '不限购', checked: false },
       { value: 11, name: '现房', checked: false },
       { value: -1, name: '不限', checked: false }
@@ -117,8 +118,8 @@ Page({
   },
   computed: {
     isSelectedMore(data) {
-      let { selectedFitment, selectedStatus, selectedFloorType } = data
-      return selectedFitment > 0 || selectedStatus > 0 || selectedFloorType.length > 0
+      let { selectedFitment, selectedStatus, selectedFloorType, selectedHouseFeatures } = data
+      return selectedFitment > 0 || selectedStatus > 0 || selectedFloorType.length > 0 || selectedHouseFeatures.length > 0
     }
   },
   onReady() {
@@ -157,6 +158,7 @@ Page({
     this.searchHouses()
   },
   onShareAppMessage: function (e) {
+    console.log('e.target.dataset', e.target.dataset)
     let id = e.target.dataset.id
     let name = e.target.dataset.name
     let cover = e.target.dataset.cover
@@ -274,7 +276,6 @@ Page({
       this.handleClosePop()
     })
   },
-  handleConfirmHuxing() { },
   // 搜索楼盘
   searchHouses(reset) {
     console.log('====> 发起搜索')
@@ -295,7 +296,8 @@ Page({
     })
     Fetch({
       fitment: this.data.selectedFitment, // 装修类型
-      floorType: this.data.selectedFloorType, // 楼型
+      floorType: [], // 楼型
+      estateType: this.data.selectedFloorType, // 
       status: this.data.selectedStatus, // 楼盘销售状态
       priceSort: this.data.priceSort, // 价格排序
       keyword: this.data.keyword, // 搜索关键词

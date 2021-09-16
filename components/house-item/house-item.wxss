@@ -166,8 +166,8 @@
   white-space: nowrap;
 }
 .type-tag-box.type-features-box {
-  background: rgba(47, 77, 255, 0.16);
-  color: #2F4DFF;
+  background-image: linear-gradient(135deg, #FD9753 0%, #FF6600 100%);
+  color: #fff;
 }
 .tags-b-box text:not(:last-child) {
   margin-right: 8rpx;

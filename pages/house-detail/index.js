@@ -121,7 +121,7 @@ Page({
     if (!e.target) {
       id = this.data.houseDetail.houseId
       name = this.data.houseDetail.name
-      cover = this.data.houseDetail.coverImageLink
+      cover = this.data.houseDetail.shareImageLink || this.data.houseDetail.coverImageLink
     } else {
       id = e.target.dataset.id
       name = e.target.dataset.name

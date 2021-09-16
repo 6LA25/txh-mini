@@ -42,7 +42,7 @@
       <text class="share-text">{{house.shareCount || 0}}次分享</text>
     </button>
     <!-- 分享楼盘 -->
-    <button class="share-num" plain="true" data-id="{{house.houseId}}" data-name="{{house.name}}" data-cover="{{house.coverImageLink}}" open-type="share" wx:else>
+    <button class="share-num" plain="true" data-id="{{house.houseId}}" data-name="{{house.name}}" data-cover="{{house.shareImageLink || house.coverImageLink}}" open-type="share" wx:else>
       <image src="../../image/home_icon_share_default_new@2x.png"></image>
       <text class="share-text">{{house.shareCount}}次分享</text>
     </button>

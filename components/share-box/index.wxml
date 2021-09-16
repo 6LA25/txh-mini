@@ -4,7 +4,7 @@
     <image class="icon-img share" src="../../image/share-icon-img.jpg"></image>
     <text>微信转发</text>
   </button>
-  <button class="share-item" data-id="{{house.houseId}}" data-name="{{house.name}}" data-cover="{{house.coverImageLink}}" open-type="share" wx:if="{{!inviteCode && (userInfo || updateUserInfo)}}">
+  <button class="share-item" data-id="{{house.houseId}}" data-name="{{house.name}}" data-cover="{{house.shareImageLink || house.coverImageLink}}" open-type="share" wx:if="{{!inviteCode && (userInfo || updateUserInfo)}}">
     <image class="icon-img share" src="../../image/share-icon-img.jpg"></image>
     <text>微信转发</text>
   </button>

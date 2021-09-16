@@ -698,6 +698,12 @@
           "pathName": "pages/houses/houses",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "packageB/pages/newest/news",
+          "pathName": "packageB/pages/newest/news",
+          "query": "",
+          "scene": null
         }
       ]
     }

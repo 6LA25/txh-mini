@@ -4,7 +4,7 @@
   <view class="chat-user-list">
     <view class="chat-item" wx:if="{{newest}}" bindtap="handleJumpNewst">
       <view class="head-box">
-        <image class="head-img" src="../../image/zixun@2x.png"></image>
+        <image class="head-img" src="../../image/zixun.jpg"></image>
       </view>
       <view class="content-box">
         <view class="title-box">
@@ -17,7 +17,7 @@
     <view class="chat-item" bindtap="handleJumpSysMsg" wx:if="{{sysMsg}}">
       <view class="head-box">
         <view class="unread-num" wx:if="{{sysMsg.ggunread}}">{{sysMsg.ggunread}}</view>
-        <image class="head-img" src="../../image/xiaoxi@2x.png"></image>
+        <image class="head-img" src="../../image/xiaoxi.jpg"></image>
       </view>
       <view class="content-box">
         <view class="title-box">
